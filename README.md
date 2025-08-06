@@ -1,6 +1,6 @@
 # amdphreak.github.io
 
-<https://www.ryanjohnson.dev> -> <https://amdphreak.github.io>
+<https://www.ryanjohnson.dev> → <https://amdphreak.github.io>
 
 Developer homepage for AMDphreak (Ryan Johnson). Hosted on GitHub pages.
 
