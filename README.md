@@ -2,7 +2,7 @@
 
 Developer homepage for AMDphreak (Ryan Johnson).
 
-<https://amdphreak.github.io>
+<https://amdphreak.github.io> -> <https://www.ryanjohnson.dev>
 
 Hosted on GitHub pages.
 
