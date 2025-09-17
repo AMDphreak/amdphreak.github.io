@@ -1,8 +1,57 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "markdownlint.config": {
+      "default": true,
+      "MD013": false, // Suppress the 80 character per line style recommendation
+      "MD033": false // Allow HTML
+    },
+    "prettier.proseWrap": "never", // Tells Prettier to never hard-wrap Markdown
+    "[markdown]": {
+      "editor.wordWrap": "on", // markdown setting to display text wrapping
+      "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+      "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": "explicit" // enables markdownlint to autoformat on save, after markdown-all-in-one
+      }
+    },
+    "markdown.extension.list.indentationSize": "inherit", // make Markdown All In One plugin adhere to bullet tab spacing
+    "scm.alwaysShowRepositories": true,
+    "scm.providerCountBadge": "auto",
+    "workbench.colorCustomizations": {
+      "mergeEditor.conflict.unhandledFocused.border": "#00945b",
+      "mergeEditor.conflict.unhandledUnfocused.border": "#00784a"
+    },
+    "git.closeDiffOnOperation": true, // This closes the code 'diff' after you add it to a commit
+    "githubPullRequests.ignoredPullRequestBranches": ["main"],
+    "[astro]": {
+      "editor.defaultFormatter": "astro-build.astro-vscode"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "yzhang.markdown-all-in-one", // Markdown documentation formatter and toolset. Use like normal formatter.
+      // This plugin lets you apply bold, italic, strikethrough, and tasklist formatting to markdown with key combos.
+      // You can also pretty-format tables with a key combo, after creating them.
+      "dbaeumer.vscode-eslint", // ESLint is the EcmaScript Linter. ES is the official JavaScript specification. Linter checks syntax and gripes at you about errors or warnings.
+      "loiane.ts-extension-pack", // TypeScript extension pack, formatting, syntax highlighting, etc.
+      "esbenp.prettier-vscode", // Code formatter
+      "nrjdalal.nextjs-assistant", // https://marketplace.visualstudio.com/items?itemName=nrjdalal.nextjs-assistant
+      "marcbruederlin.next-icons", // Next.js icon-set for VSCode's file tree interface (folder, file types, etc)
+      "HareeshBhittam.next-js-snippets-latest", // Next.js 15 snippets to quickly populate new next files. Most other snippet plugins are outdated.
+      "kristiyanvelkov.nextjs-file-gelenator", // Next.js File Generator. // Next.js 14 click to create from templates...slightly out of date but good concept, and well crafted
+      "github.vscode-pull-request-github", // GitHub augmentations. This lets you see Pull Requests and Issues from GitHub
+      "bierner.markdown-mermaid", // Mermaid diagramming language renderer for markdown doc previews.
+      "bpruitt-goddard.mermaid-markdown-syntax-highlighting", // Mermaid support for Markdown files
+      "henoc.svgeditor", // SVG graphics literal editor (view the text), and visual editor
+      "mhutchie.git-graph", // lets you view git graph in bigger view
+      "eamodio.gitlens" // lets you search the history of the repository's files using string search
+    ]
+  }
 }

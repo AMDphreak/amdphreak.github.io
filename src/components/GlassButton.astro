@@ -1,0 +1,85 @@
+---
+export interface Props {
+  href?: string;
+  text: string;
+  variant?: "default" | "primary" | "secondary" | "pulse";
+  size?: "sm" | "md" | "lg";
+  onClick?: string;
+}
+
+const {
+  href,
+  text,
+  variant = "default",
+  size = "md",
+  onClick,
+} = Astro.props as Props;
+
+// Size classes
+const sizeClasses = {
+  sm: "px-3 py-2 text-sm",
+  md: "px-4 py-3 text-base",
+  lg: "px-6 py-4 text-lg",
+};
+
+// Variant classes
+const variantClasses = {
+  default: "",
+  primary: "glass-button-primary",
+  secondary: "glass-button-secondary",
+  pulse: "animate-pulse",
+};
+---
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+  @import "../assets/styles/glass-button.css";
+
+  /* Additional variant styles */
+  .glass-button-primary {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  .glass-button-primary:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow:
+      0 8px 25px rgba(59, 130, 246, 0.2),
+      0 4px 10px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-button-secondary {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+
+  .glass-button-secondary:hover {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow:
+      0 8px 25px rgba(16, 185, 129, 0.2),
+      0 4px 10px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+{
+  href ? (
+    <a
+      href={href}
+      class={`glass-button ${sizeClasses[size]} ${variantClasses[variant]}`}
+      onclick={onClick}
+    >
+      {text}
+    </a>
+  ) : (
+    <button
+      class={`glass-button ${sizeClasses[size]} ${variantClasses[variant]}`}
+      onclick={onClick}
+    >
+      {text}
+    </button>
+  )
+}

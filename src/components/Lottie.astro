@@ -1,0 +1,17 @@
+---
+import lottie from 'lottie-web';
+---
+
+<div id="lottie-container"></div>
+
+<script>
+    import lottie from 'lottie-web';
+
+    lottie.loadAnimation({
+        container: document.getElementById('lottie-container'),
+        path: '/animations/animation.json',
+        renderer: 'svg',
+        loop: true,
+        autoplay: true
+    });
+</script>
