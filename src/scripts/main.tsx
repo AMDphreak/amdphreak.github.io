@@ -75,7 +75,7 @@ const privateProjects = [
   {
     name: "Food Truck Nerdz",
     description:
-      "A comprehensive dashboard for internal company metrics and analytics with real-time data visualization.",
+      "An app to track food trucks and their locations, and allow users to save their favorites.",
     technologies: ["Vercel", "Next.js & React", "Convex DB", "Square API"],
     repoUrl: "https://github.com/FoodTruckNerds",
     websiteUrl: "https://www.foodtrucknerdz.com",
