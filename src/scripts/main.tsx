@@ -148,17 +148,15 @@ const createProjectCard = async (repo: any) => {
     : "";
 
   return `
-      <a href="${repo.html_url}" target="_blank" class="project-card-link">
-        <div class="project-card public-project-card">
-          ${logoHtml}
-          <h2>${repo.name}</h2>
-          <p>${repo.description}</p>
-          <div class="project-link-container">
-            <span class="project-label">${labelText}</span>
-            <i class="${iconClass} project-icon"></i>
-          </div>
-        </div>
-      </a>
+      <div class="project-card public-project-card">
+        ${logoHtml}
+        <h2>${repo.name}</h2>
+        <p>${repo.description}</p>
+        <a href="${repo.html_url}" target="_blank" class="project-link-container">
+          <span class="project-label">${labelText}</span>
+          <i class="${iconClass} project-icon"></i>
+        </a>
+      </div>
     `;
 };
 
@@ -232,7 +230,7 @@ const createPrivateProjectCard = async (project: any) => {
 };
 
 const populateProjects = async () => {
-  const projectsGrid = document.getElementById("projects-list");
+  const projectsGrid = document.querySelector("#projects .list");
   if (!projectsGrid) return;
 
   const projectCards = await Promise.all(
@@ -245,7 +243,7 @@ const populateProjects = async () => {
 };
 
 const populatePrivateProjects = async () => {
-  const privateProjectsGrid = document.getElementById("private-projects-list");
+  const privateProjectsGrid = document.querySelector("#private-projects .list");
   if (!privateProjectsGrid) return;
 
   const projectCards = await Promise.all(
@@ -259,20 +257,13 @@ const populatePrivateProjects = async () => {
 populateProjects();
 populatePrivateProjects();
 
-// About section toggle functionality
+// About section height management
 const aboutSection = document.querySelector(".about") as HTMLElement;
-const aboutHello = document.getElementById("about-hello") as HTMLElement;
-const aboutContent = document.getElementById("about-content") as HTMLElement;
 
-if (aboutSection && aboutHello && aboutContent) {
+if (aboutSection) {
   // Function to update about section height
   const updateAboutHeight = () => {
-    const isExpanded = aboutSection.classList.contains("expanded");
-    if (isExpanded) {
-      aboutSection.style.height = aboutContent.offsetHeight + "px";
-    } else {
-      aboutSection.style.height = aboutHello.offsetHeight + "px";
-    }
+    aboutSection.style.height = "auto";
   };
 
   // Set initial height
@@ -280,18 +271,7 @@ if (aboutSection && aboutHello && aboutContent) {
 
   // Add window resize listener to recalculate height
   window.addEventListener("resize", updateAboutHeight);
-
-  aboutSection.addEventListener("click", () => {
-    const isExpanded = aboutSection.classList.contains("expanded");
-
-    if (isExpanded) {
-      // Collapsing - measure hello height
-      aboutSection.style.height = aboutHello.offsetHeight + "px";
-    } else {
-      // Expanding - measure content height
-      aboutSection.style.height = aboutContent.offsetHeight + "px";
-    }
-
-    aboutSection.classList.toggle("expanded");
-  });
 }
+
+// Export to make this a module (allows global declarations)
+export {};
