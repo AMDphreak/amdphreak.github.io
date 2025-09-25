@@ -90,27 +90,6 @@ p {
   }
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  :root {
-    --link-icon-size: 70px;
-  }
-
-  .card {
-    padding: 1.5rem;
-    flex-direction: column;
-    gap: 1.5rem;
-
-    .horizontal {
-      .left,
-      .right {
-        flex: none;
-        width: 100%;
-      }
-    }
-  }
-}
-
 .card {
   width: 100%;
   box-sizing: border-box;
@@ -166,6 +145,36 @@ p {
     z-index: -1;
     background: transparent;
     pointer-events: none;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1000px) {
+  .card {
+    .horizontal {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --link-icon-size: 70px;
+  }
+
+  .card {
+    padding: 1.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .horizontal {
+      .left,
+      .right {
+        flex: none;
+        width: 100%;
+      }
+    }
   }
 }
 

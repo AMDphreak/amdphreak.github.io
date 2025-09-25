@@ -1,5 +1,5 @@
 #about {
-  padding: 7rem;
+  padding: 7rem 0rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,14 +10,34 @@
   .box {
     width: 800px;
   }
-}
 
-#about-title {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.5rem;
-  font-weight: 300;
-  margin: 0;
-  line-height: 1.1;
+  .title {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1.3;
+    pointer-events: auto;
+    color: rgb(224, 224, 224);
+    margin-top: 1rem;
+    text-align: left;
+    position: relative;
+
+    p {
+      font-weight: 300;
+      color: rgb(224, 224, 224);
+      margin: 0;
+      position: relative;
+    }
+  }
 }
 
 @keyframes gradient-shift {
@@ -30,37 +50,16 @@
   }
 }
 
-#about-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  line-height: 1.3;
-  pointer-events: auto;
-  color: rgb(224, 224, 224);
-  margin-top: 1rem;
-  text-align: left;
-  position: relative;
-}
 
-.minor-para {
-  margin: 1.5rem auto;
+/* Responsive Styles */
+@media (max-width: 1000px) {
+  #about {
+    .box {
+      width: 80%;
+      max-width: 80%;
+    }
 
-  p {
-    font-size: 0.8em;
-    font-weight: 300;
-    color: rgb(224, 224, 224);
-    margin: 0;
-    position: relative;
-  }
-
-  /* Responsive Styles */
-  @media (max-width: 654px) {
-    padding: 1rem;
-    margin: 1rem 0;
-    max-width: 100%;
-
-    p {
+    .content p {
       font-size: 0.8rem;
     }
   }
