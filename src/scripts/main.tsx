@@ -273,5 +273,8 @@ if (aboutSection) {
   window.addEventListener("resize", updateAboutHeight);
 }
 
+// Elfsight Instagram integration - simple and clean
+// Just use the embed as provided, ignore any ugly inner links
+
 // Export to make this a module (allows global declarations)
 export {};

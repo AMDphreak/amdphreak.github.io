@@ -1,0 +1,278 @@
+#photography {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  padding: 4rem 0;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  background: linear-gradient(
+    135deg,
+    #1a1a2e 0%,
+    #16213e 25%,
+    #0f3460 50%,
+    #e94560 75%,
+    #f39c12 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease-in-out infinite;
+
+  .box {
+    width: 800px;
+    max-width: 90%;
+    box-sizing: border-box;
+  }
+}
+
+.header-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#photography-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+#photography-title {
+  font-size: 4em;
+  margin: 0;
+  font-weight: 200;
+  letter-spacing: -0.1rem;
+  background: linear-gradient(135deg, #fff 0%, #e94560 50%, #f39c12 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+#photography-subtitle {
+  font-size: 1.5em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  min-height: 1.5rem;
+  line-height: 1.2;
+}
+
+.photography-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+}
+
+.photography-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  font-size: clamp(1.2rem, 2vw, 1.1em);
+  font-weight: 300;
+  opacity: 0.9;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+  margin: 1rem 0;
+
+  & a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 280px; /* Ensure consistent button width for visual balance */
+
+    /* Icon positioned on the far left */
+    & i {
+      position: absolute;
+      left: 1rem;
+      margin-right: 0.5rem;
+      font-size: 1.1em;
+      opacity: 0.8;
+    }
+
+    /* Text centered across remaining width */
+    & span {
+      flex: 1;
+      text-align: center;
+      margin-left: 2rem; /* Account for icon width */
+    }
+
+    &:hover {
+      color: rgb(255, 255, 255);
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+      & i {
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      transform: translateY(0px);
+      transition: all 0.1s ease;
+    }
+
+    & i {
+      font-size: 1.1em;
+      opacity: 0.8;
+    }
+
+    &:hover i {
+      opacity: 1;
+    }
+  }
+}
+
+.photography-description {
+  margin: 2rem 0;
+  max-width: 600px;
+  text-align: center;
+
+  & p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 300;
+  }
+}
+
+.instagram-feed {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 2rem;
+}
+
+.feed-header {
+  margin-bottom: 1.5rem;
+
+  & h3 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+    letter-spacing: -0.02rem;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.elfsight-instagram-widget {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 1000px) {
+  #photography {
+    .box {
+      width: 85%;
+      max-width: 85%;
+    }
+  }
+
+  #photography-title {
+    font-size: 3rem;
+  }
+
+  #photography-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #photography {
+    padding: 2rem 0;
+    min-height: 500px;
+
+    .box {
+      max-width: 95%;
+    }
+  }
+
+  #photography-title {
+    font-size: 2.5rem;
+  }
+
+  #photography-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .photography-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+
+    & a {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+    }
+  }
+
+  .photography-description {
+    & p {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #photography-title {
+    font-size: 2rem;
+  }
+
+  #photography-subtitle {
+    font-size: 1rem;
+  }
+
+  .photography-links {
+    & a {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .photography-description {
+    & p {
+      font-size: 0.9rem;
+    }
+  }
+}

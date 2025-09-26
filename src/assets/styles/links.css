@@ -1,4 +1,4 @@
-.links {
+#links {
   display: flex;
   flex-direction: column;
 }
@@ -11,7 +11,7 @@
   gap: 0.5rem;
 }
 
-.links a {
+#links a {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -21,18 +21,18 @@
   transition: all 0.3s ease;
 }
 
-.links a .fa-icon {
+#links a .fa-icon {
   font-size: var(--link-icon-size);
   transition: all 0.3s ease;
 }
 
-.links a .fa-wordpress {
+#links a .fa-wordpress {
   color: #60b3da;
 }
-.links a .fa-github {
+#links a .fa-github {
   color: #f0f6fc;
 }
-.links a .fa-gitlab {
+#links a .fa-gitlab {
   color: #ff9800;
 }
 
@@ -59,14 +59,14 @@
 }
 
 /* Hover effect using CSS custom properties */
-.links a:hover .logo-light-background {
+#links a:hover .logo-light-background {
   background: rgba(0, 0, 0, 0.521);
   border-style: solid;
   border-color: rgba(245, 200, 142, 0.842);
   border-width: 2px;
 }
 
-.links a .name {
+#links a .name {
   position: absolute;
   top: 100%;
   left: 50%;
@@ -86,13 +86,13 @@
   z-index: 10;
 }
 
-.links a:hover .name {
+#links a:hover .name {
   opacity: 1;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .links {
+  #links {
     gap: 1.5rem;
   }
 
