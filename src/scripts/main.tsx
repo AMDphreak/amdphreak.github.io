@@ -2,7 +2,16 @@
 const githubRepos = [
   "https://github.com/AMDphreak/Windows-Theme-Autochanger",
   "https://gitlab.com/AMDphreak/packet-x-ing",
+  "https://github.com/AMDphreak/BlackJackGame",
+  "https://github.com/AMDphreak/cyberpanel-uninstaller",
 ];
+
+// Additional project data for projects that need extra links
+const projectExtraData = {
+  "https://github.com/AMDphreak/BlackJackGame": {
+    demoUrl: "https://www.onlinegdb.com/edit/yV6LLFNPs"
+  }
+};
 
 // Function to attempt to get organization logo from Git URL
 const getOrgLogo = async (repoUrl: string): Promise<string | null> => {
@@ -82,6 +91,16 @@ const privateProjects = [
   },
 ];
 
+// Work in progress projects
+const workInProgressProjects = [
+  {
+    name: "Desktop Assistant AI",
+    description: "AI-powered desktop assistant for productivity and automation.",
+    technologies: ["AI", "Desktop Application"],
+    repoUrl: "https://github.com/AMDphreak/Desktop-Assistant-AI",
+  },
+];
+
 const fetchGitHubRepo = async (url: string) => {
   try {
     // Extract owner and repo from URL
@@ -147,15 +166,32 @@ const createProjectCard = async (repo: any) => {
     ? `<img src="${orgLogo}" alt="Organization/User avatar" class="project-org-logo" onerror="this.style.display='none'">`
     : "";
 
+  // Check for extra data (like demo links)
+  const extraData = projectExtraData[repo.html_url];
+  let linksHtml = `<a href="${repo.html_url}" target="_blank" class="project-link-container">
+    <span class="project-label">${labelText}</span>
+    <i class="${iconClass} project-icon"></i>
+  </a>`;
+
+  if (extraData && extraData.demoUrl) {
+    linksHtml = `<div class="project-links-container">
+      <a href="${repo.html_url}" target="_blank" class="project-link">
+        <span class="project-label">${labelText}</span>
+        <i class="${iconClass} project-icon"></i>
+      </a>
+      <a href="${extraData.demoUrl}" target="_blank" class="project-link">
+        <span class="project-label">Demo</span>
+        <i class="fas fa-external-link-alt project-icon"></i>
+      </a>
+    </div>`;
+  }
+
   return `
       <div class="project-card public-project-card">
         ${logoHtml}
         <h2>${repo.name}</h2>
         <p>${repo.description}</p>
-        <a href="${repo.html_url}" target="_blank" class="project-link-container">
-          <span class="project-label">${labelText}</span>
-          <i class="${iconClass} project-icon"></i>
-        </a>
+        ${linksHtml}
       </div>
     `;
 };
@@ -253,9 +289,21 @@ const populatePrivateProjects = async () => {
   privateProjectsGrid.innerHTML = projectCards.join("");
 };
 
+const populateWorkInProgressProjects = async () => {
+  const workInProgressGrid = document.querySelector("#work-in-progress .list");
+  if (!workInProgressGrid) return;
+
+  const projectCards = await Promise.all(
+    workInProgressProjects.map((project) => createPrivateProjectCard(project))
+  );
+
+  workInProgressGrid.innerHTML = projectCards.join("");
+};
+
 // Populate projects when DOM is loaded
 populateProjects();
 populatePrivateProjects();
+populateWorkInProgressProjects();
 
 // About section height management
 const aboutSection = document.querySelector(".about") as HTMLElement;
