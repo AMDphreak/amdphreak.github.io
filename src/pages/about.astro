@@ -1,15 +1,40 @@
 ---
-
+import { Footer } from "../components/Footer";
+import "../styles/tailwind.css";
 ---
 
-<head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Astro" />
     <title>Ryan Johnson - Developer Home Page - About</title>
-</head>
-<body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <h1>About Me</h1>
-    <h2>... and my new Astro site!</h2>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 min-h-screen flex flex-col">
+    <div class="container mx-auto px-4 py-8 max-w-6xl flex-1">
+      <nav class="mb-8">
+        <a href="/" class="text-blue-600 dark:text-blue-400 hover:underline mr-4">Home</a>
+        <a href="/about/" class="text-blue-600 dark:text-blue-400 hover:underline">About</a>
+      </nav>
+      
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">About Me</h1>
+      <h2 class="text-xl text-gray-600 dark:text-gray-300 mb-6">... and my new Astro site!</h2>
 
-    <p>I am working through Astro's introductory tutorial.</p>
-</body>
+      <p class="text-gray-700 dark:text-gray-300">I am working through Astro's introductory tutorial.</p>
+    </div>
+
+    <Footer client:load />
+  </body>
+</html>
