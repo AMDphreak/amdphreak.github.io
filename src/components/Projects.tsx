@@ -7,9 +7,9 @@ const publicProjects = [
     platform: "github",
   },
   {
-    name: "BlackJackGame",
-    description: "A simple Blackjack game implementation",
-    html_url: "https://github.com/AMDphreak/BlackJackGame",
+    name: "dsam-resources",
+    description: "DSAM's resources directory for families with special needs",
+    html_url: "https://github.com/AMDphreak/dsam-resources",
     platform: "github",
   },
   {
@@ -19,9 +19,9 @@ const publicProjects = [
     platform: "github",
   },
   {
-    name: "dsam-resources",
-    description: "DSAM's resources directory for families with special needs",
-    html_url: "https://github.com/AMDphreak/dsam-resources",
+    name: "BlackJackGame",
+    description: "A simple Blackjack game implementation",
+    html_url: "https://github.com/AMDphreak/BlackJackGame",
     platform: "github",
   },
   {
@@ -115,9 +115,9 @@ const getCodeIcon = (platform: string, url: string): string => {
 
 // All projects combined
 const allProjects = [
-  ...publicProjects,
   ...privateProjects,
-  ...workInProgressProjects
+  ...workInProgressProjects,
+  ...publicProjects
 ];
 
 const ProjectCard = (props: { repo: any }) => {
