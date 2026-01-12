@@ -1,6 +1,12 @@
 // Static project data
 const publicProjects = [
   {
+    name: "Transcoder Suite",
+    description: "Modular, playbook-driven video transcoding system for PowerShell 7. Optimized for high-quality archival and batch processing.",
+    html_url: "https://github.com/AMDphreak/transcoder-suite",
+    platform: "github",
+  },
+  {
     name: "Windows Theme Autochanger",
     description: "Automatic Windows theme switcher based on time of day",
     html_url: "https://github.com/AMDphreak/Windows-Theme-Autochanger",
@@ -34,6 +40,9 @@ const publicProjects = [
 
 // Additional project data for projects that need extra links
 const projectExtraData = {
+  "https://github.com/AMDphreak/transcoder-suite": {
+    docsUrl: "https://amdphreak.github.io/transcoder-suite/"
+  },
   "https://github.com/AMDphreak/BlackJackGame": {
     demoUrl: "https://www.onlinegdb.com/edit/yV6LLFNPs"
   }
@@ -183,6 +192,17 @@ const ProjectCard = (props: { repo: any }) => {
           >
             <i class="fas fa-external-link-alt mr-2"></i>
             Demo
+          </a>
+        )}
+        {projectExtraData[props.repo.html_url]?.docsUrl && (
+          <a
+            href={projectExtraData[props.repo.html_url].docsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            <i class="fas fa-book mr-2"></i>
+            Docs
           </a>
         )}
       </div>
