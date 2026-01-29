@@ -2,8 +2,22 @@
 const publicProjects = [
   {
     name: "Transcoder Suite",
-    description: "Modular, playbook-driven video transcoding system for PowerShell 7. Optimized for high-quality archival and batch processing.",
+    description:
+      "Modular, playbook-driven video transcoding system for PowerShell 7. Optimized for high-quality archival and batch processing.",
     html_url: "https://github.com/AMDphreak/transcoder-suite",
+    platform: "github",
+  },
+  {
+    name: "antora-dark-theme",
+    description:
+      "Dark mode supplemental UI theme for Antora documentation sites",
+    html_url: "https://github.com/the-dev-center/antora-dark-theme",
+    platform: "github",
+  },
+  {
+    name: "antora-themes-site",
+    description: "Official site for Antora themes",
+    html_url: "https://github.com/the-dev-center/antora-themes-site",
     platform: "github",
   },
   {
@@ -41,22 +55,59 @@ const publicProjects = [
 // Additional project data for projects that need extra links
 const projectExtraData = {
   "https://github.com/AMDphreak/transcoder-suite": {
-    docsUrl: "https://amdphreak.github.io/transcoder-suite/"
+    docsUrl: "https://amdphreak.github.io/transcoder-suite/",
   },
   "https://github.com/AMDphreak/BlackJackGame": {
-    demoUrl: "https://www.onlinegdb.com/edit/yV6LLFNPs"
-  }
+    demoUrl: "https://www.onlinegdb.com/edit/yV6LLFNPs",
+  },
 };
 
 // Private projects data (manually defined since they're not public)
 const privateProjects = [
   {
-    name: "Food Truck Nerdz",
-    description: "An app to track food trucks and their locations, and allow users to save their favorites.",
-    technologies: ["Vercel", "Next.js & React", "Convex DB", "Square API"],
-    repoUrl: "https://github.com/FoodTruckNerds",
+    name: "FTN App",
+    description: "Food Truck Nerdz Next.js Web App",
+    technologies: ["Next.js", "Vercel", "Convex DB"],
+    repoUrl: "https://github.com/FoodTruckNerds/ftn-site-vercel",
     websiteUrl: "https://www.foodtrucknerdz.com",
-    type: "private"
+    type: "private",
+  },
+  {
+    name: "Food Truck API",
+    description: "Food Truck Zuplo API Gateway",
+    technologies: ["Zuplo", "API Gateway", "Node.js"],
+    repoUrl: "https://github.com/FoodTruckNerds/food-truck-api",
+    type: "private",
+  },
+  {
+    name: "FTN Onboarding",
+    description:
+      "Onboarding documentation and Setup GUI to bootstrap dev environment",
+    technologies: ["PowerShell", "Documentation"],
+    repoUrl: "https://github.com/FoodTruckNerds/onboarding",
+    type: "private",
+  },
+  {
+    name: "Dev Center App",
+    description:
+      "A developer center app for configuring dev machines and managing software projects",
+    technologies: ["React", "Tauri", "TypeScript"],
+    repoUrl: "https://github.com/the-dev-center/dev-center",
+    type: "private",
+  },
+  {
+    name: "Dev Center Templates",
+    description: "Template settings files for dev tools",
+    technologies: ["VS Code", "Settings", "Configuration"],
+    repoUrl: "https://github.com/the-dev-center/templates",
+    type: "private",
+  },
+  {
+    name: "DSAM Christmas 2025",
+    description: "DSAM 2025 Christmas party capture one preview",
+    technologies: ["GitLab", "Photography", "Preview"],
+    repoUrl: "https://gitlab.com/AMDphreak/dsam-christmas-2025-preview",
+    type: "private",
   },
 ];
 
@@ -64,10 +115,11 @@ const privateProjects = [
 const workInProgressProjects = [
   {
     name: "Desktop Assistant AI",
-    description: "AI-powered desktop assistant for productivity and automation.",
+    description:
+      "AI-powered desktop assistant for productivity and automation.",
     technologies: ["AI", "Desktop Application"],
     repoUrl: "https://github.com/AMDphreak/Desktop-Assistant-AI",
-    type: "work-in-progress"
+    type: "work-in-progress",
   },
 ];
 
@@ -126,7 +178,7 @@ const getCodeIcon = (platform: string, url: string): string => {
 const allProjects = [
   ...privateProjects,
   ...workInProgressProjects,
-  ...publicProjects
+  ...publicProjects,
 ];
 
 const ProjectCard = (props: { repo: any }) => {
@@ -156,23 +208,19 @@ const ProjectCard = (props: { repo: any }) => {
       <div class="flex items-start justify-between mb-4">
         <div class="flex-1 mr-3">
           <div class="flex items-center gap-2 mb-2">
-            <h3 class="section-heading-sm">
-              {props.repo.name}
-            </h3>
+            <h3 class="section-heading-sm">{props.repo.name}</h3>
             {getTypeBadge(props.repo.type)}
           </div>
         </div>
         {orgLogo && (
-          <img 
-            src={orgLogo} 
-            alt="Organization/User avatar" 
+          <img
+            src={orgLogo}
+            alt="Organization/User avatar"
             class="w-8 h-8 rounded-full flex-shrink-0"
           />
         )}
       </div>
-      <p class="text-muted mb-4">
-        {props.repo.description}
-      </p>
+      <p class="text-muted mb-4">{props.repo.description}</p>
       <div class="flex gap-2">
         <a
           href={props.repo.html_url}
@@ -180,7 +228,9 @@ const ProjectCard = (props: { repo: any }) => {
           rel="noopener noreferrer"
           class="btn-primary btn-sm"
         >
-          <i class={`${getCodeIcon(props.repo.platform, props.repo.html_url)} mr-2`}></i>
+          <i
+            class={`${getCodeIcon(props.repo.platform, props.repo.html_url)} mr-2`}
+          ></i>
           Code
         </a>
         {projectExtraData[props.repo.html_url]?.demoUrl && (
@@ -211,7 +261,9 @@ const ProjectCard = (props: { repo: any }) => {
 };
 
 const PrivateProjectCard = (props: { project: any }) => {
-  const orgLogo = props.project.repoUrl ? getOrgLogo(props.project.repoUrl) : null;
+  const orgLogo = props.project.repoUrl
+    ? getOrgLogo(props.project.repoUrl)
+    : null;
 
   const getTypeBadge = (type: string) => {
     if (type === "private") {
@@ -237,23 +289,19 @@ const PrivateProjectCard = (props: { project: any }) => {
       <div class="flex items-start justify-between mb-4">
         <div class="flex-1 mr-3">
           <div class="flex items-center gap-2 mb-2">
-            <h3 class="section-heading-sm">
-              {props.project.name}
-            </h3>
+            <h3 class="section-heading-sm">{props.project.name}</h3>
             {getTypeBadge(props.project.type)}
           </div>
         </div>
         {orgLogo && (
-          <img 
-            src={orgLogo} 
-            alt="Organization logo" 
+          <img
+            src={orgLogo}
+            alt="Organization logo"
             class="w-8 h-8 rounded-full flex-shrink-0"
           />
         )}
       </div>
-      <p class="text-muted mb-4">
-        {props.project.description}
-      </p>
+      <p class="text-muted mb-4">{props.project.description}</p>
       {props.project.technologies && (
         <div class="mb-4">
           <div class="text-subtle text-sm">
@@ -299,11 +347,11 @@ export const Projects = () => {
   return (
     <div class="card">
       <h2 class="section-heading">Projects</h2>
-      
+
       <div class="grid-projects">
         {allProjects.map((project) => {
           // Use PrivateProjectCard for projects with type attribute, ProjectCard for others
-          if ('type' in project) {
+          if ("type" in project) {
             return <PrivateProjectCard project={project} />;
           } else {
             return <ProjectCard repo={project} />;
