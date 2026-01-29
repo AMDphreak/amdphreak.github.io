@@ -158,6 +158,35 @@ import "../styles/tailwind.css";
           }
         }
       }, 60000);
+
+      // Randomize patina backgrounds for each instance
+      function randomizePatina() {
+        const targets = document.querySelectorAll(
+          ".section-heading, .btn-primary",
+        );
+        targets.forEach((el) => {
+          el.style.setProperty(
+            "--patina-angle-1",
+            Math.floor(Math.random() * 360) + "deg",
+          );
+          el.style.setProperty(
+            "--patina-angle-2",
+            Math.floor(Math.random() * 360) + "deg",
+          );
+          el.style.setProperty(
+            "--patina-angle-3",
+            Math.floor(Math.random() * 360) + "deg",
+          );
+        });
+      }
+
+      // Initialize randomization
+      randomizePatina();
+
+      // Also randomize on theme toggle to refresh the look
+      themeToggleBtn.addEventListener("click", () => {
+        setTimeout(randomizePatina, 10);
+      });
     </script>
   </body>
 </html>

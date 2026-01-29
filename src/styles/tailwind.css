@@ -65,9 +65,21 @@
       sans-serif;
     background:
       linear-gradient(var(--patina-overlay), var(--patina-overlay)),
-      radial-gradient(circle at 10% 20%, var(--patina-1) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, var(--patina-2) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, var(--patina-3) 0%, transparent 80%),
+      linear-gradient(
+        var(--patina-angle-1, 0deg),
+        var(--patina-1) 0%,
+        transparent 70%
+      ),
+      linear-gradient(
+        var(--patina-angle-2, 120deg),
+        var(--patina-2) 0%,
+        transparent 70%
+      ),
+      linear-gradient(
+        var(--patina-angle-3, 240deg),
+        var(--patina-3) 0%,
+        transparent 70%
+      ),
       var(--patina-1);
     background-blend-mode: overlay, normal, normal, normal, normal;
     -webkit-background-clip: text;
@@ -90,9 +102,21 @@
   .btn-primary {
     background:
       linear-gradient(var(--patina-overlay), var(--patina-overlay)),
-      radial-gradient(circle at 10% 20%, var(--patina-1) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, var(--patina-2) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, var(--patina-3) 0%, transparent 80%),
+      linear-gradient(
+        var(--patina-angle-1, 0deg),
+        var(--patina-1) 0%,
+        transparent 70%
+      ),
+      linear-gradient(
+        var(--patina-angle-2, 120deg),
+        var(--patina-2) 0%,
+        transparent 70%
+      ),
+      linear-gradient(
+        var(--patina-angle-3, 240deg),
+        var(--patina-3) 0%,
+        transparent 70%
+      ),
       var(--patina-1);
     background-blend-mode: overlay, normal, normal, normal, normal;
     @apply inline-flex items-center px-4 py-2 text-sm font-medium text-white rounded-lg hover:opacity-90 hover:ring-4 hover:ring-emerald-300 dark:focus:ring-emerald-800 transition-all duration-200;
