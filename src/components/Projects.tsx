@@ -220,7 +220,9 @@ const ProjectCard = (props: { repo: any }) => {
           />
         )}
       </div>
-      <p class="text-muted mb-4">{props.repo.description}</p>
+      <p class="text-muted text-sm mb-4 line-clamp-2">
+        {props.repo.description}
+      </p>
       <div class="flex gap-2">
         <a
           href={props.repo.html_url}
@@ -238,7 +240,7 @@ const ProjectCard = (props: { repo: any }) => {
             href={projectExtraData[props.repo.html_url].demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-secondary"
+            class="btn-secondary btn-sm"
           >
             <i class="fas fa-external-link-alt mr-2"></i>
             Demo
@@ -249,7 +251,7 @@ const ProjectCard = (props: { repo: any }) => {
             href={projectExtraData[props.repo.html_url].docsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-secondary"
+            class="btn-secondary btn-sm"
           >
             <i class="fas fa-book mr-2"></i>
             Docs
@@ -301,10 +303,12 @@ const PrivateProjectCard = (props: { project: any }) => {
           />
         )}
       </div>
-      <p class="text-muted mb-4">{props.project.description}</p>
+      <p class="text-muted text-sm mb-2 line-clamp-2">
+        {props.project.description}
+      </p>
       {props.project.technologies && (
-        <div class="mb-4">
-          <div class="text-subtle text-sm">
+        <div class="mb-3">
+          <div class="text-subtle text-xs">
             {props.project.technologies.join(" • ")}
           </div>
         </div>
@@ -326,7 +330,7 @@ const PrivateProjectCard = (props: { project: any }) => {
             href={props.project.websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-secondary"
+            class="btn-secondary btn-sm"
           >
             <i class="fas fa-external-link-alt mr-2"></i>
             Website
