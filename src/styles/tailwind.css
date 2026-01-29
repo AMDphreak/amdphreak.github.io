@@ -4,12 +4,27 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --theme-color-1: theme("colors.emerald.500");
-  --theme-color-2: theme("colors.emerald.300");
+  /* Variegated Patina Palette - Darker in Light Mode */
+  --patina-1: #1b4332; /* Deep Forest Green */
+  --patina-2: #2d6a4f; /* Muted Moss */
+  --patina-3: #6d4c41; /* Earthy Umber */
+  --patina-overlay: rgba(255, 255, 255, 0.1);
+  --theme-color-1: var(--patina-1);
+  --theme-color-2: var(--patina-2);
   --accent-blue: theme("colors.slate.400");
   --accent-purple: theme("colors.slate.300");
   --accent-orange: theme("colors.stone.400");
   --accent-indigo: theme("colors.slate.500");
+}
+
+.dark {
+  /* Variegated Patina Palette - Lighter in Dark Mode */
+  --patina-1: #74c69d; /* Bright Patina Green */
+  --patina-2: #b7e4c7; /* Soft Mint Sage */
+  --patina-3: #a1887f; /* Light Clay Earth */
+  --patina-overlay: rgba(0, 0, 0, 0.4);
+  --theme-color-1: var(--patina-1);
+  --theme-color-2: var(--patina-2);
 }
 
 /* Custom component classes */
@@ -48,15 +63,17 @@
       -apple-system,
       BlinkMacSystemFont,
       sans-serif;
-    background: linear-gradient(
-      135deg,
-      var(--theme-color-1),
-      var(--accent-blue)
-    );
+    background:
+      linear-gradient(var(--patina-overlay), var(--patina-overlay)),
+      radial-gradient(circle at 10% 20%, var(--patina-1) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, var(--patina-2) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, var(--patina-3) 0%, transparent 80%),
+      var(--patina-1);
+    background-blend-mode: overlay, normal, normal, normal, normal;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    opacity: 0.9;
+    opacity: 0.95;
   }
 
   .section-heading-sm {
@@ -71,7 +88,13 @@
 
   /* Button styles */
   .btn-primary {
-    background-color: var(--theme-color-1);
+    background:
+      linear-gradient(var(--patina-overlay), var(--patina-overlay)),
+      radial-gradient(circle at 10% 20%, var(--patina-1) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, var(--patina-2) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, var(--patina-3) 0%, transparent 80%),
+      var(--patina-1);
+    background-blend-mode: overlay, normal, normal, normal, normal;
     @apply inline-flex items-center px-4 py-2 text-sm font-medium text-white rounded-lg hover:opacity-90 hover:ring-4 hover:ring-emerald-300 dark:focus:ring-emerald-800 transition-all duration-200;
   }
 
