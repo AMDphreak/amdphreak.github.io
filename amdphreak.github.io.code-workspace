@@ -24,11 +24,12 @@
       "MD013": false, // Suppress the 80 character per line style recommendation
     },
     "[markdown]": {
+      "editor.formatOnSave": true,
       "editor.wordWrap": "on", // markdown setting to display text wrapping
       "editor.defaultFormatter": "yzhang.markdown-all-in-one",
       "editor.codeActionsOnSave": {
-        "source.fixAll.markdownlint": "explicit", // enables markdownlint to autoformat on save, after markdown-all-in-one
-      },
+        "source.fixAll.markdownlint": "explicit"
+      }
     },
     "markdown.extension.list.indentationSize": "inherit", // make Markdown All In One plugin adhere to bullet tab spacing
     "scm.alwaysShowRepositories": true,

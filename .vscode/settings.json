@@ -19,14 +19,15 @@
   
   "editor.tabSize": 2,
 
-  // We use Prettier as our default formatter with TypeScript addon support
+  // We use Biome as our default formatter with TypeScript addon support
   "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnSave": true,
 
   //
   // Language settings
   "[markdown]": {
-	  "editor.wordWrap": "on" // Displays text wrapping by default. users can still change the wrapping on each file.
+	  "editor.wordWrap": "on", // Displays text wrapping by default. users can still change the wrapping on each file.
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
 	},
   // Preferentially Biome for JS/TS/JSX,JSON,CSS, and GraphQL
   "[jsonc]": {
