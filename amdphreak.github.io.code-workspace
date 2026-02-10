@@ -1,43 +1,139 @@
-// This template file is provided by https://github.com/the-dev-center/templates
 {
-  "folders": [
-    {
-      "path": ".",
-    },
-  ],
-  "settings": {
-    // See `.vscode/settings.json` and `.vscode/extensions.json` for more settings.
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			// Code Formatters & Linters
+			"dprint.dprint",
+			"biomejs.biome",
+      
+			// Markup & Documentation
+			"asciidoctor.asciidoctor-vscode",
+			"DavidAnson.vscode-markdownlint",
+			"yzhang.markdown-all-in-one",
+			"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+			"bierner.markdown-mermaid",
+			"redhat.vscode-yaml",
+			"tamasfe.even-better-toml",
 
-		// Tell the YAML parser to not lint the GitHub FUNDING.yml file.
-		"yaml.schemas": {
+			// Web Technologies
+			"astro-build.astro-vscode",
+			"unifiedjs.vscode-mdx",
+
+			// Git & Collaboration
+			"eamodio.gitlens"
+		]
+	},
+	"settings": {
+		// ~~~~~~~~~ File and Search Exclusion ~~~~~~~~~~~
+		"files.exclude": {
+			"**/node_modules": true,
+			"**/.git": true,
+			"**/.next": true,
+			"**/dist": true,
+			"**/.astro": true
+		},
+		"search.exclude": {
+			"**/node_modules": true,
+			"**/.git": true,
+			"**/.next": true,
+			"**/dist": true,
+			"**/.astro": true
+		},
+
+		// ~~~~~~~~~ Editor & Formatting ~~~~~~~~~~~
+		"editor.tabSize": 2,
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "dprint.dprint",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.markdownlint": "explicit"
+		},
+
+		// ~~~~~~~~~ Language Settings ~~~~~~~~~~~
+		"[markdown]": {
+			"editor.wordWrap": "on",
+			"editor.defaultFormatter": "dprint.dprint",
+			"editor.formatOnSave": true
+		},
+		"[asciidoc]": {
+			"editor.wordWrap": "on",
+			"editor.defaultFormatter": "asciidoctor.asciidoctor-vscode"
+		},
+		"[astro]": {
+			"editor.defaultFormatter": "astro-build.astro-vscode"
+		},
+		"[mdx]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[javascript]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[typescript]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[javascriptreact]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[typescriptreact]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[json]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[jsonc]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[code-workspace]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[css]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[graphql]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+		"[yaml]": {
+			"editor.defaultFormatter": "dprint.dprint"
+		},
+
+		// ~~~~~~~~~ Extension Config ~~~~~~~~~~~
+		"markdownlint.config": {
+			"default": true,
+			"MD013": false, // Suppress the 80 character per line style recommendation
+			"MD033": false // Allow HTML in markdown files
+		},
+		"markdown.extension.list.indentationSize": "inherit",
+		
+    // Tell the YAML parser to not lint the GitHub FUNDING.yml file.
+    "yaml.schemas": {
 			"https://json.schemastore.org/github-funding.json": "/.github/FUNDING.yml"
 		},
 
-		// Change merge editor colors to not be so jarring
+		// ~~~~~~~~~ Source Control ~~~~~~~~~~~
+		"scm.alwaysShowRepositories": true,
+		"scm.providerCountBadge": "auto",
+		"git.closeDiffOnOperation": true,
+		"githubPullRequests.ignoredPullRequestBranches": ["main"],
+		"git.autoRepositoryDetection": false,
+
+		// ~~~~~~~~~ UI Customization ~~~~~~~~~~~
 		"workbench.colorCustomizations": {
 			"mergeEditor.conflict.unhandledFocused.border": "#00945b",
 			"mergeEditor.conflict.unhandledUnfocused.border": "#00784a"
-		},
-
-    "markdownlint.config": {
-      "default": true,
-      "MD013": false, // Suppress the 80 character per line style recommendation
-    },
-    "[markdown]": {
-      "editor.formatOnSave": true,
-      "editor.wordWrap": "on", // markdown setting to display text wrapping
-      "editor.defaultFormatter": "yzhang.markdown-all-in-one",
-      "editor.codeActionsOnSave": {
-        "source.fixAll.markdownlint": "explicit"
-      }
-    },
-    "markdown.extension.list.indentationSize": "inherit", // make Markdown All In One plugin adhere to bullet tab spacing
-    "scm.alwaysShowRepositories": true,
-    "scm.providerCountBadge": "auto",
-    "git.closeDiffOnOperation": true, // This closes the code 'diff' after you add it to a commit
-    "githubPullRequests.ignoredPullRequestBranches": ["main"],
-    "[astro]": {
-      "editor.defaultFormatter": "astro-build.astro-vscode",
-    },
-  },
+		}
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"command": "./node_modules/.bin/astro dev",
+				"name": "Development server",
+				"request": "launch",
+				"type": "node-terminal"
+			}
+		]
+	}
 }
