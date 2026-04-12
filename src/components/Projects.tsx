@@ -132,7 +132,7 @@ const privateProjects: ProjectProps[] = [
     description: "Desktop application for environment configuration and management.",
     technologies: ["React", "Tauri", "TypeScript"],
     url: "https://devcentr.org",
-    repoUrl: "https://github.com/dev-centr/devcentr",
+    repoUrl: "https://github.com/dev-centr",
     docsUrl: "https://docs.devcentr.org",
     type: "private",
   },
@@ -189,17 +189,14 @@ const ProjectCard = (props: { project: ProjectProps }) => {
       </p>
 
       <div class="flex flex-wrap gap-4 mt-auto">
-        <Show when={props.project.url || props.project.repoUrl}>
+        <Show when={props.project.url && !props.project.url.includes('github') && !props.project.url.includes('gitlab')}>
           <a
-            href={props.project.url || props.project.repoUrl}
+            href={props.project.url}
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
-            <Show when={props.project.platform === 'gitlab'} fallback={<IconGithub />}>
-               <IconGitlab />
-            </Show>
-            Source
+            <IconGlobe /> Visit
           </a>
         </Show>
         <Show when={props.project.docsUrl}>
@@ -212,14 +209,17 @@ const ProjectCard = (props: { project: ProjectProps }) => {
             <IconBook /> Docs
           </a>
         </Show>
-        <Show when={props.project.url && !props.project.url.includes('github') && !props.project.url.includes('gitlab')}>
+        <Show when={props.project.repoUrl || (props.project.url && (props.project.url.includes('github') || props.project.url.includes('gitlab')))}>
           <a
-            href={props.project.url}
+            href={props.project.repoUrl || props.project.url}
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
-            <IconGlobe /> Visit
+            <Show when={props.project.platform === 'gitlab' || (props.project.url && props.project.url.includes('gitlab'))} fallback={<IconGithub />}>
+               <IconGitlab />
+            </Show>
+            Source
           </a>
         </Show>
       </div>
