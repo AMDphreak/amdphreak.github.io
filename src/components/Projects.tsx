@@ -83,6 +83,13 @@ const IconBook = (p: IconProps) => (
 
 const publicProjects: ProjectProps[] = [
   {
+    name: "Equivalence Engine",
+    description: "High-performance D-based transformation engine for modular codebase adaptation and version evolution. Standardizes cross-repository dependency management.",
+    repoUrl: "https://github.com/AMDphreak/equivalence-engine",
+    platform: "github",
+    technologies: ["Dlang", "VCS", "CLI"],
+  },
+  {
     name: "Transcoder Suite",
     description: "Modular, playbook-driven video transcoding system for PowerShell 7. Optimized for high-quality archival.",
     url: "https://github.com/AMDphreak/transcoder-suite",
