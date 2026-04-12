@@ -10,183 +10,164 @@ import { Footer } from "../components/Footer";
 import "../styles/tailwind.css";
 ---
 
-<html lang="en">
+<html lang="en" class="noise-bg">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="Astro" />
-    <title>Ryan Johnson - Developer Home Page</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      crossorigin="anonymous"
-    />
+    <title>Ryan Johnson | Developer</title>
+    
     <script is:inline>
-      // Apply theme before page renders to prevent flash of content
-      (function () {
-        const userPreference = localStorage.getItem("color-theme");
-        const hour = new Date().getHours();
-        const isDarkTime = hour >= 19 || hour < 7;
+      (function() {
+        const applyTheme = (theme, save = false) => {
+          if (theme === 'dark') document.documentElement.classList.add('dark');
+          else document.documentElement.classList.remove('dark');
+          
+          // Sync browser color-scheme to prevent conflicting background/text overrides
+          document.documentElement.style.colorScheme = theme;
+          
+          if (save && typeof localStorage !== 'undefined') {
+            localStorage.setItem('theme', theme);
+          }
+        };
 
-        if (userPreference === "dark" || (!userPreference && isDarkTime)) {
-          document.documentElement.classList.add("dark");
+        const getTheme = () => {
+          const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
+          if (saved) return saved;
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+        
+        // Initial setup
+        applyTheme(getTheme());
+
+        // Listen for system theme changes and treat as "Lock Release"
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+          applyTheme(e.matches ? 'dark' : 'light', true);
+        });
+
+        // Initialize click listener safely
+        const initToggle = () => {
+          const themeToggle = document.getElementById("theme-toggle");
+          if (!themeToggle) return;
+          
+          themeToggle.addEventListener("click", () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            
+            // Fallback for browsers (Safari older versions, Firefox without flags)
+            if (!document.startViewTransition) {
+              applyTheme(newTheme, true);
+              return;
+            }
+
+            // Generate structural hexagon mask payload
+            const winW = window.innerWidth;
+            const winH = window.innerHeight;
+            const R = 45; 
+            const hexW = Math.sqrt(3) * R;
+            const cols = Math.ceil(winW / hexW) + 2;
+            const rows = Math.ceil(winH / (1.5 * R)) + 2;
+            
+            let polygons = '';
+            for (let r = -1; r < rows; r++) {
+              for (let c = -1; c < cols; c++) {
+                // Pointy-topped spacing
+                const cx = c * hexW + (Math.abs(r) % 2 === 1 ? hexW / 2 : 0);
+                const cy = r * 1.5 * R;
+                const delay = Math.random() * 0.7;
+                
+                // Pointy-topped hexagon coordinate resolution
+                const pts = [];
+                for(let i=0; i<6; i++) {
+                  const angle_rad = Math.PI / 180 * (60 * i - 30);
+                  pts.push(`${cx + R * Math.cos(angle_rad)},${cy + R * Math.sin(angle_rad)}`);
+                }
+                polygons += `<polygon points="${pts.join(' ')}" style="transform-origin: ${cx}px ${cy}px; animation: hexReveal 0.5s ${delay}s both ease-out;" fill="black" />`;
+              }
+            }
+
+            // Construct DOM-less SVG string
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${winW} ${winH}" width="${winW}" height="${winH}"><style>@keyframes hexReveal { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1.05); opacity: 1; } }</style>${polygons}</svg>`;
+
+            const dataUri = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+            document.documentElement.style.setProperty('--hex-mask', `url("${dataUri}")`);
+            document.documentElement.classList.add('hex-transitioning');
+
+            // Force hardware layout snapshot
+            const transition = document.startViewTransition(() => {
+              applyTheme(newTheme, true);
+            });
+
+            // Cleanup architectural detritus 
+            transition.finished.then(() => {
+              document.documentElement.classList.remove('hex-transitioning');
+            });
+          });
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initToggle);
         } else {
-          document.documentElement.classList.remove("dark");
+          initToggle();
         }
       })();
     </script>
   </head>
-  <body
-    class="bg-gradient-to-br from-gray-50 via-slate-50 to-stone-50 dark:from-gray-900 dark:via-slate-800 dark:to-stone-900 min-h-screen flex flex-col"
-  >
-    <!-- Dark mode toggle -->
-    <button
-      id="theme-toggle"
-      type="button"
-      class="fixed top-4 right-4 z-50 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
-    >
-      <svg
-        id="theme-toggle-dark-icon"
-        class="hidden w-5 h-5"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
-        ></path>
-      </svg>
-      <svg
-        id="theme-toggle-light-icon"
-        class="hidden w-5 h-5"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-          fill-rule="evenodd"
-          clip-rule="evenodd"></path>
-      </svg>
-    </button>
+  <body class="bg-background text-foreground min-h-screen font-sans antialiased selection:bg-stone-200 dark:selection:bg-stone-800">
+    <div class="fixed inset-0 pointer-events-none border-[12px] border-stone-100/50 dark:border-stone-900/50 z-[100]"></div>
+    
+    <main class="relative z-10 container mx-auto px-6 py-12 max-w-7xl space-y-16 lg:space-y-24">
+      <!-- Structural Top Header -->
+      <header class="flex justify-between items-start border-b border-stone-200 dark:border-stone-800 pb-8">
+        <div>
+          <h1 class="text-xs font-mono uppercase tracking-[0.2em] text-stone-500">Structural Overview / 2026</h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <div id="theme-toggle" class="cursor-pointer hover:opacity-70 transition-opacity">
+             <span class="text-[10px] font-mono uppercase tracking-widest text-stone-400 dark:text-stone-500 select-none">Toggle System</span>
+          </div>
+        </div>
+      </header>
 
-    <div class="container mx-auto px-4 py-8 max-w-6xl flex-1 space-y-8">
-      <div id="profile-section">
+      <div id="profile-section" class="border-b border-stone-200 dark:border-stone-800 pb-16">
         <Profile client:load />
       </div>
 
-      <div id="about-section">
-        <About client:load />
-      </div>
-
-      <div id="main-content-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div id="left-column" class="lg:col-span-2 space-y-8">
-          <div id="projects-section">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <!-- Main Column -->
+        <div class="lg:col-span-8 space-y-16 lg:space-y-24">
+          <section id="about-section" class="scroll-mt-20">
+            <About client:load />
+          </section>
+          
+          <section id="projects-section" class="scroll-mt-20">
             <Projects client:load />
-          </div>
-          <div id="experience-section">
+          </section>
+          
+          <section id="experience-section" class="scroll-mt-20">
             <Experience client:load />
-          </div>
+          </section>
         </div>
-        <div id="right-column" class="space-y-8">
-          <div id="links-section">
-            <Links client:load />
-          </div>
-          <div id="skills-section">
-            <Skills client:load />
-          </div>
-        </div>
-      </div>
 
-      <div id="photography-section">
-        <Photography client:load />
+        <!-- Sidebar / Structural Support -->
+        <aside class="lg:col-span-4 space-y-16 lg:border-l lg:border-stone-200 dark:lg:border-stone-800 lg:pl-12">
+          <section id="skills-section">
+            <Skills client:load />
+          </section>
+          
+          <section id="links-section">
+            <Links client:load />
+          </section>
+          
+          <section id="photography-section">
+            <Photography client:load />
+          </section>
+        </aside>
       </div>
-    </div>
+    </main>
 
     <Footer client:load />
 
-    <script>
-      const themeToggleDarkIcon = document.getElementById(
-        "theme-toggle-dark-icon",
-      );
-      const themeToggleLightIcon = document.getElementById(
-        "theme-toggle-light-icon",
-      );
-      const themeToggleBtn = document.getElementById("theme-toggle");
-
-      // Sync icons with initial theme
-      function syncIcons() {
-        if (document.documentElement.classList.contains("dark")) {
-          themeToggleDarkIcon.classList.remove("hidden");
-          themeToggleLightIcon.classList.add("hidden");
-        } else {
-          themeToggleLightIcon.classList.remove("hidden");
-          themeToggleDarkIcon.classList.add("hidden");
-        }
-      }
-
-      // Initialize
-      syncIcons();
-
-      themeToggleBtn.addEventListener("click", function () {
-        const isCurrentlyDark =
-          document.documentElement.classList.contains("dark");
-
-        if (isCurrentlyDark) {
-          document.documentElement.classList.remove("dark");
-          localStorage.setItem("color-theme", "light");
-        } else {
-          document.documentElement.classList.add("dark");
-          localStorage.setItem("color-theme", "dark");
-        }
-
-        syncIcons();
-      });
-
-      // Auto check for theme shift (e.g. at sunrise/sunset) if no override
-      setInterval(() => {
-        if (!localStorage.getItem("color-theme")) {
-          const hour = new Date().getHours();
-          const shouldBeDark = hour >= 19 || hour < 7;
-          const isDark = document.documentElement.classList.contains("dark");
-
-          if (shouldBeDark !== isDark) {
-            if (shouldBeDark) document.documentElement.classList.add("dark");
-            else document.documentElement.classList.remove("dark");
-            syncIcons();
-          }
-        }
-      }, 60000);
-
-      // Randomize patina backgrounds for each instance
-      function randomizePatina() {
-        const targets = document.querySelectorAll(
-          ".section-heading, .btn-primary",
-        );
-        targets.forEach((el) => {
-          el.style.setProperty(
-            "--patina-angle-1",
-            Math.floor(Math.random() * 360) + "deg",
-          );
-          el.style.setProperty(
-            "--patina-angle-2",
-            Math.floor(Math.random() * 360) + "deg",
-          );
-          el.style.setProperty(
-            "--patina-angle-3",
-            Math.floor(Math.random() * 360) + "deg",
-          );
-        });
-      }
-
-      // Initialize randomization
-      randomizePatina();
-
-      // Also randomize on theme toggle to refresh the look
-      themeToggleBtn.addEventListener("click", () => {
-        setTimeout(randomizePatina, 10);
-      });
-    </script>
   </body>
 </html>

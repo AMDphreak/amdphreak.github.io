@@ -4,17 +4,21 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "BUILD_YEAR=$(date +%Y) astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/solid-js": "^5.1.1",
+    "@kobalte/core": "^0.13.11",
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.14.4",
-    "flowbite": "^2.3.0",
+    "clsx": "^2.1.1",
     "lottie-web": "^5.13.0",
+    "lucide-solid": "^1.8.0",
+    "solid-icons": "^1.2.0",
     "solid-js": "^1.9.9",
+    "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {

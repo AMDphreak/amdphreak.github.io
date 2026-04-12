@@ -1,347 +1,225 @@
-// Static project data
-const publicProjects = [
+import { For, Show } from "solid-js";
+
+// Inline SVGs for Projects
+interface ProjectProps {
+  name: string;
+  description: string;
+  url?: string;
+  repoUrl?: string;
+  platform?: "github" | "gitlab" | "linkedin" | "codepen";
+  docsUrl?: string;
+  technologies?: string[];
+  type?: "wip" | "private" | "public" | "hiatus";
+}
+
+interface IconProps {
+  size?: number;
+  class?: string;
+}
+
+const IconLock = (p: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 10} height={p.size || 10} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={p.class} aria-hidden="true">
+    <title>Private Project</title>
+    <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+  </svg>
+);
+
+const IconHammer = (p: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 10} height={p.size || 10} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={p.class} aria-hidden="true">
+    <title>Work in Progress</title>
+    <path d="m15 12-8.37 8.37a1 1 0 1 1-1.41-1.41L13.59 10.58" />
+    <path d="m9 18 6-6" />
+    <path d="M10 22 22 10" />
+    <path d="m15 12 5-5" />
+    <path d="M19 8c.31.17.61.37.89.6l1.51 1.2a2 2 0 0 1 .1 2.96l-1 1" />
+    <path d="m15 12 1 1a2 2 0 0 1 0 2.83l-1 1" />
+    <path d="m20 9 1 1" />
+    <path d="M17.17 11.17 19 13" />
+    <path d="m5 3 2 2" />
+    <path d="m19 21 2-2" />
+  </svg>
+);
+
+const IconPause = (p: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 10} height={p.size || 10} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={p.class} aria-hidden="true">
+    <title>On Hiatus</title>
+    <rect width="4" height="16" x="6" y="4" />
+    <rect width="4" height="16" x="14" y="4" />
+  </svg>
+);
+
+const IconGithub = (p: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 14} height={p.size || 14} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={p.class} aria-hidden="true">
+    <title>GitHub</title>
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const IconGitlab = (p: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 14} height={p.size || 14} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={p.class} aria-hidden="true">
+    <title>GitLab</title>
+    <path d="m22 13.29-3.33-10a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18l-2.26 6.67H8.32L6.06 3.27a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18l-3.33 10a.49.49 0 0 0 .01.33.48.48 0 0 0 .21.24l9.49 6.9a.38.38 0 0 0 .46 0l9.49-6.9a.48.48 0 0 0 .21-.24.49.49 0 0 0 .01-.33z" />
+  </svg>
+);
+
+const IconGlobe = (p: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 14} height={p.size || 14} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={p.class} aria-hidden="true">
+    <title>Website</title>
+    <circle cx="12" cy="12" r="10" />
+    <line x1="2" x2="22" y1="12" y2="12" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
+const IconBook = (p: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 14} height={p.size || 14} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={p.class} aria-hidden="true">
+    <title>Documentation</title>
+    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+  </svg>
+);
+
+const publicProjects: ProjectProps[] = [
   {
     name: "Transcoder Suite",
-    description:
-      "Modular, playbook-driven video transcoding system for PowerShell 7. Optimized for high-quality archival and batch processing.",
-    html_url: "https://github.com/AMDphreak/transcoder-suite",
+    description: "Modular, playbook-driven video transcoding system for PowerShell 7. Optimized for high-quality archival.",
+    url: "https://github.com/AMDphreak/transcoder-suite",
     platform: "github",
+    docsUrl: "https://amdphreak.github.io/transcoder-suite/",
   },
   {
     name: "antora-dark-theme",
-    description:
-      "Dark mode supplemental UI theme for Antora documentation sites",
-    html_url: "https://github.com/the-dev-center/antora-dark-theme",
+    description: "Dark mode supplemental UI theme for Antora documentation sites",
+    url: "https://antora-supplemental.github.io/antora-dark-theme/antora-dark-theme/0.1/index.html",
     platform: "github",
-  },
-  {
-    name: "antora-themes-site",
-    description: "Official site for Antora themes",
-    html_url: "https://github.com/the-dev-center/antora-themes-site",
-    platform: "github",
+    docsUrl: "https://antora-supplemental.github.io/antora-dark-theme/antora-dark-theme/0.1/guide/index.html",
   },
   {
     name: "Windows Theme Autochanger",
     description: "Automatic Windows theme switcher based on time of day",
-    html_url: "https://github.com/AMDphreak/Windows-Theme-Autochanger",
-    platform: "github",
-  },
-  {
-    name: "dsam-resources",
-    description: "DSAM's resources directory for families with special needs",
-    html_url: "https://github.com/AMDphreak/dsam-resources",
-    platform: "github",
-  },
-  {
-    name: "cyberpanel-uninstaller",
-    description: "Uninstaller script for CyberPanel",
-    html_url: "https://github.com/AMDphreak/cyberpanel-uninstaller",
-    platform: "github",
-  },
-  {
-    name: "BlackJackGame",
-    description: "A simple Blackjack game implementation",
-    html_url: "https://github.com/AMDphreak/BlackJackGame",
+    url: "https://github.com/AMDphreak/Windows-Theme-Autochanger",
     platform: "github",
   },
   {
     name: "packet-x-ing",
     description: "Network packet analysis tool",
-    html_url: "https://gitlab.com/AMDphreak/packet-x-ing",
+    url: "https://gitlab.com/AMDphreak/packet-x-ing",
     platform: "gitlab",
   },
 ];
 
-// Additional project data for projects that need extra links
-const projectExtraData = {
-  "https://github.com/AMDphreak/transcoder-suite": {
-    docsUrl: "https://amdphreak.github.io/transcoder-suite/",
-  },
-  "https://github.com/AMDphreak/BlackJackGame": {
-    demoUrl: "https://www.onlinegdb.com/edit/yV6LLFNPs",
-  },
-};
-
-// Private projects data (manually defined since they're not public)
-const privateProjects = [
+const privateProjects: ProjectProps[] = [
   {
-    name: "FTN App",
-    description: "Food Truck Nerdz Next.js Web App",
-    technologies: ["Next.js", "Vercel", "Convex DB"],
-    repoUrl: "https://github.com/FoodTruckNerds/ftn-site-vercel",
-    websiteUrl: "https://www.foodtrucknerdz.com",
+    name: "FoodTruckNerdz",
+    description: "Food Truck Nerdz Next.js Web App with Convex DB backend.",
+    technologies: ["Next.js", "Vercel", "Convex"],
+    url: "https://www.foodtrucknerdz.com",
+    repoUrl: "https://github.com/foodtrucknerdz",
+    docsUrl: "https://docs.foodtrucknerdz.com",
     type: "private",
   },
   {
-    name: "Food Truck API",
-    description: "Food Truck Zuplo API Gateway",
-    technologies: ["Zuplo", "API Gateway", "Node.js"],
-    repoUrl: "https://github.com/FoodTruckNerds/food-truck-api",
-    type: "private",
-  },
-  {
-    name: "FTN Onboarding",
-    description:
-      "Onboarding documentation and Setup GUI to bootstrap dev environment",
-    technologies: ["PowerShell", "Documentation"],
-    repoUrl: "https://github.com/FoodTruckNerds/onboarding",
-    type: "private",
-  },
-  {
-    name: "Dev Center App",
-    description:
-      "A developer center app for configuring dev machines and managing software projects",
+    name: "Dev-Centr",
+    description: "Desktop application for environment configuration and management.",
     technologies: ["React", "Tauri", "TypeScript"],
-    repoUrl: "https://github.com/the-dev-center/dev-center",
-    type: "private",
-  },
-  {
-    name: "Dev Center Templates",
-    description: "Template settings files for dev tools",
-    technologies: ["VS Code", "Settings", "Configuration"],
-    repoUrl: "https://github.com/the-dev-center/templates",
-    type: "private",
-  },
-  {
-    name: "DSAM Christmas 2025",
-    description: "DSAM 2025 Christmas party capture one preview",
-    technologies: ["GitLab", "Photography", "Preview"],
-    repoUrl: "https://gitlab.com/AMDphreak/dsam-christmas-2025-preview",
+    url: "https://devcentr.org",
+    repoUrl: "https://github.com/dev-centr/devcentr",
+    docsUrl: "https://docs.devcentr.org",
     type: "private",
   },
 ];
 
-// Work in progress projects
-const workInProgressProjects = [
+const workInProgress: ProjectProps[] = [
   {
     name: "Desktop Assistant AI",
-    description:
-      "AI-powered desktop assistant for productivity and automation.",
+    description: "AI-powered desktop assistant for productivity and automation.",
     technologies: ["AI", "Desktop Application"],
     repoUrl: "https://github.com/AMDphreak/Desktop-Assistant-AI",
-    type: "work-in-progress",
+    type: "hiatus",
   },
 ];
 
-// Function to get organization logo from Git URL
-const getOrgLogo = (repoUrl: string): string | null => {
-  if (!repoUrl) return null;
-
-  try {
-    const url = new URL(repoUrl);
-    const hostname = url.hostname;
-    const pathParts = url.pathname.split("/").filter((p) => p);
-
-    if (pathParts.length < 1) return null;
-    const org = pathParts[0];
-
-    // Use CORS-safe avatar URLs that don't require preflight requests
-    if (hostname.includes("github.com")) {
-      return `https://avatars.githubusercontent.com/${org}`;
-    } else if (hostname.includes("gitlab.com")) {
-      // Only return explicit avatar for AMDphreak; otherwise default to none
-      if (org.toLowerCase() === "amdphreak") {
-        return "https://gitlab.com/uploads/-/system/user/avatar/620900/avatar.png";
-      }
-      return null;
-    } else if (hostname.includes("bitbucket.org")) {
-      // Default to no avatar for Bitbucket unless explicitly mapped
-      return null;
-    }
-  } catch (e) {
-    console.warn("Failed to parse repo URL for logo:", repoUrl, e);
-  }
-
-  return null;
-};
-
-// Function to get appropriate icon for code repositories
-const getCodeIcon = (platform: string, url: string): string => {
-  if (platform === "gitlab") {
-    return "fab fa-gitlab";
-  } else if (platform === "github") {
-    return "fab fa-github";
-  } else if (url.includes("github.com")) {
-    return "fab fa-github";
-  } else if (url.includes("gitlab.com")) {
-    return "fab fa-gitlab";
-  } else if (url.includes("bitbucket.org")) {
-    return "fab fa-bitbucket";
-  } else if (url.includes(".git") || url.includes("git")) {
-    return "fab fa-git-alt";
-  } else {
-    return "fas fa-code";
-  }
-};
-
-// All projects combined
-const allProjects = [
-  ...privateProjects,
-  ...workInProgressProjects,
-  ...publicProjects,
-];
-
-const ProjectCard = (props: { repo: any }) => {
-  const orgLogo = getOrgLogo(props.repo.html_url);
-
-  const getTypeBadge = (type: string) => {
-    if (type === "private") {
-      return (
-        <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-stone-600 bg-stone-50 dark:text-stone-400 dark:bg-stone-800/30 rounded-full border border-stone-200 dark:border-stone-700">
-          <i class="fas fa-lock mr-1"></i>
-          Private
-        </span>
-      );
-    } else if (type === "work-in-progress") {
-      return (
-        <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-slate-600 bg-slate-50 dark:text-slate-400 dark:bg-slate-800/30 rounded-full border border-slate-200 dark:border-slate-700">
-          <i class="fas fa-hammer mr-1"></i>
-          Work in Progress
-        </span>
-      );
-    }
-    return null;
-  };
+const ProjectCard = (props: { project: ProjectProps }) => {
+  const isWip = props.project.type === "wip";
+  const isPrivate = props.project.type === "private";
 
   return (
-    <div class="card-sm">
-      <div class="flex items-start justify-between mb-4">
-        <div class="flex-1 mr-3">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="section-heading-sm">{props.repo.name}</h3>
-            {getTypeBadge(props.repo.type)}
+    <div class="group relative structural-border p-6 hover:bg-stone-50/50 dark:hover:bg-stone-900/50 transition-all h-full flex flex-col">
+      <div class="flex justify-between items-start mb-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2 flex-wrap">
+            <h3 class="text-xl font-heading font-medium tracking-tight text-foreground">
+              {props.project.name}
+            </h3>
+            <Show when={isWip}>
+              <span class="inline-flex items-center gap-1 px-1.5 py-0.5 border border-stone-200 dark:border-stone-800 text-[9px] font-mono uppercase tracking-widest text-stone-500">
+                <IconHammer /> WIP
+              </span>
+            </Show>
+            <Show when={isPrivate}>
+              <span class="inline-flex items-center gap-1 px-1.5 py-0.5 border border-stone-200 dark:border-stone-800 text-[9px] font-mono uppercase tracking-widest text-stone-500">
+                <IconLock /> Private
+              </span>
+            </Show>
+            <Show when={props.project.type === "hiatus"}>
+              <span class="inline-flex items-center gap-1 px-1.5 py-0.5 border border-stone-200 dark:border-stone-800 text-[9px] font-mono uppercase tracking-widest text-stone-500 italic">
+                <IconPause /> Hiatus
+              </span>
+            </Show>
           </div>
+          <Show when={props.project.technologies}>
+            <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400">
+              {props.project.technologies.join(" / ")}
+            </p>
+          </Show>
         </div>
-        {orgLogo && (
-          <img
-            src={orgLogo}
-            alt="Organization/User avatar"
-            class="w-8 h-8 rounded-full flex-shrink-0"
-          />
-        )}
       </div>
-      <p class="text-muted text-sm mb-4 line-clamp-2">
-        {props.repo.description}
-      </p>
-      <div class="flex gap-2">
-        <a
-          href={props.repo.html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-primary btn-sm"
-        >
-          <i
-            class={`${getCodeIcon(props.repo.platform, props.repo.html_url)} mr-2`}
-          ></i>
-          Code
-        </a>
-        {projectExtraData[props.repo.html_url]?.demoUrl && (
-          <a
-            href={projectExtraData[props.repo.html_url].demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-secondary btn-sm"
-          >
-            <i class="fas fa-external-link-alt mr-2"></i>
-            Demo
-          </a>
-        )}
-        {projectExtraData[props.repo.html_url]?.docsUrl && (
-          <a
-            href={projectExtraData[props.repo.html_url].docsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-secondary btn-sm"
-          >
-            <i class="fas fa-book mr-2"></i>
-            Docs
-          </a>
-        )}
-      </div>
-    </div>
-  );
-};
 
-const PrivateProjectCard = (props: { project: any }) => {
-  const orgLogo = props.project.repoUrl
-    ? getOrgLogo(props.project.repoUrl)
-    : null;
-
-  const getTypeBadge = (type: string) => {
-    if (type === "private") {
-      return (
-        <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-stone-600 bg-stone-50 dark:text-stone-400 dark:bg-stone-800/30 rounded-full border border-stone-200 dark:border-stone-700">
-          <i class="fas fa-lock mr-1"></i>
-          Private
-        </span>
-      );
-    } else if (type === "work-in-progress") {
-      return (
-        <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-slate-600 bg-slate-50 dark:text-slate-400 dark:bg-slate-800/30 rounded-full border border-slate-200 dark:border-slate-700">
-          <i class="fas fa-hammer mr-1"></i>
-          Work in Progress
-        </span>
-      );
-    }
-    return null;
-  };
-
-  return (
-    <div class="card-sm">
-      <div class="flex items-start justify-between mb-4">
-        <div class="flex-1 mr-3">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="section-heading-sm">{props.project.name}</h3>
-            {getTypeBadge(props.project.type)}
-          </div>
-        </div>
-        {orgLogo && (
-          <img
-            src={orgLogo}
-            alt="Organization logo"
-            class="w-8 h-8 rounded-full flex-shrink-0"
-          />
-        )}
-      </div>
-      <p class="text-muted text-sm mb-2 line-clamp-2">
+      <p class="text-sm text-stone-600 dark:text-stone-400 mb-8 leading-relaxed max-w-[90%]">
         {props.project.description}
       </p>
-      {props.project.technologies && (
-        <div class="mb-3">
-          <div class="text-subtle text-xs">
-            {props.project.technologies.join(" • ")}
-          </div>
-        </div>
-      )}
-      <div class="flex gap-2">
-        {props.project.repoUrl && (
+
+      <div class="flex flex-wrap gap-4 mt-auto">
+        <Show when={props.project.url || props.project.repoUrl}>
           <a
-            href={props.project.repoUrl}
+            href={props.project.url || props.project.repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-primary btn-sm"
+            class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
-            <i class={`${getCodeIcon("", props.project.repoUrl)} mr-2`}></i>
-            Code
+            <Show when={props.project.platform === 'gitlab'} fallback={<IconGithub />}>
+               <IconGitlab />
+            </Show>
+            Source
           </a>
-        )}
-        {props.project.websiteUrl && (
+        </Show>
+        <Show when={props.project.docsUrl}>
           <a
-            href={props.project.websiteUrl}
+            href={props.project.docsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-secondary btn-sm"
+            class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
-            <i class="fas fa-external-link-alt mr-2"></i>
-            Website
+            <IconBook /> Docs
           </a>
-        )}
-        {!props.project.repoUrl && !props.project.websiteUrl && (
-          <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-subtle">
-            <i class="fas fa-lock mr-2"></i>
-            Private Project
-          </div>
-        )}
+        </Show>
+        <Show when={props.project.url && !props.project.url.includes('github') && !props.project.url.includes('gitlab')}>
+          <a
+            href={props.project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
+          >
+            <IconGlobe /> Visit
+          </a>
+        </Show>
+      </div>
+      
+      {/* Decorative Index */}
+      <div class="absolute top-2 right-2 opacity-10 font-mono text-[10px] group-hover:opacity-30 transition-opacity select-none hidden md:block">
+        STR-{Math.random().toString(36).substring(7).toUpperCase()}
       </div>
     </div>
   );
@@ -349,19 +227,37 @@ const PrivateProjectCard = (props: { project: any }) => {
 
 export const Projects = () => {
   return (
-    <div class="card">
-      <h2 class="section-heading">Projects</h2>
-
-      <div class="grid-projects">
-        {allProjects.map((project) => {
-          // Use PrivateProjectCard for projects with type attribute, ProjectCard for others
-          if ("type" in project) {
-            return <PrivateProjectCard project={project} />;
-          } else {
-            return <ProjectCard repo={project} />;
-          }
-        })}
+    <section class="space-y-8">
+      <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
+        <h2 class="text-3xl font-heading tracking-tighter">Projects</h2>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+          Structural Portfolio / v04
+        </span>
       </div>
-    </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 dark:bg-stone-800 border border-stone-200 dark:border-stone-800 overflow-hidden">
+        <For each={privateProjects}>
+          {(p) => (
+            <div class="bg-background">
+              <ProjectCard project={p} />
+            </div>
+          )}
+        </For>
+        <For each={publicProjects}>
+          {(p) => (
+            <div class="bg-background">
+              <ProjectCard project={p} />
+            </div>
+          )}
+        </For>
+        <For each={workInProgress}>
+          {(p) => (
+            <div class="bg-background">
+              <ProjectCard project={p} />
+            </div>
+          )}
+        </For>
+      </div>
+    </section>
   );
 };

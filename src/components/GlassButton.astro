@@ -2,9 +2,9 @@
 export interface Props {
   href?: string;
   text: string;
-  variant?: "default" | "primary" | "secondary" | "pulse";
+  variant?: "default" | "primary" | "secondary";
   size?: "sm" | "md" | "lg";
-  onClick?: string;
+  onclick?: string;
 }
 
 const {
@@ -12,74 +12,38 @@ const {
   text,
   variant = "default",
   size = "md",
-  onClick,
+  onclick,
 } = Astro.props as Props;
 
 // Size classes
 const sizeClasses = {
-  sm: "px-3 py-2 text-sm",
-  md: "px-4 py-3 text-base",
-  lg: "px-6 py-4 text-lg",
+  sm: "px-2 py-1 text-[10px]",
+  md: "px-4 py-2 text-xs",
+  lg: "px-6 py-3 text-sm",
 };
 
 // Variant classes
 const variantClasses = {
-  default: "",
-  primary: "glass-button-primary",
-  secondary: "glass-button-secondary",
-  pulse: "animate-pulse",
+  default: "border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900",
+  primary: "border-stone-900 dark:border-stone-100 text-stone-900 dark:text-stone-100 font-bold hover:bg-stone-100 dark:hover:bg-stone-800",
+  secondary: "border-dashed border-stone-300 dark:border-stone-700 text-stone-500 hover:border-stone-500 transition-colors",
 };
 ---
-
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-  @import "../assets/styles/glass-button.css";
-
-  /* Additional variant styles */
-  .glass-button-primary {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: rgba(59, 130, 246, 0.3);
-  }
-
-  .glass-button-primary:hover {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: rgba(59, 130, 246, 0.4);
-    box-shadow:
-      0 8px 25px rgba(59, 130, 246, 0.2),
-      0 4px 10px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  }
-
-  .glass-button-secondary {
-    background: rgba(16, 185, 129, 0.1);
-    border-color: rgba(16, 185, 129, 0.3);
-  }
-
-  .glass-button-secondary:hover {
-    background: rgba(16, 185, 129, 0.2);
-    border-color: rgba(16, 185, 129, 0.4);
-    box-shadow:
-      0 8px 25px rgba(16, 185, 129, 0.2),
-      0 4px 10px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  }
-</style>
 
 {
   href ? (
     <a
       href={href}
-      class={`glass-button ${sizeClasses[size]} ${variantClasses[variant]}`}
-      onclick={onClick}
+      class={`inline-flex items-center justify-center border font-mono uppercase tracking-[0.2em] transition-all duration-200 ${sizeClasses[size]} ${variantClasses[variant]}`}
     >
       {text}
     </a>
   ) : (
     <button
-      class={`glass-button ${sizeClasses[size]} ${variantClasses[variant]}`}
-      onclick={onClick}
+      class={`inline-flex items-center justify-center border font-mono uppercase tracking-[0.2em] transition-all duration-200 ${sizeClasses[size]} ${variantClasses[variant]}`}
+      onclick={onclick}
     >
       {text}
-    </button>
+    </a>
   )
 }
