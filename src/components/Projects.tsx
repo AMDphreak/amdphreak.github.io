@@ -83,6 +83,13 @@ const IconBook = (p: IconProps) => (
 
 const publicProjects: ProjectProps[] = [
   {
+    name: "multimux",
+    description: "Lightweight, elegant, and cross-platform desktop audio mixdown suite. Allows screen-recorders and video-editors to visually mix down multiple discrete audio tracks into a single master track with instant, lossless container-level video passthrough.",
+    repoUrl: "https://github.com/AMDphreak/multimux",
+    platform: "github",
+    technologies: ["SolidJS", "Electron", "TypeScript"],
+  },
+  {
     name: "Equivalence Engine",
     description: "High-performance D-based transformation engine for modular codebase adaptation and version evolution. Standardizes cross-repository dependency management.",
     repoUrl: "https://github.com/AMDphreak/equivalence-engine",
