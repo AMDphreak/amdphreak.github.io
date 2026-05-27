@@ -6,7 +6,7 @@ The portfolio homepage has been updated to feature **multimux**, a lightweight a
 
 ## Key Changes
 
-- **Projects Component Showcase**: Integrated a dedicated project card for `multimux` under the public projects section, outlining its capability to visually mix down multiple discrete audio tracks while preserving video streams bit-for-bit.
+- **Projects Component Showcase**: Integrated a dedicated project card for `multimux` under the public projects section, outlining its capability to visually mix down multiple discrete audio tracks while preserving video streams bit-for-bit, including direct links to its repository and documentation (`https://ryanjohnson.dev/multimux/`).
 - **Changelog Integration**: Updated the repository's Keep a Changelog history and created this dedicated architectural context record.
 
 ## Verification

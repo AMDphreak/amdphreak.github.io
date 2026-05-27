@@ -87,6 +87,7 @@ const publicProjects: ProjectProps[] = [
     description: "Lightweight, elegant, and cross-platform desktop audio mixdown suite. Allows screen-recorders and video-editors to visually mix down multiple discrete audio tracks into a single master track with instant, lossless container-level video passthrough.",
     repoUrl: "https://github.com/AMDphreak/multimux",
     platform: "github",
+    docsUrl: "https://ryanjohnson.dev/multimux/",
     technologies: ["SolidJS", "Electron", "TypeScript"],
   },
   {
