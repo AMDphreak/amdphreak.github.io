@@ -7,10 +7,11 @@ import { Skills } from "../components/Skills";
 import { Links } from "../components/Links";
 import { Photography } from "../components/Photography";
 import { Footer } from "../components/Footer";
+import NoiseOverlay from "../components/NoiseOverlay.astro";
 import "../styles/tailwind.css";
 ---
 
-<html lang="en" class="noise-bg">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -115,13 +116,15 @@ import "../styles/tailwind.css";
     </script>
   </head>
   <body class="bg-background text-foreground min-h-screen font-sans antialiased selection:bg-stone-200 dark:selection:bg-stone-800">
+    <NoiseOverlay />
     <div class="fixed inset-0 pointer-events-none border-[12px] border-stone-100/50 dark:border-stone-900/50 z-[100]"></div>
     
     <main class="relative z-10 container mx-auto px-6 py-12 max-w-7xl space-y-16 lg:space-y-24">
       <!-- Structural Top Header -->
       <header class="flex justify-between items-start border-b border-stone-200 dark:border-stone-800 pb-8">
-        <div>
+        <div class="space-y-2">
           <h1 class="text-xs font-mono uppercase tracking-[0.2em] text-stone-500">Technical Overview / 2026</h1>
+          <a href="/gui-demos" class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors">UI/UX Demos →</a>
         </div>
         <div class="flex items-center gap-4">
           <div id="theme-toggle" class="cursor-pointer hover:opacity-70 transition-opacity flex items-center justify-center w-8 h-8 structural-border">

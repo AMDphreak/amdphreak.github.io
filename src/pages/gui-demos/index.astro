@@ -1,0 +1,133 @@
+---
+import { Footer } from "../../components/Footer";
+import NoiseOverlay from "../../components/NoiseOverlay.astro";
+import { guiDemos } from "../../lib/gui-demos";
+import "../../styles/tailwind.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Astro" />
+    <title>UI/UX Demos - Ryan Johnson</title>
+    <script is:inline>
+      (function () {
+        const applyTheme = (theme) => {
+          if (theme === "dark") document.documentElement.classList.add("dark");
+          else document.documentElement.classList.remove("dark");
+          document.documentElement.style.colorScheme = theme;
+        };
+        const saved =
+          typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null;
+        const theme =
+          saved ??
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        applyTheme(theme);
+      })();
+    </script>
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <NoiseOverlay />
+    <main
+      class="container mx-auto px-6 py-12 max-w-4xl flex-1 structural-border mt-8 border-t-0 p-8 md:p-12 mb-12"
+    >
+      <nav
+        class="mb-12 flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+      >
+        <a
+          href="/"
+          class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+          >/ Home</a
+        >
+        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+          >UI / UX</span
+        >
+      </nav>
+
+      <div class="space-y-12">
+        <div class="space-y-4">
+          <h1 class="text-5xl font-heading tracking-tighter">UI/UX Demos</h1>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+            Ref. INTERFACE_EXPLORATIONS
+          </p>
+          <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans max-w-2xl">
+            Interactive UI/UX demos for interface ideas that do not belong on the homepage yet —
+            small experiments in explanation, notation, and developer experience.
+          </p>
+        </div>
+
+        <div class="h-px w-24 bg-stone-300 dark:bg-stone-700"></div>
+
+        <ul class="space-y-4">
+          {
+            guiDemos.map((demo) => (
+              <li>
+                <div class="group block p-6 structural-border hover:bg-stone-50 dark:hover:bg-stone-900/50 transition-colors">
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-3">
+                        <a
+                          href={demo.href}
+                          class="text-xl font-heading font-medium tracking-tight group-hover:underline decoration-stone-300 underline-offset-4 text-stone-900 dark:text-stone-100"
+                        >
+                          {demo.title}
+                        </a>
+                        <span class="font-mono text-[9px] uppercase tracking-widest text-stone-400 border border-stone-200 dark:border-stone-700 px-1.5 py-0.5">
+                          {demo.status}
+                        </span>
+                      </div>
+                      <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                        {demo.tagline}
+                      </p>
+                      <p class="flex flex-wrap gap-3 pt-1 font-mono text-[9px] uppercase tracking-widest">
+                        <a
+                          href={demo.href}
+                          class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100"
+                        >
+                          Overview →
+                        </a>
+                        {demo.externalDemo && (
+                          <a
+                            href={demo.externalDemo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100"
+                          >
+                            Live demo ↗
+                          </a>
+                        )}
+                        {demo.repo && (
+                          <a
+                            href={demo.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100"
+                          >
+                            Repository ↗
+                          </a>
+                        )}
+                      </p>
+                    </div>
+                    <a
+                      href={demo.href}
+                      class="font-mono text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors shrink-0"
+                      aria-hidden="true"
+                    >
+                      →
+                    </a>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

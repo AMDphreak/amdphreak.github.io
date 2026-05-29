@@ -1,0 +1,114 @@
+---
+import { Footer } from "../../components/Footer";
+import NoiseOverlay from "../../components/NoiseOverlay.astro";
+import "../../styles/tailwind.css";
+
+const REPO = "https://github.com/AMDphreak/code-lens";
+const DEMO = "https://ryanjohnson.dev/code-lens/";
+const SPEC = `${REPO}/blob/main/docs/specification.md`;
+const AI_SPEC = `${REPO}/blob/main/docs/ai-reproduction-spec.md`;
+const REGISTRY = `${REPO}/blob/main/implementations/REGISTRY.md`;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>code-lens - UI/UX Demos</title>
+    <script is:inline>
+      (function () {
+        const applyTheme = (theme) => {
+          if (theme === "dark") document.documentElement.classList.add("dark");
+          else document.documentElement.classList.remove("dark");
+          document.documentElement.style.colorScheme = theme;
+        };
+        const saved =
+          typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null;
+        const theme =
+          saved ??
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        applyTheme(theme);
+      })();
+    </script>
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <NoiseOverlay />
+    <main
+      class="container mx-auto px-6 py-12 max-w-4xl flex-1 structural-border mt-8 border-t-0 p-8 md:p-12 mb-12"
+    >
+      <nav
+        class="mb-12 flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+      >
+        <a
+          href="/gui-demos"
+          class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+          >/ Demos</a
+        >
+        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+          >External project</span
+        >
+      </nav>
+
+      <article class="space-y-12">
+        <header class="space-y-4">
+          <h1 class="text-5xl font-heading tracking-tighter">code-lens</h1>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+            The real lens for code examples
+          </p>
+          <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans max-w-2xl">
+            A portable UI component and specification for showing the same code example through
+            multiple pedagogical naming conventions — not a VS Code metaphor, an actual optical lens
+            over your diff tokens.
+          </p>
+        </header>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <a
+            href={DEMO}
+            class="group block p-6 structural-border hover:bg-stone-50 dark:hover:bg-stone-900/50 transition-colors"
+          >
+            <h2 class="text-lg font-heading group-hover:underline decoration-stone-300 underline-offset-4">
+              Live demo →
+            </h2>
+            <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">
+              Glass lens sweeps diff tokens line-by-line; hover tabs; swipe on touch; six color schemes.
+            </p>
+          </a>
+          <a
+            href={REPO}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block p-6 structural-border hover:bg-stone-50 dark:hover:bg-stone-900/50 transition-colors"
+          >
+            <h2 class="text-lg font-heading group-hover:underline decoration-stone-300 underline-offset-4">
+              Repository →
+            </h2>
+            <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">
+              Spec, packages, and implementation registry. Publish as <code class="font-mono text-xs">@code-lens/*</code>.
+            </p>
+          </a>
+        </div>
+
+        <section class="space-y-4">
+          <h2 class="text-xl font-heading tracking-tight">Documentation</h2>
+          <ul class="space-y-2 text-sm font-mono">
+            <li>
+              <a href={SPEC} class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 underline decoration-stone-300 underline-offset-4">Specification</a>
+            </li>
+            <li>
+              <a href={AI_SPEC} class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 underline decoration-stone-300 underline-offset-4">AI reproduction spec</a>
+            </li>
+            <li>
+              <a href={REGISTRY} class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 underline decoration-stone-300 underline-offset-4">Implementation registry</a>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

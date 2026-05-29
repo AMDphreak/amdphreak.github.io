@@ -1,4 +1,6 @@
 import { For } from "solid-js";
+import { Button } from "~/components/ui/button";
+import { Card } from "~/components/ui/card";
 
 // Inline SVGs for Links
 const IconFile = (p: any) => (
@@ -35,8 +37,25 @@ const IconArrowRight = (p: any) => (
   </svg>
 );
 
+const IconFlask = (p: any) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 24} height={p.size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
+    <path d="M10 2v7.31" />
+    <path d="M14 2v7.31" />
+    <path d="M8.5 2h7" />
+    <path d="M14 9.3a6.5 6.5 0 1 1-4 0" />
+    <path d="M5.52 16h12.96" />
+  </svg>
+);
+
 export const Links = () => {
   const links = [
+    {
+      name: "UI/UX Demos",
+      url: "/gui-demos",
+      icon: <IconFlask />,
+      id: "LAB-01",
+      internal: true,
+    },
     {
       name: "Engineering Blog",
       url: "https://www.ryanjohnson.website/posts",
@@ -75,32 +94,34 @@ export const Links = () => {
       <div class="space-y-4">
         <For each={links}>{(link) => {
           return (
-            <a
+            <Button
+              as="a"
               href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex items-center justify-between p-4 structural-border hover:bg-stone-50 dark:hover:bg-stone-900 transition-all text-stone-900 dark:text-stone-100"
+              target={"internal" in link && link.internal ? undefined : "_blank"}
+              rel={"internal" in link && link.internal ? undefined : "noopener noreferrer"}
+              variant="outline"
+              class="group flex h-auto w-full items-center justify-between rounded-none structural-border p-4 hover:bg-stone-50 dark:hover:bg-stone-900 text-stone-900 dark:text-stone-100"
             >
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 flex items-center justify-center bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-500 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">
                   {link.icon}
                 </div>
-                <div>
+                <div class="text-left">
                   <h3 class="text-sm font-heading font-medium">{link.name}</h3>
                   <p class="font-mono text-[9px] uppercase tracking-widest text-stone-400">{link.id}</p>
                 </div>
               </div>
               <IconArrowRight class="text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-all group-hover:translate-x-1" />
-            </a>
+            </Button>
           );
         }}</For>
       </div>
       
-      <div class="p-4 bg-stone-50 dark:bg-stone-900/50 border border-dashed border-stone-200 dark:border-stone-800">
+      <Card class="rounded-none border-dashed border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/50 p-4 shadow-none">
         <p class="text-[10px] font-mono text-stone-500 uppercase tracking-widest leading-relaxed">
           [NOTE]: Most of my projects have been transferred to organizations I own on GitHub, such as Dev-Centr, FoodTruckNerdz, Dlang-supplemental, and Antora-supplemental
         </p>
-      </div>
+      </Card>
     </section>
   );
 };

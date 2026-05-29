@@ -1,4 +1,7 @@
 import { For, Show } from "solid-js";
+import { Badge } from "~/components/ui/badge";
+import { Button } from "~/components/ui/button";
+import { Card } from "~/components/ui/card";
 
 // Inline SVGs for Projects
 interface ProjectProps {
@@ -161,7 +164,7 @@ const ProjectCard = (props: { project: ProjectProps }) => {
   const isPrivate = props.project.type === "private";
 
   return (
-    <div class="group relative structural-border p-6 hover:bg-stone-50/50 dark:hover:bg-stone-900/50 transition-all h-full flex flex-col">
+    <Card class="group relative structural-border rounded-none border-stone-200 dark:border-stone-800 bg-transparent shadow-none p-6 hover:bg-stone-50/50 dark:hover:bg-stone-900/50 transition-all h-full flex flex-col">
       <div class="flex justify-between items-start mb-4">
         <div class="space-y-1">
           <div class="flex items-center gap-2 flex-wrap">
@@ -169,19 +172,28 @@ const ProjectCard = (props: { project: ProjectProps }) => {
               {props.project.name}
             </h3>
             <Show when={isWip}>
-              <span class="inline-flex items-center gap-1 px-1.5 py-0.5 border border-stone-200 dark:border-stone-800 text-[9px] font-mono uppercase tracking-widest text-stone-500">
+              <Badge
+                variant="outline"
+                class="inline-flex items-center gap-1 rounded-none border-stone-200 dark:border-stone-800 px-1.5 py-0.5 text-[9px] font-mono font-normal uppercase tracking-widest text-stone-500"
+              >
                 <IconHammer /> WIP
-              </span>
+              </Badge>
             </Show>
             <Show when={isPrivate}>
-              <span class="inline-flex items-center gap-1 px-1.5 py-0.5 border border-stone-200 dark:border-stone-800 text-[9px] font-mono uppercase tracking-widest text-stone-500">
+              <Badge
+                variant="outline"
+                class="inline-flex items-center gap-1 rounded-none border-stone-200 dark:border-stone-800 px-1.5 py-0.5 text-[9px] font-mono font-normal uppercase tracking-widest text-stone-500"
+              >
                 <IconLock /> Private
-              </span>
+              </Badge>
             </Show>
             <Show when={props.project.type === "hiatus"}>
-              <span class="inline-flex items-center gap-1 px-1.5 py-0.5 border border-stone-200 dark:border-stone-800 text-[9px] font-mono uppercase tracking-widest text-stone-500 italic">
+              <Badge
+                variant="outline"
+                class="inline-flex items-center gap-1 rounded-none border-stone-200 dark:border-stone-800 px-1.5 py-0.5 text-[9px] font-mono font-normal uppercase tracking-widest text-stone-500 italic"
+              >
                 <IconPause /> Hiatus
-              </span>
+              </Badge>
             </Show>
           </div>
           <Show when={props.project.technologies}>
@@ -198,37 +210,43 @@ const ProjectCard = (props: { project: ProjectProps }) => {
 
       <div class="flex flex-wrap gap-4 mt-auto">
         <Show when={props.project.url && !props.project.url.includes('github') && !props.project.url.includes('gitlab')}>
-          <a
+          <Button
+            as="a"
             href={props.project.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
+            variant="link"
+            class="h-auto p-0 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
             <IconGlobe /> Visit
-          </a>
+          </Button>
         </Show>
         <Show when={props.project.docsUrl}>
-          <a
+          <Button
+            as="a"
             href={props.project.docsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
+            variant="link"
+            class="h-auto p-0 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
             <IconBook /> Docs
-          </a>
+          </Button>
         </Show>
         <Show when={props.project.repoUrl || (props.project.url && (props.project.url.includes('github') || props.project.url.includes('gitlab')))}>
-          <a
+          <Button
+            as="a"
             href={props.project.repoUrl || props.project.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
+            variant="link"
+            class="h-auto p-0 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
             <Show when={props.project.platform === 'gitlab' || (props.project.url && props.project.url.includes('gitlab'))} fallback={<IconGithub />}>
                <IconGitlab />
             </Show>
             Source
-          </a>
+          </Button>
         </Show>
       </div>
       
@@ -236,7 +254,7 @@ const ProjectCard = (props: { project: ProjectProps }) => {
       <div class="absolute top-2 right-2 opacity-10 font-mono text-[10px] group-hover:opacity-30 transition-opacity select-none hidden md:block">
         STR-{Math.random().toString(36).substring(7).toUpperCase()}
       </div>
-    </div>
+    </Card>
   );
 };
 

@@ -1,4 +1,6 @@
 import { For, Show } from "solid-js";
+import { Badge } from "~/components/ui/badge";
+import { Button } from "~/components/ui/button";
 
 // Inline Bespoke SVGs (Stroke-based, structural)
 const IconGithub = (p: any) => (
@@ -124,15 +126,18 @@ export const Profile = () => {
 };
 
 const SocialLink = (props: { href: string; icon: any; label: string }) => (
-  <a
+  <Button
+    as="a"
     href={props.href}
     target="_blank"
     rel="noopener noreferrer"
-    class="flex items-center justify-center w-10 h-10 structural-border rounded-none hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors text-stone-600 dark:text-stone-400"
+    variant="outline"
+    size="icon"
+    class="rounded-none structural-border w-10 h-10 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800"
     title={props.label}
   >
     {props.icon}
-  </a>
+  </Button>
 );
 
 const ProfileDetail = (props: { icon: any; title: string; value: string }) => (
@@ -146,8 +151,11 @@ const ProfileDetail = (props: { icon: any; title: string; value: string }) => (
 );
 
 const StatusBadge = (props: { icon: any; label: string }) => (
-  <span class="inline-flex items-center gap-1.5 px-2 py-0.5 structural-border text-[10px] font-mono uppercase tracking-wider text-stone-600 dark:text-stone-400">
+  <Badge
+    variant="outline"
+    class="inline-flex items-center gap-1.5 rounded-none px-2 py-0.5 structural-border text-[10px] font-mono font-normal uppercase tracking-wider text-stone-600 dark:text-stone-400"
+  >
     {props.icon}
     {props.label}
-  </span>
+  </Badge>
 );

@@ -9,7 +9,7 @@ export function Footer() {
             <h3 class="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-500">Software stack</h3>
             <p class="text-xs text-stone-400 leading-relaxed font-mono">
               [FRAMEWORK]: ASTRO 5.x<br/>
-              [UI LIBRARY]: SOLIDJS + KOBALTE<br/>
+              [UI LIBRARY]: SOLIDJS + SOLID-UI<br/>
               [DESIGN]: TAILWIND CSS V4<br/>
               [VERSION]: 2026.04.11<br/>
               [LICENSE]: © {buildYear} RY-JH
