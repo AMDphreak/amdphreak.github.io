@@ -1,0 +1,83 @@
+---
+import { Footer } from "../../components/Footer";
+import NoiseOverlay from "../../components/NoiseOverlay.astro";
+import { aboutWordPressArchive } from "../../lib/about-wordpress-archive";
+import "../../styles/tailwind.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About (WordPress archive) - Ryan Johnson</title>
+    <script is:inline>
+      (function () {
+        const applyTheme = (theme) => {
+          if (theme === "dark") document.documentElement.classList.add("dark");
+          else document.documentElement.classList.remove("dark");
+          document.documentElement.style.colorScheme = theme;
+        };
+        const saved =
+          typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null;
+        const theme =
+          saved ??
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        applyTheme(theme);
+      })();
+    </script>
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <NoiseOverlay />
+    <main class="container mx-auto px-6 py-12 max-w-4xl flex-1 structural-border mt-8 border-t-0 p-8 md:p-12 mb-12">
+      <nav
+        class="mb-12 flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+      >
+        <a
+          href="/"
+          class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+          >/ Home</a
+        >
+        <span
+          class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+          >Archive</span
+        >
+      </nav>
+
+      <article class="space-y-8">
+        <header class="space-y-4">
+          <h1 class="text-5xl font-heading tracking-tighter">{aboutWordPressArchive.title}</h1>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+            Verbatim archive · captured {aboutWordPressArchive.capturedAt}
+          </p>
+          <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+            Self-written text preserved from{" "}
+            <a
+              href={aboutWordPressArchive.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline decoration-stone-300 underline-offset-4"
+              >{aboutWordPressArchive.sourceUrl}</a
+            > before the WordPress site is retired.
+          </p>
+        </header>
+
+        <div class="h-px w-24 bg-stone-300 dark:bg-stone-700"></div>
+
+        <div class="space-y-6">
+          {
+            aboutWordPressArchive.paragraphs.map((paragraph) => (
+              <p class="text-stone-700 dark:text-stone-300 leading-relaxed font-sans text-base md:text-lg">
+                {paragraph}
+              </p>
+            ))
+          }
+        </div>
+      </article>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

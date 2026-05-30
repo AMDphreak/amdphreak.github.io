@@ -1,0 +1,111 @@
+---
+import { Footer } from "../../../components/Footer";
+import NoiseOverlay from "../../../components/NoiseOverlay.astro";
+import { philosophyArticles } from "../../../lib/gui-philosophy";
+import "../../../styles/tailwind.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Astro" />
+    <title>UI/UX Philosophy - Ryan Johnson</title>
+    <script is:inline>
+      (function () {
+        const applyTheme = (theme) => {
+          if (theme === "dark") document.documentElement.classList.add("dark");
+          else document.documentElement.classList.remove("dark");
+          document.documentElement.style.colorScheme = theme;
+        };
+        const saved =
+          typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null;
+        const theme =
+          saved ??
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        applyTheme(theme);
+      })();
+    </script>
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <NoiseOverlay />
+    <main
+      class="container mx-auto px-6 py-12 max-w-4xl flex-1 structural-border mt-8 border-t-0 p-8 md:p-12 mb-12"
+    >
+      <nav
+        class="mb-12 flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+      >
+        <a
+          href="/gui-demos"
+          class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+          >/ UI/UX</a
+        >
+        <span
+          class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+          >Philosophy</span
+        >
+      </nav>
+
+      <div class="space-y-8">
+        <header class="space-y-4">
+          <h1 class="text-4xl font-heading tracking-tighter">Philosophy articles</h1>
+          <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans max-w-2xl">
+            Longer essays on UX-first design, data modeling, industrial minimalism, specification
+            discipline, and functional organization — expanding the overview on the
+            <a
+              href="/gui-demos"
+              class="text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100"
+              >UI/UX hub</a
+            >.
+          </p>
+        </header>
+
+        {
+          philosophyArticles.length === 0 ? (
+            <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 border border-dashed border-stone-200 dark:border-stone-800 p-6">
+              Articles are in preparation. Check back soon.
+            </p>
+          ) : (
+            <ul class="space-y-4">
+              {philosophyArticles.map((article) => (
+                <li>
+                  <a
+                    href={article.href}
+                    class="group block p-6 structural-border hover:bg-stone-50 dark:hover:bg-stone-900/50 transition-colors no-underline"
+                  >
+                    <div class="flex items-start justify-between gap-4">
+                      <div class="space-y-2">
+                        <div class="flex items-center gap-3">
+                          <span class="text-xl font-heading font-medium tracking-tight group-hover:underline decoration-stone-300 underline-offset-4 text-stone-900 dark:text-stone-100">
+                            {article.title}
+                          </span>
+                          <span class="font-mono text-[9px] uppercase tracking-widest text-stone-400 border border-stone-200 dark:border-stone-700 px-1.5 py-0.5">
+                            {article.status}
+                          </span>
+                        </div>
+                        <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                          {article.tagline}
+                        </p>
+                      </div>
+                      <span
+                        class="font-mono text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors shrink-0"
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

@@ -38,6 +38,24 @@ const IconCode = (p: any) => (
   </svg>
 );
 
+const IconChess = (p: any) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 20} height={p.size || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class} aria-hidden="true">
+    <title>Chess.com</title>
+    <path d="M12 3v3" />
+    <path d="M8 6h8" />
+    <path d="M9 6v2a3 3 0 0 0 6 0V6" />
+    <path d="M7 21h10" />
+    <path d="M8 21v-4a4 4 0 0 1 8 0v4" />
+  </svg>
+);
+
+const IconCodeberg = (p: any) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 20} height={p.size || 20} viewBox="0 0 24 24" fill="currentColor" class={p.class} aria-hidden="true">
+    <title>Codeberg</title>
+    <path d="M11.999 0C7.24 0 3.804 2.841 2.667 6.67L10.12 22.328a1.043 1.043 0 0 0 1.758 0l7.454-15.658C18.195 2.841 14.759 0 11.999 0zm0 3.66c1.136 0 2.057.92 2.057 2.056 0 1.137-.92 2.057-2.057 2.057-1.136 0-2.056-.92-2.056-2.057 0-1.136.92-2.056 2.056-2.056z" />
+  </svg>
+);
+
 const IconMapPin = (p: any) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 18} height={p.size || 18} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -90,12 +108,20 @@ export const Profile = () => {
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-4">
-          <SocialLink href="https://github.com/AMDphreak" icon={<IconGithub />} label="GitHub" />
-          <SocialLink href="https://linkedin.com/in/AMDphreak" icon={<IconLinkedin />} label="LinkedIn" />
-          <SocialLink href="https://gitlab.com/AMDphreak" icon={<IconGitlab />} label="GitLab" />
-          <SocialLink href="https://x.com/amdphreak" icon={<IconTwitter />} label="X" />
-          <SocialLink href="https://profile.codersrank.io/user/amdphreak" icon={<IconCode />} label="CodersRank" />
+        <div class="flex flex-col items-start md:items-end gap-3">
+          <div class="flex flex-wrap gap-4">
+            <SocialLink href="https://github.com/AMDphreak" icon={<IconGithub />} label="GitHub" />
+            <SocialLink href="https://codeberg.org/AMDphreak" icon={<IconCodeberg />} label="Codeberg" />
+            <SocialLink href="https://gitlab.com/AMDphreak" icon={<IconGitlab />} label="GitLab" />
+            <SocialLink href="https://linkedin.com/in/AMDphreak" icon={<IconLinkedin />} label="LinkedIn" />
+            <SocialLink href="https://x.com/amdphreak" icon={<IconTwitter />} label="X" />
+            <SocialLink href="https://www.chess.com/member/amdphreak" icon={<IconChess />} label="Chess.com" />
+            <SocialLink href="https://profile.codersrank.io/user/amdphreak" icon={<IconCode />} label="CodersRank" />
+          </div>
+          <p class="max-w-md text-[9px] font-mono text-stone-500 uppercase tracking-widest leading-relaxed md:text-right">
+            Most projects live under organizations I own on GitHub — Dev-Centr, FoodTruckNerdz,
+            Dlang-supplemental, Antora-supplemental, and others.
+          </p>
         </div>
       </div>
 

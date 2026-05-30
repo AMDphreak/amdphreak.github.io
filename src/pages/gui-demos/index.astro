@@ -11,7 +11,7 @@ import "../../styles/tailwind.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="Astro" />
-    <title>UI/UX Demos - Ryan Johnson</title>
+    <title>UI/UX - Ryan Johnson</title>
     <script is:inline>
       (function () {
         const applyTheme = (theme) => {
@@ -32,99 +32,113 @@ import "../../styles/tailwind.css";
     class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
   >
     <NoiseOverlay />
-    <main
-      class="container mx-auto px-6 py-12 max-w-4xl flex-1 structural-border mt-8 border-t-0 p-8 md:p-12 mb-12"
-    >
-      <nav
-        class="mb-12 flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+    <main class="w-full flex-1 mt-8 mb-12">
+      <div
+        class="mx-auto max-w-7xl px-6 md:px-10 py-12 structural-border border-t-0 md:p-12 space-y-16"
       >
-        <a
-          href="/"
-          class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-          >/ Home</a
+        <nav
+          class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
         >
-        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
-          >UI / UX</span
-        >
-      </nav>
+          <a
+            href="/"
+            class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+            >/ Home</a
+          >
+          <span
+            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+            >UI / UX</span
+          >
+        </nav>
 
-      <div class="space-y-12">
-        <div class="space-y-4">
-          <h1 class="text-5xl font-heading tracking-tighter">UI/UX Demos</h1>
+        <header class="space-y-4 max-w-3xl">
+          <h1 class="text-5xl font-heading tracking-tighter">UI/UX</h1>
           <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
-            Ref. INTERFACE_EXPLORATIONS
+            Ref. INTERFACE_PHILOSOPHY · EXPLORATIONS
           </p>
-          <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans max-w-2xl">
-            Interactive UI/UX demos for interface ideas that do not belong on the homepage yet —
-            small experiments in explanation, notation, and developer experience.
+        </header>
+
+        <section class="space-y-6 max-w-3xl">
+          <h2 class="text-xl font-heading font-medium tracking-tight">Philosophy</h2>
+          <div
+            class="space-y-4 text-base md:text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans"
+          >
+            <p>
+              Experience comes before ornament. I treat UX as the primary contract and UI as the
+              disciplined surface that makes that contract legible — not the other way around.
+            </p>
+            <p>
+              Interfaces should carry <strong class="font-medium text-stone-800 dark:text-stone-200">rich models of data</strong> instead of endless prose and flat lists that ought to live in a graph, hierarchy, or other structure matched to the problem. When the representation fits the domain, users reason in context instead of scanning noise.
+            </p>
+            <p>
+              That bias toward clarity and restraint draws on industrial design — especially the work of
+              <strong class="font-medium text-stone-800 dark:text-stone-200">Dieter Rams</strong> (Braun, and a touchstone for products like the original iPod): minimalism, honest materials, and forms that explain themselves. In engineering I pair that with
+              <strong class="font-medium text-stone-800 dark:text-stone-200">rigorous specification design</strong>, composability, and functional orthogonality so parts combine without surprise.
+            </p>
+            <p>
+              Organizationally I favor <strong class="font-medium text-stone-800 dark:text-stone-200">functional (thematic) design</strong> over purely taxonomic buckets: group things by what they do together in a real workflow (needle with thread), not only by abstract category (needle with nail because both are metal). Taxonomic sorting has its place in libraries and schemas; thematic sorting is often what a wise interface optimizes for.
+            </p>
+          </div>
+          <p>
+            <a
+              href="/gui-demos/philosophy"
+              class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors border-b border-stone-300 dark:border-stone-600 pb-0.5"
+            >
+              Philosophy articles →
+            </a>
           </p>
-        </div>
+        </section>
 
         <div class="h-px w-24 bg-stone-300 dark:bg-stone-700"></div>
 
-        <ul class="space-y-4">
-          {
-            guiDemos.map((demo) => (
-              <li>
-                <div class="group block p-6 structural-border hover:bg-stone-50 dark:hover:bg-stone-900/50 transition-colors">
-                  <div class="flex items-start justify-between gap-4">
-                    <div class="space-y-2">
-                      <div class="flex items-center gap-3">
-                        <a
-                          href={demo.href}
-                          class="text-xl font-heading font-medium tracking-tight group-hover:underline decoration-stone-300 underline-offset-4 text-stone-900 dark:text-stone-100"
-                        >
-                          {demo.title}
-                        </a>
-                        <span class="font-mono text-[9px] uppercase tracking-widest text-stone-400 border border-stone-200 dark:border-stone-700 px-1.5 py-0.5">
-                          {demo.status}
-                        </span>
-                      </div>
-                      <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                        {demo.tagline}
-                      </p>
-                      <p class="flex flex-wrap gap-3 pt-1 font-mono text-[9px] uppercase tracking-widest">
-                        <a
-                          href={demo.href}
-                          class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100"
-                        >
-                          Overview →
-                        </a>
-                        {demo.externalDemo && (
-                          <a
-                            href={demo.externalDemo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100"
-                          >
-                            Live demo ↗
-                          </a>
-                        )}
-                        {demo.repo && (
-                          <a
-                            href={demo.repo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100"
-                          >
-                            Repository ↗
-                          </a>
-                        )}
-                      </p>
+        <section class="w-full px-2 md:px-4 py-4 space-y-8">
+          <div class="space-y-2">
+            <h2 class="text-xl font-heading font-medium tracking-tight">Interactive explorations</h2>
+            <p class="text-sm text-stone-600 dark:text-stone-400 max-w-2xl leading-relaxed">
+              Prototypes and demos for interface ideas that do not belong on the homepage yet — small
+              experiments in explanation, notation, and developer experience.
+            </p>
+          </div>
+
+          <ul
+            class="grid w-full gap-6 justify-center sm:justify-start grid-cols-[repeat(auto-fill,18rem)] list-none p-0 m-0"
+            role="list"
+          >
+            {
+              guiDemos.map((demo) => (
+                <li class="w-72 shrink-0">
+                  <a
+                    href={demo.href}
+                    class="group flex flex-col h-full w-72 p-6 structural-border hover:bg-stone-50 dark:hover:bg-stone-900/50 transition-colors no-underline text-inherit"
+                  >
+                    <div class="flex items-start justify-between gap-2 mb-3">
+                      <span class="text-lg font-heading font-medium tracking-tight group-hover:underline decoration-stone-300 underline-offset-4 text-stone-900 dark:text-stone-100">
+                        {demo.title}
+                      </span>
+                      <span
+                        class="font-mono text-[9px] uppercase tracking-widest text-stone-400 border border-stone-200 dark:border-stone-700 px-1.5 py-0.5 shrink-0"
+                        aria-label={`Status: ${demo.status}`}
+                      >
+                        {demo.status}
+                      </span>
                     </div>
-                    <a
-                      href={demo.href}
-                      class="font-mono text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors shrink-0"
-                      aria-hidden="true"
-                    >
-                      →
-                    </a>
-                  </div>
-                </div>
-              </li>
-            ))
-          }
-        </ul>
+                    <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed flex-1">
+                      {demo.tagline}
+                    </p>
+                    <p class="mt-4 font-mono text-[9px] uppercase tracking-widest text-stone-400 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">
+                      Open →
+                    </p>
+                    {(demo.externalDemo || demo.repo) && (
+                      <p class="mt-2 flex flex-wrap gap-2 font-mono text-[8px] uppercase tracking-widest text-stone-400">
+                        {demo.externalDemo && <span>Live demo</span>}
+                        {demo.repo && <span>Repo</span>}
+                      </p>
+                    )}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
       </div>
     </main>
 

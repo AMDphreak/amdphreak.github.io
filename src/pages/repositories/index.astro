@@ -1,0 +1,173 @@
+---
+import { Footer } from "../../components/Footer";
+import NoiseOverlay from "../../components/NoiseOverlay.astro";
+import {
+  catalogGeneratedAt,
+  catalogRepoCount,
+  repositoryCatalog,
+} from "../../lib/repository-catalog";
+import "../../styles/tailwind.css";
+
+const totalRepos = catalogRepoCount();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Astro" />
+    <title>Repository catalog - Ryan Johnson</title>
+    <script is:inline>
+      (function () {
+        const applyTheme = (theme) => {
+          if (theme === "dark") document.documentElement.classList.add("dark");
+          else document.documentElement.classList.remove("dark");
+          document.documentElement.style.colorScheme = theme;
+        };
+        const saved =
+          typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null;
+        const theme =
+          saved ??
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        applyTheme(theme);
+      })();
+    </script>
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <NoiseOverlay />
+    <main class="w-full flex-1 mt-8 mb-12">
+      <div
+        class="mx-auto max-w-5xl px-6 md:px-10 py-12 structural-border border-t-0 md:p-12 space-y-12"
+      >
+        <nav
+          class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+        >
+          <a
+            href="/"
+            class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+            >/ Home</a
+          >
+          <span
+            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+            >Repositories</span
+          >
+        </nav>
+
+        <header class="space-y-4 max-w-3xl">
+          <h1 class="text-5xl font-heading tracking-tighter">Repository catalog</h1>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+            Software portfolio · {totalRepos} repositories · synced {catalogGeneratedAt}
+          </p>
+          <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+            Hierarchical index of projects and organizations first, then repositories within each
+            group. A single project may list repos on both GitHub and GitLab.
+          </p>
+        </header>
+
+        <nav
+          class="structural-border p-6 space-y-3"
+          aria-label="Project and organization index"
+        >
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">Index</p>
+          <ol class="grid grid-cols-1 sm:grid-cols-2 gap-2 list-decimal list-inside m-0 p-0">
+            {
+              repositoryCatalog.map((group) => (
+                <li class="text-sm">
+                  <a
+                    href={`#${group.id}`}
+                    class="font-heading text-stone-800 dark:text-stone-200 hover:underline decoration-stone-300 underline-offset-4"
+                  >
+                    {group.title}
+                  </a>
+                  <span class="font-mono text-[9px] text-stone-400 ml-2">
+                    ({group.repositories.length})
+                  </span>
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+
+        <div class="space-y-6">
+          {
+            repositoryCatalog.map((group, index) => (
+              <details
+                id={group.id}
+                class="structural-border group/section"
+                open={index < 2}
+              >
+                <summary class="cursor-pointer list-none p-6 hover:bg-stone-50/50 dark:hover:bg-stone-900/30 transition-colors [&::-webkit-details-marker]:hidden">
+                  <div class="flex flex-wrap items-baseline justify-between gap-3">
+                    <div class="space-y-1">
+                      <h2 class="text-2xl font-heading font-medium tracking-tight inline">
+                        {group.title}
+                      </h2>
+                      <span class="font-mono text-[10px] uppercase tracking-widest text-stone-400 ml-3">
+                        {group.repositories.length} repos
+                      </span>
+                      {group.tagline && (
+                        <p class="text-sm text-stone-600 dark:text-stone-400 mt-2 max-w-2xl">
+                          {group.tagline}
+                        </p>
+                      )}
+                    </div>
+                    <span class="font-mono text-stone-300 group-open/section:rotate-90 transition-transform">
+                      →
+                    </span>
+                  </div>
+                </summary>
+                <ul class="border-t border-stone-200 dark:border-stone-800 divide-y divide-stone-200 dark:divide-stone-800 list-none m-0 p-0">
+                  {group.repositories.map((repo) => (
+                    <li>
+                      <a
+                        href={repo.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6 px-6 py-4 hover:bg-stone-50 dark:hover:bg-stone-900/40 transition-colors no-underline text-inherit"
+                      >
+                        <div class="flex items-center gap-2 shrink-0 sm:w-48">
+                          <span class="font-mono text-sm text-stone-900 dark:text-stone-100">
+                            {repo.name}
+                          </span>
+                        </div>
+                        <div class="flex-1 min-w-0 space-y-1">
+                          {repo.description && (
+                            <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                              {repo.description}
+                            </p>
+                          )}
+                          <p class="flex flex-wrap gap-2 font-mono text-[9px] uppercase tracking-widest text-stone-400">
+                            <span>{repo.provider}</span>
+                            <span>{repo.owner}</span>
+                            {repo.isPrivate && <span>private</span>}
+                            {repo.isFork && <span>fork</span>}
+                          </p>
+                        </div>
+                        <span
+                          class="font-mono text-stone-300 shrink-0 hidden sm:inline"
+                          aria-hidden="true"
+                        >
+                          ↗
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))
+          }
+        </div>
+
+        <p class="font-mono text-[9px] uppercase tracking-widest text-stone-400">
+          Regenerate with <code class="text-stone-500">pnpm sync:repos</code> after adding
+          repositories on GitHub or GitLab.
+        </p>
+      </div>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

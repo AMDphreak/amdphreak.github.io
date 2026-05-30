@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync:repos": "node scripts/sync-repository-catalog.mjs",
+    "fetch:inspirations": "node scripts/fetch-inspiration-assets.mjs"
   },
   "dependencies": {
     "@astrojs/solid-js": "^5.1.1",

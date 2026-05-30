@@ -4,7 +4,6 @@ import { About } from "../components/About";
 import { Experience } from "../components/Experience";
 import { Projects } from "../components/Projects";
 import { Skills } from "../components/Skills";
-import { Links } from "../components/Links";
 import { Photography } from "../components/Photography";
 import { Footer } from "../components/Footer";
 import NoiseOverlay from "../components/NoiseOverlay.astro";
@@ -121,10 +120,28 @@ import "../styles/tailwind.css";
     
     <main class="relative z-10 container mx-auto px-6 py-12 max-w-7xl space-y-16 lg:space-y-24">
       <!-- Structural Top Header -->
-      <header class="flex justify-between items-start border-b border-stone-200 dark:border-stone-800 pb-8">
-        <div class="space-y-2">
+      <header class="flex flex-wrap justify-between items-center gap-6 border-b border-stone-200 dark:border-stone-800 pb-8">
+        <div class="flex flex-wrap items-center gap-6 lg:gap-10">
           <h1 class="text-xs font-mono uppercase tracking-[0.2em] text-stone-500">Technical Overview / 2026</h1>
-          <a href="/gui-demos" class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors">UI/UX Demos →</a>
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href="/gui-demos"
+              class="inline-flex items-center gap-3 px-8 py-4 structural-border bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 font-heading text-2xl md:text-3xl font-medium tracking-tight hover:bg-stone-800 dark:hover:bg-stone-200 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              aria-label="UI/UX — philosophy and interactive demos"
+            >
+              UI/UX
+              <span class="font-mono text-sm md:text-base opacity-70" aria-hidden="true">→</span>
+            </a>
+            <a
+              href="https://www.ryanjohnson.website/posts"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 structural-border font-heading text-lg md:text-xl font-medium tracking-tight text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              Personal Blog
+              <span class="font-mono text-xs opacity-60" aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
         <div class="flex items-center gap-4">
           <div id="theme-toggle" class="cursor-pointer hover:opacity-70 transition-opacity flex items-center justify-center w-8 h-8 structural-border">
@@ -143,31 +160,21 @@ import "../styles/tailwind.css";
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <!-- Main Column -->
         <div class="lg:col-span-8 space-y-16 lg:space-y-24">
-          <section id="about-section" class="scroll-mt-20">
-            <About client:load />
-          </section>
-          
+          <About client:load />
+
           <section id="projects-section" class="scroll-mt-20">
             <Projects client:load />
           </section>
-          
-          <section id="experience-section" class="scroll-mt-20">
-            <Experience client:load />
-          </section>
+
+          <Experience client:load />
+
+          <Photography client:load />
         </div>
 
         <!-- Sidebar / Structural Support -->
         <aside class="lg:col-span-4 space-y-16 lg:border-l lg:border-stone-200 dark:lg:border-stone-800 lg:pl-12">
-          <section id="skills-section">
+          <section id="skills-section" class="scroll-mt-20">
             <Skills client:load />
-          </section>
-          
-          <section id="links-section">
-            <Links client:load />
-          </section>
-          
-          <section id="photography-section">
-            <Photography client:load />
           </section>
         </aside>
       </div>

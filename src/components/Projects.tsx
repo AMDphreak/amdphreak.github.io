@@ -264,7 +264,7 @@ export const Projects = () => {
       <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
         <h2 class="text-3xl font-heading tracking-tighter">Projects</h2>
         <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
-          Structural Portfolio / v04
+          Software Portfolio / v04
         </span>
       </div>
 
@@ -290,6 +290,26 @@ export const Projects = () => {
             </div>
           )}
         </For>
+        <a
+          href="/repositories"
+          class="bg-background group block p-6 structural-border hover:bg-stone-50/50 dark:hover:bg-stone-900/50 transition-all h-full flex flex-col justify-between min-h-[220px] no-underline text-inherit"
+        >
+          <div class="space-y-3">
+            <h3 class="text-xl font-heading font-medium tracking-tight text-foreground group-hover:underline decoration-stone-300 underline-offset-4">
+              Full repository catalog
+            </h3>
+            <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400">
+              All projects · GitHub & GitLab
+            </p>
+            <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-[90%]">
+              Hierarchically organized by project and organization — every repo across providers,
+              not just the highlights above.
+            </p>
+          </div>
+          <p class="mt-8 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">
+            Browse catalog →
+          </p>
+        </a>
       </div>
     </section>
   );

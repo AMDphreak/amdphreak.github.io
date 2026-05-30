@@ -4,11 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2026-05-28
+## [Unreleased] - 2026-05-30
 
 ### Added
 
-- **UI/UX Demos**: Index page for interactive UI/UX demos, linked from the homepage.
+- **Inspirations** at `/inspirations`: migrated quotes, discussions, and WordPress background images (Zappa, Fischer, Stallman, Armstrong, etc.).
+- **About (WordPress archive)** at `/about/wordpress-archive`: verbatim self-written about text from ryanjohnson.website.
+- **Repository catalog** at `/repositories`: project/org-first hierarchy across GitHub and GitLab; synced via `pnpm sync:repos`.
+
+### Changed
+
+- **Homepage layout**: collapsible Theory, Experience, and Photography (latter three collapsed by default); Photography in main column with fixed left-aligned preview; Connections sidebar removed; **Personal Blog** in header; org-projects note under social icons; Chess.com and Codeberg links added.
+- **Theory / About** section: formal reliability-focused lead; informal TI-83+ origin story and &ldquo;unprofessional&rdquo; posture in body copy; links to inspirations and archive.
+- **UI/UX hub**: Philosophy overview, philosophy articles index (`/gui-demos/philosophy`), and full-width demo tile grid; prominent **UI/UX** button beside the homepage header.
+- Projects section label: **Software Portfolio** (was Structural Portfolio); grid ends with a link card to the full catalog.
+- **UI/UX Demos** (prior): Index page for interactive UI/UX demos, linked from the homepage.
 - **code-lens**: Renamed from code-example-lenses; portfolio links to [github.com/AMDphreak/code-lens](https://github.com/AMDphreak/code-lens) and [ryanjohnson.dev/code-lens](https://ryanjohnson.dev/code-lens/).
 - **multimux Project Card**: Showcase multimux, an elegant Electron/SolidJS/TypeScript desktop audio mixdown suite, in the projects list.
 
