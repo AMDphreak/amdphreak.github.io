@@ -22,7 +22,6 @@ export const Photography = () => {
       title="Photography"
       tagline="Visual Arts / Media"
       defaultOpen={false}
-      collapsedPreview="Capturing moments and preserving structural memories beyond the screen."
     >
       <div class="flex flex-col sm:flex-row gap-8 items-start">
         <div class="relative w-72 h-72 shrink-0 group cursor-crosshair">

@@ -8,7 +8,6 @@ export const About = () => {
       title="Theory"
       tagline="Internal Logic / Origins"
       defaultOpen={false}
-      collapsedPreview={theoryLeadSummary}
     >
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div class="md:col-span-1">

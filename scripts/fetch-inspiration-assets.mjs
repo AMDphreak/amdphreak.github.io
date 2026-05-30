@@ -21,8 +21,7 @@ const assets = [
   ["freddie-mercury-queen.webp", "https://www.ryanjohnson.website/wp-content/uploads/2022/08/CS_Freddie_Mercury_Queen-1024x683.webp"],
   ["paul-graham.jpg", "https://www.ryanjohnson.website/wp-content/uploads/2020/07/Paul-Graham.jpg"],
   ["eric-raymond.jpg", "https://www.ryanjohnson.website/wp-content/uploads/2020/07/Eric_raymond.jpg"],
-  ["brian-will.jpeg", "https://www.ryanjohnson.website/wp-content/uploads/2020/07/173936_TSyR_2720166.jpeg"],
-  ["valve-hardware.jpg", "https://www.ryanjohnson.website/wp-content/uploads/2020/07/IMG_6715-1-1024x435.jpg"],
+  ["hackers-and-painters.jpg", "https://www.ryanjohnson.website/wp-content/uploads/2020/07/IMG_6715-1-1024x435.jpg"],
 ];
 
 mkdirSync(outDir, { recursive: true });

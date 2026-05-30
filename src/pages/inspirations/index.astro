@@ -2,7 +2,6 @@
 import { Footer } from "../../components/Footer";
 import { Inspirations } from "../../components/Inspirations";
 import NoiseOverlay from "../../components/NoiseOverlay.astro";
-import { inspirationsCapturedAt, inspirationsSourceUrl } from "../../lib/inspirations";
 import "../../styles/tailwind.css";
 ---
 
@@ -53,19 +52,11 @@ import "../../styles/tailwind.css";
         <header class="space-y-4 max-w-3xl">
           <h1 class="text-5xl font-heading tracking-tighter">Inspirations</h1>
           <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
-            Quotes, figures, and discussions · archived {inspirationsCapturedAt}
+            Quotes, figures, and discussions
           </p>
           <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
             People and ideas that shaped how I think about software, design, and questioning the
-            default order of things — migrated from my
-            <a
-              href={inspirationsSourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100"
-            >
-              WordPress inspirations page</a
-            >, with original background art kept on this site.
+            default order of things.
           </p>
         </header>
 

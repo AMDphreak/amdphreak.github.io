@@ -7,8 +7,6 @@ type CollapsibleSectionProps = {
   title: string;
   tagline?: string;
   defaultOpen?: boolean;
-  /** Teaser line when collapsed; grows on hover, full text when expanded. */
-  collapsedPreview?: string;
   titleSize?: "lg" | "xl";
   children: JSX.Element;
 };
@@ -71,13 +69,8 @@ export const CollapsibleSection = (props: CollapsibleSectionProps) => {
       <div
         id={`${props.id}-panel`}
         class={cn(
-          "relative",
-          collapsed() && "cursor-pointer",
-          collapsed() &&
-            cn(
-              "overflow-hidden transition-[max-height] duration-300 ease-in-out motion-reduce:transition-none group-hover/section:max-h-52 group-focus-within/section:max-h-52",
-              props.collapsedPreview ? "max-h-14" : "max-h-8",
-            ),
+          "relative overflow-hidden transition-[max-height] duration-300 ease-in-out motion-reduce:transition-none",
+          collapsed() && "cursor-pointer max-h-0 group-hover/section:max-h-56 group-focus-within/section:max-h-56",
           open() && "max-h-none",
         )}
         role={collapsed() ? "button" : undefined}
@@ -93,25 +86,18 @@ export const CollapsibleSection = (props: CollapsibleSectionProps) => {
           if (collapsed()) onActivateKeyDown(e);
         }}
       >
-        <Show when={collapsed() && props.collapsedPreview}>
-          <p
-            class="mt-4 text-base md:text-lg font-heading leading-snug text-stone-500 dark:text-stone-400 line-clamp-1 group-hover/section:line-clamp-4 group-focus-within/section:line-clamp-4"
-          >
-            {props.collapsedPreview}
-          </p>
-        </Show>
-
         <Show when={collapsed()}>
-          <p class="mt-2 font-mono text-[9px] uppercase tracking-widest text-stone-400 group-hover/section:hidden group-focus-within/section:hidden">
-            Hover to preview · Click to open
-          </p>
+          <div
+            class="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-transparent via-background/40 to-background opacity-0 transition-opacity duration-300 ease-in-out group-hover/section:opacity-100 group-focus-within/section:opacity-100 motion-reduce:opacity-0"
+            aria-hidden="true"
+          />
         </Show>
-
         <div
           class={cn(
             revealGrid,
             open() ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
-            collapsed() && "group-hover/section:grid-rows-[1fr] group-focus-within/section:grid-rows-[1fr]",
+            collapsed() &&
+              "group-hover/section:grid-rows-[1fr] group-focus-within/section:grid-rows-[1fr]",
           )}
         >
           <div
@@ -125,16 +111,10 @@ export const CollapsibleSection = (props: CollapsibleSectionProps) => {
             <div
               class={cn(
                 "relative",
-                collapsed() ? "pt-4 pb-10" : "pt-8 pb-4",
+                collapsed() ? "pt-4 pb-12" : "pt-8 pb-4",
               )}
             >
               {props.children}
-              <Show when={collapsed()}>
-                <div
-                  class="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent opacity-0 transition-opacity duration-300 group-hover/section:opacity-100 group-focus-within/section:opacity-100 motion-reduce:opacity-0"
-                  aria-hidden="true"
-                />
-              </Show>
             </div>
           </div>
         </div>

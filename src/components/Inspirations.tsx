@@ -1,25 +1,36 @@
-import { For } from "solid-js";
+import { For, Show } from "solid-js";
 import {
-  discussionSectionImages,
   discussionSections,
   inspirationCards,
   inspirationProfiles,
-  inspirationsSourceUrl,
   joeArmstrongIntro,
   joeArmstrongSection,
+  type InspirationQuote,
 } from "~/lib/inspirations";
+import { cn } from "~/lib/utils";
 
 const QuoteAttribution = (props: {
   attribution: string;
   url?: string;
+  light?: boolean;
 }) => (
-  <cite class="block mt-3 font-mono text-[10px] uppercase tracking-widest text-stone-400 not-italic">
+  <cite
+    class={cn(
+      "block mt-3 font-mono text-[10px] uppercase tracking-widest not-italic",
+      props.light ? "text-stone-300" : "text-stone-400",
+    )}
+  >
     {props.url ? (
       <a
         href={props.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+        class={cn(
+          "transition-colors",
+          props.light
+            ? "hover:text-stone-50"
+            : "hover:text-stone-900 dark:hover:text-stone-100",
+        )}
       >
         {props.attribution}
       </a>
@@ -29,8 +40,20 @@ const QuoteAttribution = (props: {
   </cite>
 );
 
-const InspirationHeroCard = (props: { quote: string; attribution: string; attributionUrl?: string; image: string; imagePosition?: string }) => (
-  <figure class="relative min-h-[280px] md:min-h-[320px] structural-border overflow-hidden">
+const InspirationHeroCard = (props: {
+  quote: string;
+  attribution: string;
+  attributionUrl?: string;
+  image: string;
+  imagePosition?: string;
+  tall?: boolean;
+}) => (
+  <figure
+    class={cn(
+      "relative structural-border overflow-hidden",
+      props.tall ? "min-h-[340px] md:min-h-[400px]" : "min-h-[280px] md:min-h-[320px]",
+    )}
+  >
     <img
       src={props.image}
       alt=""
@@ -44,9 +67,38 @@ const InspirationHeroCard = (props: { quote: string; attribution: string; attrib
       <p class="text-lg md:text-xl font-heading leading-snug text-stone-50 max-w-2xl">
         &ldquo;{props.quote}&rdquo;
       </p>
-      <QuoteAttribution attribution={props.attribution} url={props.attributionUrl} />
+      <QuoteAttribution
+        attribution={props.attribution}
+        url={props.attributionUrl}
+        light
+      />
     </blockquote>
   </figure>
+);
+
+const QuoteHeroFromData = (props: { quote: InspirationQuote }) => (
+  <Show when={props.quote.image}>
+    <InspirationHeroCard
+      quote={props.quote.quote}
+      attribution={props.quote.attribution}
+      attributionUrl={props.quote.attributionUrl}
+      image={props.quote.image!}
+      imagePosition={props.quote.imagePosition}
+      tall
+    />
+  </Show>
+);
+
+const PlainQuoteBlock = (props: { quote: InspirationQuote }) => (
+  <blockquote class="structural-border p-6 md:p-8 bg-background">
+    <p class="text-sm md:text-base text-stone-600 dark:text-stone-400 leading-relaxed">
+      &ldquo;{props.quote.quote}&rdquo;
+    </p>
+    <QuoteAttribution
+      attribution={props.quote.attribution}
+      url={props.quote.attributionUrl}
+    />
+  </blockquote>
 );
 
 type InspirationsProps = {
@@ -82,20 +134,29 @@ export const Inspirations = (props: InspirationsProps) => {
         </For>
       </div>
 
-      <div class="structural-border overflow-hidden">
-        <div
-          class="relative min-h-[200px] bg-cover bg-center"
-          style={{ "background-image": `url(${joeArmstrongSection.headerImage})` }}
-        >
-          <div class="absolute inset-0 bg-stone-950/50" aria-hidden="true" />
-          <p class="relative z-10 p-8 text-center text-xl font-heading text-stone-50">
-            {joeArmstrongSection.title}
+      <article class="structural-border p-8 space-y-6">
+        <header class="text-center space-y-2">
+          <h3 class="text-2xl font-heading tracking-tight">{joeArmstrongSection.title}</h3>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+            {joeArmstrongSection.quotesHeading}
           </p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 dark:bg-stone-800">
+        </header>
+        <img
+          src={joeArmstrongSection.portraitImage}
+          alt="Dr. Joe Armstrong"
+          class="w-full h-48 md:h-56 object-cover structural-border"
+          style={
+            joeArmstrongSection.imagePosition
+              ? { "object-position": joeArmstrongSection.imagePosition }
+              : undefined
+          }
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 dark:bg-stone-800 structural-border">
           <For each={joeArmstrongSection.quotes}>
             {(q) => (
-              <blockquote class="bg-background p-8 space-y-2">
+              <blockquote class="bg-background p-6 md:p-8 space-y-2">
                 <p class="text-base text-stone-700 dark:text-stone-300 leading-relaxed font-sans">
                   &ldquo;{q.quote}&rdquo;
                 </p>
@@ -104,12 +165,18 @@ export const Inspirations = (props: InspirationsProps) => {
             )}
           </For>
         </div>
-        <div class="p-6 border-t border-stone-200 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-900/30">
-          <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
-            {joeArmstrongIntro}
-          </p>
-        </div>
-      </div>
+        <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-sans max-w-3xl mx-auto text-center">
+          {joeArmstrongIntro}{" "}
+          <a
+            href={joeArmstrongSection.siteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100"
+          >
+            joearms.github.io ↗
+          </a>
+        </p>
+      </article>
 
       <For each={inspirationProfiles}>
         {(profile) => (
@@ -122,11 +189,18 @@ export const Inspirations = (props: InspirationsProps) => {
             </header>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <For each={profile.images}>
-                {(src) => (
+                {(src, i) => (
                   <img
                     src={src}
                     alt=""
-                    class="w-full h-48 md:h-56 object-cover structural-border"
+                    class={cn(
+                      "w-full object-cover structural-border",
+                      profile.id === "paul-graham" && i() === 0
+                        ? "h-56 md:h-64"
+                        : profile.id === "paul-graham" && i() === 1
+                          ? "h-56 md:h-64 object-cover object-center"
+                          : "h-48 md:h-56",
+                    )}
                     loading="lazy"
                   />
                 )}
@@ -141,67 +215,32 @@ export const Inspirations = (props: InspirationsProps) => {
         <For each={discussionSections}>
           {(section) => (
             <article class="space-y-6">
-              <h4 class="text-lg font-heading text-center">{section.title}</h4>
-              {section.image && (
-                <img
-                  src={section.image}
-                  alt=""
-                  class="w-full max-h-48 object-cover structural-border"
-                  loading="lazy"
-                />
-              )}
-              <div class="space-y-4">
+              <div class="space-y-2 text-center">
+                <h4 class="text-lg font-heading">{section.title}</h4>
+                <Show when={section.relatedUrl}>
+                  <p>
+                    <a
+                      href={section.relatedUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-mono text-[10px] uppercase tracking-widest text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                    >
+                      {section.relatedLabel ?? section.relatedUrl} ↗
+                    </a>
+                  </p>
+                </Show>
+              </div>
+              <div class="space-y-6">
                 <For each={section.quotes}>
-                  {(q, qi) => (
-                    <blockquote class="structural-border p-6 bg-background">
-                      <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                        &ldquo;{q.quote}&rdquo;
-                      </p>
-                      <QuoteAttribution attribution={q.attribution} url={q.attributionUrl} />
-                      {section.id === "famous-oop" && qi() === 0 && (
-                        <img
-                          src={discussionSectionImages["famous-oop-armstrong"]}
-                          alt=""
-                          class="mt-4 w-full max-h-40 object-cover object-top structural-border"
-                          loading="lazy"
-                        />
-                      )}
-                      {section.id === "famous-oop" && qi() === 1 && (
-                        <img
-                          src={discussionSectionImages["famous-oop-graham"]}
-                          alt=""
-                          class="mt-4 w-full max-h-40 object-cover structural-border"
-                          loading="lazy"
-                        />
-                      )}
-                      {section.id === "famous-oop" && qi() === 2 && (
-                        <img
-                          src={discussionSectionImages["famous-oop-raymond"]}
-                          alt=""
-                          class="mt-4 w-full max-h-40 object-cover structural-border"
-                          loading="lazy"
-                        />
-                      )}
-                    </blockquote>
-                  )}
+                  {(q) =>
+                    q.image ? <QuoteHeroFromData quote={q} /> : <PlainQuoteBlock quote={q} />
+                  }
                 </For>
               </div>
             </article>
           )}
         </For>
       </div>
-
-      <p class="font-mono text-[9px] uppercase tracking-widest text-stone-400">
-        Source:{" "}
-        <a
-          href={inspirationsSourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-        >
-          WordPress originals ↗
-        </a>
-      </p>
     </section>
   );
 };

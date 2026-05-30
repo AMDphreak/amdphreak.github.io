@@ -1,7 +1,4 @@
-/**
- * Migrated from https://www.ryanjohnson.website/inspirations/ (layout broken on WordPress).
- * Background images stored under /inspirations/.
- */
+/** Inspirations page content — quotes, profiles, and discussion sections. */
 
 export type InspirationCard = {
   id: string;
@@ -16,6 +13,9 @@ export type InspirationQuote = {
   quote: string;
   attribution: string;
   attributionUrl?: string;
+  /** Full-bleed background for hero-style quote blocks. */
+  image?: string;
+  imagePosition?: string;
 };
 
 export type InspirationProfile = {
@@ -29,20 +29,19 @@ export type InspirationSection = {
   id: string;
   title: string;
   quotes: InspirationQuote[];
-  image?: string;
+  /** Optional link when there is no portrait (e.g. Brian Will on X). */
+  relatedUrl?: string;
+  relatedLabel?: string;
 };
 
-export const inspirationsSourceUrl = "https://www.ryanjohnson.website/inspirations/";
-export const inspirationsCapturedAt = "2026-05-30";
-
-/** Hero quote cards — each had a full-bleed background on WordPress. */
+/** Hero quote cards at the top of the page. */
 export const inspirationCards: InspirationCard[] = [
   {
     id: "zappa",
-    quote: "The mind is like a parachute. It only works when it's open.",
+    quote: "A mind is like a parachute. It doesn't work if it is not open.",
     attribution: "Frank Zappa",
     image: "/inspirations/frank-zappa.jpeg",
-    imagePosition: "center",
+    imagePosition: "50% 30%",
   },
   {
     id: "fischer",
@@ -84,12 +83,18 @@ export const inspirationCards: InspirationCard[] = [
   },
 ];
 
+/** Joe's TiddlyWiki blog; joearmstrong.org is still a domain lander (May 2026). */
+export const joeArmstrongSiteUrl = "https://joearms.github.io/";
+
 export const joeArmstrongIntro =
-  "Dr. Joe Armstrong was a computer scientist and physicist, the inventor of Erlang, and a researcher at Ericsson Telecom. After Dr. Armstrong's death, his website was not well-maintained. Before it disappeared from the internet, the above quotes were found on his favorite quotes page.";
+  "Dr. Joe Armstrong was a computer scientist and physicist, the inventor of Erlang, and a researcher at Ericsson Telecom. His TiddlyWiki blog is still online at joearms.github.io. The domain joearmstrong.org currently redirects to a generic lander—not a renovated memorial site yet. These favorite quotes were preserved from his site before that quotes page went offline.";
 
 export const joeArmstrongSection = {
   title: "Dr. Joe Armstrong, inventor of Erlang",
-  headerImage: "/inspirations/joe-armstrong-header.jpeg",
+  quotesHeading: "Favorite quotes",
+  portraitImage: "/inspirations/joe-armstrong-header.jpeg",
+  imagePosition: "50% 52%",
+  siteUrl: joeArmstrongSiteUrl,
   quotes: [
     {
       quote:
@@ -101,7 +106,6 @@ export const joeArmstrongSection = {
       attribution: "Steve Hoflich on compl.lang.c++",
     },
   ] as InspirationQuote[],
-  asideImage: "/inspirations/cpp-hammer.png",
 };
 
 export const inspirationProfiles: InspirationProfile[] = [
@@ -119,7 +123,10 @@ export const inspirationProfiles: InspirationProfile[] = [
     title: "Paul Graham",
     description:
       "Hackers and Painters is a book about programming by Paul Graham, cofounder of YCombinator, a tech startup accelerator. The book relates his experience using Lisp in the early days of the internet to create highly sophisticated yet maintainable web apps.",
-    images: ["/inspirations/paul-graham.jpg"],
+    images: [
+      "/inspirations/paul-graham.jpg",
+      "/inspirations/hackers-and-painters.jpg",
+    ],
   },
 ];
 
@@ -127,7 +134,8 @@ export const discussionSections: InspirationSection[] = [
   {
     id: "brian-will-oop",
     title: "Brian Will's criticisms of Object-oriented Programming Paradigm",
-    image: "/inspirations/brian-will.jpeg",
+    relatedUrl: "https://x.com/brianwill",
+    relatedLabel: "Brian Will on X",
     quotes: [
       {
         quote:
@@ -154,23 +162,28 @@ export const discussionSections: InspirationSection[] = [
           "Objects bind functions and data structures together in indivisible units. I think this is a fundamental error since functions and data structures belong in totally different worlds.",
         attribution: "Why OO Sucks (2011), Dr. Joe Armstrong",
         attributionUrl: "https://harmful.cat-v.org/software/OO_programming/why_oo_sucks",
+        image: "/inspirations/joe-armstrong-grey.jpg",
+        imagePosition: "50% 20%",
       },
       {
         quote: "Object-oriented programming offers a sustainable way to write spaghetti code.",
         attribution: "The Hundred Year Language (2003), Paul Graham",
         attributionUrl: "http://www.paulgraham.com/hundred.html",
+        image: "/inspirations/paul-graham.jpg",
+        imagePosition: "50% 45%",
       },
       {
         quote:
           "The OO design concept initially proved valuable in the design of graphics systems, graphical user interfaces, and certain kinds of simulation. To the surprise and gradual disillusionment of many, it has proven difficult to demonstrate significant benefits of OO outside those areas.",
         attribution: "The Art of UNIX Programming (2005), Eric S. Raymond",
+        image: "/inspirations/eric-raymond.jpg",
+        imagePosition: "50% 15%",
       },
     ],
   },
   {
     id: "valve-ux",
     title: "Valve's take on the gaming industry's UX stagnation",
-    image: "/inspirations/valve-hardware.jpg",
     quotes: [
       {
         quote:
@@ -181,9 +194,3 @@ export const discussionSections: InspirationSection[] = [
     ],
   },
 ];
-
-export const discussionSectionImages: Record<string, string> = {
-  "famous-oop-armstrong": "/inspirations/joe-armstrong-grey.jpg",
-  "famous-oop-graham": "/inspirations/paul-graham.jpg",
-  "famous-oop-raymond": "/inspirations/eric-raymond.jpg",
-};
