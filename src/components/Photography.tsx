@@ -68,14 +68,6 @@ export const Photography = () => {
               <IconCamera /> bigrpic.com
             </a>
             <a
-              href="https://www.bigrpicture.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-3 structural-border font-mono text-[10px] uppercase tracking-[0.2em] hover:bg-stone-50 dark:hover:bg-stone-900 transition-all opacity-60 hover:opacity-100"
-            >
-              <IconCamera /> bigrpicture.com
-            </a>
-            <a
               href="https://instagram.com/bigrpicture"
               target="_blank"
               rel="noopener noreferrer"
