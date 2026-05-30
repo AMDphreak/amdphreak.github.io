@@ -1,11 +1,11 @@
 import { CollapsibleSection } from "~/components/CollapsibleSection";
-import { theoryLeadSummary } from "~/lib/theory-summary";
+import { philosophyLeadSummary } from "~/lib/philosophy-summary";
 
 export const About = () => {
   return (
     <CollapsibleSection
-      id="theory-section"
-      title="Theory"
+      id="philosophy-section"
+      title="Philosophy"
       tagline="Internal Logic / Origins"
       defaultOpen={false}
     >
@@ -23,7 +23,7 @@ export const About = () => {
 
         <div class="md:col-span-3 space-y-6">
           <p class="text-xl md:text-2xl font-heading leading-tight text-foreground/90">
-            {theoryLeadSummary}
+            {philosophyLeadSummary}
           </p>
 
           <div class="prose prose-stone dark:prose-invert max-w-none space-y-4">
