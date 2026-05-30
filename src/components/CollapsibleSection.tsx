@@ -1,5 +1,6 @@
 import { Show, type JSX } from "solid-js";
 import { createSignal } from "solid-js";
+import { cn } from "~/lib/utils";
 
 type CollapsibleSectionProps = {
   id: string;
@@ -12,6 +13,14 @@ type CollapsibleSectionProps = {
   children: JSX.Element;
 };
 
+const sectionActionClass =
+  "inline-flex items-center gap-2 px-6 py-3 structural-border font-heading text-lg md:text-xl font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
+const revealGrid =
+  "grid transition-[grid-template-rows] duration-300 ease-in-out motion-reduce:transition-none";
+const revealInner =
+  "overflow-hidden min-h-0 transition-opacity duration-300 ease-in-out motion-reduce:transition-none";
+
 export const CollapsibleSection = (props: CollapsibleSectionProps) => {
   const [open, setOpen] = createSignal(props.defaultOpen ?? true);
   const titleClass =
@@ -19,15 +28,17 @@ export const CollapsibleSection = (props: CollapsibleSectionProps) => {
       ? "text-xl font-heading font-medium tracking-tight"
       : "text-3xl font-heading tracking-tighter";
 
+  const collapsed = () => !open();
+
   return (
-    <section id={props.id} class="scroll-mt-20 space-y-0">
-      <button
-        type="button"
-        class="w-full text-left group border-b border-stone-200 dark:border-stone-800 pb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
-        aria-expanded={open()}
-        aria-controls={`${props.id}-panel`}
-        onClick={() => setOpen((v) => !v)}
-      >
+    <section
+      id={props.id}
+      class={cn(
+        "scroll-mt-20 transition-[padding-bottom] duration-300 ease-in-out motion-reduce:transition-none",
+        collapsed() ? "pb-10 lg:pb-14" : "pb-2",
+      )}
+    >
+      <div class="border-b border-stone-200 dark:border-stone-800 pb-4">
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div class="flex flex-wrap items-end gap-4 min-w-0 flex-1">
             <h2 class={titleClass}>{props.title}</h2>
@@ -37,25 +48,89 @@ export const CollapsibleSection = (props: CollapsibleSectionProps) => {
               </span>
             </Show>
           </div>
-          <span
-            class="font-mono text-sm text-stone-400 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors shrink-0"
-            aria-hidden="true"
+          <div
+            class={cn(
+              revealGrid,
+              open() ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+            )}
+            aria-hidden={!open()}
           >
-            {open() ? "−" : "+"}
-          </span>
+            <div
+              class={cn(
+                revealInner,
+                open() ? "opacity-100" : "opacity-0",
+              )}
+            >
+              <button
+                type="button"
+                class={cn(
+                  sectionActionClass,
+                  "text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900 shrink-0",
+                )}
+                aria-controls={`${props.id}-panel`}
+                tabindex={open() ? 0 : -1}
+                onClick={() => setOpen(false)}
+              >
+                Collapse
+                <span class="font-mono text-xs opacity-60" aria-hidden="true">
+                  −
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
-        <Show when={!open() && props.collapsedPreview}>
-          <p class="mt-3 text-base md:text-lg font-heading leading-snug text-stone-500 dark:text-stone-400 truncate">
-            {props.collapsedPreview}
-          </p>
-        </Show>
-      </button>
+      </div>
 
-      <Show when={open()}>
-        <div id={`${props.id}-panel`} class="pt-8">
-          {props.children}
+      <div
+        class={cn(revealGrid, collapsed() ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}
+        aria-hidden={!collapsed()}
+      >
+        <div
+          class={cn(
+            revealInner,
+            collapsed() ? "opacity-100" : "opacity-0",
+          )}
+        >
+          <div class="mt-5 space-y-5">
+            <Show when={props.collapsedPreview}>
+              <p class="text-base md:text-lg font-heading leading-snug text-stone-500 dark:text-stone-400 truncate">
+                {props.collapsedPreview}
+              </p>
+            </Show>
+            <button
+              type="button"
+              class={cn(
+                sectionActionClass,
+                "text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900",
+              )}
+              aria-expanded={false}
+              aria-controls={`${props.id}-panel`}
+              tabindex={collapsed() ? 0 : -1}
+              onClick={() => setOpen(true)}
+            >
+              Expand
+              <span class="font-mono text-xs opacity-70" aria-hidden="true">
+                →
+              </span>
+            </button>
+          </div>
         </div>
-      </Show>
+      </div>
+
+      <div
+        id={`${props.id}-panel`}
+        class={cn(revealGrid, open() ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}
+        aria-hidden={!open()}
+      >
+        <div
+          class={cn(
+            revealInner,
+            open() ? "opacity-100" : "opacity-0",
+          )}
+        >
+          <div class="pt-8 pb-4">{props.children}</div>
+        </div>
+      </div>
     </section>
   );
 };
