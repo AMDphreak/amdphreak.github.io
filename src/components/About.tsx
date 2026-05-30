@@ -46,14 +46,14 @@ export const About = () => {
               expectations and question the existing order of things.
             </p>
             <p class="text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
-              The quotes and figures that shaped that posture live in{" "}
+              The quotes and figures that shaped that posture are on the{" "}
               <a
                 href="/inspirations"
                 class="text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100"
               >
-                Inspirations
+                Inspirations page
               </a>
-              . My self-written WordPress about page is archived verbatim at{" "}
+              (also in the header). My self-written WordPress about page is archived verbatim at{" "}
               <a
                 href="/about/wordpress-archive"
                 class="text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100"

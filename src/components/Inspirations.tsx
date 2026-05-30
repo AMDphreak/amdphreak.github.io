@@ -4,7 +4,6 @@ import {
   discussionSections,
   inspirationCards,
   inspirationProfiles,
-  inspirationsCapturedAt,
   inspirationsSourceUrl,
   joeArmstrongIntro,
   joeArmstrongSection,
@@ -50,20 +49,24 @@ const InspirationHeroCard = (props: { quote: string; attribution: string; attrib
   </figure>
 );
 
-export const Inspirations = () => {
+type InspirationsProps = {
+  /** When false, page shell supplies the title (e.g. /inspirations). */
+  showTitle?: boolean;
+};
+
+export const Inspirations = (props: InspirationsProps) => {
+  const showTitle = () => props.showTitle !== false;
+
   return (
     <section class="space-y-12">
-      <div class="flex flex-wrap items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
-        <h2 class="text-3xl font-heading tracking-tighter">Inspirations</h2>
-        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
-          Quotes &amp; Posture
-        </span>
-      </div>
-
-      <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-3xl font-sans">
-        Migrated from my WordPress inspirations page ({inspirationsSourceUrl}). Captured{" "}
-        {inspirationsCapturedAt} with original background art preserved locally.
-      </p>
+      {showTitle() && (
+        <div class="flex flex-wrap items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
+          <h2 class="text-3xl font-heading tracking-tighter">Inspirations</h2>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+            Quotes &amp; Posture
+          </span>
+        </div>
+      )}
 
       <div class="grid grid-cols-1 gap-6">
         <For each={inspirationCards}>
