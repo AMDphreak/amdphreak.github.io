@@ -19,7 +19,7 @@ export function Footer() {
           <div class="space-y-4 md:text-right">
             <h3 class="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-500">Infrastructure</h3>
             <p class="text-[10px] text-stone-500 uppercase tracking-widest leading-relaxed">
-              Architected with <a href="https://github.com/AMDphreak/amdphreak.github.io" target="_blank" rel="noopener noreferrer" class="text-stone-900 dark:text-stone-100 underline decoration-stone-300 underline-offset-4">GitHub Pages</a>
+              Built with <a href="https://github.com/AMDphreak/amdphreak.github.io" target="_blank" rel="noopener noreferrer" class="text-stone-900 dark:text-stone-100 underline decoration-stone-300 underline-offset-4">GitHub Pages</a>
               <br/>
               Originally hand-coded. Redesigned with AI assistance.
             </p>
