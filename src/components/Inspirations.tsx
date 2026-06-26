@@ -177,7 +177,7 @@ export const Inspirations = (props: InspirationsProps) => {
         <img
           src={einsteinSection.portraitImage}
           alt="Albert Einstein"
-          class="w-full h-48 md:h-56 object-cover structural-border"
+          class="w-full h-64 md:h-80 object-cover structural-border"
           style={
             einsteinSection.imagePosition
               ? { "object-position": einsteinSection.imagePosition }

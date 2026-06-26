@@ -90,7 +90,7 @@ export const inspirationCards: InspirationCard[] = [
 export const einsteinSection = {
   title: "Albert Einstein",
   portraitImage: "/inspirations/albert-einstein.jpg",
-  imagePosition: "50% 15%",
+  imagePosition: "50% 35%",
   quotes: [
     {
       quote:
