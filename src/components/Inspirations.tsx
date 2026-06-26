@@ -1,13 +1,44 @@
 import { For, Show } from "solid-js";
 import {
   discussionSections,
+  einsteinSection,
   inspirationCards,
   inspirationProfiles,
-  joeArmstrongIntro,
+  joeArmstrongOrgUrl,
   joeArmstrongSection,
+  joeArmstrongSiteUrl,
   type InspirationQuote,
 } from "~/lib/inspirations";
 import { cn } from "~/lib/utils";
+
+const externalLinkClass =
+  "text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100";
+
+const JoeArmstrongIntro = () => (
+  <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-sans max-w-3xl mx-auto text-center">
+    Dr. Joe Armstrong was a computer scientist and physicist, the inventor of Erlang, and a researcher
+    at Ericsson Telecom. His TiddlyWiki blog is still online at{" "}
+    <a
+      href={joeArmstrongSiteUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={externalLinkClass}
+    >
+      joearms.github.io
+    </a>
+    . The domain{" "}
+    <a
+      href={joeArmstrongOrgUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={externalLinkClass}
+    >
+      joearmstrong.org
+    </a>{" "}
+    currently redirects to a generic lander—not a renovated memorial site yet. These favorite quotes
+    were preserved from his site before that quotes page went offline.
+  </p>
+);
 
 const QuoteAttribution = (props: {
   attribution: string;
@@ -47,6 +78,7 @@ const InspirationHeroCard = (props: {
   image: string;
   imagePosition?: string;
   tall?: boolean;
+  monochrome?: boolean;
 }) => (
   <figure
     class={cn(
@@ -57,7 +89,10 @@ const InspirationHeroCard = (props: {
     <img
       src={props.image}
       alt=""
-      class="absolute inset-0 w-full h-full object-cover"
+      class={cn(
+        "absolute inset-0 w-full h-full object-cover",
+        props.monochrome && "grayscale",
+      )}
       style={props.imagePosition ? { "object-position": props.imagePosition } : undefined}
       loading="lazy"
       decoding="async"
@@ -129,10 +164,41 @@ export const Inspirations = (props: InspirationsProps) => {
               attributionUrl={card.attributionUrl}
               image={card.image}
               imagePosition={card.imagePosition}
+              monochrome={card.monochrome}
             />
           )}
         </For>
       </div>
+
+      <article class="structural-border p-8 space-y-6">
+        <header class="text-center space-y-2">
+          <h3 class="text-2xl font-heading tracking-tight">{einsteinSection.title}</h3>
+        </header>
+        <img
+          src={einsteinSection.portraitImage}
+          alt="Albert Einstein"
+          class="w-full h-48 md:h-56 object-cover structural-border"
+          style={
+            einsteinSection.imagePosition
+              ? { "object-position": einsteinSection.imagePosition }
+              : undefined
+          }
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 dark:bg-stone-800 structural-border">
+          <For each={einsteinSection.quotes}>
+            {(q) => (
+              <blockquote class="bg-background p-6 md:p-8 space-y-2">
+                <p class="text-base text-stone-700 dark:text-stone-300 leading-relaxed font-sans">
+                  &ldquo;{q.quote}&rdquo;
+                </p>
+                <QuoteAttribution attribution={q.attribution} />
+              </blockquote>
+            )}
+          </For>
+        </div>
+      </article>
 
       <article class="structural-border p-8 space-y-6">
         <header class="text-center space-y-2">
@@ -165,17 +231,7 @@ export const Inspirations = (props: InspirationsProps) => {
             )}
           </For>
         </div>
-        <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-sans max-w-3xl mx-auto text-center">
-          {joeArmstrongIntro}{" "}
-          <a
-            href={joeArmstrongSection.siteUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100"
-          >
-            joearms.github.io ↗
-          </a>
-        </p>
+        <JoeArmstrongIntro />
       </article>
 
       <For each={inspirationProfiles}>

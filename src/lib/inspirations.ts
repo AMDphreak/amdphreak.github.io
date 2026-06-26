@@ -7,6 +7,8 @@ export type InspirationCard = {
   attributionUrl?: string;
   image: string;
   imagePosition?: string;
+  /** Desaturate the background photo (e.g. Stallman, Meineke). */
+  monochrome?: boolean;
 };
 
 export type InspirationQuote = {
@@ -73,6 +75,7 @@ export const inspirationCards: InspirationCard[] = [
       "https://www.gnu.org/philosophy/free-software-even-after-you-win.html",
     image: "/inspirations/richard-stallman.jpg",
     imagePosition: "36% 31%",
+    monochrome: true,
   },
   {
     id: "meineke",
@@ -80,21 +83,56 @@ export const inspirationCards: InspirationCard[] = [
       "I'm an investigator. A professional respects the traditions of the profession and does what he's taught to do. An investigator tears it all down, questions everything, asks, 'What should we be doing?' It's a completely different posture.",
     attribution: "Chicago Mag interview, Cal Meineke, violin luthier",
     image: "/inspirations/cal-meineke.jpg",
+    monochrome: true,
   },
 ];
 
+export const einsteinSection = {
+  title: "Albert Einstein",
+  portraitImage: "/inspirations/albert-einstein.jpg",
+  imagePosition: "50% 15%",
+  quotes: [
+    {
+      quote:
+        "There comes a point in your life when you need to stop reading other people's books and write your own.",
+      attribution: "Albert Einstein",
+    },
+    {
+      quote:
+        "Imagination is more important than knowledge. Imagination is the language of the soul. Pay attention to your imagination and you will discover all you need to be fulfilled.",
+      attribution: "Albert Einstein",
+    },
+    {
+      quote:
+        "Genius is making complex ideas simple, not making simple ideas complex.",
+      attribution: "Albert Einstein",
+    },
+    {
+      quote:
+        "Don't listen to the person who has the answers; listen to the person who has the questions.",
+      attribution: "Albert Einstein",
+    },
+    {
+      quote:
+        "Be a loner. That gives you time to wonder, to search for the truth. Have holy curiosity. Make your life worth living.",
+      attribution: "Albert Einstein",
+    },
+    {
+      quote: "Artificial intelligence is no match for natural stupidity.",
+      attribution: "Albert Einstein",
+    },
+  ] as InspirationQuote[],
+};
+
 /** Joe's TiddlyWiki blog; joearmstrong.org is still a domain lander (May 2026). */
 export const joeArmstrongSiteUrl = "https://joearms.github.io/";
-
-export const joeArmstrongIntro =
-  "Dr. Joe Armstrong was a computer scientist and physicist, the inventor of Erlang, and a researcher at Ericsson Telecom. His TiddlyWiki blog is still online at joearms.github.io. The domain joearmstrong.org currently redirects to a generic lander—not a renovated memorial site yet. These favorite quotes were preserved from his site before that quotes page went offline.";
+export const joeArmstrongOrgUrl = "https://www.joearmstrong.org/";
 
 export const joeArmstrongSection = {
   title: "Dr. Joe Armstrong, inventor of Erlang",
   quotesHeading: "Favorite quotes",
   portraitImage: "/inspirations/joe-armstrong-header.jpeg",
   imagePosition: "50% 52%",
-  siteUrl: joeArmstrongSiteUrl,
   quotes: [
     {
       quote:
@@ -103,7 +141,7 @@ export const joeArmstrongSection = {
     },
     {
       quote: "When your hammer is C++, everything begins to look like a thumb.",
-      attribution: "Steve Hoflich on compl.lang.c++",
+      attribution: "Steve Haflich on comp.lang.c++",
     },
   ] as InspirationQuote[],
 };
@@ -112,7 +150,7 @@ export const inspirationProfiles: InspirationProfile[] = [
   {
     id: "freddie-mercury",
     title: "Freddie Mercury",
-    description: "Lead singer of the hit Rock n' Roll band, Queen.",
+    description: "Lead singer of the hit Rock 'n' Roll band, Queen.",
     images: [
       "/inspirations/freddie-mercury.jpg",
       "/inspirations/freddie-mercury-queen.webp",
@@ -122,7 +160,7 @@ export const inspirationProfiles: InspirationProfile[] = [
     id: "paul-graham",
     title: "Paul Graham",
     description:
-      "Hackers and Painters is a book about programming by Paul Graham, cofounder of YCombinator, a tech startup accelerator. The book relates his experience using Lisp in the early days of the internet to create highly sophisticated yet maintainable web apps.",
+      "Hackers and Painters is a book about programming by Paul Graham, cofounder of Y Combinator, a tech startup accelerator. The book relates his experience using Lisp in the early days of the internet to create highly sophisticated yet maintainable web apps.",
     images: [
       "/inspirations/paul-graham.jpg",
       "/inspirations/hackers-and-painters.jpg",

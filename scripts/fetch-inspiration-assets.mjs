@@ -22,6 +22,10 @@ const assets = [
   ["paul-graham.jpg", "https://www.ryanjohnson.website/wp-content/uploads/2020/07/Paul-Graham.jpg"],
   ["eric-raymond.jpg", "https://www.ryanjohnson.website/wp-content/uploads/2020/07/Eric_raymond.jpg"],
   ["hackers-and-painters.jpg", "https://www.ryanjohnson.website/wp-content/uploads/2020/07/IMG_6715-1-1024x435.jpg"],
+  [
+    "albert-einstein.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg",
+  ],
 ];
 
 mkdirSync(outDir, { recursive: true });
