@@ -136,6 +136,25 @@ const PlainQuoteBlock = (props: { quote: InspirationQuote }) => (
   </blockquote>
 );
 
+const QuoteGrid = (props: { quotes: InspirationQuote[] }) => (
+  <div class="structural-border overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 dark:bg-stone-800">
+      <For each={props.quotes}>
+        {(q) => (
+          <div class="bg-background">
+            <blockquote class="p-6 md:p-8 space-y-2">
+              <p class="text-base text-stone-700 dark:text-stone-300 leading-relaxed font-sans">
+                &ldquo;{q.quote}&rdquo;
+              </p>
+              <QuoteAttribution attribution={q.attribution} />
+            </blockquote>
+          </div>
+        )}
+      </For>
+    </div>
+  </div>
+);
+
 type InspirationsProps = {
   /** When false, page shell supplies the title (e.g. /inspirations). */
   showTitle?: boolean;
@@ -186,18 +205,7 @@ export const Inspirations = (props: InspirationsProps) => {
           loading="lazy"
           decoding="async"
         />
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 dark:bg-stone-800 structural-border">
-          <For each={einsteinSection.quotes}>
-            {(q) => (
-              <blockquote class="bg-background p-6 md:p-8 space-y-2">
-                <p class="text-base text-stone-700 dark:text-stone-300 leading-relaxed font-sans">
-                  &ldquo;{q.quote}&rdquo;
-                </p>
-                <QuoteAttribution attribution={q.attribution} />
-              </blockquote>
-            )}
-          </For>
-        </div>
+        <QuoteGrid quotes={einsteinSection.quotes} />
       </article>
 
       <article class="structural-border p-8 space-y-6">
@@ -219,18 +227,7 @@ export const Inspirations = (props: InspirationsProps) => {
           loading="lazy"
           decoding="async"
         />
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 dark:bg-stone-800 structural-border">
-          <For each={joeArmstrongSection.quotes}>
-            {(q) => (
-              <blockquote class="bg-background p-6 md:p-8 space-y-2">
-                <p class="text-base text-stone-700 dark:text-stone-300 leading-relaxed font-sans">
-                  &ldquo;{q.quote}&rdquo;
-                </p>
-                <QuoteAttribution attribution={q.attribution} />
-              </blockquote>
-            )}
-          </For>
-        </div>
+        <QuoteGrid quotes={joeArmstrongSection.quotes} />
         <JoeArmstrongIntro />
       </article>
 

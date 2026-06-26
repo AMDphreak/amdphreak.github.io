@@ -1,6 +1,8 @@
 ---
 import { Footer } from "../../../components/Footer";
 import NoiseOverlay from "../../../components/NoiseOverlay.astro";
+import ThemeScript from "../../../components/ThemeScript.astro";
+import ThemeToggleBar from "../../../components/ThemeToggleBar.astro";
 import { philosophyArticles } from "../../../lib/gui-philosophy";
 import "../../../styles/tailwind.css";
 ---
@@ -12,29 +14,17 @@ import "../../../styles/tailwind.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="Astro" />
     <title>UI/UX Philosophy - Ryan Johnson</title>
-    <script is:inline>
-      (function () {
-        const applyTheme = (theme) => {
-          if (theme === "dark") document.documentElement.classList.add("dark");
-          else document.documentElement.classList.remove("dark");
-          document.documentElement.style.colorScheme = theme;
-        };
-        const saved =
-          typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null;
-        const theme =
-          saved ??
-          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        applyTheme(theme);
-      })();
-    </script>
+    <ThemeScript />
   </head>
   <body
     class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
   >
     <NoiseOverlay />
-    <main
-      class="container mx-auto px-6 py-12 max-w-4xl flex-1 structural-border mt-8 border-t-0 p-8 md:p-12 mb-12"
-    >
+    <main class="w-full flex-1 mt-8 mb-12">
+      <ThemeToggleBar container maxWidth="max-w-4xl" />
+      <div
+        class="container mx-auto px-6 py-12 max-w-4xl structural-border border-t-0 p-8 md:p-12"
+      >
       <nav
         class="mb-12 flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
       >
@@ -103,6 +93,7 @@ import "../../../styles/tailwind.css";
             </ul>
           )
         }
+      </div>
       </div>
     </main>
 

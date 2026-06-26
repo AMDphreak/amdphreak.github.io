@@ -41,7 +41,7 @@ export const About = () => {
               early work was obsessive, improvised, and deeply intimate with the machine.
             </p>
             <p class="text-stone-600 dark:text-stone-400 leading-relaxed font-sans italic">
-              I am an &ldquo;unprofessional&rdquo;: I do not focus on breaking systems — I break
+              I am an &ldquo;unprofessional&rdquo;: I do not respect the traditions of the profession. I break
               expectations and question the existing order of things.
             </p>
             <p class="text-stone-600 dark:text-stone-400 leading-relaxed font-sans">

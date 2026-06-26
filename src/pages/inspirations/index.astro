@@ -2,6 +2,8 @@
 import { Footer } from "../../components/Footer";
 import { Inspirations } from "../../components/Inspirations";
 import NoiseOverlay from "../../components/NoiseOverlay.astro";
+import ThemeScript from "../../components/ThemeScript.astro";
+import ThemeToggleBar from "../../components/ThemeToggleBar.astro";
 import "../../styles/tailwind.css";
 ---
 
@@ -11,27 +13,14 @@ import "../../styles/tailwind.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inspirations - Ryan Johnson</title>
-    <script is:inline>
-      (function () {
-        const applyTheme = (theme) => {
-          if (theme === "dark") document.documentElement.classList.add("dark");
-          else document.documentElement.classList.remove("dark");
-          document.documentElement.style.colorScheme = theme;
-        };
-        const saved =
-          typeof localStorage !== "undefined" ? localStorage.getItem("theme") : null;
-        const theme =
-          saved ??
-          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        applyTheme(theme);
-      })();
-    </script>
+    <ThemeScript />
   </head>
   <body
     class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
   >
     <NoiseOverlay />
     <main class="w-full flex-1 mt-8 mb-12">
+      <ThemeToggleBar />
       <div
         class="mx-auto max-w-5xl px-6 md:px-10 py-12 structural-border border-t-0 md:p-12 space-y-12"
       >
