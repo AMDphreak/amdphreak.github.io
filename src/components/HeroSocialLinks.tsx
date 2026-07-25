@@ -20,8 +20,8 @@ const FlipShell = (props: {
     aria-label={props.label}
     class="social-flip group relative block h-14 w-14 shrink-0 [perspective:700px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
   >
-    <div class="social-flip-inner relative h-full w-full transition-transform duration-500 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)]">
-      <div class="absolute inset-0 flex items-center justify-center rounded-xl structural-border bg-background text-stone-600 dark:text-stone-300 [backface-visibility:hidden]">
+    <div class="social-flip-inner relative h-full w-full transition-transform duration-500 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] pointer-events-none">
+      <div class="absolute inset-0 flex items-center justify-center rounded-xl social-tile-border bg-background/80 dark:bg-background/70 text-stone-600 dark:text-stone-300 [backface-visibility:hidden]">
         {props.front}
       </div>
       <div

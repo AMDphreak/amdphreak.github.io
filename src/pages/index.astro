@@ -11,8 +11,8 @@ import "../styles/tailwind.css";
 const navBtnBase =
   "inline-flex items-center justify-center gap-1.5 h-12 px-5 font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const navBtnPrimary = `${navBtnBase} structural-border bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
-/** Frosted chip: readable on hero tapestry without overpowering the primary CTA */
-const navBtnSecondary = `${navBtnBase} border border-stone-300/75 dark:border-stone-600/55 bg-background/35 dark:bg-background/30 shadow-sm shadow-stone-900/5 dark:shadow-black/20 text-stone-900 dark:text-stone-100 hover:bg-background/45 dark:hover:bg-background/40 hover:border-stone-400/70 dark:hover:border-stone-500/65`;
+/** Ghost secondary: no fill; border blends with frost/tapestry via .hero-cta-ghost */
+const navBtnSecondary = `${navBtnBase} hero-cta-ghost`;
 
 const productsSection = hubSections.find((s) => s.id === "products")!;
 const codeSection = hubSections.find((s) => s.id === "code")!;
@@ -55,7 +55,7 @@ const heroTapestrySizes = "100vw";
 
     <!-- Full-bleed brand-first hero: tall viewport + vertically centered full-width tapestry -->
     <section
-      class="relative z-10 min-h-[100svh] w-full overflow-hidden"
+      class="relative z-10 min-h-[100svh] w-full overflow-x-hidden"
       aria-label="Introduction"
     >
       <div
@@ -109,7 +109,7 @@ const heroTapestrySizes = "100vw";
           <ThemeToggle />
         </header>
 
-        <div class="relative isolate flex flex-1 flex-col justify-center py-10 lg:py-16">
+        <div class="relative flex flex-1 flex-col justify-center py-10 lg:py-16">
           <!-- Frosted blur plane behind copy row + CTAs -->
           <div
             class="hero-content-frost absolute -inset-x-8 -inset-y-6 sm:-inset-x-10 sm:-inset-y-8 lg:-inset-x-16 lg:-inset-y-10"

@@ -122,6 +122,51 @@
   .structural-border {
     @apply border border-stone-200 dark:border-stone-800;
   }
+
+  /* Hero social flip tiles — stronger than structural-border so edges read on frost */
+  .social-tile-border {
+    @apply border border-stone-400/75 dark:border-stone-500/65;
+  }
+
+  /*
+   * Hero ghost CTAs: transparent fill; white hairline uses exclusion so the edge
+   * inverts softly against frosted tapestry (works in light + dark). Text stays
+   * unblended for readable contrast. Soft fallback outline if blend is muted.
+   */
+  .hero-cta-ghost {
+    @apply relative bg-transparent text-stone-900 dark:text-stone-100;
+    border: 1px solid rgb(120 113 108 / 0.35); /* stone-500-ish fallback */
+  }
+
+  .dark .hero-cta-ghost {
+    border-color: rgb(168 162 158 / 0.4);
+  }
+
+  .hero-cta-ghost::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgb(255 255 255 / 0.95);
+    pointer-events: none;
+    mix-blend-mode: exclusion;
+  }
+
+  .dark .hero-cta-ghost::before {
+    border-color: rgb(255 255 255 / 0.88);
+    mix-blend-mode: exclusion;
+  }
+
+  .hero-cta-ghost:hover {
+    background-color: rgb(255 255 255 / 0.12);
+  }
+
+  .dark .hero-cta-ghost:hover {
+    background-color: rgb(0 0 0 / 0.18);
+  }
+
+  .hero-cta-ghost:hover::before {
+    border-color: rgb(255 255 255 / 1);
+  }
   
   .blueprint-dot {
     @apply w-1.5 h-1.5 bg-stone-400 dark:bg-stone-600 rounded-full;
