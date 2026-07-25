@@ -1,6 +1,8 @@
 ---
 import { Footer } from "../components/Footer";
 import { Photography } from "../components/Photography";
+import { HeroSocialLinks } from "../components/HeroSocialLinks";
+import { ProductScreenshot } from "../components/ProductScreenshot";
 import NoiseOverlay from "../components/NoiseOverlay.astro";
 import ThemeScript from "../components/ThemeScript.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
@@ -8,10 +10,14 @@ import { hubSections } from "../lib/hub-destinations";
 import "../styles/tailwind.css";
 
 const navBtnBase =
-  "inline-flex items-center justify-center gap-1.5 h-8 px-4 structural-border font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "inline-flex items-center justify-center gap-1.5 h-12 px-5 structural-border font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const navBtnInternal = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900`;
 const navBtnPrimary = `${navBtnBase} bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
 const navBtnGhost = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900`;
+
+const productsSection = hubSections.find((s) => s.id === "products")!;
+const codeSection = hubSections.find((s) => s.id === "code")!;
+const showcaseDestinations = productsSection.destinations.filter((d) => d.screenshot);
 ---
 
 <html lang="en">
@@ -48,19 +54,25 @@ const navBtnGhost = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-s
 
       <!-- Brand-first first viewport -->
       <section class="min-h-[70vh] flex flex-col justify-center gap-10 pb-8 border-b border-stone-200 dark:border-stone-800">
-        <div class="space-y-6 max-w-3xl">
-          <h1 class="text-6xl md:text-8xl font-heading font-light tracking-tight text-foreground">
-            Ryan<br />Johnson
-          </h1>
-          <div class="flex items-center gap-3">
-            <div class="blueprint-dot"></div>
-            <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-500">
-              AMDphreak / Software Architect
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-16">
+          <div class="space-y-6 max-w-3xl flex-1 min-w-0">
+            <h1 class="text-6xl md:text-8xl font-heading font-light tracking-tight text-foreground">
+              Ryan<br />Johnson
+            </h1>
+            <div class="flex items-center gap-3">
+              <div class="blueprint-dot"></div>
+              <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-500">
+                AMDphreak / Software Architect
+              </p>
+            </div>
+            <p class="text-lg md:text-xl text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl font-sans">
+              Software and systems, built carefully — UX, DevX, ITIL, Architecture. More than a software developer: a visionary.
             </p>
           </div>
-          <p class="text-lg md:text-xl text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl font-sans">
-            Software and systems, built carefully — UX, DevX, ITIL, Architecture. More than a software developer: a visionary.
-          </p>
+
+          <div class="shrink-0 lg:pt-3 lg:self-center">
+            <HeroSocialLinks client:load />
+          </div>
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
@@ -95,27 +107,36 @@ const navBtnGhost = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-s
         </div>
       </section>
 
-      {
-        hubSections.map((section) => (
-          <section id={section.id} class="scroll-mt-24 space-y-8">
-            <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
-              <h2 class="text-3xl font-heading tracking-tighter">{section.title}</h2>
-              <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
-                {section.tagline}
-              </span>
-            </div>
+      <section id="products" class="scroll-mt-24 space-y-8">
+        <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
+          <h2 class="text-3xl font-heading tracking-tighter">{productsSection.title}</h2>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+            {productsSection.tagline}
+          </span>
+        </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200 dark:bg-stone-800 border border-stone-200 dark:border-stone-800">
-              {section.destinations.map((dest) => (
-                <div class="bg-background p-6 flex flex-col gap-4 min-h-[160px]">
-                  <div class="space-y-2 flex-1">
+        <div class="w-[90%] mx-auto flex flex-wrap justify-center gap-8 lg:gap-10">
+          {
+            showcaseDestinations.map((dest) => (
+              <article class="product-showcase-card group w-full max-w-[22rem] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.75rem)] xl:max-w-[24rem] xl:w-[calc(25%-1.9rem)] flex-none rounded-[2rem] bg-stone-100/80 dark:bg-stone-900/60 p-3 sm:p-3.5 pb-5 shadow-sm ring-1 ring-stone-200/80 dark:ring-stone-800/80">
+                <div class="relative">
+                  <div class="overflow-hidden rounded-[1.35rem] bg-stone-200 dark:bg-stone-950 aspect-[4/3]">
+                    <ProductScreenshot
+                      client:visible
+                      productId={dest.id}
+                      src={dest.screenshot!}
+                      alt={`Screenshot of ${dest.name}`}
+                    />
+                  </div>
+                  {/* Fade begins ~45% down the shot; content continues through the lower card */}
+                  <div class="relative -mt-[55%] flex min-h-[55%] flex-col justify-end gap-3 rounded-b-[1.35rem] px-5 pb-1 pt-16 bg-gradient-to-t from-background from-35% via-background/95 via-55% to-transparent">
                     <a
                       href={dest.href}
                       target={dest.external ? "_blank" : undefined}
                       rel={dest.external ? "noopener noreferrer" : undefined}
-                      class="group inline-flex items-baseline gap-2 no-underline"
+                      class="group/title inline-flex items-baseline gap-2 no-underline"
                     >
-                      <h3 class="text-xl font-heading font-medium tracking-tight text-foreground group-hover:underline decoration-stone-300 underline-offset-4">
+                      <h3 class="text-xl font-heading font-medium tracking-tight text-foreground group-hover/title:underline decoration-stone-300 underline-offset-4">
                         {dest.name}
                       </h3>
                       {dest.external && (
@@ -130,33 +151,94 @@ const navBtnGhost = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-s
                     <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
                       {dest.tagline}
                     </p>
-                  </div>
-                  <div class="flex flex-wrap gap-4">
-                    <a
-                      href={dest.href}
-                      target={dest.external ? "_blank" : undefined}
-                      rel={dest.external ? "noopener noreferrer" : undefined}
-                      class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-                    >
-                      {dest.external ? "Visit" : "Open"} →
-                    </a>
-                    {dest.secondaryHref && (
+                    <div class="flex flex-wrap gap-4 pt-1">
                       <a
-                        href={dest.secondaryHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                        href={dest.href}
+                        target={dest.external ? "_blank" : undefined}
+                        rel={dest.external ? "noopener noreferrer" : undefined}
+                        class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                       >
-                        {dest.secondaryLabel ?? "More"} ↗
+                        {dest.external ? "Visit" : "Open"} →
                       </a>
-                    )}
+                      {dest.secondaryHref && (
+                        <a
+                          href={dest.secondaryHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                        >
+                          {dest.secondaryLabel ?? "More"} ↗
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </section>
-        ))
-      }
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section id={codeSection.id} class="scroll-mt-24 space-y-8">
+        <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
+          <h2 class="text-3xl font-heading tracking-tighter">{codeSection.title}</h2>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+            {codeSection.tagline}
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200 dark:bg-stone-800 border border-stone-200 dark:border-stone-800">
+          {
+            codeSection.destinations.map((dest) => (
+              <div class="bg-background p-6 flex flex-col gap-4 min-h-[160px]">
+                <div class="space-y-2 flex-1">
+                  <a
+                    href={dest.href}
+                    target={dest.external ? "_blank" : undefined}
+                    rel={dest.external ? "noopener noreferrer" : undefined}
+                    class="group inline-flex items-baseline gap-2 no-underline"
+                  >
+                    <h3 class="text-xl font-heading font-medium tracking-tight text-foreground group-hover:underline decoration-stone-300 underline-offset-4">
+                      {dest.name}
+                    </h3>
+                    {dest.external && (
+                      <span
+                        class="font-mono text-[10px] text-stone-400 opacity-70"
+                        aria-hidden="true"
+                      >
+                        ↗
+                      </span>
+                    )}
+                  </a>
+                  <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                    {dest.tagline}
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                  <a
+                    href={dest.href}
+                    target={dest.external ? "_blank" : undefined}
+                    rel={dest.external ? "noopener noreferrer" : undefined}
+                    class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                  >
+                    {dest.external ? "Visit" : "Open"} →
+                  </a>
+                  {dest.secondaryHref && (
+                    <a
+                      href={dest.secondaryHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                    >
+                      {dest.secondaryLabel ?? "More"} ↗
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
 
       <Photography client:load collapsible={false} />
     </main>

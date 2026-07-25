@@ -8,8 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Home products showcase**: Live product sites (LinxPhotos, Dev-Centr, FoodTruckNerdz, bigr Picture) use prebaked Lanczos WebP tiers (`{id}-400.webp` / `{id}-800.webp`) with `srcset`/`sizes`; cards draw via WebGL2 **mipmapped** filtering (`LINEAR_MIPMAP_LINEAR` + light contrast-gated sharpen) with `<img srcset>` fallback. Hover zoom stays CSS `transform`. Capture/process via `scripts/capture-product-screenshots.mjs` and `scripts/process-product-screenshots.py`.
+- **Home hero socials**: Same profile set as the résumé (GitHub menu, Codeberg, GitLab, LinkedIn, X, Chess.com, CodersRank) in a compact right-side grid with larger icons and a horizontal flip to each platform’s brand color on hover.
 - **Noise overlay**: Large-scale Poisson grain layers (`poisson-noise-tile.png`, generated via `scripts/generate-noise-textures.py`) stacked under the existing fine static for softer, blotchy atmosphere.
-- **Home** at `/`: brand-first homepage linking products (Linx, Dev-Centr, FoodTruckNerdz, bigr Picture), GitHub/GitLab/Codeberg profiles and orgs (except memphis-cs-projects), and repository catalog; hero CTA group for Browse work, Résumé, Philosophy, UI/UX, Inspirations, and Blog; Photography section on the home page.
+- **Home** at `/`: brand-first homepage linking products (LinxPhotos, Dev-Centr, FoodTruckNerdz, bigr Picture), GitHub/GitLab/Codeberg profiles and orgs (except memphis-cs-projects), and repository catalog; hero CTA group for Browse work, Résumé, Philosophy, UI/UX, Inspirations, and Blog; Photography section on the home page.
 - **Philosophy** at `/philosophy`: origins and posture (moved off the résumé page).
 - **Blog gateway** at `/blog`: choose archived WordPress copies, continuing static posts on this site (`/blog/posts`), or the live WordPress blog.
 - **Continuing blog** content collection under `src/content/blog/` with index and post pages.
@@ -19,6 +21,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Home products showcase**: Linx product card display name renamed to **LinxPhotos** (matches GitHub org); site URL unchanged (`linx.photos`).
+- **Home products showcase**: bigr Picture card tiers regenerated from `public/photography/bigrpic-home.webp` (live capture skipped — site loading animation); capture/process scripts prefer that master for `bigrpic`.
+- **Résumé**: Fixed Experience / Selected Projects overlap by stacking both in the main column with explicit flex gap (replacing the split full-width Experience + nested grid layout).
+- **Résumé**: Experience leads the page (full-width after profile); Projects moved below as a compact highlights list with links to the homepage showcase and repository catalog.
+- **Résumé**: Removed UI/UX, Inspirations, and Blog nav links from the page header; those destinations remain on the homepage hero only.
+- **Résumé**: Experience section is always expanded with static headings (no accordion collapse); Projects and Skills were already static.
 - **Noise overlay**: Layer config now supports per-layer texture + tile size; session cache keyed `noise-overlay-v3`.
 - **Photography**: Body copy rewritten around real practice (events, performances, weddings, portraits, TFP, GSO and DSAM clients); removed generic photographer-speak (“honest frames”, “in the room”).
 - **Photography**: Replaced the camera-icon placeholder with a wide (16:9) WebP screenshot of bigrpic.com in an aspect-video structural-border preview.

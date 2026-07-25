@@ -49,7 +49,7 @@ export const githubProfiles: GitHubProfile[] = [
   },
   {
     slug: "LinxPhotos",
-    label: "Linx",
+    label: "LinxPhotos",
     url: "https://github.com/LinxPhotos",
   },
   {

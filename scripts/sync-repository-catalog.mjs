@@ -53,7 +53,7 @@ const GROUP_META = {
   },
   formatte: { title: "formatte", tagline: "Formatting tooling organization." },
   openshellorg: { title: "Open Shell Org", tagline: "Open Shell community." },
-  LinxPhotos: { title: "Linx", tagline: "Photo service and documentation." },
+  LinxPhotos: { title: "LinxPhotos", tagline: "Photo service and documentation." },
   "memphis-cs-projects": {
     title: "Memphis CS Projects",
     tagline: "University coursework and team projects.",

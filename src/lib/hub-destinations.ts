@@ -11,6 +11,8 @@ export type HubDestination = {
   external?: boolean;
   secondaryHref?: string;
   secondaryLabel?: string;
+  /** Homepage screenshot: path to 800w WebP (`{id}-800.webp`); 400w sibling used in srcset. */
+  screenshot?: string;
 };
 
 export type HubSection = {
@@ -28,12 +30,13 @@ export const hubSections: HubSection[] = [
     destinations: [
       {
         id: "linx",
-        name: "Linx",
+        name: "LinxPhotos",
         tagline: "Photo service and documentation.",
         href: "https://linx.photos",
         external: true,
         secondaryHref: "https://github.com/LinxPhotos",
         secondaryLabel: "GitHub",
+        screenshot: "/products/linx-800.webp",
       },
       {
         id: "dev-centr",
@@ -43,6 +46,7 @@ export const hubSections: HubSection[] = [
         external: true,
         secondaryHref: "https://docs.devcentr.org",
         secondaryLabel: "Docs",
+        screenshot: "/products/dev-centr-800.webp",
       },
       {
         id: "foodtrucknerdz",
@@ -52,6 +56,7 @@ export const hubSections: HubSection[] = [
         external: true,
         secondaryHref: "https://docs.foodtrucknerdz.com",
         secondaryLabel: "Docs",
+        screenshot: "/products/foodtrucknerdz-800.webp",
       },
       {
         id: "bigrpic",
@@ -59,6 +64,7 @@ export const hubSections: HubSection[] = [
         tagline: "Photography — urban landscape, events, geometry.",
         href: "https://www.bigrpic.com",
         external: true,
+        screenshot: "/products/bigrpic-800.webp",
       },
     ],
   },
@@ -69,21 +75,21 @@ export const hubSections: HubSection[] = [
     destinations: [
       {
         id: "github-personal",
-        name: "AMDphreak",
+        name: "GitHub/AMDphreak",
         tagline: "Personal repositories on GitHub.",
         href: "https://github.com/AMDphreak",
         external: true,
       },
       {
         id: "gitlab",
-        name: "GitLab",
+        name: "GitLab/AMDphreak",
         tagline: "Personal repositories on GitLab.",
         href: "https://gitlab.com/AMDphreak",
         external: true,
       },
       {
         id: "codeberg",
-        name: "Codeberg",
+        name: "Codeberg/AMDphreak",
         tagline: "Forge presence on Codeberg.",
         href: "https://codeberg.org/AMDphreak",
         external: true,
@@ -133,7 +139,7 @@ export const hubSections: HubSection[] = [
       {
         id: "org-linx",
         name: "LinxPhotos",
-        tagline: "Linx photo service on GitHub.",
+        tagline: "LinxPhotos photo service on GitHub.",
         href: "https://github.com/LinxPhotos",
         external: true,
       },
