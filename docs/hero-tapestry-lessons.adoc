@@ -58,8 +58,10 @@ Progression that actually taught something:
 . Soften the left wipe (too aggressive wiped identity / over-darkened the brand side).
 . Add a *localized mid overlay* for the name + tagline band.
 . *Real win:* a frosted `backdrop-blur` panel under the content cluster (CTAs + socials). Blur + translucent fill beats guessing gradient stops for busy crystal detail.
-
-Right side: a strong page-background fade helped social icons sit on clean ground *before* frost; after frost under the whole content block, fade strength can be tuned down — prefer blur under interactive chrome over ever-heavier global fades.
++
+**Chromium gotcha:** do *not* put `mask-image` on the same element as `backdrop-filter` — the blur often silently disappears. Mask the *wrapper*; blur the *child*.
++
+Also: rapid pushes cancelled GitHub Pages deploys — confirm Actions succeeded before debugging “missing” CSS on production.
 
 == Buttons and socials
 

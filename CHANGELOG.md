@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2026-07-25
 
+### Fixed
+
+- **Home hero frost**: Split mask onto a wrapper and `backdrop-filter` onto a child so Chromium actually blurs the tapestry; documented that same-element mask + blur silently fails. Softened frost fill slightly so the blur reads more clearly.
+- **GitHub Pages**: Rapid hero pushes were cancelling deploys — frost never reached production until a clean redeploy.
+
 ### Added
 
 - **Hero tapestry lessons doc**: `docs/hero-tapestry-lessons.adoc` — durable notes from the 2026-07-25 hero/CTA/social/GitHub-menu experiments (what to try first, what not to do); also summarized in `docs/design-suggestions.adoc` and `changelog-details/2026-07-25 - hero-tapestry-and-ui-experiments.md`.

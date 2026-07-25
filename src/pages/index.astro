@@ -110,11 +110,12 @@ const heroTapestrySizes = "100vw";
         </header>
 
         <div class="relative flex flex-1 flex-col justify-center py-10 lg:py-16">
-          <!-- Frosted blur plane behind copy row + CTAs -->
+          <!-- Frosted blur plane: mask on wrapper, blur on child (same-element mask kills backdrop-filter in Chromium) -->
           <div
-            class="hero-content-frost absolute -inset-x-8 -inset-y-6 sm:-inset-x-10 sm:-inset-y-8 lg:-inset-x-16 lg:-inset-y-10"
+            class="hero-content-frost-mask pointer-events-none absolute -inset-x-8 -inset-y-6 z-0 sm:-inset-x-10 sm:-inset-y-8 lg:-inset-x-16 lg:-inset-y-10"
             aria-hidden="true"
           >
+            <div class="hero-content-frost absolute inset-0"></div>
           </div>
 
           <div class="relative z-10 flex flex-col gap-10 pointer-events-auto">
