@@ -71,7 +71,7 @@ export const GitHubProfileMenu = (props: {
   };
 
   return (
-    <div class="relative shrink-0" ref={rootRef}>
+    <div class="relative z-30 shrink-0 pointer-events-auto" ref={rootRef}>
       <Button
         type="button"
         variant="outline"

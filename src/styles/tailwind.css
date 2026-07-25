@@ -167,6 +167,8 @@
   /* Frosted plane behind hero copy + socials + CTAs — soft mask, no hard edge */
   .hero-content-frost {
     @apply bg-background/40 dark:bg-background/35 backdrop-blur-lg;
+    z-index: 0;
+    pointer-events: none;
     border-radius: 2rem;
     -webkit-mask-image:
       linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),

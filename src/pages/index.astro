@@ -12,7 +12,7 @@ const navBtnBase =
   "inline-flex items-center justify-center gap-1.5 h-12 px-5 font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const navBtnPrimary = `${navBtnBase} structural-border bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
 /** Frosted chip: readable on hero tapestry without overpowering the primary CTA */
-const navBtnSecondary = `${navBtnBase} border border-stone-400/80 dark:border-stone-500/70 bg-background/50 dark:bg-background/50 backdrop-blur-sm shadow-sm shadow-stone-900/5 dark:shadow-black/25 text-stone-900 dark:text-stone-100 hover:bg-background/65 dark:hover:bg-background/65 hover:border-stone-500/90 dark:hover:border-stone-400/80`;
+const navBtnSecondary = `${navBtnBase} border border-stone-300/75 dark:border-stone-600/55 bg-background/35 dark:bg-background/30 shadow-sm shadow-stone-900/5 dark:shadow-black/20 text-stone-900 dark:text-stone-100 hover:bg-background/45 dark:hover:bg-background/40 hover:border-stone-400/70 dark:hover:border-stone-500/65`;
 
 const productsSection = hubSections.find((s) => s.id === "products")!;
 const codeSection = hubSections.find((s) => s.id === "code")!;
@@ -75,7 +75,7 @@ const heroTapestrySizes = "100vw";
         />
       </div>
       <!-- Light global scrims; localized readability comes from hero-content-frost -->
-      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
         <!-- Gentle R→L lift on the right — blur panel handles social column -->
         <div
           class="absolute inset-0 bg-gradient-to-l from-background/55 from-0% via-background/28 via-28% to-transparent to-62% dark:from-background/60 dark:via-background/32 dark:via-26% dark:to-transparent dark:to-58%"
@@ -109,15 +109,15 @@ const heroTapestrySizes = "100vw";
           <ThemeToggle />
         </header>
 
-        <div class="relative flex flex-1 flex-col justify-center py-10 lg:py-16">
+        <div class="relative isolate flex flex-1 flex-col justify-center py-10 lg:py-16">
           <!-- Frosted blur plane behind copy row + CTAs -->
           <div
-            class="hero-content-frost pointer-events-none absolute -inset-x-8 -inset-y-6 sm:-inset-x-10 sm:-inset-y-8 lg:-inset-x-16 lg:-inset-y-10"
+            class="hero-content-frost absolute -inset-x-8 -inset-y-6 sm:-inset-x-10 sm:-inset-y-8 lg:-inset-x-16 lg:-inset-y-10"
             aria-hidden="true"
           >
           </div>
 
-          <div class="relative z-10 flex flex-col gap-10">
+          <div class="relative z-10 flex flex-col gap-10 pointer-events-auto">
             <div
               class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16"
             >
@@ -142,7 +142,7 @@ const heroTapestrySizes = "100vw";
                 </p>
               </div>
 
-              <div class="shrink-0 lg:self-center lg:pt-3">
+              <div class="relative z-20 shrink-0 pointer-events-auto lg:self-center lg:pt-3">
                 <HeroSocialLinks client:load />
               </div>
             </div>
