@@ -9,7 +9,7 @@ export type GitHubProfile = {
 export const githubProfiles: GitHubProfile[] = [
   {
     slug: "AMDphreak",
-    label: "AMDphreak",
+    label: "GitHub/AMDphreak",
     tagline: "Personal",
     url: "https://github.com/AMDphreak",
   },

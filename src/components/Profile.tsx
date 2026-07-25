@@ -1,85 +1,41 @@
-import { Badge } from "~/components/ui/badge";
+import { For } from "solid-js";
 import { Button } from "~/components/ui/button";
 import { GitHubProfileMenu } from "~/components/GitHubProfileMenu";
+import { socialIconById } from "~/components/social-icons";
+import { socialLinks } from "~/lib/social-links";
+import { Badge } from "~/components/ui/badge";
 
-// Inline Bespoke SVGs (Stroke-based, structural)
-const IconLinkedin = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 20} height={p.size || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
-
-const IconGitlab = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 20} height={p.size || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
-    <path d="m22 13.29-3.33-10a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18l-2.26 6.67H8.32L6.06 3.27a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18l-3.33 10a.49.49 0 0 0 .01.33.48.48 0 0 0 .21.24l9.49 6.9a.38.38 0 0 0 .46 0l9.49-6.9a.48.48 0 0 0 .21-.24.49.49 0 0 0 .01-.33z" />
-  </svg>
-);
-
-const IconTwitter = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 20} height={p.size || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
-    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-  </svg>
-);
-
-const IconCode = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 20} height={p.size || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
-    <polyline points="16 18 22 12 16 6" />
-    <polyline points="8 6 2 12 8 18" />
-  </svg>
-);
-
-const IconChess = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 20} height={p.size || 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class} aria-hidden="true">
-    <title>Chess.com</title>
-    <path d="M12 3v3" />
-    <path d="M8 6h8" />
-    <path d="M9 6v2a3 3 0 0 0 6 0V6" />
-    <path d="M7 21h10" />
-    <path d="M8 21v-4a4 4 0 0 1 8 0v4" />
-  </svg>
-);
-
-const IconCodeberg = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 20} height={p.size || 20} viewBox="0 0 24 24" fill="currentColor" class={p.class} aria-hidden="true">
-    <title>Codeberg</title>
-    <path d="M11.999 0C7.24 0 3.804 2.841 2.667 6.67L10.12 22.328a1.043 1.043 0 0 0 1.758 0l7.454-15.658C18.195 2.841 14.759 0 11.999 0zm0 3.66c1.136 0 2.057.92 2.057 2.056 0 1.137-.92 2.057-2.057 2.057-1.136 0-2.056-.92-2.056-2.057 0-1.136.92-2.056 2.056-2.056z" />
-  </svg>
-);
-
-const IconMapPin = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 18} height={p.size || 18} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
+const IconMapPin = (p: { class?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
     <circle cx="12" cy="10" r="3" />
   </svg>
 );
 
-const IconGraduation = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 18} height={p.size || 18} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
+const IconGraduation = (p: { class?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
     <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
     <path d="M6 12v5c3 3 9 3 12 0v-5" />
   </svg>
 );
 
-const IconLightbulb = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 18} height={p.size || 18} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
+const IconLightbulb = (p: { class?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
     <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .5 2.2 1.5 3.1.8.9 1.3 1.6 1.5 2.5" />
     <path d="M9 18h6" />
     <path d="M10 22h4" />
   </svg>
 );
 
-const IconSettings = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 12} height={p.size || 12} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
+const IconSettings = (p: { class?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
     <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
     <circle cx="12" cy="12" r="3" />
   </svg>
 );
 
-const IconTrending = (p: any) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 12} height={p.size || 12} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
+const IconTrending = (p: { class?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
     <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
     <polyline points="16 7 22 7 22 13" />
   </svg>
@@ -103,25 +59,27 @@ export const Profile = () => {
 
         <div class="flex flex-wrap gap-4 items-center md:justify-end">
           <GitHubProfileMenu />
-          <SocialLink href="https://codeberg.org/AMDphreak" icon={<IconCodeberg />} label="Codeberg" />
-          <SocialLink href="https://gitlab.com/AMDphreak" icon={<IconGitlab />} label="GitLab" />
-          <SocialLink href="https://linkedin.com/in/AMDphreak" icon={<IconLinkedin />} label="LinkedIn" />
-          <SocialLink href="https://x.com/amdphreak" icon={<IconTwitter />} label="X" />
-          <SocialLink href="https://www.chess.com/member/amdphreak" icon={<IconChess />} label="Chess.com" />
-          <SocialLink href="https://profile.codersrank.io/user/amdphreak" icon={<IconCode />} label="CodersRank" />
+          <For each={socialLinks}>
+            {(item) => {
+              const Icon = socialIconById[item.id];
+              return (
+                <SocialLink href={item.href} icon={<Icon />} label={item.label} />
+              );
+            }}
+          </For>
         </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-stone-200 dark:border-stone-800">
-        <ProfileDetail 
-          icon={<IconMapPin class="text-stone-400" />} 
-          title="Location" 
-          value="Memphis, TN" 
+        <ProfileDetail
+          icon={<IconMapPin class="text-stone-400" />}
+          title="Location"
+          value="Memphis, TN"
         />
-        <ProfileDetail 
-          icon={<IconGraduation class="text-stone-400" />} 
-          title="Education" 
-          value="University of Memphis (B.S. CS)" 
+        <ProfileDetail
+          icon={<IconGraduation class="text-stone-400" />}
+          title="Education"
+          value="University of Memphis (B.S. CS)"
         />
         <div class="flex items-start gap-3">
           <div class="mt-1"><IconLightbulb class="text-stone-400" /></div>
