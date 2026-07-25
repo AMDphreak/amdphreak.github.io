@@ -2,7 +2,6 @@
 import { Footer } from "../components/Footer";
 import { Photography } from "../components/Photography";
 import { HeroSocialLinks } from "../components/HeroSocialLinks";
-import { ProductScreenshot } from "../components/ProductScreenshot";
 import NoiseOverlay from "../components/NoiseOverlay.astro";
 import ThemeScript from "../components/ThemeScript.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
@@ -18,6 +17,13 @@ const navBtnGhost = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-s
 const productsSection = hubSections.find((s) => s.id === "products")!;
 const codeSection = hubSections.find((s) => s.id === "code")!;
 const showcaseDestinations = productsSection.destinations.filter((d) => d.screenshot);
+
+const productScreenshotSizes =
+  "(max-width: 639px) min(22rem, 90vw), (max-width: 1023px) min(22rem, 45vw), (max-width: 1279px) min(22rem, 30vw), 24rem";
+
+function productScreenshotSrcset(id: string) {
+  return `/products/${id}-400.webp 400w, /products/${id}-800.webp 800w`;
+}
 ---
 
 <html lang="en">
@@ -121,11 +127,16 @@ const showcaseDestinations = productsSection.destinations.filter((d) => d.screen
               <article class="product-showcase-card group w-full max-w-[22rem] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.75rem)] xl:max-w-[24rem] xl:w-[calc(25%-1.9rem)] flex-none rounded-[2rem] bg-stone-100/80 dark:bg-stone-900/60 p-3 sm:p-3.5 pb-5 shadow-sm ring-1 ring-stone-200/80 dark:ring-stone-800/80">
                 <div class="relative">
                   <div class="overflow-hidden rounded-[1.35rem] bg-stone-200 dark:bg-stone-950 aspect-[4/3]">
-                    <ProductScreenshot
-                      client:visible
-                      productId={dest.id}
+                    <img
                       src={dest.screenshot!}
+                      srcset={productScreenshotSrcset(dest.id)}
+                      sizes={productScreenshotSizes}
                       alt={`Screenshot of ${dest.name}`}
+                      width={800}
+                      height={600}
+                      loading="lazy"
+                      decoding="async"
+                      class="h-full w-full object-cover object-top origin-top transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.03]"
                     />
                   </div>
                   {/* Fade begins ~45% down the shot; content continues through the lower card */}
