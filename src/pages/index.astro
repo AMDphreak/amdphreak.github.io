@@ -9,10 +9,10 @@ import { hubSections } from "../lib/hub-destinations";
 import "../styles/tailwind.css";
 
 const navBtnBase =
-  "inline-flex items-center justify-center gap-1.5 h-12 px-5 structural-border font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
-const navBtnInternal = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900`;
-const navBtnPrimary = `${navBtnBase} bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
-const navBtnGhost = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900`;
+  "inline-flex items-center justify-center gap-1.5 h-12 px-5 font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+const navBtnPrimary = `${navBtnBase} structural-border bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
+/** Frosted chip: readable on hero tapestry without overpowering the primary CTA */
+const navBtnSecondary = `${navBtnBase} border border-stone-400/80 dark:border-stone-500/70 bg-background/80 dark:bg-background/75 backdrop-blur-sm shadow-sm shadow-stone-900/5 dark:shadow-black/25 text-stone-900 dark:text-stone-100 hover:bg-background/92 dark:hover:bg-background/88 hover:border-stone-500/90 dark:hover:border-stone-400/80`;
 
 const productsSection = hubSections.find((s) => s.id === "products")!;
 const codeSection = hubSections.find((s) => s.id === "code")!;
@@ -144,27 +144,27 @@ const heroTapestrySizes = "100vw";
               Browse work
               <span class="font-mono text-[10px] opacity-60" aria-hidden="true">↓</span>
             </a>
-            <a href="/resume" class={navBtnGhost}>
+            <a href="/resume" class={navBtnSecondary}>
               Résumé
               <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
             </a>
-            <a href="/philosophy" class={navBtnGhost}>
+            <a href="/philosophy" class={navBtnSecondary}>
               Philosophy
               <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
             </a>
             <a
               href="/gui-demos"
-              class={navBtnInternal}
+              class={navBtnSecondary}
               aria-label="UI/UX — philosophy and interactive demos"
             >
               UI/UX
               <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
             </a>
-            <a href="/inspirations" class={navBtnInternal}>
+            <a href="/inspirations" class={navBtnSecondary}>
               Inspirations
               <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
             </a>
-            <a href="/blog" class={navBtnGhost}>
+            <a href="/blog" class={navBtnSecondary}>
               Blog
               <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
             </a>

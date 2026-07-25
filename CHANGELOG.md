@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Home hero CTAs**: Secondary buttons (Résumé, Philosophy, UI/UX, Inspirations, Blog) use a frosted chip — `bg-background/80`, `backdrop-blur-sm`, and stone-400/500 borders — so outlines stay legible on the tapestry; primary “Browse work” unchanged.
 - **Home products showcase**: Linx product card display name renamed to **LinxPhotos** (matches GitHub org); site URL unchanged (`linx.photos`).
 - **Home products showcase**: bigr Picture card tiers regenerated from `public/photography/bigrpic-home.webp` (live capture skipped — site loading animation); capture/process scripts prefer that master for `bigrpic`.
 - **Résumé**: Fixed Experience / Selected Projects overlap by stacking both in the main column with explicit flex gap (replacing the split full-width Experience + nested grid layout).
