@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Home hero tapestry edge**: Near-white photo background no longer shows a hard rect at the top-right — CSS `mask-image` intersect gradients feather top/right edges into `bg-background`, `mix-blend-mode: multiply` in dark mode only, and a supplemental top-right scrim (stronger R→L/top stops); assets unchanged.
 - **Home products showcase**: Removed WebGL2 mipmap rendering from product cards — mip filtering softened screenshot text; cards now use plain `<img srcset>` with Lanczos tiers only.
 
 ### Changed

@@ -142,6 +142,20 @@
   .hero-tapestry {
     transform-origin: center center;
     animation: hero-tapestry-in 1.15s ease-out both;
+    /* Dissolve near-white photo edges (esp. top-right) into page bg — no asset regen */
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, black 11%),
+      linear-gradient(to left, transparent 0%, black 14%);
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, black 11%),
+      linear-gradient(to left, transparent 0%, black 14%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  .dark .hero-tapestry {
+    /* Sink near-white JPEG fill into dark bg without muddying light mode */
+    mix-blend-mode: multiply;
   }
 
   @media (prefers-reduced-motion: reduce) {
