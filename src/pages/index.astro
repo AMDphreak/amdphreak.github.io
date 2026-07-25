@@ -53,27 +53,29 @@ const heroTapestrySizes = "100vw";
     >
     </div>
 
-    <!-- Full-bleed brand-first hero: full-width panorama (intrinsic height) + scrim overlay -->
+    <!-- Full-bleed brand-first hero: tall viewport + vertically centered full-width tapestry -->
     <section
-      class="relative z-10 grid w-full overflow-hidden"
+      class="relative z-10 min-h-[100svh] w-full overflow-hidden"
       aria-label="Introduction"
     >
-      <img
-        class="hero-tapestry col-start-1 row-start-1 block w-full max-w-full h-auto"
-        src="/hero/rainbow-crystal-tapestry-1920.webp"
-        srcset={heroTapestrySrcset}
-        sizes={heroTapestrySizes}
-        width={1920}
-        height={800}
-        alt="Rainbow crystal tapestry — three frames of prism light and orchids at a bright window"
-        fetchpriority="high"
-        decoding="async"
-      />
-      <!-- Readable text plane: scrims track the stacked hero cell (image + copy) -->
       <div
-        class="pointer-events-none relative col-start-1 row-start-1 min-h-full"
+        class="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2"
         aria-hidden="true"
       >
+        <img
+          class="hero-tapestry block w-full max-w-full h-auto"
+          src="/hero/rainbow-crystal-tapestry-1920.webp"
+          srcset={heroTapestrySrcset}
+          sizes={heroTapestrySizes}
+          width={1920}
+          height={800}
+          alt="Rainbow crystal tapestry — three frames of prism light and orchids at a bright window"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <!-- Readable text plane: theme-aware scrims over the full hero -->
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
           class="absolute inset-0 bg-gradient-to-l from-background/20 from-15% via-background/85 via-55% to-background to-85% dark:from-background/35 dark:from-20% dark:via-background/90 dark:via-50% dark:to-background dark:to-80%"
         >
@@ -85,7 +87,7 @@ const heroTapestrySizes = "100vw";
       </div>
 
       <div
-        class="relative z-10 col-start-1 row-start-1 mx-auto flex w-full max-w-7xl flex-col px-6 py-12 lg:py-16"
+        class="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-7xl flex-col px-6 py-12 lg:py-16"
       >
         <header
           class="flex flex-wrap items-center justify-between gap-6 border-b border-stone-200/80 pb-8 dark:border-stone-800/80"
