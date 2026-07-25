@@ -74,30 +74,25 @@ const heroTapestrySizes = "100vw";
           decoding="async"
         />
       </div>
-      <!-- Readable text plane: theme-aware scrims over the full hero -->
+      <!-- Light global scrims; localized readability comes from hero-content-frost -->
       <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-        <!-- R→L: solid page bg on the right for socials; center/left stay open for tapestry -->
+        <!-- Gentle R→L lift on the right — blur panel handles social column -->
         <div
-          class="absolute inset-0 bg-gradient-to-l from-background from-0% via-background/72 via-34% to-transparent to-68% dark:from-background dark:via-background/78 dark:via-32% dark:to-transparent dark:to-66%"
+          class="absolute inset-0 bg-gradient-to-l from-background/55 from-0% via-background/28 via-28% to-transparent to-62% dark:from-background/60 dark:via-background/32 dark:via-26% dark:to-transparent dark:to-58%"
         >
         </div>
-        <!-- Localized band behind copy column (name, tagline, CTAs) -->
+        <!-- Soft left band for name column -->
         <div
-          class="absolute inset-y-0 left-0 w-[min(100%,56rem)] bg-gradient-to-r from-background/82 via-background/58 to-transparent dark:from-background/88 dark:via-background/62"
-        >
-        </div>
-        <!-- Localized band behind social column — near-solid page bg on the right edge -->
-        <div
-          class="absolute inset-y-0 right-0 w-[min(100%,22rem)] bg-gradient-to-l from-background via-background/96 to-transparent dark:from-background dark:via-background/94"
+          class="absolute inset-y-0 left-0 w-[min(100%,52rem)] bg-gradient-to-r from-background/62 via-background/32 to-transparent dark:from-background/68 dark:via-background/36"
         >
         </div>
         <div
-          class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/65 dark:from-background dark:via-background/50 dark:to-background/72"
+          class="absolute inset-0 bg-gradient-to-t from-background via-background/35 to-background/55 dark:from-background dark:via-background/42 dark:to-background/65"
         >
         </div>
-        <!-- Top-right corner: supplements R→L scrim where photo bg meets page bg -->
+        <!-- Top-right corner: subtle blend where tapestry meets page bg -->
         <div
-          class="absolute inset-0 bg-gradient-to-bl from-background from-18% via-background/40 via-42% to-transparent dark:from-background dark:from-20% dark:via-background/50 dark:via-44%"
+          class="absolute inset-0 bg-gradient-to-bl from-background/85 from-16% via-background/25 via-38% to-transparent dark:from-background dark:from-18% dark:via-background/32 dark:via-40%"
         >
         </div>
       </div>
@@ -114,65 +109,74 @@ const heroTapestrySizes = "100vw";
           <ThemeToggle />
         </header>
 
-        <div class="flex flex-1 flex-col justify-center gap-10 py-10 lg:py-16">
+        <div class="relative flex flex-1 flex-col justify-center py-10 lg:py-16">
+          <!-- Frosted blur plane behind copy row + CTAs -->
           <div
-            class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16"
+            class="hero-content-frost pointer-events-none absolute -inset-x-8 -inset-y-6 sm:-inset-x-10 sm:-inset-y-8 lg:-inset-x-16 lg:-inset-y-10"
+            aria-hidden="true"
           >
-            <div class="max-w-3xl min-w-0 flex-1 space-y-6">
-              <h1
-                class="font-heading text-6xl font-light tracking-tight text-foreground md:text-8xl"
-              >
-                Ryan<br />Johnson
-              </h1>
-              <div class="flex items-center gap-3">
-                <div class="blueprint-dot"></div>
-                <p
-                  class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
-                >
-                  AMDphreak / Software Architect
-                </p>
-              </div>
-              <p
-                class="max-w-2xl font-sans text-lg leading-relaxed text-stone-700 dark:text-stone-300 md:text-xl"
-              >
-                Software and systems, built carefully — UX, DevX, ITIL, Architecture. More than a software developer: a visionary.
-              </p>
-            </div>
-
-            <div class="shrink-0 lg:self-center lg:pt-3">
-              <HeroSocialLinks client:load />
-            </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="#products" class={navBtnPrimary}>
-              Browse work
-              <span class="font-mono text-[10px] opacity-60" aria-hidden="true">↓</span>
-            </a>
-            <a href="/resume" class={navBtnSecondary}>
-              Résumé
-              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-            </a>
-            <a href="/philosophy" class={navBtnSecondary}>
-              Philosophy
-              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-            </a>
-            <a
-              href="/gui-demos"
-              class={navBtnSecondary}
-              aria-label="UI/UX — philosophy and interactive demos"
+          <div class="relative z-10 flex flex-col gap-10">
+            <div
+              class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16"
             >
-              UI/UX
-              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-            </a>
-            <a href="/inspirations" class={navBtnSecondary}>
-              Inspirations
-              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-            </a>
-            <a href="/blog" class={navBtnSecondary}>
-              Blog
-              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-            </a>
+              <div class="max-w-3xl min-w-0 flex-1 space-y-6">
+                <h1
+                  class="font-heading text-6xl font-light tracking-tight text-foreground md:text-8xl"
+                >
+                  Ryan<br />Johnson
+                </h1>
+                <div class="flex items-center gap-3">
+                  <div class="blueprint-dot"></div>
+                  <p
+                    class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
+                  >
+                    AMDphreak / Software Architect
+                  </p>
+                </div>
+                <p
+                  class="max-w-2xl font-sans text-lg leading-relaxed text-stone-700 dark:text-stone-300 md:text-xl"
+                >
+                  Software and systems, built carefully — UX, DevX, ITIL, Architecture. More than a software developer: a visionary.
+                </p>
+              </div>
+
+              <div class="shrink-0 lg:self-center lg:pt-3">
+                <HeroSocialLinks client:load />
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="#products" class={navBtnPrimary}>
+                Browse work
+                <span class="font-mono text-[10px] opacity-60" aria-hidden="true">↓</span>
+              </a>
+              <a href="/resume" class={navBtnSecondary}>
+                Résumé
+                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+              </a>
+              <a href="/philosophy" class={navBtnSecondary}>
+                Philosophy
+                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+              </a>
+              <a
+                href="/gui-demos"
+                class={navBtnSecondary}
+                aria-label="UI/UX — philosophy and interactive demos"
+              >
+                UI/UX
+                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+              </a>
+              <a href="/inspirations" class={navBtnSecondary}>
+                Inspirations
+                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+              </a>
+              <a href="/blog" class={navBtnSecondary}>
+                Blog
+                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
