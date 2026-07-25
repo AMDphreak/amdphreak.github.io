@@ -41,6 +41,7 @@ export const HeroSocialLinks = () => {
   return (
     <div
       class="relative z-20 flex flex-wrap items-center gap-3 sm:gap-3.5 w-fit max-w-[20rem] pointer-events-auto"
+      role="group"
       aria-label="Social profiles"
     >
       {/* Dropdown trigger: content-sized width; plain tiles stay square */}
