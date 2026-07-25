@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Home** at `/`: brand-first homepage linking products (Linx, Dev-Centr, FoodTruckNerdz, bigr Picture), GitHub/GitLab/Codeberg profiles and orgs (except memphis-cs-projects), and repository catalog; hero CTA group for Browse work, Resume, Philosophy, UI/UX, Inspirations, and Blog; Photography section on the home page.
-- **Philosophy** at `/philosophy`: origins and posture (moved off the resume page).
+- **Home** at `/`: brand-first homepage linking products (Linx, Dev-Centr, FoodTruckNerdz, bigr Picture), GitHub/GitLab/Codeberg profiles and orgs (except memphis-cs-projects), and repository catalog; hero CTA group for Browse work, Résumé, Philosophy, UI/UX, Inspirations, and Blog; Photography section on the home page.
+- **Philosophy** at `/philosophy`: origins and posture (moved off the résumé page).
 - **Blog gateway** at `/blog`: choose archived WordPress copies, continuing static posts on this site (`/blog/posts`), or the live WordPress blog.
 - **Continuing blog** content collection under `src/content/blog/` with index and post pages.
 - **WordPress archive** at `/wordpress-archive`: index of captured pages and posts; About at `/wordpress-archive/about`; posts at `/wordpress-archive/posts/[slug]`. Synced via `pnpm sync:wordpress` into `wordpress-archive/` (JSON5 + media).
@@ -21,8 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Photography**: Body copy rewritten around real practice (events, performances, weddings, portraits, TFP, GSO and DSAM clients); removed generic photographer-speak (“honest frames”, “in the room”).
 - **Photography**: Replaced the camera-icon placeholder with a wide (16:9) WebP screenshot of bigrpic.com in an aspect-video structural-border preview.
 - **Photography**: Instagram CTA keeps the monochrome structural button chrome; only the SVG icon uses the brand purple–red–orange gradient.
-- **Home**: Removed the "This site" destination tile section (Resume, Philosophy, Blog, UI/UX, Inspirations) as a duplicate of the hero CTAs.
-- **Resume** at `/resume` (formerly Technical Overview / `/about`): profile, projects, experience, and skills; Philosophy and Photography removed from this page. `/about` redirects to `/resume`.
+- **Home**: Removed the "This site" destination tile section (Résumé, Philosophy, Blog, UI/UX, Inspirations) as a duplicate of the hero CTAs.
+- **Résumé** at `/resume` (formerly Technical Overview / `/about`): profile, projects, experience, and skills; Philosophy and Photography removed from this page. `/about` redirects to `/resume`.
 - **WordPress About archive** path: `/about/wordpress-archive` redirects to `/wordpress-archive/about`.
 - **UI/UX hub**: Philosophy overview, philosophy articles index (`/gui-demos/philosophy`), and full-width demo tile grid.
 - Projects section label: **Software Portfolio** (was Structural Portfolio); grid ends with a link card to the full catalog.
