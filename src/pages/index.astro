@@ -74,31 +74,25 @@ const heroTapestrySizes = "100vw";
           decoding="async"
         />
       </div>
-      <!--
-        Light edge/corner scrims only. Keep the mid content band relatively clear so
-        hero-content-frost can blur tapestry detail (opaque mid scrims wash blur out).
-      -->
-      <div
-        class="hero-edge-scrims pointer-events-none absolute inset-0 z-0"
-        aria-hidden="true"
-      >
+      <!-- Light global scrims; localized readability comes from hero-content-frost -->
+      <div class="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
         <!-- Gentle R→L lift on the right — blur panel handles social column -->
         <div
-          class="absolute inset-0 bg-gradient-to-l from-background/40 from-0% via-background/14 via-22% to-transparent to-55% dark:from-background/48 dark:via-background/18 dark:via-22% dark:to-transparent dark:to-52%"
+          class="absolute inset-0 bg-gradient-to-l from-background/55 from-0% via-background/28 via-28% to-transparent to-62% dark:from-background/60 dark:via-background/32 dark:via-26% dark:to-transparent dark:to-58%"
         >
         </div>
-        <!-- Soft left edge only — leave mid band for frost + tapestry -->
+        <!-- Soft left band for name column -->
         <div
-          class="absolute inset-y-0 left-0 w-[min(100%,28rem)] bg-gradient-to-r from-background/38 via-background/14 to-transparent dark:from-background/45 dark:via-background/16"
+          class="absolute inset-y-0 left-0 w-[min(100%,52rem)] bg-gradient-to-r from-background/62 via-background/32 to-transparent dark:from-background/68 dark:via-background/36"
         >
         </div>
         <div
-          class="absolute inset-0 bg-gradient-to-t from-background/70 via-background/18 to-background/30 dark:from-background/78 dark:via-background/22 dark:to-background/38"
+          class="absolute inset-0 bg-gradient-to-t from-background via-background/35 to-background/55 dark:from-background dark:via-background/42 dark:to-background/65"
         >
         </div>
         <!-- Top-right corner: subtle blend where tapestry meets page bg -->
         <div
-          class="absolute inset-0 bg-gradient-to-bl from-background/75 from-12% via-background/16 via-32% to-transparent dark:from-background/88 dark:from-14% dark:via-background/22 dark:via-34%"
+          class="absolute inset-0 bg-gradient-to-bl from-background/85 from-16% via-background/25 via-38% to-transparent dark:from-background dark:from-18% dark:via-background/32 dark:via-40%"
         >
         </div>
       </div>
@@ -115,19 +109,12 @@ const heroTapestrySizes = "100vw";
           <ThemeToggle />
         </header>
 
-        <div class="relative flex flex-1 flex-col justify-center py-10 lg:py-16">
-          <!--
-            Frosted blur under copy/CTAs/socials.
-            Soft L/R (+ T/B) dissolve via nested single-axis masks (no mask-composite).
-            Blur stays on the innermost child — same-element mask kills backdrop-filter in Chromium.
-          -->
+        <div class="relative isolate flex flex-1 flex-col justify-center py-10 lg:py-16">
+          <!-- Frosted blur plane behind copy row + CTAs (restored from 7da684c / 863f2ad) -->
           <div
-            class="hero-content-frost-mask-x pointer-events-none absolute -inset-x-8 -inset-y-6 z-0 sm:-inset-x-10 sm:-inset-y-8 lg:-inset-x-16 lg:-inset-y-10"
+            class="hero-content-frost absolute -inset-x-8 -inset-y-6 sm:-inset-x-10 sm:-inset-y-8 lg:-inset-x-16 lg:-inset-y-10"
             aria-hidden="true"
           >
-            <div class="hero-content-frost-mask-y absolute inset-0">
-              <div class="hero-content-frost absolute inset-0"></div>
-            </div>
           </div>
 
           <div class="relative z-10 flex flex-col gap-10 pointer-events-auto">
