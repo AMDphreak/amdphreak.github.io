@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Home hero frost**: Split mask onto a wrapper and `backdrop-filter` onto a child so Chromium actually blurs the tapestry; documented that same-element mask + blur silently fails. Softened frost fill slightly so the blur reads more clearly.
-- **GitHub Pages**: Rapid hero pushes were cancelling deploys — frost never reached production until a clean redeploy.
+- **GitHub Pages**: `cancel-in-progress: false` left a multi-hour queued run blocking the `pages` concurrency group, so frost never reached production. Switched to `cancel-in-progress: true` and redeployed.
 
 ### Added
 
