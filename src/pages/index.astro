@@ -24,6 +24,11 @@ const productScreenshotSizes =
 function productScreenshotSrcset(id: string) {
   return `/products/${id}-400.webp 400w, /products/${id}-800.webp 800w`;
 }
+
+/** Full-bleed hero tapestry tiers (Lanczos): 1280 / 1920 / 2560 */
+const heroTapestrySrcset =
+  "/hero/rainbow-crystal-tapestry-1280.webp 1280w, /hero/rainbow-crystal-tapestry-1920.webp 1920w, /hero/rainbow-crystal-tapestry-2560.webp 2560w";
+const heroTapestrySizes = "100vw";
 ---
 
 <html lang="en">
@@ -48,71 +53,111 @@ function productScreenshotSrcset(id: string) {
     >
     </div>
 
-    <main class="relative z-10 container mx-auto px-6 py-12 max-w-7xl space-y-20 lg:space-y-28">
-      <header
-        class="flex flex-wrap justify-between items-center gap-6 border-b border-stone-200 dark:border-stone-800 pb-8"
+    <!-- Full-bleed brand-first hero: edge-to-edge tapestry + scrim (not an inset card) -->
+    <section
+      class="relative z-10 min-h-[100svh] w-full overflow-hidden"
+      aria-label="Introduction"
+    >
+      <img
+        class="hero-tapestry absolute inset-0 h-full w-full object-cover object-center"
+        src="/hero/rainbow-crystal-tapestry-1920.webp"
+        srcset={heroTapestrySrcset}
+        sizes={heroTapestrySizes}
+        width={1920}
+        height={800}
+        alt="Rainbow crystal tapestry — three frames of prism light and orchids at a bright window"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <!-- Readable text plane: theme-aware scrims only (no badges/overlays on the photo) -->
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-r from-background from-15% via-background/85 via-45% to-background/20 dark:from-background dark:from-20% dark:via-background/90 dark:via-50% dark:to-background/35"
+        aria-hidden="true"
       >
-        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500">
-          Home / 2026
-        </p>
-        <ThemeToggle />
-      </header>
+      </div>
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/55 dark:from-background dark:via-background/50 dark:to-background/65"
+        aria-hidden="true"
+      >
+      </div>
 
-      <!-- Brand-first first viewport -->
-      <section class="min-h-[70vh] flex flex-col justify-center gap-10 pb-8 border-b border-stone-200 dark:border-stone-800">
-        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-16">
-          <div class="space-y-6 max-w-3xl flex-1 min-w-0">
-            <h1 class="text-6xl md:text-8xl font-heading font-light tracking-tight text-foreground">
-              Ryan<br />Johnson
-            </h1>
-            <div class="flex items-center gap-3">
-              <div class="blueprint-dot"></div>
-              <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-500">
-                AMDphreak / Software Architect
+      <div
+        class="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col px-6 py-12"
+      >
+        <header
+          class="flex flex-wrap items-center justify-between gap-6 border-b border-stone-200/80 pb-8 dark:border-stone-800/80"
+        >
+          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500">
+            Home / 2026
+          </p>
+          <ThemeToggle />
+        </header>
+
+        <div class="flex flex-1 flex-col justify-center gap-10 py-10 lg:py-16">
+          <div
+            class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16"
+          >
+            <div class="max-w-3xl min-w-0 flex-1 space-y-6">
+              <h1
+                class="font-heading text-6xl font-light tracking-tight text-foreground md:text-8xl"
+              >
+                Ryan<br />Johnson
+              </h1>
+              <div class="flex items-center gap-3">
+                <div class="blueprint-dot"></div>
+                <p
+                  class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
+                >
+                  AMDphreak / Software Architect
+                </p>
+              </div>
+              <p
+                class="max-w-2xl font-sans text-lg leading-relaxed text-stone-700 dark:text-stone-300 md:text-xl"
+              >
+                Software and systems, built carefully — UX, DevX, ITIL, Architecture. More than a software developer: a visionary.
               </p>
             </div>
-            <p class="text-lg md:text-xl text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl font-sans">
-              Software and systems, built carefully — UX, DevX, ITIL, Architecture. More than a software developer: a visionary.
-            </p>
+
+            <div class="shrink-0 lg:self-center lg:pt-3">
+              <HeroSocialLinks client:load />
+            </div>
           </div>
 
-          <div class="shrink-0 lg:pt-3 lg:self-center">
-            <HeroSocialLinks client:load />
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="#products" class={navBtnPrimary}>
+              Browse work
+              <span class="font-mono text-[10px] opacity-60" aria-hidden="true">↓</span>
+            </a>
+            <a href="/resume" class={navBtnGhost}>
+              Résumé
+              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+            </a>
+            <a href="/philosophy" class={navBtnGhost}>
+              Philosophy
+              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+            </a>
+            <a
+              href="/gui-demos"
+              class={navBtnInternal}
+              aria-label="UI/UX — philosophy and interactive demos"
+            >
+              UI/UX
+              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+            </a>
+            <a href="/inspirations" class={navBtnInternal}>
+              Inspirations
+              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+            </a>
+            <a href="/blog" class={navBtnGhost}>
+              Blog
+              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="flex flex-wrap items-center gap-3">
-          <a href="#products" class={navBtnPrimary}>
-            Browse work
-            <span class="font-mono text-[10px] opacity-60" aria-hidden="true">↓</span>
-          </a>
-          <a href="/resume" class={navBtnGhost}>
-            Résumé
-            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-          </a>
-          <a href="/philosophy" class={navBtnGhost}>
-            Philosophy
-            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-          </a>
-          <a
-            href="/gui-demos"
-            class={navBtnInternal}
-            aria-label="UI/UX — philosophy and interactive demos"
-          >
-            UI/UX
-            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-          </a>
-          <a href="/inspirations" class={navBtnInternal}>
-            Inspirations
-            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-          </a>
-          <a href="/blog" class={navBtnGhost}>
-            Blog
-            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </section>
-
+    <main class="relative z-10 container mx-auto max-w-7xl space-y-20 px-6 py-12 lg:space-y-28">
       <section id="products" class="scroll-mt-24 space-y-8">
         <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
           <h2 class="text-3xl font-heading tracking-tighter">{productsSection.title}</h2>

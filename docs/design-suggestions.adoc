@@ -33,7 +33,7 @@ Photography is buried below the fold; the hero is mostly type on stone.
 Pull a full-bleed or dominant urban/event photograph into the first viewport so the page could not belong to any other architect's portfolio.
 The frame and noise can remain — let a strong image do the identity work upfront.
 
-*Status:* _Open._ Hero remains typography-first; Photography section sits below products and code orgs.
+*Status:* _Done._ Full-bleed rainbow-crystal tapestry (stitched `frame_001|002|003`) with Lanczos WebP tiers (`1280` / `1920` / `2560`), `srcset`/`sizes="100vw"`, and theme-aware scrims; Photography section remains below.
 
 === 2. Cut the hero CTA row to two or three actions
 
@@ -124,12 +124,13 @@ Verified against the current codebase:
 * [x] *Duplicate destination tiles* — “This site” tile section removed from home (hero CTAs only).
 * [x] *Photography copy and preview* — Body copy grounded in real practice; wide WebP screenshot replaces camera-icon placeholder.
 * [x] *Noise atmosphere* — Poisson grain layers under fine static noise.
+* [x] *Hero visual* — Full-bleed rainbow-crystal tapestry with resting Lanczos tiers and `srcset`/`sizes`.
 
 == Open checklist (next pass)
 
 Use when scheduling design work:
 
-* [ ] Hero photography or dominant first-viewport visual
+* [x] Hero photography or dominant first-viewport visual
 * [ ] Reduce hero CTAs to 2–3 primary actions
 * [ ] Resolve Ryan Johnson vs AMDphreak brand hierarchy
 * [ ] Compact code/org section (non-equal tiles)
