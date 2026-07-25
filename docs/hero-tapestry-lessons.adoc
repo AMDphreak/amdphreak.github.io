@@ -59,7 +59,12 @@ Progression that actually taught something:
 . Add a *localized mid overlay* for the name + tagline band.
 . *Real win:* a frosted `backdrop-blur` panel under the content cluster (CTAs + socials). Blur + translucent fill beats guessing gradient stops for busy crystal detail.
 +
-**Chromium gotcha:** do *not* put `mask-image` on the same element as `backdrop-filter` — the blur often silently disappears. Mask the *wrapper*; blur the *child*.
+**Chromium gotchas (frost):**
++
+* Do *not* put `mask-image` on the *same* element as `backdrop-filter` — blur often silently disappears. Keep blur on an inner child.
+* Soft dissolve of the *blur* requires a real mask — a translucent radial fill or `border-radius` only softens the tint; the blurred region stays a hard box.
+* Dual-gradient + `mask-composite: intersect` is fragile in Chromium (can leave a sharp rectangle). Prefer *nested* wrappers, each with a *single-axis* mask (L/R, then T/B).
+* Opaque mid-field scrims between tapestry and frost wash the blur out (blur of flat gradients ≈ no blur). Keep edge/corner scrims; leave the content band relatively clear.
 +
 Also: rapid pushes cancelled GitHub Pages deploys — confirm Actions succeeded before debugging “missing” CSS on production.
 

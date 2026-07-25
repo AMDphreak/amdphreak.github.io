@@ -210,26 +210,83 @@
   }
 
   /*
-   * Frost under hero copy: mask MUST be on a parent, blur on a child.
-   * Chromium often drops backdrop-filter when mask-image is on the same element.
+   * Soft frost edges: one mask axis per wrapper (no mask-composite).
+   * Dual gradients + mask-composite:intersect often fail to feather in Chromium,
+   * leaving a hard rectangle even when backdrop-filter works on the child.
+   * Never put mask-image on the same element as backdrop-filter.
    */
-  .hero-content-frost-mask {
-    border-radius: 2rem;
-    -webkit-mask-image:
-      linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
-      linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
-    mask-image:
-      linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
-      linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
+  .hero-content-frost-mask-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  .hero-content-frost-mask-y {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 14%,
+      black 86%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 14%,
+      black 86%,
+      transparent 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
   }
 
   .hero-content-frost {
-    @apply bg-background/30 dark:bg-background/28;
-    border-radius: 2rem;
-    -webkit-backdrop-filter: blur(20px) saturate(1.15);
-    backdrop-filter: blur(20px) saturate(1.15);
+    /* No border-radius — rounded card edges read as a hard box; masks feather instead */
+    background-color: hsl(var(--background) / 0.3);
+    -webkit-backdrop-filter: blur(28px) saturate(1.2);
+    backdrop-filter: blur(28px) saturate(1.2);
+  }
+
+  .dark .hero-content-frost {
+    background-color: hsl(var(--background) / 0.34);
+  }
+
+  /*
+   * Edge scrims stay out of the mid content band so frost has crystal detail to blur.
+   * Mask here is safe — these layers do not use backdrop-filter.
+   */
+  .hero-edge-scrims {
+    -webkit-mask-image: radial-gradient(
+      ellipse 78% 68% at 40% 52%,
+      transparent 0%,
+      transparent 42%,
+      black 78%,
+      black 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 78% 68% at 40% 52%,
+      transparent 0%,
+      transparent 42%,
+      black 78%,
+      black 100%
+    );
   }
 
   /* Stacked tile layers — offsets + rotation break up visible repeat */

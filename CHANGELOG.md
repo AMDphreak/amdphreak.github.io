@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- **Home hero frost**: Split mask onto a wrapper and `backdrop-filter` onto a child so Chromium actually blurs the tapestry; documented that same-element mask + blur silently fails. Softened frost fill slightly so the blur reads more clearly.
+- **Home hero frost soft edges**: Blur was visible but read as a hard rectangle — dual-gradient `mask-composite: intersect` failed to feather, and `border-radius` alone cannot soft-dissolve `backdrop-filter`. Nested single-axis mask wrappers (L/R then T/B) with blur on the innermost child; dropped radius on the frost fill; kept mid-band scrim punch so tapestry detail stays under the frost.
+- **Home hero frost**: Split mask onto a wrapper and `backdrop-filter` onto a child so Chromium actually blurs the tapestry; documented that same-element mask + blur silently fails.
 - **GitHub Pages**: `cancel-in-progress: false` left a multi-hour queued run blocking the `pages` concurrency group, so frost never reached production. Switched to `cancel-in-progress: true` and redeployed.
 
 ### Added
