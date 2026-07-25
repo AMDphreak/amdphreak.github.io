@@ -208,9 +208,9 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
       {
         "name": "prohelp",
         "description": "Progressive & Professional Help CLI Interceptor and Library",
-        "url": "https://github.com/dev-centr/prohelp",
+        "url": "https://github.com/openshellorg/prohelp",
         "provider": "github",
-        "owner": "dev-centr",
+        "owner": "openshellorg",
         "isPrivate": false,
         "isFork": false
       },
