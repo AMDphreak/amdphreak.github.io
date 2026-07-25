@@ -145,10 +145,10 @@
     /* Dissolve near-white photo edges (esp. top-right) into page bg — no asset regen */
     -webkit-mask-image:
       linear-gradient(to bottom, transparent 0%, black 11%),
-      linear-gradient(to left, transparent 0%, black 14%);
+      linear-gradient(to left, transparent 0%, black 8%);
     mask-image:
       linear-gradient(to bottom, transparent 0%, black 11%),
-      linear-gradient(to left, transparent 0%, black 14%);
+      linear-gradient(to left, transparent 0%, black 8%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
   }

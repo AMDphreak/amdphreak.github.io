@@ -76,8 +76,14 @@ const heroTapestrySizes = "100vw";
       </div>
       <!-- Readable text plane: theme-aware scrims over the full hero -->
       <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <!-- Softer R→L: lighter left stop so tapestry edge stays visible -->
         <div
-          class="absolute inset-0 bg-gradient-to-l from-background/50 from-22% via-background/85 via-55% to-background to-85% dark:from-background/55 dark:from-24% dark:via-background/90 dark:via-50% dark:to-background dark:to-80%"
+          class="absolute inset-0 bg-gradient-to-l from-background/30 from-10% via-background/48 via-62% to-background/25 to-97% dark:from-background/38 dark:from-12% dark:via-background/52 dark:via-58% dark:to-background/30 dark:to-96%"
+        >
+        </div>
+        <!-- Localized band behind copy column (name, tagline, CTAs) -->
+        <div
+          class="absolute inset-y-0 left-0 w-[min(100%,56rem)] bg-gradient-to-r from-background/82 via-background/58 to-transparent dark:from-background/88 dark:via-background/62"
         >
         </div>
         <div
