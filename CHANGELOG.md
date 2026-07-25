@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Hero tapestry lessons doc**: `docs/hero-tapestry-lessons.adoc` — durable notes from the 2026-07-25 hero/CTA/social/GitHub-menu experiments (what to try first, what not to do); also summarized in `docs/design-suggestions.adoc` and `changelog-details/2026-07-25 - hero-tapestry-and-ui-experiments.md`.
 - **Home hero tapestry**: Stitched rainbow-crystal triptych (`frame_001|002|003`) as a full-bleed first-viewport visual with Lanczos WebP tiers (`public/hero/rainbow-crystal-tapestry-{1280,1920,2560}.webp`), `srcset`/`sizes="100vw"`, theme-aware scrims, and a transform-only entrance.
 - **Design suggestions doc**: `docs/design-suggestions.adoc` — durable AI design critique (architectural-dossier look), progress notes, and open checklist; linked from README.
 - **Home products showcase**: Live product sites (LinxPhotos, Dev-Centr, FoodTruckNerdz, bigr Picture) use prebaked Lanczos WebP tiers (`{id}-400.webp` / `{id}-800.webp`) with `srcset`/`sizes`; hover zoom stays CSS `transform`. Capture/process via `scripts/capture-product-screenshots.mjs` and `scripts/process-product-screenshots.py`.
@@ -28,7 +29,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Home hero CTAs**: Secondary buttons (Résumé, Philosophy, UI/UX, Inspirations, Blog) use a frosted chip — `bg-background/80`, `backdrop-blur-sm`, and stone-400/500 borders — so outlines stay legible on the tapestry; primary “Browse work” unchanged.
+- **Home hero tagline**: Positioning line now includes RelyOps and DevOps alongside UX, DevX, ITIL, and Architecture.
+- **Home hero CTAs**: Secondary buttons (Résumé, Philosophy, UI/UX, Inspirations, Blog) use a frosted chip — `bg-background/80`, `backdrop-blur-sm`, and stone-400/500 borders — so outlines stay legible on the tapestry; primary “Browse work” unchanged. Later frost-under-content work also allows transparent secondary fills with light borders again.
+- **Home hero GitHub menu**: Portal to `document.body`, native trigger, always-mounted profile list (not empty data), flip faces / frost `pointer-events-none`, default cursor on trigger and pointer on links.
 - **Home products showcase**: Linx product card display name renamed to **LinxPhotos** (matches GitHub org); site URL unchanged (`linx.photos`).
 - **Home products showcase**: bigr Picture card tiers regenerated from `public/photography/bigrpic-home.webp` (live capture skipped — site loading animation); capture/process scripts prefer that master for `bigrpic`.
 - **Résumé**: Fixed Experience / Selected Projects overlap by stacking both in the main column with explicit flex gap (replacing the split full-width Experience + nested grid layout).
@@ -65,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Detailed records of major architectural changes can be found in the [changelog-details/](changelog-details/) directory.
 
+- [2026-07-25 - Hero tapestry and UI experiments](changelog-details/2026-07-25%20-%20hero-tapestry-and-ui-experiments.md)
 - [2026-05-28 - UI/UX Demos and Code Example Lenses](changelog-details/2026-05-28%20-%20ui-ux-demos-and-code-lenses.md)
 - [2026-05-27 - Add Multimux Showcase](changelog-details/2026-05-27%20-%20add-multimux-showcase.md)
 - [2026-04-11 - Stone and Graphite Structural Reveal](changelog-details/2026-04-11%20-%20stone-and-graphite-reveal.md)

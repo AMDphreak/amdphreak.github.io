@@ -74,7 +74,7 @@ Introduce a single accent color drawn from photography or Memphis context — us
 
 Replace vague positioning (“visionary”, generic “built carefully”) with a concrete line: what you build, for whom, and what distinguishes the work (e.g. UX + DevX + ITIL + architecture for specific domains).
 
-*Status:* _Open._ Hero tagline still includes “a visionary.”
+*Status:* _Partial._ Tagline now lists UX, DevX, ITIL, Architecture, RelyOps, DevOps; still ends with “a visionary.”
 
 === 8. Two or three intentional motions
 
@@ -113,6 +113,18 @@ Lower priority but worth tracking for consistency.
 | _Open._
 |===
 
+== Hero tapestry & UI experiments (2026-07-25)
+
+Session lessons (layout, frost, CTAs, GitHub menu traps) live in link:hero-tapestry-lessons.adoc[hero-tapestry-lessons.adoc].
+Short version for this tracker:
+
+* Stitched tapestry + resting Lanczos tiers (`1280` / `1920` / `2560`); see https://github.com/dev-centr/resting-lanczos[resting-lanczos].
+* Avoid fixed-height + `object-cover`; keep tall hero + full-width vertically centered image.
+* Frosted blur under the content cluster beat ever-heavier left/mid fades for CTA/social readability.
+* Outline CTAs melted into the photo until frost (chips, then transparent borders again); social borders need stronger contrast on frost.
+* GitHub menu “empty” was a mount gate (`open && menuPos`) + fragile ref — portal + native trigger fixed it; frost/flip layers need `pointer-events-none`.
+* Tag `known-good-2026-07-25` before the next redesign spike.
+
 == Progress since critique (2026-07-25)
 
 Verified against the current codebase:
@@ -136,7 +148,7 @@ Use when scheduling design work:
 * [ ] Compact code/org section (non-equal tiles)
 * [ ] Reduce catalog codes and section chrome
 * [ ] Single non-stone accent color
-* [ ] Concrete hero one-liner
+* [ ] Concrete hero one-liner (partial: RelyOps/DevOps added; still “visionary”)
 * [ ] Coordinated motion: entrance + scroll reveal + destination hover
 * [ ] Deduplicate bigr Picture (products vs Photography)
 * [ ] Simplify footer stack block
@@ -147,5 +159,6 @@ Use when scheduling design work:
 
 * link:../CHANGELOG.md[Changelog] — shipped changes
 * link:../changelog-details/[Changelog details] — dated architecture notes
+* link:hero-tapestry-lessons.adoc[Hero tapestry lessons] — 2026-07-25 experiments and anti-patterns
 * Homepage: `src/pages/index.astro`
 * Hub data: `src/lib/hub-destinations.ts`

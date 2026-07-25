@@ -1,0 +1,130 @@
+= Hero tapestry & UI experiments — lessons
+Ryan Johnson <https://ryanjohnson.dev>
+:revdate: 2026-07-25
+:toc:
+:toclevels: 2
+
+== Purpose
+
+Durable notes from the 2026-07-25 homepage hero pass: stitching, Lanczos delivery, readability overlays, CTA/social chrome, and the GitHub profile menu bugs.
+Write for *future-you* — what to try first next time, and what not to do.
+
+Related design critique (open checklist, brand hierarchy): link:design-suggestions.adoc[design-suggestions.adoc].
+
+== Asset pipeline
+
+=== Stitch and tiers
+
+* Source frames: `frame_001|002|003` stitched into one wide rainbow-crystal panorama.
+* Deliver resting tiers only: `public/hero/rainbow-crystal-tapestry-{1280,1920,2560}.webp`.
+* Serve with `srcset` + `sizes="100vw"` — browser picks a tier; do not invent extra mid sizes unless measured need appears.
+* Strategy and tooling live in *resting-lanczos*:
+** https://github.com/dev-centr/resting-lanczos[github.com/dev-centr/resting-lanczos]
+** https://devcentr.org/resting-lanczos[devcentr.org/resting-lanczos]
+
+=== Tag before redesign
+
+Before large visual experiments, tag a known-good point, e.g. `known-good-2026-07-25`, so you can reset without archaeology.
+
+== Hero layout — mistakes and wins
+
+=== Do not: fixed height + `object-cover`
+
+A fixed-height hero with `object-cover` *crops the wide panorama horizontally*.
+The stitch was meant to be read as a full-width tapestry; cover turns it into a random center crop.
+
+=== Do not: shrink the hero zone to “avoid upscaling”
+
+When the goal is “don’t upscale the image past its native tier,” the wrong fix is a short hero that clips vertical space.
+*Correct pattern:* keep a tall hero zone; place a full-width image; vertically center it.
+Let letterboxing / edge treatments absorb leftover height — do not compress the composition into a short band.
+
+=== Near-white photo edges
+
+The tapestry’s near-white margins fought the page chrome (hard rect, especially top-right).
+
+What worked together:
+
+* CSS `mask-image` feather (top / right) into `bg-background`
+* Dark mode: `mix-blend-mode: multiply` on the photo layer
+* Supplemental top-right corner scrim (stronger R→L / top stops)
+
+Assets stayed unchanged; the fix was CSS only.
+
+=== Left faint vs mid-band readability
+
+Progression that actually taught something:
+
+. Soften the left wipe (too aggressive wiped identity / over-darkened the brand side).
+. Add a *localized mid overlay* for the name + tagline band.
+. *Real win:* a frosted `backdrop-blur` panel under the content cluster (CTAs + socials). Blur + translucent fill beats guessing gradient stops for busy crystal detail.
+
+Right side: a strong page-background fade helped social icons sit on clean ground *before* frost; after frost under the whole content block, fade strength can be tuned down — prefer blur under interactive chrome over ever-heavier global fades.
+
+== Buttons and socials
+
+=== Outline CTAs on tapestry
+
+Bare outline / ghost buttons melted into the crystal noise.
+
+Experiment path:
+
+. Frosted chips (`bg-background/80` + light blur + stone borders) — readable.
+. Opacity / fill experiments on secondary CTAs.
+. Once a shared frost layer sits under the CTA row, *transparent fills + light borders work again* (less chip chrome needed).
+
+=== Exclusion-blend hairlines
+
+Tried `mix-blend-mode: exclusion` (or similar) on secondary CTA border hairlines so edges stayed visible across light and dark crystal.
+Useful experiment; keep only if it still reads clearly with the frost panel — don’t stack exclusion *and* heavy frosted fills unless contrast fails without both.
+
+=== Social tile borders
+
+On frost, social tile borders need *stronger* contrast than on flat stone.
+Weak borders disappear into the blur; bump border color / opacity on the frosted surface.
+
+=== Frost layer must be `pointer-events-none`
+
+A decorative frost / scrim / blur layer that covers the CTA/social hit area will silently eat clicks.
+Always `pointer-events-none` on atmosphere layers; keep pointer events on the real controls.
+
+== GitHub profile dropdown
+
+Symptoms looked like “empty data.” Reality was mount / hit-testing bugs.
+
+Root causes and fixes:
+
+* *Gate:* rendering on `open() && menuPos()` meant the menu never painted when `menuPos` stayed unset — a fragile Kobalte `Button` ref failed to feed position, so `<Show>` mounted nothing while `open` toggled true.
+* *Fix pattern:* prefer a native button trigger; portal the menu to `document.body` when open; always render the static `githubProfiles` list (data was never empty).
+* Overflow on ancestors *clipped* the menu; portal avoids that.
+* Flip / brand-color face layers were eating pointer hits → set those decorative faces to `pointer-events-none`.
+* Cursor: `cursor-default` on the trigger; `cursor-pointer` on the actual links (don’t imply the whole control is a link chrome).
+
+== What to try first next time
+
+. Confirm stitch + resting-lanczos tiers (`1280` / `1920` / `2560`) and `sizes="100vw"` before any CSS hero surgery.
+. Tall hero + full-width, vertically centered image — never `object-cover` on this panorama.
+. Readability: start with a frosted blur under the *content cluster*, then soften global fades/scrims.
+. Atmosphere layers: `pointer-events-none` from day one.
+. Dropdowns over clipped heroes: portal to `body`; don’t gate mount on a ref-derived position.
+. Tag `known-good-*` before the next redesign spike.
+
+== What not to do
+
+* Don’t use fixed-height + `object-cover` on wide stitched heroes.
+* Don’t shrink the hero height when you only meant “don’t upscale the bitmap.”
+* Don’t assume missing menu content = empty data — check mount gates and refs first.
+* Don’t put interactive hit targets under opaque/frost layers without `pointer-events-none` on the frost.
+* Don’t rely on outline-only CTAs directly on busy photo detail without frost or a solid scrim.
+
+== Code anchors
+
+* Homepage hero: `src/pages/index.astro`
+* GitHub profile menu: `src/components/GitHubProfileMenu.tsx`
+* Changelog: link:../CHANGELOG.md[CHANGELOG.md]
+* Detail note: link:../changelog-details/2026-07-25%20-%20hero-tapestry-and-ui-experiments.md[changelog-details/2026-07-25 - hero-tapestry-and-ui-experiments.md]
+
+== See also
+
+* link:design-suggestions.adoc[Design suggestions] — critique status and open checklist
+* https://github.com/dev-centr/resting-lanczos[resting-lanczos] · https://devcentr.org/resting-lanczos[docs site]
