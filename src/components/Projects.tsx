@@ -258,7 +258,86 @@ const ProjectCard = (props: { project: ProjectProps }) => {
   );
 };
 
-export const Projects = () => {
+const CompactProjectRow = (props: { project: ProjectProps }) => (
+  <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 py-3 border-b border-stone-200 dark:border-stone-800 last:border-b-0">
+    <div class="min-w-0">
+      <div class="flex items-center gap-2 flex-wrap">
+        <h3 class="text-sm font-heading font-medium tracking-tight text-foreground">
+          {props.project.name}
+        </h3>
+        <Show when={props.project.type === "private"}>
+          <Badge
+            variant="outline"
+            class="inline-flex items-center gap-1 rounded-none border-stone-200 dark:border-stone-800 px-1.5 py-0.5 text-[9px] font-mono font-normal uppercase tracking-widest text-stone-500"
+          >
+            <IconLock /> Private
+          </Badge>
+        </Show>
+        <Show when={props.project.type === "hiatus"}>
+          <Badge
+            variant="outline"
+            class="inline-flex items-center gap-1 rounded-none border-stone-200 dark:border-stone-800 px-1.5 py-0.5 text-[9px] font-mono font-normal uppercase tracking-widest text-stone-500 italic"
+          >
+            <IconPause /> Hiatus
+          </Badge>
+        </Show>
+      </div>
+      <Show when={props.project.technologies}>
+        <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400 mt-0.5">
+          {props.project.technologies.join(" / ")}
+        </p>
+      </Show>
+    </div>
+    <Show when={props.project.url || props.project.repoUrl}>
+      <a
+        href={props.project.url || props.project.repoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors shrink-0"
+      >
+        View →
+      </a>
+    </Show>
+  </div>
+);
+
+const highlightProjects: ProjectProps[] = [
+  ...privateProjects,
+  publicProjects[0],
+  publicProjects[1],
+  workInProgress[0],
+];
+
+export const Projects = (props: { variant?: "full" | "compact" }) => {
+  if (props.variant === "compact") {
+    return (
+      <section id="projects-section" class="scroll-mt-20 space-y-8">
+        <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
+          <h2 class="text-3xl font-heading tracking-tighter">Selected Projects</h2>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+            Highlights
+          </span>
+        </div>
+
+        <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+          Product showcase and screenshots live on the{" "}
+          <a href="/" class="underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100 transition-colors">
+            homepage
+          </a>
+          ; the full repo list is in the{" "}
+          <a href="/repositories" class="underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100 transition-colors">
+            repository catalog
+          </a>
+          .
+        </p>
+
+        <div class="structural-border border-stone-200 dark:border-stone-800 px-4">
+          <For each={highlightProjects}>{(p) => <CompactProjectRow project={p} />}</For>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section class="space-y-8">
       <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">

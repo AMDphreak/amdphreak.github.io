@@ -8,11 +8,6 @@ import NoiseOverlay from "../../components/NoiseOverlay.astro";
 import ThemeScript from "../../components/ThemeScript.astro";
 import ThemeToggle from "../../components/ThemeToggle.astro";
 import "../../styles/tailwind.css";
-
-const navBtnBase =
-  "inline-flex items-center justify-center gap-1.5 h-8 px-4 structural-border font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
-const navBtnInternal = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900`;
-const navBtnExternal = `${navBtnBase} bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
 ---
 
 <html lang="en">
@@ -39,30 +34,6 @@ const navBtnExternal = `${navBtnBase} bg-stone-900 text-stone-50 dark:bg-stone-1
             >/ Home</a
           >
           <h1 class="text-xs font-mono uppercase tracking-[0.2em] text-stone-500">Résumé / 2026</h1>
-          <div class="flex flex-wrap items-center gap-3">
-            <a
-              href="/gui-demos"
-              class={navBtnInternal}
-              aria-label="UI/UX — philosophy and interactive demos"
-            >
-              UI/UX
-              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-            </a>
-            <a
-              href="/inspirations"
-              class={navBtnInternal}
-            >
-              Inspirations
-              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-            </a>
-            <a
-              href="/blog"
-              class={navBtnExternal}
-            >
-              Blog
-              <span class="font-mono text-[10px] opacity-60" aria-hidden="true">→</span>
-            </a>
-          </div>
         </div>
         <div class="flex items-center gap-4">
           <ThemeToggle />
@@ -73,18 +44,13 @@ const navBtnExternal = `${navBtnBase} bg-stone-900 text-stone-50 dark:bg-stone-1
         <Profile client:load />
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-        <!-- Main Column -->
-        <div class="lg:col-span-8 space-y-16 lg:space-y-24">
-          <section id="projects-section" class="scroll-mt-20">
-            <Projects client:load />
-          </section>
-
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div class="lg:col-span-8 flex flex-col gap-16 lg:gap-20 min-w-0">
           <Experience client:load />
+          <Projects client:load variant="compact" />
         </div>
 
-        <!-- Sidebar / Structural Support -->
-        <aside class="lg:col-span-4 space-y-16 lg:border-l lg:border-stone-200 dark:lg:border-stone-800 lg:pl-12">
+        <aside class="lg:col-span-4 lg:self-start lg:border-l lg:border-stone-200 dark:lg:border-stone-800 lg:pl-12 min-w-0">
           <section id="skills-section" class="scroll-mt-20">
             <Skills client:load />
           </section>

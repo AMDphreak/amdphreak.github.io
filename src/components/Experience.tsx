@@ -1,5 +1,4 @@
 import { For } from "solid-js";
-import { CollapsibleSection } from "~/components/CollapsibleSection";
 
 const IconCalendar = (p: { class?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
@@ -55,12 +54,14 @@ export const Experience = () => {
   ];
 
   return (
-    <CollapsibleSection
-      id="experience-section"
-      title="Experience"
-      tagline="Professional Log / Ref. 8023"
-      defaultOpen={false}
-    >
+    <section id="experience-section" class="scroll-mt-20 space-y-8">
+      <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
+        <h2 class="text-3xl font-heading tracking-tighter">Experience</h2>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+          Professional Log / Ref. 8023
+        </span>
+      </div>
+
       <div class="space-y-0">
         <For each={experiences}>
           {(exp) => (
@@ -98,6 +99,6 @@ export const Experience = () => {
           )}
         </For>
       </div>
-    </CollapsibleSection>
+    </section>
   );
 };
