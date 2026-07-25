@@ -142,13 +142,13 @@
   .hero-tapestry {
     transform-origin: center center;
     animation: hero-tapestry-in 1.15s ease-out both;
-    /* Dissolve near-white photo edges (esp. top-right) into page bg — no asset regen */
+    /* Dissolve photo edges into page bg — stronger right fade for social column field */
     -webkit-mask-image:
       linear-gradient(to bottom, transparent 0%, black 11%),
-      linear-gradient(to left, transparent 0%, black 8%);
+      linear-gradient(to left, transparent 0%, black 22%);
     mask-image:
       linear-gradient(to bottom, transparent 0%, black 11%),
-      linear-gradient(to left, transparent 0%, black 8%);
+      linear-gradient(to left, transparent 0%, black 22%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
   }

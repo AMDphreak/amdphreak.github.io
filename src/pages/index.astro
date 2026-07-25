@@ -76,9 +76,9 @@ const heroTapestrySizes = "100vw";
       </div>
       <!-- Readable text plane: theme-aware scrims over the full hero -->
       <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-        <!-- Softer R→L: lighter left stop so tapestry edge stays visible -->
+        <!-- R→L: solid page bg on the right for socials; center/left stay open for tapestry -->
         <div
-          class="absolute inset-0 bg-gradient-to-l from-background/30 from-10% via-background/48 via-62% to-background/25 to-97% dark:from-background/38 dark:from-12% dark:via-background/52 dark:via-58% dark:to-background/30 dark:to-96%"
+          class="absolute inset-0 bg-gradient-to-l from-background from-0% via-background/72 via-34% to-transparent to-68% dark:from-background dark:via-background/78 dark:via-32% dark:to-transparent dark:to-66%"
         >
         </div>
         <!-- Localized band behind copy column (name, tagline, CTAs) -->
@@ -86,13 +86,18 @@ const heroTapestrySizes = "100vw";
           class="absolute inset-y-0 left-0 w-[min(100%,56rem)] bg-gradient-to-r from-background/82 via-background/58 to-transparent dark:from-background/88 dark:via-background/62"
         >
         </div>
+        <!-- Localized band behind social column — near-solid page bg on the right edge -->
+        <div
+          class="absolute inset-y-0 right-0 w-[min(100%,22rem)] bg-gradient-to-l from-background via-background/96 to-transparent dark:from-background dark:via-background/94"
+        >
+        </div>
         <div
           class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/65 dark:from-background dark:via-background/50 dark:to-background/72"
         >
         </div>
-        <!-- Top-right corner: supplements light R→L scrim where photo bg meets page bg -->
+        <!-- Top-right corner: supplements R→L scrim where photo bg meets page bg -->
         <div
-          class="absolute inset-0 bg-gradient-to-bl from-background/55 from-28% via-transparent to-transparent dark:from-background/65 dark:from-32%"
+          class="absolute inset-0 bg-gradient-to-bl from-background from-18% via-background/40 via-42% to-transparent dark:from-background dark:from-20% dark:via-background/50 dark:via-44%"
         >
         </div>
       </div>
