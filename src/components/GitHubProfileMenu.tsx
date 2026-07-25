@@ -88,20 +88,20 @@ export const GitHubProfileMenu = (props: {
     if (flip()) {
       return [
         "group relative inline-flex h-14 w-auto min-w-14 items-center justify-center rounded-xl border-0 bg-transparent p-0",
-        "text-stone-600 dark:text-stone-300 cursor-pointer",
+        "text-stone-600 dark:text-stone-300 cursor-default",
         "[perspective:700px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       ].join(" ");
     }
     if (hero()) {
       return [
         "inline-flex h-14 w-auto min-w-14 items-center justify-center gap-1.5 rounded-xl social-tile-border px-3.5",
-        "bg-background text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer",
+        "bg-background text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 cursor-default",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2",
       ].join(" ");
     }
     return [
       "inline-flex h-10 w-auto items-center justify-center gap-1.5 rounded-none structural-border px-2.5",
-      "bg-background text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer",
+      "bg-background text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 cursor-default",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2",
     ].join(" ");
   };
@@ -179,7 +179,7 @@ export const GitHubProfileMenu = (props: {
                       href={profile.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="block px-3 py-2 transition-colors hover:bg-stone-50 dark:hover:bg-stone-900"
+                      class="block cursor-pointer px-3 py-2 transition-colors hover:bg-stone-50 dark:hover:bg-stone-900"
                       onClick={() => close()}
                     >
                       <span class="block font-heading text-sm text-stone-900 dark:text-stone-100">
@@ -196,7 +196,7 @@ export const GitHubProfileMenu = (props: {
             <a
               role="menuitem"
               href="/repositories"
-              class="block border-t border-stone-200 px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-stone-500 transition-colors hover:bg-stone-50 hover:text-stone-900 dark:border-stone-800 dark:hover:bg-stone-900 dark:hover:text-stone-100"
+              class="block cursor-pointer border-t border-stone-200 px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-stone-500 transition-colors hover:bg-stone-50 hover:text-stone-900 dark:border-stone-800 dark:hover:bg-stone-900 dark:hover:text-stone-100"
               onClick={() => close()}
             >
               Full repository catalog →
