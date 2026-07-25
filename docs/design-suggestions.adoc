@@ -1,0 +1,150 @@
+= Design Suggestions — amdphreak.github.io
+Ryan Johnson <https://ryanjohnson.dev>
+:revdate: 2026-07-25
+:toc:
+:toclevels: 2
+
+== Purpose
+
+Durable record of an AI design critique of the site's *architectural-dossier / broadsheet* direction.
+Use this when revisiting layout, typography, motion, or brand hierarchy — not as a spec to implement wholesale.
+
+== Context
+
+The current site design was produced with an older AI model.
+The overall look reads as an architectural dossier or broadsheet: stone neutrals, hairline rules, mono catalog labels, and near-zero border radius throughout.
+That system is coherent, but it risks feeling interchangeable with other “serious architect portfolio” templates unless broken deliberately.
+
+== What's working
+
+Keep these as anchors when iterating:
+
+* *Intentional type stack* — Space Grotesk (headings), Instrument Sans (body), Space Mono (labels) reads deliberate, not default.
+* *Noise + frame atmosphere* — Poisson grain and the inset border frame add texture without purple-gradient or glow clichés.
+* *Résumé main + sidebar* — Experience-first main column with a compact sidebar is clearer than an equal-card scroll layout.
+
+== Highest-impact suggestions
+
+Prioritize these when the next design pass has limited time.
+
+=== 1. Give the first viewport a real visual
+
+Photography is buried below the fold; the hero is mostly type on stone.
+Pull a full-bleed or dominant urban/event photograph into the first viewport so the page could not belong to any other architect's portfolio.
+The frame and noise can remain — let a strong image do the identity work upfront.
+
+*Status:* _Open._ Hero remains typography-first; Photography section sits below products and code orgs.
+
+=== 2. Cut the hero CTA row to two or three actions
+
+`Browse work`, `Résumé`, `Philosophy`, `UI/UX`, `Inspirations`, and `Blog` in one row reads as a toolbar, not a focused entry point.
+Keep primary paths (e.g. Browse work + Résumé) in the hero; move secondary destinations to footer, nav, or contextual links.
+
+*Status:* _Open._ Six hero CTAs remain on the homepage.
+
+=== 3. Decide the brand hierarchy: Ryan Johnson vs AMDphreak
+
+`Ryan Johnson` at display scale vs `AMDphreak` as a tiny mono subtitle creates tension.
+If AMDphreak is the public identity, elevate the handle — size, weight, or placement — so it is not visually subordinate to a legal name that may matter less on this hub.
+
+*Status:* _Open._ Hierarchy unchanged: large name, small mono handle.
+
+=== 4. Stop equal tiles — feature products; compact the org catalog
+
+Product destinations deserve featured treatment with screenshots and hierarchy.
+Forge/org destinations can collapse to a compact link list or catalog row instead of the same tile weight as flagship products.
+
+*Status:* _Partially addressed._ Products use screenshot cards with `srcset` tiers and hover zoom; code orgs still use an equal grid of text tiles.
+
+=== 5. Break the broadsheet monopoly
+
+Vary visual weight across sections: not every block needs the same hairline rule + mono tagline + catalog code.
+Reduce faux catalog chrome (`STR-XXXX`, `Ref. 8023`, `Capture_Engine / v2.0`) where it does not aid navigation.
+Use fewer structural borders per section so emphasis means something.
+
+*Status:* _Open._ Mono labels and reference codes remain in Experience, Projects, Photography, and section headers.
+
+=== 6. One accent that is not stone
+
+Introduce a single accent color drawn from photography or Memphis context — used sparingly on links, one CTA, or a key rule — so the palette is not exclusively stone/graphite.
+
+*Status:* _Open._ Stone system dominates; Instagram icon gradient on the Photography CTA is the main exception.
+
+=== 7. Sharpen the one-liner
+
+Replace vague positioning (“visionary”, generic “built carefully”) with a concrete line: what you build, for whom, and what distinguishes the work (e.g. UX + DevX + ITIL + architecture for specific domains).
+
+*Status:* _Open._ Hero tagline still includes “a visionary.”
+
+=== 8. Two or three intentional motions
+
+Pick a small motion vocabulary and commit:
+
+* Name or hero entrance on load
+* Scroll reveal for one major section
+* Stronger destination hover (beyond subtle underline)
+
+Avoid sprinkling micro-animations everywhere; make a few moments memorable.
+
+*Status:* _Partial._ Product and photography images use CSS scale on hover; no coordinated entrance or scroll reveal system.
+
+== Secondary cleanup
+
+Lower priority but worth tracking for consistency.
+
+[cols="1,2,1", options="header"]
+|===
+| Area | Issue | Status
+
+| Photography vs products
+| bigr Picture appears in both the products showcase and the Photography section — duplication of the same asset/story.
+| _Open._
+
+| Footer
+| `[FRAMEWORK]` / stack dump competes with the person; consider moving tech credits to a minimal line or `/about`-style meta page.
+| _Open._
+
+| Legacy styles
+| Teal accents, glass buttons, and Inter from pre-stone iterations (`main.css`, `glass-button.css`) vs the current stone system — unify or delete dead paths.
+| _Open._
+
+| Page chrome
+| Inconsistent framing: home uses the full inset border; Philosophy, résumé header, and other pages mix box and rule treatments.
+| _Open._
+|===
+
+== Progress since critique (2026-07-25)
+
+Verified against the current codebase:
+
+* [x] *Product showcase* — Live product cards use prebaked WebP tiers with `srcset`/`sizes`; hover zoom via CSS `transform` (WebGL mip path removed).
+* [x] *Hero socials* — Profile links (GitHub menu, Codeberg, GitLab, LinkedIn, X, Chess.com, CodersRank) in a compact grid with brand-color flip on hover.
+* [x] *Résumé experience-first* — Experience leads after profile; projects compact below; accordion collapse removed for Experience.
+* [x] *Résumé nav trim* — UI/UX, Inspirations, and Blog removed from résumé header (hero-only destinations).
+* [x] *Duplicate destination tiles* — “This site” tile section removed from home (hero CTAs only).
+* [x] *Photography copy and preview* — Body copy grounded in real practice; wide WebP screenshot replaces camera-icon placeholder.
+* [x] *Noise atmosphere* — Poisson grain layers under fine static noise.
+
+== Open checklist (next pass)
+
+Use when scheduling design work:
+
+* [ ] Hero photography or dominant first-viewport visual
+* [ ] Reduce hero CTAs to 2–3 primary actions
+* [ ] Resolve Ryan Johnson vs AMDphreak brand hierarchy
+* [ ] Compact code/org section (non-equal tiles)
+* [ ] Reduce catalog codes and section chrome
+* [ ] Single non-stone accent color
+* [ ] Concrete hero one-liner
+* [ ] Coordinated motion: entrance + scroll reveal + destination hover
+* [ ] Deduplicate bigr Picture (products vs Photography)
+* [ ] Simplify footer stack block
+* [ ] Remove or migrate legacy teal/glass/Inter styles
+* [ ] Unify page chrome across home, philosophy, résumé
+
+== References
+
+* link:../CHANGELOG.md[Changelog] — shipped changes
+* link:../changelog-details/[Changelog details] — dated architecture notes
+* Homepage: `src/pages/index.astro`
+* Hub data: `src/lib/hub-destinations.ts`

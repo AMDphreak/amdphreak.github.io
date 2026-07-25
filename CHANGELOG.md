@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Design suggestions doc**: `docs/design-suggestions.adoc` — durable AI design critique (architectural-dossier look), progress notes, and open checklist; linked from README.
 - **Home products showcase**: Live product sites (LinxPhotos, Dev-Centr, FoodTruckNerdz, bigr Picture) use prebaked Lanczos WebP tiers (`{id}-400.webp` / `{id}-800.webp`) with `srcset`/`sizes`; hover zoom stays CSS `transform`. Capture/process via `scripts/capture-product-screenshots.mjs` and `scripts/process-product-screenshots.py`.
 - **Home hero socials**: Same profile set as the résumé (GitHub menu, Codeberg, GitLab, LinkedIn, X, Chess.com, CodersRank) in a compact right-side grid with larger icons and a horizontal flip to each platform’s brand color on hover.
 - **Noise overlay**: Large-scale Poisson grain layers (`poisson-noise-tile.png`, generated via `scripts/generate-noise-textures.py`) stacked under the existing fine static for softer, blotchy atmosphere.
