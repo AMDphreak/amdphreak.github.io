@@ -55,11 +55,11 @@ const heroTapestrySizes = "100vw";
 
     <!-- Full-bleed brand-first hero: edge-to-edge tapestry + scrim (not an inset card) -->
     <section
-      class="relative z-10 min-h-[100svh] w-full overflow-hidden"
+      class="relative z-10 w-full overflow-hidden"
       aria-label="Introduction"
     >
       <img
-        class="hero-tapestry absolute inset-0 h-full w-full object-cover object-center"
+        class="hero-tapestry absolute inset-x-0 top-0 h-[min(50vh,800px)] w-full object-cover object-[center_40%]"
         src="/hero/rainbow-crystal-tapestry-1920.webp"
         srcset={heroTapestrySrcset}
         sizes={heroTapestrySizes}
@@ -82,7 +82,7 @@ const heroTapestrySizes = "100vw";
       </div>
 
       <div
-        class="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col px-6 py-12"
+        class="relative z-10 mx-auto flex max-w-7xl flex-col px-6 py-12 lg:py-16"
       >
         <header
           class="flex flex-wrap items-center justify-between gap-6 border-b border-stone-200/80 pb-8 dark:border-stone-800/80"
