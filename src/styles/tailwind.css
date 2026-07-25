@@ -187,13 +187,13 @@
   .hero-tapestry {
     transform-origin: center center;
     animation: hero-tapestry-in 1.15s ease-out both;
-    /* Dissolve photo edges into page bg — stronger right fade for social column field */
+    /* Feather all four edges into page bg (off-white photo margins / rem crop) */
     -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 11%),
-      linear-gradient(to left, transparent 0%, black 22%);
+      linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
     mask-image:
-      linear-gradient(to bottom, transparent 0%, black 11%),
-      linear-gradient(to left, transparent 0%, black 22%);
+      linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
   }

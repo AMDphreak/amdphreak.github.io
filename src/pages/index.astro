@@ -25,10 +25,12 @@ function productScreenshotSrcset(id: string) {
   return `/products/${id}-400.webp 400w, /products/${id}-800.webp 800w`;
 }
 
-/** Full-bleed hero tapestry tiers (Lanczos): 1280 / 1920 / 2560 */
+/** Hero tapestry tiers (Lanczos): 1280 / 1920 / 2560.
+ * Display width is rem (not vw) so browser zoom scales it with page content.
+ * 120rem ≈ 1920px — covers typical desktops with ~10% past each edge of a ~1600px viewport. */
 const heroTapestrySrcset =
   "/hero/rainbow-crystal-tapestry-1280.webp 1280w, /hero/rainbow-crystal-tapestry-1920.webp 1920w, /hero/rainbow-crystal-tapestry-2560.webp 2560w";
-const heroTapestrySizes = "100vw";
+const heroTapestrySizes = "120rem";
 ---
 
 <html lang="en">
@@ -58,12 +60,13 @@ const heroTapestrySizes = "100vw";
       class="relative z-10 min-h-[100svh] w-full overflow-x-hidden"
       aria-label="Introduction"
     >
+      <!-- rem width (not vw): zooms with content; ~10% past edges of a typical desktop at 100% -->
       <div
-        class="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2"
+        class="pointer-events-none absolute left-1/2 top-1/2 w-[120rem] max-w-none -translate-x-1/2 -translate-y-1/2"
         aria-hidden="true"
       >
         <img
-          class="hero-tapestry block w-full max-w-full h-auto"
+          class="hero-tapestry block h-auto w-full max-w-none"
           src="/hero/rainbow-crystal-tapestry-1920.webp"
           srcset={heroTapestrySrcset}
           sizes={heroTapestrySizes}
