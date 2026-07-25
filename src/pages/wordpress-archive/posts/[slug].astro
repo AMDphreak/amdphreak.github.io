@@ -1,0 +1,86 @@
+---
+import { Footer } from "../../../components/Footer";
+import NoiseOverlay from "../../../components/NoiseOverlay.astro";
+import ThemeScript from "../../../components/ThemeScript.astro";
+import ThemeToggleBar from "../../../components/ThemeToggleBar.astro";
+import { listArchivePostSlugs, loadArchivePost } from "../../../lib/wordpress-archive";
+import "../../../styles/tailwind.css";
+
+export function getStaticPaths() {
+  return listArchivePostSlugs().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const post = loadArchivePost(slug!);
+if (!post) {
+  throw new Error(`Missing archive post: ${slug}`);
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{post.title} (WordPress archive) - Ryan Johnson</title>
+    <ThemeScript />
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <NoiseOverlay />
+    <main class="w-full flex-1 mt-8 mb-12">
+      <ThemeToggleBar container maxWidth="max-w-3xl" />
+      <div class="container mx-auto px-6 py-12 max-w-3xl structural-border border-t-0 p-8 md:p-12">
+        <nav
+          class="mb-12 flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+        >
+          <div class="flex items-center gap-4">
+            <a
+              href="/"
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+              >/ Home</a
+            >
+            <a
+              href="/wordpress-archive"
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+              >/ Archive</a
+            >
+          </div>
+          <span
+            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+            >Post</span
+          >
+        </nav>
+
+        <article class="space-y-8">
+          <header class="space-y-4">
+            <h1 class="text-4xl md:text-5xl font-heading tracking-tighter">{post.title}</h1>
+            <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+              Verbatim archive · {post.date} · captured {post.capturedAt}
+            </p>
+            <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+              Preserved from{" "}
+              <a
+                href={post.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline decoration-stone-300 underline-offset-4"
+                >{post.sourceUrl}</a
+              >.
+            </p>
+          </header>
+
+          <div class="h-px w-24 bg-stone-300 dark:bg-stone-700"></div>
+
+          <div
+            class="archive-content prose prose-stone dark:prose-invert max-w-none text-stone-700 dark:text-stone-300 leading-relaxed font-sans text-base md:text-lg"
+            set:html={post.contentHtml}
+          />
+        </article>
+      </div>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

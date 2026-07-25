@@ -1,0 +1,4 @@
+# WordPress archive media downloads (large binaries).
+# Re-fetch with: pnpm sync:wordpress
+*
+!.gitignore

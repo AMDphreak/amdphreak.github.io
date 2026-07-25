@@ -1,6 +1,7 @@
 /**
  * Verbatim archive of https://www.ryanjohnson.website/about/ (self-written).
  * Preserved before WordPress teardown. Source captured 2026-05-30.
+ * Served at /wordpress-archive/about (also mirrored in wordpress-archive/pages/about.json5).
  */
 export const aboutWordPressArchive = {
   sourceUrl: "https://www.ryanjohnson.website/about/",

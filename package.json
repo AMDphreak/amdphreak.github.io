@@ -8,6 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "sync:repos": "node scripts/sync-repository-catalog.mjs",
+    "sync:wordpress": "node scripts/sync-wordpress-archive.mjs",
     "fetch:inspirations": "node scripts/fetch-inspiration-assets.mjs"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "astro": "^5.14.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "json5": "^2.2.3",
     "lottie-web": "^5.13.0",
     "lucide-solid": "^1.8.0",
     "solid-icons": "^1.2.0",

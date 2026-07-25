@@ -19,7 +19,7 @@ const GITHUB_ORGS = [
   "dlang-supplemental",
   "formatte",
   "openshellorg",
-  "Linx-Photos",
+  "LinxPhotos",
   "memphis-cs-projects",
   "Cook-Systems-Team-Blue-Feb-2021-Ryan",
 ];
@@ -53,7 +53,7 @@ const GROUP_META = {
   },
   formatte: { title: "formatte", tagline: "Formatting tooling organization." },
   openshellorg: { title: "Open Shell Org", tagline: "Open Shell community." },
-  "Linx-Photos": { title: "Linx Photos", tagline: "Photo service and documentation." },
+  LinxPhotos: { title: "Linx", tagline: "Photo service and documentation." },
   "memphis-cs-projects": {
     title: "Memphis CS Projects",
     tagline: "University coursework and team projects.",
@@ -72,7 +72,7 @@ const GROUP_ORDER = [
   "AMDphreak",
   "formatte",
   "openshellorg",
-  "Linx-Photos",
+  "LinxPhotos",
   "memphis-cs-projects",
   "Cook-Systems-Team-Blue-Feb-2021-Ryan",
 ];

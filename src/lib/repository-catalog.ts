@@ -1974,23 +1974,23 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
     ]
   },
   {
-    "id": "Linx-Photos",
-    "title": "Linx Photos",
+    "id": "LinxPhotos",
+    "title": "Linx",
     "tagline": "Photo service and documentation.",
     "repositories": [
       {
         "name": "docs.linx.photos",
-        "url": "https://github.com/Linx-Photos/docs.linx.photos",
+        "url": "https://github.com/LinxPhotos/docs.linx.photos",
         "provider": "github",
-        "owner": "Linx-Photos",
+        "owner": "LinxPhotos",
         "isPrivate": false,
         "isFork": false
       },
       {
         "name": "photo-service",
-        "url": "https://github.com/Linx-Photos/photo-service",
+        "url": "https://github.com/LinxPhotos/photo-service",
         "provider": "github",
-        "owner": "Linx-Photos",
+        "owner": "LinxPhotos",
         "isPrivate": true,
         "isFork": false
       }

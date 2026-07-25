@@ -4,21 +4,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2026-05-30
+## [Unreleased] - 2026-07-25
 
 ### Added
 
+- **Home** at `/`: brand-first homepage linking products (Linx, Dev-Centr, FoodTruckNerdz, bigr Picture), GitHub/GitLab/Codeberg profiles and orgs (except memphis-cs-projects), and repository catalog; hero CTA group for Browse work, Resume, Philosophy, UI/UX, Inspirations, and Blog; Photography section on the home page.
+- **Philosophy** at `/philosophy`: origins and posture (moved off the resume page).
+- **Blog gateway** at `/blog`: choose archived WordPress copies, continuing static posts on this site (`/blog/posts`), or the live WordPress blog.
+- **Continuing blog** content collection under `src/content/blog/` with index and post pages.
+- **WordPress archive** at `/wordpress-archive`: index of captured pages and posts; About at `/wordpress-archive/about`; posts at `/wordpress-archive/posts/[slug]`. Synced via `pnpm sync:wordpress` into `wordpress-archive/` (JSON5 + media).
 - **Inspirations** at `/inspirations`: migrated quotes, discussions, and WordPress background images (Zappa, Fischer, Stallman, Armstrong, etc.).
-- **About (WordPress archive)** at `/about/wordpress-archive`: verbatim self-written about text from ryanjohnson.website.
 - **Repository catalog** at `/repositories`: project/org-first hierarchy across GitHub and GitLab; synced via `pnpm sync:repos`.
 
 ### Changed
 
-- **Homepage layout**: collapsible Theory, Experience, and Photography (latter three collapsed by default); Photography in main column with fixed left-aligned preview; Connections sidebar removed; **Personal Blog** in header; org-projects note under social icons; Chess.com and Codeberg links added.
-- **Theory / About** section: formal reliability-focused lead; informal TI-83+ origin story and &ldquo;unprofessional&rdquo; posture in body copy; links to inspirations and archive.
-- **UI/UX hub**: Philosophy overview, philosophy articles index (`/gui-demos/philosophy`), and full-width demo tile grid; prominent **UI/UX** button beside the homepage header.
+- **Photography**: Body copy rewritten around real practice (events, performances, weddings, portraits, TFP, GSO and DSAM clients); removed generic photographer-speak (“honest frames”, “in the room”).
+- **Photography**: Replaced the camera-icon placeholder with a wide (16:9) WebP screenshot of bigrpic.com in an aspect-video structural-border preview.
+- **Photography**: Instagram CTA keeps the monochrome structural button chrome; only the SVG icon uses the brand purple–red–orange gradient.
+- **Home**: Removed the "This site" destination tile section (Resume, Philosophy, Blog, UI/UX, Inspirations) as a duplicate of the hero CTAs.
+- **Resume** at `/resume` (formerly Technical Overview / `/about`): profile, projects, experience, and skills; Philosophy and Photography removed from this page. `/about` redirects to `/resume`.
+- **WordPress About archive** path: `/about/wordpress-archive` redirects to `/wordpress-archive/about`.
+- **UI/UX hub**: Philosophy overview, philosophy articles index (`/gui-demos/philosophy`), and full-width demo tile grid.
 - Projects section label: **Software Portfolio** (was Structural Portfolio); grid ends with a link card to the full catalog.
-- **UI/UX Demos** (prior): Index page for interactive UI/UX demos, linked from the homepage.
 - **code-lens**: Renamed from code-example-lenses; portfolio links to [github.com/AMDphreak/code-lens](https://github.com/AMDphreak/code-lens) and [ryanjohnson.dev/code-lens](https://ryanjohnson.dev/code-lens/).
 - **multimux Project Card**: Showcase multimux, an elegant Electron/SolidJS/TypeScript desktop audio mixdown suite, in the projects list.
 

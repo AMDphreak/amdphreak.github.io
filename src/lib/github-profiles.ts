@@ -48,9 +48,9 @@ export const githubProfiles: GitHubProfile[] = [
     url: "https://github.com/openshellorg",
   },
   {
-    slug: "Linx-Photos",
-    label: "Linx Photos",
-    url: "https://github.com/Linx-Photos",
+    slug: "LinxPhotos",
+    label: "Linx",
+    url: "https://github.com/LinxPhotos",
   },
   {
     slug: "memphis-cs-projects",

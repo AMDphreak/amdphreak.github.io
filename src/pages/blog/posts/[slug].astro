@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from "astro:content";
+import { Footer } from "../../../components/Footer";
+import NoiseOverlay from "../../../components/NoiseOverlay.astro";
+import ThemeScript from "../../../components/ThemeScript.astro";
+import ThemeToggleBar from "../../../components/ThemeToggleBar.astro";
+import "../../../styles/tailwind.css";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts
+    .filter((p) => !p.data.draft)
+    .map((post) => ({
+      params: { slug: post.id },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{post.data.title} - Ryan Johnson</title>
+    <ThemeScript />
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <NoiseOverlay />
+    <main class="w-full flex-1 mt-8 mb-12">
+      <ThemeToggleBar container maxWidth="max-w-3xl" />
+      <div class="container mx-auto px-6 py-12 max-w-3xl structural-border border-t-0 p-8 md:p-12 space-y-10">
+        <nav
+          class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+        >
+          <a
+            href="/blog/posts"
+            class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+            >/ Posts</a
+          >
+          <span
+            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+            >Blog</span
+          >
+        </nav>
+
+        <article class="space-y-8">
+          <header class="space-y-3">
+            <h1 class="text-4xl md:text-5xl font-heading tracking-tighter">{post.data.title}</h1>
+            <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+              {post.data.pubDate.toISOString().slice(0, 10)}
+            </p>
+          </header>
+          <div
+            class="prose prose-stone dark:prose-invert max-w-none space-y-4 text-stone-700 dark:text-stone-300 leading-relaxed font-sans"
+          >
+            <Content />
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

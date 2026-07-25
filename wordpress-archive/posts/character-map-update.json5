@@ -1,0 +1,10 @@
+{
+  slug: 'character-map-update',
+  title: 'Character Map update',
+  date: '2019-08-09',
+  sourceUrl: 'https://www.ryanjohnson.website/440/',
+  capturedAt: '2026-07-22',
+  excerpt: 'Vote for an update to the Character Map application on Windows.',
+  contentHtml: '\n<p>Come vote for a remake of the character map app here:<br>https://aka.ms/AA5t0ad</p>\n\n\n\n<figure class="wp-block-image"><img loading="lazy" decoding="async" width="476" height="413" sizes="auto, (max-width: 476px) 100vw, 476px" src="https://www.ryanjohnson.website/wp-content/uploads/2019/08/image.png" alt="" class="wp-image-442" srcset="https://www.ryanjohnson.website/wp-content/uploads/2019/08/image.png 476w, https://www.ryanjohnson.website/wp-content/uploads/2019/08/image-300x260.png 300w" /></figure>\n\n\n\n<p>The character map app on Windows is incredibly useful. For adding characters from other languages, such as the ö and ü of Germanic languages and the <em>é</em> and <em>ñ</em> of Spanish and ç of French, it is absolutely a crucial application. While you can swap keyboard layouts or get specialized keyboards for these use-cases, the character map goes above and beyond this scenario, displaying every character for a given type-script like Times New Roman.</p>\n\n\n\n<p>However, the app is very old, dating back to the Win32 era, so it does not work well with high resolution displays, and its functionality has not been improved upon since Windows 95 or Windows 98 (to the best of my memory).</p>\n\n\n\n<p>A nice addition to the Windows ecosystem would be a pop-up interface that shows up when you click a key combination, just like the emoji keyboard (Win+.) that lets you search the character map for character variants or similar-looking or similar-sounding characters.</p>\n\n\n\n<p>I have submitted a Feedback message to Microsoft asking them to update this app. Please visit the link above to vote for my change.</p>\n',
+  wordpressId: 440,
+}

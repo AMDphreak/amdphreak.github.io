@@ -1,0 +1,10 @@
+{
+  slug: 'set-theory-in-programming',
+  title: 'Set Theory in Programming',
+  date: '2019-04-04',
+  sourceUrl: 'https://www.ryanjohnson.website/344/',
+  capturedAt: '2026-07-22',
+  excerpt: 'In high school and college math courses, we learn about ways to express groups of items as subsets and supersets. This branch of mathematics is called set theory. The expression, X ∈ A means "Item X exists in set A", or "X is an element of set A". The symbol looks like an E, which [&hellip;]',
+  contentHtml: '\n<p>In high school and college math courses, we learn about ways to express groups of items as subsets and supersets. This branch of mathematics is called set theory.</p>\n\n\n\n<p>The expression,<br></p>\n\n\n\n<p style="background-color:#f0f0f0;text-align:center;" class="has-background has-large-font-size">X ∈ A</p>\n\n\n\n<p>means &#8220;Item X <em>exists in</em> set A&#8221;, or &#8220;X is an <em>element </em>of set A&#8221;. The symbol looks like an E, which is a helpful mnemonic, but it doesn&#8217;t visually convey its meaning very well. I thought it should be redesigned, so I stepped up to the task in another blog post: <a href="https://amdphreak.wordpress.com/?p=265" target="_blank" rel="noopener">&#8220;Set Membership&#8221; Symbol Redesign</a>.</p>\n\n\n\n<p>Set theory is a powerful tool, and it is becoming more important for every-day computer science. It is used to describe things that need to be processed via list-comprehensions in functional languages as well as other languages.</p>\n',
+  wordpressId: 344,
+}

@@ -1,14 +1,15 @@
-import { CollapsibleSection } from "~/components/CollapsibleSection";
 import { philosophyLeadSummary } from "~/lib/philosophy-summary";
 
-export const About = () => {
+export const Philosophy = () => {
   return (
-    <CollapsibleSection
-      id="philosophy-section"
-      title="Philosophy"
-      tagline="Internal Logic / Origins"
-      defaultOpen={false}
-    >
+    <div class="space-y-8">
+      <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
+        <h1 class="text-4xl md:text-5xl font-heading tracking-tighter">Philosophy</h1>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+          Internal Logic / Origins
+        </span>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div class="md:col-span-1">
           <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-400">Core Disciplines</p>
@@ -52,9 +53,9 @@ export const About = () => {
               >
                 Inspirations page
               </a>
-              (also in the header). My self-written WordPress about page is archived verbatim at{" "}
+              . My self-written WordPress about page is archived verbatim at{" "}
               <a
-                href="/about/wordpress-archive"
+                href="/wordpress-archive/about"
                 class="text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100"
               >
                 About (WordPress archive)
@@ -64,6 +65,6 @@ export const About = () => {
           </div>
         </div>
       </div>
-    </CollapsibleSection>
+    </div>
   );
 };

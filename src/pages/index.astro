@@ -1,20 +1,17 @@
 ---
-import { Profile } from "../components/Profile";
-import { About } from "../components/About";
-import { Experience } from "../components/Experience";
-import { Projects } from "../components/Projects";
-import { Skills } from "../components/Skills";
-import { Photography } from "../components/Photography";
 import { Footer } from "../components/Footer";
+import { Photography } from "../components/Photography";
 import NoiseOverlay from "../components/NoiseOverlay.astro";
 import ThemeScript from "../components/ThemeScript.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import { hubSections } from "../lib/hub-destinations";
 import "../styles/tailwind.css";
 
 const navBtnBase =
   "inline-flex items-center justify-center gap-1.5 h-8 px-4 structural-border font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const navBtnInternal = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900`;
-const navBtnExternal = `${navBtnBase} bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
+const navBtnPrimary = `${navBtnBase} bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
+const navBtnGhost = `${navBtnBase} text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-900`;
 ---
 
 <html lang="en">
@@ -23,79 +20,147 @@ const navBtnExternal = `${navBtnBase} bg-stone-900 text-stone-50 dark:bg-stone-1
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="Astro" />
-    <title>Ryan Johnson | Technical Overview</title>
-    
+    <meta
+      name="description"
+      content="Ryan Johnson (AMDphreak) — central hub for products, organizations, and writing across the web."
+    />
+    <title>Ryan Johnson | AMDphreak</title>
     <ThemeScript />
   </head>
-  <body class="bg-background text-foreground min-h-screen font-sans antialiased selection:bg-stone-200 dark:selection:bg-stone-800">
+  <body
+    class="bg-background text-foreground min-h-screen font-sans antialiased selection:bg-stone-200 dark:selection:bg-stone-800"
+  >
     <NoiseOverlay />
-    <div class="fixed inset-0 pointer-events-none border-[12px] border-stone-100/50 dark:border-stone-900/50 z-[100]"></div>
-    
-    <main class="relative z-10 container mx-auto px-6 py-12 max-w-7xl space-y-16 lg:space-y-24">
-      <!-- Structural Top Header -->
-      <header class="flex flex-wrap justify-between items-center gap-6 border-b border-stone-200 dark:border-stone-800 pb-8">
-        <div class="flex flex-wrap items-center gap-6 lg:gap-10">
-          <h1 class="text-xs font-mono uppercase tracking-[0.2em] text-stone-500">Technical Overview / 2026</h1>
-          <div class="flex flex-wrap items-center gap-3">
-            <a
-              href="/gui-demos"
-              class={navBtnInternal}
-              aria-label="UI/UX — philosophy and interactive demos"
-            >
-              UI/UX
-              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-            </a>
-            <a
-              href="/inspirations"
-              class={navBtnInternal}
-            >
-              Inspirations
-              <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-            </a>
-            <a
-              href="https://www.ryanjohnson.website/posts"
-              target="_blank"
-              rel="noopener noreferrer"
-              class={navBtnExternal}
-            >
-              Personal Blog
-              <span class="font-mono text-[10px] opacity-60" aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <ThemeToggle />
-        </div>
+    <div
+      class="fixed inset-0 pointer-events-none border-[12px] border-stone-100/50 dark:border-stone-900/50 z-[100]"
+    >
+    </div>
+
+    <main class="relative z-10 container mx-auto px-6 py-12 max-w-7xl space-y-20 lg:space-y-28">
+      <header
+        class="flex flex-wrap justify-between items-center gap-6 border-b border-stone-200 dark:border-stone-800 pb-8"
+      >
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500">
+          Home / 2026
+        </p>
+        <ThemeToggle />
       </header>
 
-      <div id="profile-section" class="border-b border-stone-200 dark:border-stone-800 pb-16">
-        <Profile client:load />
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-        <!-- Main Column -->
-        <div class="lg:col-span-8 space-y-16 lg:space-y-24">
-          <About client:load />
-
-          <section id="projects-section" class="scroll-mt-20">
-            <Projects client:load />
-          </section>
-
-          <Experience client:load />
-
-          <Photography client:load />
+      <!-- Brand-first first viewport -->
+      <section class="min-h-[70vh] flex flex-col justify-center gap-10 pb-8 border-b border-stone-200 dark:border-stone-800">
+        <div class="space-y-6 max-w-3xl">
+          <h1 class="text-6xl md:text-8xl font-heading font-light tracking-tight text-foreground">
+            Ryan<br />Johnson
+          </h1>
+          <div class="flex items-center gap-3">
+            <div class="blueprint-dot"></div>
+            <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-500">
+              AMDphreak / Software Architect
+            </p>
+          </div>
+          <p class="text-lg md:text-xl text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl font-sans">
+            Software and systems, built carefully — UX, DevX, ITIL, Architecture. More than a software developer: a visionary.
+          </p>
         </div>
 
-        <!-- Sidebar / Structural Support -->
-        <aside class="lg:col-span-4 space-y-16 lg:border-l lg:border-stone-200 dark:lg:border-stone-800 lg:pl-12">
-          <section id="skills-section" class="scroll-mt-20">
-            <Skills client:load />
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="#products" class={navBtnPrimary}>
+            Browse work
+            <span class="font-mono text-[10px] opacity-60" aria-hidden="true">↓</span>
+          </a>
+          <a href="/resume" class={navBtnGhost}>
+            Resume
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+          <a href="/philosophy" class={navBtnGhost}>
+            Philosophy
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+          <a
+            href="/gui-demos"
+            class={navBtnInternal}
+            aria-label="UI/UX — philosophy and interactive demos"
+          >
+            UI/UX
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+          <a href="/inspirations" class={navBtnInternal}>
+            Inspirations
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+          <a href="/blog" class={navBtnGhost}>
+            Blog
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
+      {
+        hubSections.map((section) => (
+          <section id={section.id} class="scroll-mt-24 space-y-8">
+            <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
+              <h2 class="text-3xl font-heading tracking-tighter">{section.title}</h2>
+              <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+                {section.tagline}
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200 dark:bg-stone-800 border border-stone-200 dark:border-stone-800">
+              {section.destinations.map((dest) => (
+                <div class="bg-background p-6 flex flex-col gap-4 min-h-[160px]">
+                  <div class="space-y-2 flex-1">
+                    <a
+                      href={dest.href}
+                      target={dest.external ? "_blank" : undefined}
+                      rel={dest.external ? "noopener noreferrer" : undefined}
+                      class="group inline-flex items-baseline gap-2 no-underline"
+                    >
+                      <h3 class="text-xl font-heading font-medium tracking-tight text-foreground group-hover:underline decoration-stone-300 underline-offset-4">
+                        {dest.name}
+                      </h3>
+                      {dest.external && (
+                        <span
+                          class="font-mono text-[10px] text-stone-400 opacity-70"
+                          aria-hidden="true"
+                        >
+                          ↗
+                        </span>
+                      )}
+                    </a>
+                    <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                      {dest.tagline}
+                    </p>
+                  </div>
+                  <div class="flex flex-wrap gap-4">
+                    <a
+                      href={dest.href}
+                      target={dest.external ? "_blank" : undefined}
+                      rel={dest.external ? "noopener noreferrer" : undefined}
+                      class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                    >
+                      {dest.external ? "Visit" : "Open"} →
+                    </a>
+                    {dest.secondaryHref && (
+                      <a
+                        href={dest.secondaryHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                      >
+                        {dest.secondaryLabel ?? "More"} ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
-        </aside>
-      </div>
+        ))
+      }
+
+      <Photography client:load collapsible={false} />
     </main>
 
     <Footer client:load />
-
   </body>
 </html>

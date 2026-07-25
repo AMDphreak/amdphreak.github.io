@@ -1,0 +1,115 @@
+---
+import { Footer } from "../../components/Footer";
+import NoiseOverlay from "../../components/NoiseOverlay.astro";
+import ThemeScript from "../../components/ThemeScript.astro";
+import ThemeToggleBar from "../../components/ThemeToggleBar.astro";
+import { loadWordPressArchiveManifest } from "../../lib/wordpress-archive";
+import "../../styles/tailwind.css";
+
+const manifest = loadWordPressArchiveManifest();
+const posts = [...manifest.posts].sort((a, b) => (a.date < b.date ? 1 : -1));
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WordPress archive - Ryan Johnson</title>
+    <ThemeScript />
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <NoiseOverlay />
+    <main class="w-full flex-1 mt-8 mb-12">
+      <ThemeToggleBar container maxWidth="max-w-4xl" />
+      <div class="container mx-auto px-6 py-12 max-w-4xl structural-border border-t-0 p-8 md:p-12 space-y-12">
+        <nav
+          class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+        >
+          <div class="flex items-center gap-4">
+            <a
+              href="/"
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+              >/ Home</a
+            >
+            <a
+              href="/blog"
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+              >/ Blog</a
+            >
+          </div>
+          <span
+            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+            >Archive</span
+          >
+        </nav>
+
+        <header class="space-y-4 max-w-3xl">
+          <h1 class="text-5xl font-heading tracking-tighter">WordPress archive</h1>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+            Verbatim captures · ryanjohnson.website · synced {manifest.generatedAt}
+          </p>
+          <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+            Preserved pages and posts from the live WordPress site, browseable here before that
+            surface is retired.
+          </p>
+        </header>
+
+        <section class="space-y-4">
+          <h2 class="text-xl font-heading tracking-tight">Pages</h2>
+          <ul class="space-y-2 m-0 p-0 list-none">
+            {
+              manifest.pages.map((page) => (
+                <li>
+                  <a
+                    href={`/wordpress-archive/${page.slug}`}
+                    class="font-heading text-stone-800 dark:text-stone-200 hover:underline decoration-stone-300 underline-offset-4"
+                  >
+                    {page.title}
+                  </a>
+                  <span class="font-mono text-[9px] text-stone-400 ml-2">
+                    captured {page.capturedAt}
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-xl font-heading tracking-tight">Posts</h2>
+          {
+            posts.length === 0 ? (
+              <p class="text-sm text-stone-500 font-sans">
+                No archived posts yet. Run{" "}
+                <code class="font-mono text-xs">pnpm sync:wordpress</code> to pull from the live
+                site.
+              </p>
+            ) : (
+              <ul class="space-y-3 m-0 p-0 list-none divide-y divide-stone-200 dark:divide-stone-800">
+                {posts.map((post) => (
+                  <li class="py-3 first:pt-0">
+                    <a
+                      href={`/wordpress-archive/posts/${post.slug}`}
+                      class="font-heading text-lg text-stone-800 dark:text-stone-200 hover:underline decoration-stone-300 underline-offset-4"
+                    >
+                      {post.title}
+                    </a>
+                    <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400 mt-1">
+                      {post.date}
+                      {post.excerpt ? ` · ${post.excerpt.slice(0, 120)}${post.excerpt.length > 120 ? "…" : ""}` : ""}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </section>
+      </div>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>
