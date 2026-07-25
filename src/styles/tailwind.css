@@ -91,28 +91,28 @@
     @apply font-heading tracking-tight;
   }
 
-  /* Structural view transition mask overrides */
-  @keyframes pseudo-wait {
-    0% { opacity: 1; }
-    100% { opacity: 1; }
+  /*
+   * Theme circle reveal (View Transitions + clip-path).
+   * Kill the default root crossfade so only the WAAPI clip-path runs.
+   * pointer-events: none lets the live toggle receive clicks mid-reveal
+   * (otherwise the VT top-layer overlay swallows them).
+   */
+  .theme-transitioning::view-transition {
+    pointer-events: none;
   }
-  .hex-transitioning::view-transition-group(root) {
-    animation-duration: 1.2s;
+  .theme-transitioning::view-transition-old(root),
+  .dark.theme-transitioning::view-transition-old(root),
+  .theme-transitioning::view-transition-new(root),
+  .dark.theme-transitioning::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
   }
-  .hex-transitioning::view-transition-old(root),
-  .dark.hex-transitioning::view-transition-old(root) {
-    animation: pseudo-wait 1.2s forwards;
+  .theme-transitioning::view-transition-old(root),
+  .dark.theme-transitioning::view-transition-old(root) {
     z-index: 1;
   }
-  .hex-transitioning::view-transition-new(root),
-  .dark.hex-transitioning::view-transition-new(root) {
-    animation: pseudo-wait 1.2s forwards;
-    mask-image: var(--hex-mask);
-    -webkit-mask-image: var(--hex-mask);
-    mask-size: 100% 100%;
-    -webkit-mask-size: 100% 100%;
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
+  .theme-transitioning::view-transition-new(root),
+  .dark.theme-transitioning::view-transition-new(root) {
     z-index: 2;
   }
 }

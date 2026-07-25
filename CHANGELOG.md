@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Theme reveal**: Replaced hexagonal SVG mask with a View Transition circular `clip-path` wipe from the toggle (Web Animations on `::view-transition-new(root)`). VT overlay uses `pointer-events: none` so mid-reveal clicks reach the toggle and skip/restart; `prefers-reduced-motion` stays instant.
 - **Home hero frost restored**: Nested mask / split-blur experiments (`4a1d200`, `ef32d93`) made the frost disappear on live. Restored the visible frosted panel from `7da684c` (introduced in `863f2ad`): single `.hero-content-frost` with `backdrop-blur-lg` + soft dual-gradient mask, original scrims, `isolate` content wrapper.
 - **GitHub Pages**: `cancel-in-progress: false` left a multi-hour queued run blocking the `pages` concurrency group, so frost never reached production. Switched to `cancel-in-progress: true` and redeployed.
 

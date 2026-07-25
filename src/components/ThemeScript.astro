@@ -23,55 +23,87 @@
       applyTheme(e.matches ? "dark" : "light", true);
     });
 
+    const REVEAL_MS = 450;
+
+    let themeToggle = null;
+    let activeTransition = null;
+    let generation = 0;
+
+    const revealOrigin = () => {
+      if (!themeToggle) {
+        return { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+      }
+      const rect = themeToggle.getBoundingClientRect();
+      return {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+      };
+    };
+
     const toggleTheme = () => {
       const isDark = document.documentElement.classList.contains("dark");
       const newTheme = isDark ? "light" : "dark";
 
-      if (!document.startViewTransition) {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!document.startViewTransition || reduceMotion) {
         applyTheme(newTheme, true);
         return;
       }
 
-      const winW = window.innerWidth;
-      const winH = window.innerHeight;
-      const R = 45;
-      const hexW = Math.sqrt(3) * R;
-      const cols = Math.ceil(winW / hexW) + 2;
-      const rows = Math.ceil(winH / (1.5 * R)) + 2;
-
-      let polygons = "";
-      for (let r = -1; r < rows; r++) {
-        for (let c = -1; c < cols; c++) {
-          const cx = c * hexW + (Math.abs(r) % 2 === 1 ? hexW / 2 : 0);
-          const cy = r * 1.5 * R;
-          const delay = Math.random() * 0.7;
-
-          const pts = [];
-          for (let i = 0; i < 6; i++) {
-            const angle_rad = (Math.PI / 180) * (60 * i - 30);
-            pts.push(`${cx + R * Math.cos(angle_rad)},${cy + R * Math.sin(angle_rad)}`);
-          }
-          polygons += `<polygon points="${pts.join(" ")}" style="transform-origin: ${cx}px ${cy}px; animation: hexReveal 0.5s ${delay}s both ease-out;" fill="black" />`;
-        }
+      // One document VT at a time: skip the in-flight reveal, then start a new one.
+      if (activeTransition) {
+        activeTransition.skipTransition();
+        activeTransition = null;
       }
 
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${winW} ${winH}" width="${winW}" height="${winH}"><style>@keyframes hexReveal { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1.05); opacity: 1; } }</style>${polygons}</svg>`;
+      const id = ++generation;
+      const { x, y } = revealOrigin();
+      const endRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y),
+      );
 
-      const dataUri = "data:image/svg+xml;utf8," + encodeURIComponent(svg);
-      document.documentElement.style.setProperty("--hex-mask", `url("${dataUri}")`);
-      document.documentElement.classList.add("hex-transitioning");
+      document.documentElement.classList.add("theme-transitioning");
 
-      const transition = document.startViewTransition(() => {
+      try {
+        const transition = document.startViewTransition(() => {
+          applyTheme(newTheme, true);
+        });
+        activeTransition = transition;
+
+        transition.ready.then(() => {
+          if (id !== generation) return;
+
+          // GPU-cheap: animate a single clip-path on the new root snapshot.
+          document.documentElement.animate(
+            {
+              clipPath: [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${endRadius}px at ${x}px ${y}px)`,
+              ],
+            },
+            {
+              duration: REVEAL_MS,
+              easing: "ease-in-out",
+              pseudoElement: "::view-transition-new(root)",
+            },
+          );
+        });
+
+        transition.finished.finally(() => {
+          if (id !== generation) return;
+          document.documentElement.classList.remove("theme-transitioning");
+          activeTransition = null;
+        });
+      } catch {
         applyTheme(newTheme, true);
-      });
-
-      transition.finished.then(() => {
-        document.documentElement.classList.remove("hex-transitioning");
-      });
+        document.documentElement.classList.remove("theme-transitioning");
+        activeTransition = null;
+      }
     };
 
     const initToggle = () => {
-      const themeToggle = document.getElementById("theme-toggle");
+      themeToggle = document.getElementById("theme-toggle");
       if (!themeToggle) return;
 
       themeToggle.addEventListener("click", toggleTheme);
