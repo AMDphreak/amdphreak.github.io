@@ -4,23 +4,29 @@ import { noiseLayers } from "../lib/noise-layers";
 
 <div class="noise-overlay" data-noise-overlay aria-hidden="true">
   {
-    noiseLayers.map((layer) => (
-      <div
-        class="noise-layer"
-        style={{
-          "--noise-x": `${layer.x}px`,
-          "--noise-y": `${layer.y}px`,
-          "--noise-rot": `${layer.rot}deg`,
-          "--noise-layer-opacity": layer.opacity,
-        }}
-      />
-    ))
+    noiseLayers.map((layer) => {
+      const src = layer.src ?? "/textures/noise-tile.png";
+      const isFine = src.includes("noise-tile.png") && !src.includes("poisson");
+      return (
+        <div
+          class:list={["noise-layer", isFine && "noise-layer--fine"]}
+          style={{
+            "--noise-x": `${layer.x}px`,
+            "--noise-y": `${layer.y}px`,
+            "--noise-rot": `${layer.rot}deg`,
+            "--noise-layer-opacity": layer.opacity,
+            "--noise-tile-size": `${layer.tileSize ?? 64}px`,
+            "--noise-src": `url("${src}")`,
+          }}
+        />
+      );
+    })
   }
 </div>
 
 <script is:inline define:vars={{ noiseLayers }}>
   (function () {
-    const storageKey = "noise-overlay-v1";
+    const storageKey = "noise-overlay-v3";
     const root = document.querySelector("[data-noise-overlay]:not(.noise-overlay--initialized)");
     if (!(root instanceof HTMLElement)) {
       return;
@@ -53,9 +59,9 @@ import { noiseLayers } from "../lib/noise-layers";
         };
       })(seed);
 
-      const tile = 64;
       const layers = noiseLayers.map((base, index) => {
         const r = rand();
+        const tile = base.tileSize ?? 64;
         const angle = base.rot + (r - 0.5) * 24;
         const offsetX = base.x + Math.round((rand() - 0.5) * tile * 0.9);
         const offsetY = base.y + Math.round((rand() - 0.5) * tile * 0.9);
@@ -64,6 +70,8 @@ import { noiseLayers } from "../lib/noise-layers";
           y: offsetY,
           rot: Math.round(angle * 10) / 10,
           opacity: base.opacity * (0.92 + rand() * 0.16),
+          tileSize: tile,
+          src: base.src ?? "/textures/noise-tile.png",
           index,
         };
       });
@@ -85,6 +93,12 @@ import { noiseLayers } from "../lib/noise-layers";
       el.style.setProperty("--noise-y", `${layer.y}px`);
       el.style.setProperty("--noise-rot", `${layer.rot}deg`);
       el.style.setProperty("--noise-layer-opacity", String(layer.opacity));
+      if (layer.tileSize != null) {
+        el.style.setProperty("--noise-tile-size", `${layer.tileSize}px`);
+      }
+      if (layer.src) {
+        el.style.setProperty("--noise-src", `url("${layer.src}")`);
+      }
     }
 
     root.classList.add("noise-overlay--initialized");
