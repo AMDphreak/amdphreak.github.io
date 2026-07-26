@@ -194,11 +194,11 @@ const heroTapestrySizes = "120rem";
           </span>
         </div>
 
-        <div class="w-[90%] mx-auto flex flex-wrap justify-center gap-8 lg:gap-10">
+        <div class="w-[90%] mx-auto flex flex-wrap items-stretch justify-center gap-8 lg:gap-10">
           {
             showcaseDestinations.map((dest) => (
-              <article class="product-showcase-card group w-full max-w-[22rem] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.75rem)] xl:max-w-[24rem] xl:w-[calc(25%-1.9rem)] flex-none rounded-[2rem] bg-stone-100/80 dark:bg-stone-900/60 p-3 sm:p-3.5 pb-5 shadow-sm ring-1 ring-stone-200/80 dark:ring-stone-800/80">
-                <div class="relative">
+              <article class="product-showcase-card group flex w-full max-w-[22rem] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.75rem)] xl:max-w-[24rem] xl:w-[calc(25%-1.9rem)] flex-none flex-col rounded-[2rem] bg-stone-100/80 dark:bg-stone-900/60 p-3 sm:p-3.5 pb-5 shadow-sm ring-1 ring-stone-200/80 dark:ring-stone-800/80">
+                <div class="relative flex flex-1 flex-col">
                   <div class="overflow-hidden rounded-[1.35rem] bg-stone-200 dark:bg-stone-950 aspect-[4/3]">
                     <img
                       src={dest.screenshot!}
@@ -212,8 +212,8 @@ const heroTapestrySizes = "120rem";
                       class="h-full w-full object-cover object-top origin-top transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.03]"
                     />
                   </div>
-                  {/* Fade begins ~45% down the shot; content continues through the lower card */}
-                  <div class="relative -mt-[55%] flex min-h-[55%] flex-col justify-end gap-3 rounded-b-[1.35rem] px-5 pb-1 pt-16 bg-gradient-to-t from-background from-35% via-background/95 via-55% to-transparent">
+                  {/* Fade begins ~45% down the shot; links pin to bottom so row heights match */}
+                  <div class="relative -mt-[55%] flex min-h-[55%] flex-1 flex-col gap-3 rounded-b-[1.35rem] px-5 pb-1 pt-16 bg-gradient-to-t from-background from-35% via-background/95 via-55% to-transparent">
                     <a
                       href={dest.href}
                       target={dest.external ? "_blank" : undefined}
@@ -235,7 +235,7 @@ const heroTapestrySizes = "120rem";
                     <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
                       {dest.tagline}
                     </p>
-                    <div class="flex flex-wrap gap-4 pt-1">
+                    <div class="mt-auto flex flex-wrap gap-4 pt-3">
                       <a
                         href={dest.href}
                         target={dest.external ? "_blank" : undefined}
