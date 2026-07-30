@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **code-lens**: Portfolio links now point at [`dev-centr/code-lens`](https://github.com/dev-centr/code-lens) and [dev-centr.github.io/code-lens](https://dev-centr.github.io/code-lens/) (repo transferred out of AMDphreak).
 - **Home hero tapestry**: Background uses a centered `120rem` width (`sizes="120rem"`, not `vw`) so browser zoom scales it with page content; all four edges are feathered via intersect `mask-image` gradients so off-white photo margins dissolve into `bg-background`.
 - **Home hero tagline**: Positioning line now includes RelyOps and DevOps alongside UX, DevX, ITIL, and Architecture.
 - **Home hero CTAs**: Secondary buttons (Résumé, Philosophy, UI/UX, Inspirations, Blog) use a frosted chip — `bg-background/80`, `backdrop-blur-sm`, and stone-400/500 borders — so outlines stay legible on the tapestry; primary “Browse work” unchanged. Later frost-under-content work also allows transparent secondary fills with light borders again.

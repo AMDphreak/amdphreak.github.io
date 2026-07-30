@@ -976,9 +976,9 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
       {
         "name": "code-lens",
         "description": "One code snippet, multiple pedagogical lenses — portable JSON5 spec and <code-lens> web component with framework adapters.",
-        "url": "https://github.com/AMDphreak/code-lens",
+        "url": "https://github.com/dev-centr/code-lens",
         "provider": "github",
-        "owner": "AMDphreak",
+        "owner": "dev-centr",
         "isPrivate": false,
         "isFork": false
       },

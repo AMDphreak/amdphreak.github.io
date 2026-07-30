@@ -16,7 +16,7 @@ export const guiDemos: GuiDemo[] = [
       "The real lens for code examples — portable spec and @code-lens packages.",
     status: "prototype",
     href: "/gui-demos/code-lens",
-    externalDemo: "https://ryanjohnson.dev/code-lens/",
-    repo: "https://github.com/AMDphreak/code-lens",
+    externalDemo: "https://dev-centr.github.io/code-lens/",
+    repo: "https://github.com/dev-centr/code-lens",
   },
 ];
