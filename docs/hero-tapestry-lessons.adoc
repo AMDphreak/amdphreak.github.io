@@ -61,6 +61,8 @@ Progression that actually taught something:
 +
 **Known-good frost:** commit `863f2ad` (intro) / `7da684c` (pointer-events + `isolate`). Single `.hero-content-frost` element with `backdrop-blur-lg`, translucent fill, and dual-gradient mask on the *same* element. That combo was visibly frosted in production.
 +
+**Perf note (2026-08-01):** Large `backdrop-blur-lg` on a near-viewport panel is a scroll/GPU tax. Production keeps the dual-mask frost but uses `backdrop-blur-md` with a slightly stronger wash (`bg-background/50`) — lesser radius than the known-good `lg`, still frosted. Drop blur entirely only if jank remains.
++
 **Failed experiments (do not repeat blindly):**
 +
 * Splitting mask onto a wrapper and blur onto a child (`4a1d200`) — user still saw a hard rectangle.

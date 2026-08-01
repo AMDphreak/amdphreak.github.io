@@ -26,7 +26,8 @@ import { noiseLayers } from "../lib/noise-layers";
 
 <script is:inline define:vars={{ noiseLayers }}>
   (function () {
-    const storageKey = "noise-overlay-v3";
+    // Bump when layer count/recipe changes so old session configs are not reused.
+    const storageKey = "noise-overlay-v5";
     const root = document.querySelector("[data-noise-overlay]:not(.noise-overlay--initialized)");
     if (!(root instanceof HTMLElement)) {
       return;

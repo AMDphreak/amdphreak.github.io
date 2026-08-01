@@ -209,9 +209,13 @@
     }
   }
 
-  /* Frosted plane behind hero copy + socials + CTAs — soft mask, no hard edge */
+  /*
+   * Frosted plane behind hero copy + socials + CTAs — soft mask, no hard edge.
+   * Baseline used backdrop-blur-lg (863f2ad / 7da684c). Using blur-md here to cut
+   * GPU cost while keeping the frosted look; raise/lower blur if scroll jank returns.
+   */
   .hero-content-frost {
-    @apply bg-background/40 dark:bg-background/35 backdrop-blur-lg;
+    @apply bg-background/50 dark:bg-background/45 backdrop-blur-md;
     z-index: 0;
     pointer-events: none;
     border-radius: 2rem;
