@@ -4,13 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2026-07-25
+## [Unreleased] - 2026-08-01
+
+### Added
+
+- **HCI Nerdz**: New GitHub org on the hub destinations, GitHub profile menu, and repository catalog sync (`HCI-Nerdz` — docs, org profile, GitHub Pages site).
+- **Repository catalog**: Re-synced from GitHub/GitLab (`2026-08-01`); includes `HCI-Nerdz` and refreshed org membership after recent transfers.
+
+### Changed
+
+- **Home hero frost**: Kept the known-good dual-mask frost panel (`863f2ad` / `7da684c`) but stepped blur down from `backdrop-blur-lg` to `backdrop-blur-md`, with fill at `bg-background/50` (`dark:/45`) — lesser GPU cost while staying frosted.
+- **Noise overlay**: Restored the full **8-layer** stack (5 fine + 3 Poisson) from the `ce2e485` baseline; session shuffle key bumped to `noise-overlay-v5`.
 
 ### Fixed
 
 - **Home product cards**: Equal height per flex row — content column grows and Visit/More links pin to the bottom so shorter taglines leave space above the links instead of shrinking the card.
 - **Theme reveal**: Replaced hexagonal SVG mask with a View Transition circular `clip-path` wipe from the toggle (Web Animations on `::view-transition-new(root)`). VT overlay uses `pointer-events: none` so mid-reveal clicks reach the toggle and skip/restart; `prefers-reduced-motion` stays instant.
-- **Home hero frost restored**: Nested mask / split-blur experiments (`4a1d200`, `ef32d93`) made the frost disappear on live. Restored the visible frosted panel from `7da684c` (introduced in `863f2ad`): single `.hero-content-frost` with `backdrop-blur-lg` + soft dual-gradient mask, original scrims, `isolate` content wrapper.
+- **Home hero frost restored**: Nested mask / split-blur experiments (`4a1d200`, `ef32d93`) made the frost disappear on live. Restored the visible frosted panel from `7da684c` (introduced in `863f2ad`): single `.hero-content-frost` with soft dual-gradient mask, original scrims, `isolate` content wrapper (blur strength later reduced — see Changed above).
 - **GitHub Pages**: `cancel-in-progress: false` left a multi-hour queued run blocking the `pages` concurrency group, so frost never reached production. Switched to `cancel-in-progress: true` and redeployed.
 
 ### Added

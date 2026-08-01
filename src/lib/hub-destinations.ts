@@ -109,6 +109,15 @@ export const hubSections: HubSection[] = [
         external: true,
       },
       {
+        id: "org-hci-nerdz",
+        name: "HCI Nerdz",
+        tagline: "HCI and UI/UX innovation.",
+        href: "https://github.com/HCI-Nerdz",
+        external: true,
+        secondaryHref: "https://hci-nerdz.github.io",
+        secondaryLabel: "Site",
+      },
+      {
         id: "org-antora",
         name: "Antora Supplemental",
         tagline: "Documentation themes and Antora extensions.",

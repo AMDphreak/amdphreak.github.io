@@ -44,9 +44,27 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
+        "name": "business-bootstrap",
+        "description": "Business bootstrap docs: email matrix, DMARC, org infra pattern",
+        "url": "https://github.com/dev-centr/business-bootstrap",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
         "name": "centrmark",
         "description": "CentrMark is a new markup language designed to fix the problems with Markdown, MDX, and Asciidoc",
         "url": "https://github.com/dev-centr/centrmark",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "code-lens",
+        "description": "One code snippet, multiple pedagogical lenses — portable JSON5 spec and <code-lens> web component with framework adapters.",
+        "url": "https://github.com/dev-centr/code-lens",
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
@@ -116,6 +134,59 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": true
       },
       {
+        "name": "equivalence-engine",
+        "description": "DAG-based equivalence engine: shortest-path resolution across implementations, tool calls, and custom mappings via SDL rulesets.",
+        "url": "https://github.com/dev-centr/equivalence-engine",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "equivalence-engine-action",
+        "description": "Modular GitHub Action to automate codebase adaptation using the Evolution Engine and custom rulesets.",
+        "url": "https://github.com/dev-centr/equivalence-engine-action",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "equivalence-rules-cli",
+        "description": "Cross-platform CLI tool install profiles for DevCentr (Equivalence Engine cli domain)",
+        "url": "https://github.com/dev-centr/equivalence-rules-cli",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "equivalence-rules-code",
+        "description": "Standard SDL rulesets for adapting Qt 5.x codebases to Qt 6.x with Evolution Engine",
+        "url": "https://github.com/dev-centr/equivalence-rules-code",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "equivalence-rules-filesystem",
+        "description": "Cross-OS filesystem path equivalency rules (Linux, Windows, macOS, BSD) for the Evolution Engine.",
+        "url": "https://github.com/dev-centr/equivalence-rules-filesystem",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "fixnow-dev",
+        "url": "https://github.com/dev-centr/fixnow-dev",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
         "name": "general-knowledge",
         "description": "General developer knowledge: Diátaxis-organized reference, how-tos, and explanations",
         "url": "https://github.com/dev-centr/general-knowledge",
@@ -134,6 +205,15 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
+        "name": "infra-template",
+        "description": "Reusable Pulumi + Antora skeleton for org infra repos",
+        "url": "https://github.com/dev-centr/infra-template",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
         "name": "issue-tracker",
         "description": "Local GitHub issues and comments browser. Syncs issues into SQLite; browse and search with GUI or CLI.",
         "url": "https://github.com/dev-centr/issue-tracker",
@@ -143,9 +223,18 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
-        "name": "msi-installer-generator",
+        "name": "libequivalence",
+        "description": "D library: rule engine for the Equivalence Engine",
+        "url": "https://github.com/dev-centr/libequivalence",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "msi-generator",
         "description": "A cross-platform MSI/MSIX generator in D-lang",
-        "url": "https://github.com/dev-centr/msi-installer-generator",
+        "url": "https://github.com/dev-centr/msi-generator",
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
@@ -206,11 +295,20 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
-        "name": "prohelp",
-        "description": "Progressive & Professional Help CLI Interceptor and Library",
-        "url": "https://github.com/openshellorg/prohelp",
+        "name": "resting-lanczos",
+        "description": "Crisp responsive images: offline Lanczos tiers + srcset + transform scale (no live Lanczos). WebGL mipmaps experimental only.",
+        "url": "https://github.com/dev-centr/resting-lanczos",
         "provider": "github",
-        "owner": "openshellorg",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "scriptbook",
+        "description": "Scriptbook: play CentrMark .cmk script documents; sidecar run output (never rewrites the doc)",
+        "url": "https://github.com/dev-centr/scriptbook",
+        "provider": "github",
+        "owner": "dev-centr",
         "isPrivate": false,
         "isFork": false
       },
@@ -226,6 +324,15 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
       {
         "name": "toolchain-advisor",
         "url": "https://github.com/dev-centr/toolchain-advisor",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "toolchain-framework",
+        "description": "Toolchain Framework (TCF): schemas and validators for Toolchain Control Plane compliance",
+        "url": "https://github.com/dev-centr/toolchain-framework",
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
@@ -268,7 +375,7 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "url": "https://github.com/FoodTruckNerdz/developer-portal",
         "provider": "github",
         "owner": "FoodTruckNerdz",
-        "isPrivate": false,
+        "isPrivate": true,
         "isFork": false
       },
       {
@@ -335,6 +442,15 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
+        "name": "infra",
+        "description": "Org-level Pulumi infrastructure (Cloudflare DNS, email deliverability)",
+        "url": "https://github.com/FoodTruckNerdz/infra",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": true,
+        "isFork": false
+      },
+      {
         "name": "onboarding",
         "description": "Onboarding documentation and Setup GUI to bootstrap dev environment",
         "url": "https://github.com/FoodTruckNerdz/onboarding",
@@ -349,7 +465,7 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "url": "https://github.com/FoodTruckNerdz/roadmap",
         "provider": "github",
         "owner": "FoodTruckNerdz",
-        "isPrivate": false,
+        "isPrivate": true,
         "isFork": false
       },
       {
@@ -382,6 +498,40 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
     ]
   },
   {
+    "id": "HCI-Nerdz",
+    "title": "HCI Nerdz",
+    "tagline": "HCI and UI/UX innovation — honest surfaces, lower cognitive tax.",
+    "repositories": [
+      {
+        "name": "docs",
+        "description": "HCI Nerdz documentation hub (Antora + Valentus)",
+        "url": "https://github.com/HCI-Nerdz/docs",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "HCI-Nerdz.github.io",
+        "description": "HCI Nerdz GitHub Pages site (Astro)",
+        "url": "https://github.com/HCI-Nerdz/HCI-Nerdz.github.io",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": ".github",
+        "description": "Organization profile and community health files",
+        "url": "https://github.com/HCI-Nerdz/.github",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false
+      }
+    ]
+  },
+  {
     "id": "antora-supplemental",
     "title": "Antora Supplemental",
     "tagline": "Themes, workflows, and extensions for Antora documentation sites.",
@@ -397,8 +547,17 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
       },
       {
         "name": "antora-ai-help-extension",
-        "description": "Supplemental Antora content and assets",
+        "description": "Antora extension + supplemental UI: in-page AI help, vector search, and cached Q&A for docs gaps",
         "url": "https://github.com/antora-supplemental/antora-ai-help-extension",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "antora-alias-component-to-latest",
+        "description": "Antora extension: alias versioned component root URL to latest start page (docs use-case; candidate for core)",
+        "url": "https://github.com/antora-supplemental/antora-alias-component-to-latest",
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
@@ -414,9 +573,9 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
-        "name": "antora-dark-theme",
-        "description": "Dark UI theme for Antora documentation sites. npm and UI bundle.",
-        "url": "https://github.com/antora-supplemental/antora-dark-theme",
+        "name": "antora-dark-mode",
+        "description": "Dark mode supplemental UI for Antora Default UI — toggle, FOUC prevention, and CSS overrides.",
+        "url": "https://github.com/antora-supplemental/antora-dark-mode",
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
@@ -433,7 +592,7 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
       },
       {
         "name": "antora-extensions-registry",
-        "description": "Registry and catalog of Antora extensions. antora-extensions.org.",
+        "description": "Antora ecosystem registry — extensions, themes, UI modules (registry.antora-supplemental.org)",
         "url": "https://github.com/antora-supplemental/antora-extensions-registry",
         "provider": "github",
         "owner": "antora-supplemental",
@@ -442,6 +601,7 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
       },
       {
         "name": "antora-github-deploy-template",
+        "description": "Template: Antora docs build + GitHub Pages deploy workflow (playbook, docs.yml, private-repo PAT support)",
         "url": "https://github.com/antora-supplemental/antora-github-deploy-template",
         "provider": "github",
         "owner": "antora-supplemental",
@@ -449,8 +609,44 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
+        "name": "antora-incremental",
+        "description": "Antora dependency manifest, dirty-set CLI, and optional partial reconvert for faster incremental rebuilds",
+        "url": "https://github.com/antora-supplemental/antora-incremental",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "antora-search-chat",
+        "description": "Antora extension: lunr-first Search/Ask omnibox (wraps @antora/lunr-extension; optional Ask backends)",
+        "url": "https://github.com/antora-supplemental/antora-search-chat",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "antora-serve",
+        "description": "Local Antora generate+serve+watch with live reload (standalone; not a core fork)",
+        "url": "https://github.com/antora-supplemental/antora-serve",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "antora-supplemental.github.io",
+        "description": "Organization welcome site for antora-supplemental (GitHub Pages root)",
+        "url": "https://github.com/antora-supplemental/antora-supplemental.github.io",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
         "name": "antora-themes-site",
-        "description": "Antora Themes Gallery. User and admin documentation.",
+        "description": "ARCHIVED — theme gallery moved to antora-extensions-registry (/themes)",
         "url": "https://github.com/antora-supplemental/antora-themes-site",
         "provider": "github",
         "owner": "antora-supplemental",
@@ -476,9 +672,9 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
-        "name": "architexture-theme-antora",
+        "name": "architexture-theme",
         "description": "Bespoke architectural theme for Antora documentation",
-        "url": "https://github.com/antora-supplemental/architexture-theme-antora",
+        "url": "https://github.com/antora-supplemental/architexture-theme",
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
@@ -575,7 +771,26 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": true
       },
       {
+        "name": "valentus-theme",
+        "description": "Composed Antora doc-site chrome (pair with antora-dark-mode)",
+        "url": "https://github.com/antora-supplemental/valentus-theme",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "zed-asciidoc",
+        "description": "Zed support for AsciiDoc syntax",
+        "url": "https://github.com/antora-supplemental/zed-asciidoc",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
         "name": ".github",
+        "description": "Organization community health files, brand assets, and workflow starter templates for public repos",
         "url": "https://github.com/antora-supplemental/.github",
         "provider": "github",
         "owner": "antora-supplemental",
@@ -584,6 +799,7 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
       },
       {
         "name": ".github-private",
+        "description": "Organization community health files, brand assets, and workflow starter templates for private repos",
         "url": "https://github.com/antora-supplemental/.github-private",
         "provider": "github",
         "owner": "antora-supplemental",
@@ -661,7 +877,17 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
       },
       {
         "name": "dlang-gui-samples",
+        "description": "GUI toolkit samples multiple GUI libraries in D",
         "url": "https://github.com/dlang-supplemental/dlang-gui-samples",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "dlang-supplemental.github.io",
+        "description": "Organization welcome site for dlang-supplemental",
+        "url": "https://github.com/dlang-supplemental/dlang-supplemental.github.io",
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
@@ -686,9 +912,36 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": true
       },
       {
+        "name": "dmd",
+        "description": "dmd D Programming Language compiler",
+        "url": "https://github.com/dlang-supplemental/dmd",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
         "name": "docs",
         "description": "Documentation hub for dlang-supplemental projects. Antora site with antora-dark-theme.",
         "url": "https://github.com/dlang-supplemental/docs",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "dub-publish",
+        "description": "CLI to register Git repositories with the DUB package registry (code.dlang.org)",
+        "url": "https://github.com/dlang-supplemental/dub-publish",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "dubx",
+        "description": "Thin meta-CLI: redub for builds, dub-publish for registry owner ops",
+        "url": "https://github.com/dlang-supplemental/dubx",
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
@@ -733,6 +986,33 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "name": "json5-dlang",
         "description": "Native JSON5 implementation for Dlang",
         "url": "https://github.com/dlang-supplemental/json5-dlang",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "jxl-d",
+        "description": "JPEG XL for D: jxl-rs decode + libjxl encode",
+        "url": "https://github.com/dlang-supplemental/jxl-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "jxl-rs-d",
+        "description": "D bindings for the jxl-rs JPEG XL decoder (Rust) — browser-class decode for dub",
+        "url": "https://github.com/dlang-supplemental/jxl-rs-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "opentui-d",
+        "description": "D bindings for OpenTUI native Zig TUI core.",
+        "url": "https://github.com/dlang-supplemental/opentui-d",
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
@@ -903,15 +1183,6 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": true
       },
       {
-        "name": "antora-dark-theme",
-        "description": "Dark UI theme for Antora documentation sites. npm and UI bundle.",
-        "url": "https://github.com/AMDphreak/antora-dark-theme",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
         "name": "bigrpic.com",
         "description": "Photography studio website for bigrPicture",
         "url": "https://github.com/AMDphreak/bigrpic.com",
@@ -974,22 +1245,22 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
-        "name": "code-lens",
-        "description": "One code snippet, multiple pedagogical lenses — portable JSON5 spec and <code-lens> web component with framework adapters.",
-        "url": "https://github.com/dev-centr/code-lens",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "connectome-filesystem",
+        "name": "connectome-fs",
         "description": "Modern graph-based flat filesystem",
-        "url": "https://github.com/AMDphreak/connectome-filesystem",
+        "url": "https://github.com/AMDphreak/connectome-fs",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
         "isFork": false
+      },
+      {
+        "name": "context7",
+        "description": "Context7 Platform -- Up-to-date code documentation for LLMs and AI code editors",
+        "url": "https://github.com/AMDphreak/context7",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
       },
       {
         "name": "conveyorbelt",
@@ -998,15 +1269,6 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "gitlab",
         "owner": "AMDphreak",
         "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "CookSystems-FastTrackD-Assignments",
-        "description": "Cook Systems FastTrack'D Java developer training program in Memphis, TN. These are my assignments from that bootcamp.",
-        "url": "https://github.com/AMDphreak/CookSystems-FastTrackD-Assignments",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
         "isFork": false
       },
       {
@@ -1090,6 +1352,15 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
+        "name": "docs",
+        "description": "Documentation for handlebars.js and the handlebars-language",
+        "url": "https://github.com/AMDphreak/docs",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
         "name": "dotfile-template",
         "description": "template for dotfiles for all programming. Such as .env files that contain secrets on local machine",
         "url": "https://github.com/AMDphreak/dotfile-template",
@@ -1142,44 +1413,26 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
+        "name": "dub",
+        "description": "Package and build management system for D",
+        "url": "https://github.com/AMDphreak/dub",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
+        "name": "dub-registry",
+        "description": "Online registry for dub packages",
+        "url": "https://github.com/AMDphreak/dub-registry",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
         "name": "electron-custom-dialog",
         "url": "https://github.com/AMDphreak/electron-custom-dialog",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "equivalence-engine",
-        "description": "High-performance, D-based transformation engine for modular codebase adaptation and version evolution.",
-        "url": "https://github.com/AMDphreak/equivalence-engine",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "equivalence-engine-action",
-        "description": "Modular GitHub Action to automate codebase adaptation using the Evolution Engine and custom rulesets.",
-        "url": "https://github.com/AMDphreak/equivalence-engine-action",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "evolution-rules-code",
-        "description": "Standard SDL rulesets for adapting Qt 5.x codebases to Qt 6.x with Evolution Engine",
-        "url": "https://github.com/AMDphreak/evolution-rules-code",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "evolution-rules-filesystem",
-        "description": "Cross-OS filesystem path equivalency rules (Linux, Windows, macOS, BSD) for the Evolution Engine.",
-        "url": "https://github.com/AMDphreak/evolution-rules-filesystem",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
@@ -1195,12 +1448,22 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
-        "name": "fixnow-dev",
-        "url": "https://github.com/AMDphreak/fixnow-dev",
+        "name": "FastTrackD",
+        "description": "Cook Systems FastTrack'D Java developer training program in Memphis, TN. These are my assignments from that bootcamp.",
+        "url": "https://github.com/AMDphreak/FastTrackD",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
         "isFork": false
+      },
+      {
+        "name": "flutter-jxl-coder",
+        "description": "JpegXL encoding and decoding for Flutter",
+        "url": "https://github.com/AMDphreak/flutter-jxl-coder",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
       },
       {
         "name": "ftn-site",
@@ -1417,6 +1680,14 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": true
       },
       {
+        "name": "jxl_ffi",
+        "url": "https://github.com/AMDphreak/jxl_ffi",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
         "name": "krita",
         "description": "Krita is a free and open source cross-platform application that offers an end-to-end solution for creating digital art files from scratch built on the KDE and Qt frameworks.",
         "url": "https://github.com/AMDphreak/krita",
@@ -1460,15 +1731,6 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
-        "name": "libequivalence",
-        "description": "D library: rule engine for the Equivalence Engine",
-        "url": "https://github.com/AMDphreak/libequivalence",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
         "name": "llama.cpp",
         "description": "LLM inference in C/C++",
         "url": "https://github.com/AMDphreak/llama.cpp",
@@ -1490,6 +1752,15 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "name": "MDN-content",
         "description": "The content behind MDN Web Docs",
         "url": "https://github.com/AMDphreak/MDN-content",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
+        "name": "mermaid",
+        "description": "Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown",
+        "url": "https://github.com/AMDphreak/mermaid",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
@@ -1596,6 +1867,15 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "name": "PowerShell",
         "description": "PowerShell for every system!",
         "url": "https://github.com/AMDphreak/PowerShell",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
+        "name": "PowerToys",
+        "description": "Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows",
+        "url": "https://github.com/AMDphreak/PowerToys",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
@@ -1744,6 +2024,24 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "isFork": false
       },
       {
+        "name": "turso-cli",
+        "description": "Command line interface to the Turso Cloud.",
+        "url": "https://github.com/AMDphreak/turso-cli",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
+        "name": "turso-install",
+        "description": "Turso CLI installer",
+        "url": "https://github.com/AMDphreak/turso-install",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
         "name": "typst",
         "description": "A markup-based typesetting system that is powerful and easy to learn.",
         "url": "https://github.com/AMDphreak/typst",
@@ -1846,6 +2144,24 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "name": "wiki-docs",
         "description": "Docs for Wiki.js 2.x",
         "url": "https://github.com/AMDphreak/wiki-docs",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
+        "name": "win-svg-thumbs-rust",
+        "description": "A native Windows SVG thumbnail handler for File Explorer that uses only the Windows API, written in Rust.",
+        "url": "https://github.com/AMDphreak/win-svg-thumbs-rust",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
+        "name": "windows-dev-docs",
+        "description": "Conceptual and overview content for developing Windows apps",
+        "url": "https://github.com/AMDphreak/windows-dev-docs",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
@@ -1956,8 +2272,126 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
     "tagline": "Open Shell community.",
     "repositories": [
       {
-        "name": "open-shell-org",
-        "url": "https://github.com/openshellorg/open-shell-org",
+        "name": "about",
+        "description": "Orient yourself: OS/distro, shell, and how to look around — Cosmopolitan APE universal binary",
+        "url": "https://github.com/openshellorg/about",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "actor-shell",
+        "description": "Non-frustrating Windows/Linux UI shell on an Erlang-style actor runtime (D)",
+        "url": "https://github.com/openshellorg/actor-shell",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "docs",
+        "description": "OpenShellOrg documentation hub. Antora site aggregating openshellorg projects (SOS + companion tooling docs).",
+        "url": "https://github.com/openshellorg/docs",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "info",
+        "description": "OpenShellOrg Info TUI — modern GNU Info reader (upstreamable info replacement)",
+        "url": "https://github.com/openshellorg/info",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "mermaid-svg-css-vars",
+        "description": "Post-process Mermaid SVG: theme colors to CSS vars with fallbacks + webCompatibility normalization",
+        "url": "https://github.com/openshellorg/mermaid-svg-css-vars",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "nu-emit",
+        "description": "C-first API to emit Nushell-friendly structured rows (JSONL) without hand-rolled JSON",
+        "url": "https://github.com/openshellorg/nu-emit",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "nu-require",
+        "description": "Require Nushell as the host shell for tailored CLIs (validate + optional relaunch/install)",
+        "url": "https://github.com/openshellorg/nu-require",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "opensh.org",
+        "description": "OpenShellOrg GitHub Pages site",
+        "url": "https://github.com/openshellorg/opensh.org",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "prohelp",
+        "description": "Progressive & Professional Help CLI Interceptor and Library",
+        "url": "https://github.com/openshellorg/prohelp",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "prohelp-cli",
+        "description": "CLI framework bridges for Prohelp (arsd.cli and related routers)",
+        "url": "https://github.com/openshellorg/prohelp-cli",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "project-map",
+        "description": "Detect technology stacks in a directory tree and classify files by role",
+        "url": "https://github.com/openshellorg/project-map",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "shell-architecture",
+        "description": "OpenShellOrg thesis: structured shell pipelines, SOS relationship, Nushell advocacy",
+        "url": "https://github.com/openshellorg/shell-architecture",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "terminal",
+        "description": "The new Windows Terminal and the original Windows console host, all in the same place!",
+        "url": "https://github.com/openshellorg/terminal",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": true
+      },
+      {
+        "name": "terminal-gui-prompts",
+        "description": "Terminal prompts that promote to native GUI dialogs when a TTY has a desktop; always echo prompt text for pipes/AI.",
+        "url": "https://github.com/openshellorg/terminal-gui-prompts",
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
@@ -1968,19 +2402,46 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "url": "https://github.com/openshellorg/.github",
         "provider": "github",
         "owner": "openshellorg",
-        "isPrivate": true,
+        "isPrivate": false,
         "isFork": false
       }
     ]
   },
   {
     "id": "LinxPhotos",
-    "title": "Linx",
+    "title": "LinxPhotos",
     "tagline": "Photo service and documentation.",
     "repositories": [
       {
+        "name": "discussion",
+        "description": "Public Discussion repository for tech-savvy fans",
+        "url": "https://github.com/LinxPhotos/discussion",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
         "name": "docs.linx.photos",
         "url": "https://github.com/LinxPhotos/docs.linx.photos",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "InstaLay",
+        "description": "InstaLay — batch canvas, no-crop framing, and tapestry layouts for Instagram (by Linx) https://instalay.linx.photos",
+        "url": "https://github.com/LinxPhotos/InstaLay",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": false,
+        "isFork": false
+      },
+      {
+        "name": "LinxPhotos.github.io",
+        "description": "LinxPhotos organization homepage",
+        "url": "https://github.com/LinxPhotos/LinxPhotos.github.io",
         "provider": "github",
         "owner": "LinxPhotos",
         "isPrivate": false,
@@ -1992,6 +2453,14 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "LinxPhotos",
         "isPrivate": true,
+        "isFork": false
+      },
+      {
+        "name": ".github",
+        "url": "https://github.com/LinxPhotos/.github",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": false,
         "isFork": false
       }
     ]
@@ -2062,7 +2531,7 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
   }
 ];
 
-export const catalogGeneratedAt = "2026-05-30";
+export const catalogGeneratedAt = "2026-08-01";
 
 export function catalogRepoCount(): number {
   return repositoryCatalog.reduce((n, g) => n + g.repositories.length, 0);

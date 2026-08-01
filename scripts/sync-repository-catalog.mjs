@@ -15,6 +15,7 @@ const GITHUB_ORGS = [
   "AMDphreak",
   "dev-centr",
   "FoodTruckNerdz",
+  "HCI-Nerdz",
   "antora-supplemental",
   "dlang-supplemental",
   "formatte",
@@ -38,6 +39,10 @@ const GROUP_META = {
   FoodTruckNerdz: {
     title: "FoodTruckNerdz",
     tagline: "Food truck discovery platform — web, mobile, and API.",
+  },
+  "HCI-Nerdz": {
+    title: "HCI Nerdz",
+    tagline: "HCI and UI/UX innovation — honest surfaces, lower cognitive tax.",
   },
   "antora-supplemental": {
     title: "Antora Supplemental",
@@ -67,6 +72,7 @@ const GROUP_META = {
 const GROUP_ORDER = [
   "dev-centr",
   "FoodTruckNerdz",
+  "HCI-Nerdz",
   "antora-supplemental",
   "dlang-supplemental",
   "AMDphreak",

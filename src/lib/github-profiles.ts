@@ -26,6 +26,12 @@ export const githubProfiles: GitHubProfile[] = [
     url: "https://github.com/FoodTruckNerdz",
   },
   {
+    slug: "HCI-Nerdz",
+    label: "HCI Nerdz",
+    tagline: "HCI and UI/UX",
+    url: "https://github.com/HCI-Nerdz",
+  },
+  {
     slug: "antora-supplemental",
     label: "Antora Supplemental",
     tagline: "Documentation themes",
