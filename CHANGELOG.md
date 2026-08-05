@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Feedback Hub catalog**: `src/content/feedback-hub/catalog.json5` + `/feedback` index — clear-web source of truth for documented Hub filings (no Microsoft owner API). First entry: Access Feedback from API and clearweb (`aka.ms/AA130yqs`). How-to: `docs/how-to/record-feedback-hub.adoc`. Blog gateway links to filings.
 - **Hierarchical tags** via `@content-tags/*` (Dev-Centr): `src/content/taxonomy.json5`, `/tags` index, `/tags/[...tag]` pages, tags on continuing-blog list and post pages.
 - **Post**: [Access Feedback from API and clearweb](/blog/posts/access-feedback-from-api-and-clearweb) — mirrors Feedback Hub filing `aka.ms/AA130yqs`.
 

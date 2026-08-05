@@ -17,3 +17,11 @@ Hierarchical tags use [`@content-tags`](https://github.com/dev-centr/content-tag
 - Tag index: [/tags](https://ryanjohnson.dev/tags)
 - Tag posts in frontmatter: `tags: ["microsoft/feedback-hub", "apis"]`
 - Browse continuing posts: [/blog/posts](https://ryanjohnson.dev/blog/posts)
+
+## Feedback Hub filings
+
+Microsoft Feedback Hub has no owner API and no clear-web article pages. Filings documented here live in:
+
+- Index: [/feedback](https://ryanjohnson.dev/feedback)
+- Catalog: [`src/content/feedback-hub/catalog.json5`](src/content/feedback-hub/catalog.json5)
+- How-to (agents/humans): [`docs/how-to/record-feedback-hub.adoc`](docs/how-to/record-feedback-hub.adoc)

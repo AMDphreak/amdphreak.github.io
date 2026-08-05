@@ -1,0 +1,23 @@
+{
+  // Machine-readable mirror of Feedback Hub filings for this site.
+  // Agents: append entries here, then add/update a continuing-blog post and tags.
+  // There is no Microsoft owner API — this catalog is the source of truth for automation.
+  accountHint: "rj.amdphreak@gmail.com (Microsoft account used in Feedback Hub)",
+  entries: [
+    {
+      id: "d80c94a5-be5e-4d3e-aea7-61fc1ce80691",
+      title: "Access Feedback from API and clearweb",
+      body: "# Access Feedback from API and clearweb\nProvide users with an authenticated API endpoint to retrieve and interact with Feedback Hub posts for verified account holders. Allow account owner to see all content submitted and update/manage their account and feedback.\n\nAccess as owner:\n1. API\n2. Web page with all content\n\nAccess as a visitor:\n1. API with redacted content. No screenshots.\n2. Web page with redacted content. Include Title, user-selected public alias (not same field as username), content redacted by AI analysis and string matching.",
+      shareUrl: "https://aka.ms/AA130yqs",
+      feedbackId: "d80c94a5-be5e-4d3e-aea7-61fc1ce80691",
+      contextId: 240,
+      submittedAt: "2026-08-04",
+      sharePublicly: true,
+      hubStatus: "unknown",
+      statusCheckedAt: "2026-08-04",
+      blogPostId: "access-feedback-from-api-and-clearweb",
+      tags: ["microsoft/feedback-hub", "apis", "privacy"],
+      notes: "Share link resolves to Insider FeedbackHub deep link; clear-web landing page does not expose title/body.",
+    },
+  ],
+}

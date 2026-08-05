@@ -43,4 +43,9 @@ The **Share publicly** checkbox controls discoverability inside Feedback Hub (an
 
 ## Why this blog post exists
 
-Until Microsoft ships owner APIs and real public web pages for feedback, this site is the source of truth for filings I want to track, cite, and automate around. Tag pages under [/tags](/tags) group related posts; this one sits under Microsoft → Feedback Hub, APIs, and Privacy.
+Until Microsoft ships owner APIs and real public web pages for feedback, this site is the source of truth for filings I want to track, cite, and automate around.
+
+- Catalog index: [/feedback](/feedback)
+- Machine-readable row: `src/content/feedback-hub/catalog.json5`
+- Tags: [/tags](/tags) (Microsoft → Feedback Hub, APIs, Privacy)
+- How to record more: `docs/how-to/record-feedback-hub.adoc`

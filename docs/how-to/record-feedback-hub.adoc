@@ -1,0 +1,30 @@
+= Record Feedback Hub filings
+:description: How to document Microsoft Feedback Hub items on this site for humans and agents.
+
+== Why
+
+Feedback Hub share links are deep links into the Windows app. They are not clear-web articles.
+Microsoft does not offer a supported owner API. This site keeps a **catalog** plus optional blog posts.
+
+== Source of truth
+
+`src/content/feedback-hub/catalog.json5` — append an entry for each filing you want to track.
+
+Linked human-readable posts live under `src/content/blog/` and use hierarchical tags from
+`src/content/taxonomy.json5` (see `/tags`).
+
+Index page: `/feedback`.
+
+== Agent workflow
+
+. Copy title, body, share URL, and ids from Feedback Hub (My feedback → Share).
+. Append a row to `catalog.json5` (`id` should match Hub `feedbackid` when known).
+. Add or update a continuing-blog Markdown post; set `blogPostId` on the catalog row to the post id.
+. Tag the post with taxonomy ids (at least `microsoft/feedback-hub`).
+. Optionally refresh `hubStatus` / `statusCheckedAt` after checking Hub.
+
+Do **not** invent a Microsoft API client. Update this catalog by hand or from paste until Microsoft ships one.
+
+== First entry
+
+`d80c94a5-be5e-4d3e-aea7-61fc1ce80691` — Access Feedback from API and clearweb — share `https://aka.ms/AA130yqs`.
