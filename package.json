@@ -1,37 +1,51 @@
 {
-  "name": "astro-site",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "sync:repos": "node scripts/sync-repository-catalog.mjs",
-    "sync:wordpress": "node scripts/sync-wordpress-archive.mjs",
-    "fetch:inspirations": "node scripts/fetch-inspiration-assets.mjs"
-  },
-  "dependencies": {
-    "@astrojs/solid-js": "^5.1.1",
-    "@kobalte/core": "^0.13.11",
-    "@tailwindcss/vite": "^4.0.0",
-    "astro": "^5.14.4",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "json5": "^2.2.3",
-    "lottie-web": "^5.13.0",
-    "lucide-solid": "^1.8.0",
-    "solid-icons": "^1.2.0",
-    "solid-js": "^1.9.9",
-    "tailwind-merge": "^3.5.0",
-    "tailwindcss": "^4.0.0",
-    "tailwindcss-animate": "^1.0.7"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.3.14",
-    "@types/node": "^20.0.0",
-    "solidui-cli": "0.7.2",
-    "typescript": "^5.0.0"
-  },
-  "packageManager": "pnpm@10.29.1+sha512.48dae233635a645768a3028d19545cacc1688639eeb1f3734e42d6d6b971afbf22aa1ac9af52a173d9c3a20c15857cfa400f19994d79a2f626fcc73fccda9bbc"
+    "name":  "astro-site",
+    "type":  "module",
+    "version":  "0.0.1",
+    "scripts":  {
+                    "dev":  "astro dev",
+                    "build":  "astro build",
+                    "preview":  "astro preview",
+                    "astro":  "astro",
+                    "sync:repos":  "node scripts/sync-repository-catalog.mjs",
+                    "sync:wordpress":  "node scripts/sync-wordpress-archive.mjs",
+                    "fetch:inspirations":  "node scripts/fetch-inspiration-assets.mjs"
+                },
+    "dependencies":  {
+                         "@astrojs/solid-js":  "^5.1.1",
+                         "@kobalte/core":  "^0.13.11",
+                         "@tailwindcss/vite":  "^4.0.0",
+                         "astro":  "^5.14.4",
+                         "class-variance-authority":  "^0.7.1",
+                         "clsx":  "^2.1.1",
+                         "json5":  "^2.2.3",
+                         "lottie-web":  "^5.13.0",
+                         "lucide-solid":  "^1.8.0",
+                         "solid-icons":  "^1.2.0",
+                         "solid-js":  "^1.9.9",
+                         "tailwind-merge":  "^3.5.0",
+                         "tailwindcss":  "^4.0.0",
+                         "tailwindcss-animate":  "^1.0.7",
+                         "@content-tags/core":  "file:../../dev-centr/content-tags/packages/core",
+                         "@content-tags/astro":  "file:../../dev-centr/content-tags/packages/astro",
+                         "@content-tags/solid":  "file:../../dev-centr/content-tags/packages/solid"
+                     },
+    "devDependencies":  {
+                            "@biomejs/biome":  "^2.3.14",
+                            "@types/node":  "^20.0.0",
+                            "solidui-cli":  "0.7.2",
+                            "typescript":  "^5.0.0"
+                        },
+    "packageManager":  "pnpm@10.29.1+sha512.48dae233635a645768a3028d19545cacc1688639eeb1f3734e42d6d6b971afbf22aa1ac9af52a173d9c3a20c15857cfa400f19994d79a2f626fcc73fccda9bbc",
+    "pnpm":  {
+                 "onlyBuiltDependencies":  [
+                                               "esbuild",
+                                               "sharp"
+                                           ],
+                 "overrides":  {
+                                   "@content-tags/core":  "file:../../dev-centr/content-tags/packages/core",
+                                   "@content-tags/astro":  "file:../../dev-centr/content-tags/packages/astro",
+                                   "@content-tags/solid":  "file:../../dev-centr/content-tags/packages/solid"
+                               }
+             }
 }

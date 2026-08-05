@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2026-08-04
+
+### Added
+
+- **Hierarchical tags** via `@content-tags/*` (Dev-Centr): `src/content/taxonomy.json5`, `/tags` index, `/tags/[...tag]` pages, tags on continuing-blog list and post pages.
+- **Post**: [Access Feedback from API and clearweb](/blog/posts/access-feedback-from-api-and-clearweb) — mirrors Feedback Hub filing `aka.ms/AA130yqs`.
+
 ## [Unreleased] - 2026-08-01
+
 
 ### Added
 

@@ -3,6 +3,7 @@ title: "Welcome to the continuing blog"
 description: "Static posts on ryanjohnson.dev — the long-term home after WordPress."
 pubDate: 2026-07-22
 draft: false
+tags: []
 ---
 
 This is the continuing blog on **ryanjohnson.dev**: static Markdown posts published here going forward.

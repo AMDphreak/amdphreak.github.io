@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@content-tags/core': file:../../dev-centr/content-tags/packages/core
+  '@content-tags/astro': file:../../dev-centr/content-tags/packages/astro
+  '@content-tags/solid': file:../../dev-centr/content-tags/packages/solid
+
 importers:
 
   .:
@@ -11,6 +16,15 @@ importers:
       '@astrojs/solid-js':
         specifier: ^5.1.1
         version: 5.1.1(@types/node@20.19.21)(jiti@2.6.1)(lightningcss@1.30.1)(solid-js@1.9.9)(yaml@2.8.1)
+      '@content-tags/astro':
+        specifier: file:../../dev-centr/content-tags/packages/astro
+        version: file:../../dev-centr/content-tags/packages/astro
+      '@content-tags/core':
+        specifier: file:../../dev-centr/content-tags/packages/core
+        version: file:../../dev-centr/content-tags/packages/core
+      '@content-tags/solid':
+        specifier: file:../../dev-centr/content-tags/packages/solid
+        version: file:../../dev-centr/content-tags/packages/solid(solid-js@1.9.9)
       '@kobalte/core':
         specifier: ^0.13.11
         version: 0.13.11(solid-js@1.9.9)
@@ -325,6 +339,17 @@ packages:
 
   '@clack/prompts@0.10.1':
     resolution: {integrity: sha512-Q0T02vx8ZM9XSv9/Yde0jTmmBQufZhPJfYAg2XrrrxWWaZgq1rr8nU8Hv710BQ1dhoP8rtY7YUdpGej2Qza/cw==}
+
+  '@content-tags/astro@file:../../dev-centr/content-tags/packages/astro':
+    resolution: {directory: ../../dev-centr/content-tags/packages/astro, type: directory}
+
+  '@content-tags/core@file:../../dev-centr/content-tags/packages/core':
+    resolution: {directory: ../../dev-centr/content-tags/packages/core, type: directory}
+
+  '@content-tags/solid@file:../../dev-centr/content-tags/packages/solid':
+    resolution: {directory: ../../dev-centr/content-tags/packages/solid, type: directory}
+    peerDependencies:
+      solid-js: ^1.9.0
 
   '@corvu/utils@0.4.2':
     resolution: {integrity: sha512-Ox2kYyxy7NoXdKWdHeDEjZxClwzO4SKM8plAaVwmAJPxHMqA0rLOoAsa+hBDwRLpctf+ZRnAd/ykguuJidnaTA==}
@@ -2754,6 +2779,17 @@ snapshots:
       '@clack/core': 0.4.2
       picocolors: 1.1.1
       sisteransi: 1.0.5
+
+  '@content-tags/astro@file:../../dev-centr/content-tags/packages/astro':
+    dependencies:
+      '@content-tags/core': file:../../dev-centr/content-tags/packages/core
+
+  '@content-tags/core@file:../../dev-centr/content-tags/packages/core': {}
+
+  '@content-tags/solid@file:../../dev-centr/content-tags/packages/solid(solid-js@1.9.9)':
+    dependencies:
+      '@content-tags/core': file:../../dev-centr/content-tags/packages/core
+      solid-js: 1.9.9
 
   '@corvu/utils@0.4.2(solid-js@1.9.9)':
     dependencies:

@@ -1,23 +1,28 @@
 ---
 import { getCollection, render } from "astro:content";
+import { getTagsForPost } from "@content-tags/core";
 import { Footer } from "../../../components/Footer";
+import { PostTags } from "../../../components/PostTags";
 import NoiseOverlay from "../../../components/NoiseOverlay.astro";
 import ThemeScript from "../../../components/ThemeScript.astro";
 import ThemeToggleBar from "../../../components/ThemeToggleBar.astro";
+import { buildSiteTagIndex } from "../../../lib/content-tags";
 import "../../../styles/tailwind.css";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
+  const tagIndex = await buildSiteTagIndex();
   return posts
     .filter((p) => !p.data.draft)
     .map((post) => ({
       params: { slug: post.id },
-      props: { post },
+      props: { post, tagIndex },
     }));
 }
 
-const { post } = Astro.props;
+const { post, tagIndex } = Astro.props;
 const { Content } = await render(post);
+const postTags = getTagsForPost(tagIndex, post.id);
 ---
 
 <html lang="en">
@@ -55,6 +60,13 @@ const { Content } = await render(post);
             <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
               {post.data.pubDate.toISOString().slice(0, 10)}
             </p>
+            {
+              postTags.length > 0 && (
+                <div class="pt-2">
+                  <PostTags client:load tags={postTags} />
+                </div>
+              )
+            }
           </header>
           <div
             class="prose prose-stone dark:prose-invert max-w-none space-y-4 text-stone-700 dark:text-stone-300 leading-relaxed font-sans"

@@ -1,0 +1,26 @@
+{
+  tags: [
+    {
+      id: "microsoft",
+      label: "Microsoft",
+      description: "Microsoft products, platforms, and feedback",
+      children: [
+        {
+          id: "microsoft/feedback-hub",
+          label: "Feedback Hub",
+          description: "Product feedback filed via Windows Feedback Hub",
+        },
+      ],
+    },
+    {
+      id: "apis",
+      label: "APIs",
+      description: "Public and authenticated API access, developer surfaces",
+    },
+    {
+      id: "privacy",
+      label: "Privacy",
+      description: "Clear-web visibility, redaction, and account data access",
+    },
+  ],
+}

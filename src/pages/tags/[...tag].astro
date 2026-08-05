@@ -1,0 +1,128 @@
+---
+import {
+  getTagBreadcrumb,
+  tagIdToHref,
+  tagStaticPaths,
+  tagIdFromRestParam,
+} from "@content-tags/astro";
+import { Footer } from "../../components/Footer";
+import NoiseOverlay from "../../components/NoiseOverlay.astro";
+import ThemeScript from "../../components/ThemeScript.astro";
+import ThemeToggleBar from "../../components/ThemeToggleBar.astro";
+import { buildSiteTagIndex } from "../../lib/content-tags";
+import "../../styles/tailwind.css";
+
+export async function getStaticPaths() {
+  const index = await buildSiteTagIndex();
+  return tagStaticPaths(index, { restParam: true });
+}
+
+const { tagId, tag, posts, index } = Astro.props;
+const breadcrumb = getTagBreadcrumb(index.byId, tagId);
+const paramCheck = tagIdFromRestParam(Astro.params.tag);
+if (paramCheck && paramCheck !== tagId) {
+  // paths are generated from index; keep assert soft
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{tag.label} - Tags - Ryan Johnson</title>
+    <ThemeScript />
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <NoiseOverlay />
+    <main class="w-full flex-1 mt-8 mb-12">
+      <ThemeToggleBar container maxWidth="max-w-4xl" />
+      <div class="container mx-auto px-6 py-12 max-w-4xl structural-border border-t-0 p-8 md:p-12 space-y-12">
+        <nav
+          class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
+        >
+          <a
+            href="/tags"
+            class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+            >/ Tags</a
+          >
+          <span
+            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+            >{tag.id}</span
+          >
+        </nav>
+
+        <header class="space-y-4 max-w-3xl">
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 flex flex-wrap gap-2">
+            {
+              breadcrumb.map((b, i) => (
+                <>
+                  {i > 0 && <span aria-hidden="true">/</span>}
+                  <a
+                    href={tagIdToHref(b.id)}
+                    class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                  >
+                    {b.label}
+                  </a>
+                </>
+              ))
+            }
+          </p>
+          <h1 class="text-5xl font-heading tracking-tighter">{tag.label}</h1>
+          {
+            tag.description && (
+              <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+                {tag.description}
+              </p>
+            )
+          }
+        </header>
+
+        {
+          posts.length === 0 ? (
+            <p class="text-sm text-stone-500">No posts with this tag yet.</p>
+          ) : (
+            <ul class="space-y-6 m-0 p-0 list-none divide-y divide-stone-200 dark:divide-stone-800">
+              {posts.map((post) => (
+                <li class="py-6 first:pt-0">
+                  <a
+                    href={post.href}
+                    class="font-heading text-2xl tracking-tight text-foreground hover:underline decoration-stone-300 underline-offset-4"
+                  >
+                    {post.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+
+        {
+          tag.children.length > 0 && (
+            <section class="space-y-4 border-t border-stone-200 dark:border-stone-800 pt-8">
+              <h2 class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+                Child tags
+              </h2>
+              <ul class="flex flex-wrap gap-3 list-none m-0 p-0">
+                {tag.children.map((child) => (
+                  <li>
+                    <a
+                      href={tagIdToHref(child.id)}
+                      class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-300 hover:underline"
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+      </div>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

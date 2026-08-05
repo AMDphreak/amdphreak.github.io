@@ -1,11 +1,14 @@
 ---
 import { getCollection } from "astro:content";
+import { tagIdToHref } from "@content-tags/core";
 import { Footer } from "../../../components/Footer";
 import NoiseOverlay from "../../../components/NoiseOverlay.astro";
 import ThemeScript from "../../../components/ThemeScript.astro";
 import ThemeToggleBar from "../../../components/ThemeToggleBar.astro";
+import { buildSiteTagIndex } from "../../../lib/content-tags";
 import "../../../styles/tailwind.css";
 
+const tagIndex = await buildSiteTagIndex();
 const allPosts = (await getCollection("blog"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -41,16 +44,26 @@ const allPosts = (await getCollection("blog"))
               >/ Blog</a
             >
           </div>
-          <span
-            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
-            >Posts</span
-          >
+          <div class="flex items-center gap-4">
+            <a
+              href="/tags"
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+              >/ Tags</a
+            >
+            <span
+              class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
+              >Posts</span
+            >
+          </div>
         </nav>
 
         <header class="space-y-4 max-w-3xl">
           <h1 class="text-5xl font-heading tracking-tighter">Continuing blog</h1>
           <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
-            Static posts · ryanjohnson.dev
+            Static posts · ryanjohnson.dev ·{" "}
+            <a href="/tags" class="hover:text-stone-900 dark:hover:text-stone-100"
+              >browse tags</a
+            >
           </p>
           <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
             New writing published on this site. For older WordPress material, see the{" "}
@@ -90,6 +103,23 @@ const allPosts = (await getCollection("blog"))
                     <p class="mt-2 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
                       {post.data.description}
                     </p>
+                  )}
+                  {(post.data.tags?.length ?? 0) > 0 && (
+                    <ul class="mt-3 flex flex-wrap gap-3 list-none m-0 p-0">
+                      {post.data.tags.map((tagId) => {
+                        const label = tagIndex.byId.get(tagId)?.label ?? tagId;
+                        return (
+                          <li>
+                            <a
+                              href={tagIdToHref(tagId)}
+                              class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                            >
+                              {label}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
                   )}
                 </li>
               ))}
