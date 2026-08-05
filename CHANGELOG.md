@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2026-08-04
 
+### Fixed
+
+- **GitHub Pages deploy**: `@content-tags/*` no longer uses machine-local `file:../../dev-centr/...` paths. CI checks out `dev-centr/content-tags` into `vendor/content-tags`, builds packages, then installs — restores deploy after two failed runs that left new routes 404.
+
 ### Added
 
 - **Feedback Hub catalog**: `src/content/feedback-hub/catalog.json5` + `/feedback` index — clear-web source of truth for documented Hub filings (no Microsoft owner API). First entry: Access Feedback from API and clearweb (`aka.ms/AA130yqs`). How-to: `docs/how-to/record-feedback-hub.adoc`. Blog gateway links to filings.
