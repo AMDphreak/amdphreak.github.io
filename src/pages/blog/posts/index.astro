@@ -9,7 +9,9 @@ import { buildSiteTagIndex } from "../../../lib/content-tags";
 import "../../../styles/tailwind.css";
 
 const tagIndex = await buildSiteTagIndex();
-const allPosts = (await getCollection("blog"))
+const mdPosts = await getCollection("blog");
+const cmkPosts = await getCollection("blogCmk");
+const allPosts = [...mdPosts, ...cmkPosts]
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
@@ -106,7 +108,7 @@ const allPosts = (await getCollection("blog"))
                   )}
                   {(post.data.tags?.length ?? 0) > 0 && (
                     <ul class="mt-3 flex flex-wrap gap-3 list-none m-0 p-0">
-                      {post.data.tags.map((tagId) => {
+                      {post.data.tags!.map((tagId) => {
                         const label = tagIndex.byId.get(tagId)?.label ?? tagId;
                         return (
                           <li>

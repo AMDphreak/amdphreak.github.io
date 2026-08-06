@@ -9,20 +9,36 @@ import ThemeToggleBar from "../../../components/ThemeToggleBar.astro";
 import { buildSiteTagIndex } from "../../../lib/content-tags";
 import "../../../styles/tailwind.css";
 
+type MdPost = Awaited<ReturnType<typeof getCollection<"blog">>>[number];
+type CmkPost = Awaited<ReturnType<typeof getCollection<"blogCmk">>>[number];
+
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const mdPosts = await getCollection("blog");
+  const cmkPosts = await getCollection("blogCmk");
   const tagIndex = await buildSiteTagIndex();
-  return posts
-    .filter((p) => !p.data.draft)
-    .map((post) => ({
-      params: { slug: post.id },
-      props: { post, tagIndex },
-    }));
+  return [
+    ...mdPosts
+      .filter((p) => !p.data.draft)
+      .map((post) => ({
+        params: { slug: post.id },
+        props: { kind: "md" as const, post, tagIndex },
+      })),
+    ...cmkPosts
+      .filter((p) => !p.data.draft)
+      .map((post) => ({
+        params: { slug: post.id },
+        props: { kind: "cmk" as const, post, tagIndex },
+      })),
+  ];
 }
 
-const { post, tagIndex } = Astro.props;
-const { Content } = await render(post);
-const postTags = getTagsForPost(tagIndex, post.id);
+const { kind, post, tagIndex } = Astro.props as
+  | { kind: "md"; post: MdPost; tagIndex: Awaited<ReturnType<typeof buildSiteTagIndex>> }
+  | { kind: "cmk"; post: CmkPost; tagIndex: Awaited<ReturnType<typeof buildSiteTagIndex>> };
+
+const Content = kind === "md" ? (await render(post)).Content : null;
+const cmkHtml = kind === "cmk" ? post.data.html : null;
+const postTags = kind === "md" ? getTagsForPost(tagIndex, post.id) : [];
 ---
 
 <html lang="en">
@@ -32,6 +48,41 @@ const postTags = getTagsForPost(tagIndex, post.id);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{post.data.title} - Ryan Johnson</title>
     <ThemeScript />
+    <style is:global>
+      .cmk-render .cmk-frontmatter {
+        display: none;
+      }
+      .cmk-render .cmk-cites a,
+      .cmk-render .cmk-cite {
+        font-size: 0.75em;
+        text-decoration: none;
+      }
+      .cmk-render .cmk-sources {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgb(214 211 209);
+      }
+      .dark .cmk-render .cmk-sources {
+        border-top-color: rgb(41 37 36);
+      }
+      .cmk-render .cmk-sources-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+      .cmk-render .cmk-sources-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.75rem;
+      }
+      .cmk-render .cmk-source-index {
+        font-family: ui-monospace, monospace;
+        margin-right: 0.35rem;
+        opacity: 0.7;
+      }
+    </style>
   </head>
   <body
     class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
@@ -71,7 +122,8 @@ const postTags = getTagsForPost(tagIndex, post.id);
           <div
             class="prose prose-stone dark:prose-invert max-w-none space-y-4 text-stone-700 dark:text-stone-300 leading-relaxed font-sans"
           >
-            <Content />
+            {Content ? <Content /> : null}
+            {cmkHtml ? <div class="cmk-render" set:html={cmkHtml} /> : null}
           </div>
         </article>
       </div>

@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **CentrMark blog pipeline**: `@centrmark/astro` content loader for `.cmk` posts (alongside Markdown); local file deps on `dev-centr/centrmark` packages (`../../dev-centr/centrmark/...`). See `src/content.config.ts`.
+- **Post**: [Gemini, AT&T marketing calls, and what the citations actually support](/blog/posts/gemini-att-marketing-calls-legitimacy-and-opt-out) — restores Gemini chat citations dropped by Markdown export (`changelog-details/2026-08-04 - centrmark-blog-and-gemini-att-case-study.md`).
 - **Feedback Hub catalog**: `src/content/feedback-hub/catalog.json5` + `/feedback` index — clear-web source of truth for documented Hub filings (no Microsoft owner API). First entry: Access Feedback from API and clearweb (`aka.ms/AA130yqs`). How-to: `docs/how-to/record-feedback-hub.adoc`. Blog gateway links to filings.
 - **Hierarchical tags** via `@content-tags/*` (Dev-Centr): `src/content/taxonomy.json5`, `/tags` index, `/tags/[...tag]` pages, tags on continuing-blog list and post pages.
 - **Post**: [Access Feedback from API and clearweb](/blog/posts/access-feedback-from-api-and-clearweb) — mirrors Feedback Hub filing `aka.ms/AA130yqs`.

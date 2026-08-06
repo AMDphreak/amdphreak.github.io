@@ -1,0 +1,108 @@
+---
+title "Gemini, AT&T marketing calls, and what the citations actually support"
+description "A documented Gemini exchange about 1-877-770-8065: restore the chat citations the Markdown export dropped, separate AT&T third-party sales practice from what can be proven about this number, and list official opt-out steps."
+pubDate "2026-08-04"
+draft false
+---
+
+On 2026-08-04 I asked Gemini whether inbound calls showing **1-877-770-8065** were legitimate AT&T traffic, and how to opt out. Gemini answered with confidence. A Markdown export of that chat (via Gemini Exporter) preserved the prose and dropped the inline citations that were visible in the chat UI. This post restores those citations, checks whether they support the claims, and separates two different questions that Gemini blended together.
+
+This is documentation and consumer orientation — not legal advice. Do not share account PINs, Social Security numbers, or payment credentials with unexpected callers. Verify account issues through official AT&T channels you initiate yourself.
+
+## What Gemini said
+
+Gemini stated that **1-877-770-8065** is not an official primary AT&T inbound line, and associated it with outbound telemarketing, third-party sales vendors, and collections contractors operating on behalf of AT&T. Key bullets included:
+
+* Third-party contractors and commission sales for aggressive bundling campaigns
+* Caller ID spoofing risk from unaffiliated scams
+* Limits of verbal opt-out with dialers and contractor lists
+* Opt-out steps: AT&T account preferences / DNC, device or carrier blocking, National Do Not Call Registry and FCC/TCPA complaints
+
+Chat link (Gemini app): [[https://gemini.google.com/app/7f6b9cdee1c2e779 | gemini.google.com/app/7f6b9cdee1c2e779]]
+
+## Citations present in chat, missing from the export
+
+In the live chat UI, Gemini cited at least:
+
+* [[https://www.nomorobo.com/lookup/18777708065 | Nomorobo lookup for 877-770-8065]] — labels the number an **Unknown Caller** @cite[key="nomorobo-877"]
+* [[https://www.solosuit.com/stop-calls/877-770-8065 | SoloSuit stop-calls page]] — frames the number as **AT&T / debt collection** and a third-party collector funnel @cite[key="solosuit-877"]
+
+Neither page is an AT&T primary-source statement that this number is a marketing vendor for bundling campaigns. Nomorobo does not identify AT&T. SoloSuit is a commercial debt-settlement site whose narrative conflicts with Gemini’s “aggressive bundling” framing.
+
+## Claim A: AT&T uses third-party / commission sales channels
+
+Gemini’s industry bullet:
+
+((
+Third-Party Contractors & Commission Sales: AT&T frequently outsources aggressive bundling campaigns to third-party authorized dealers or telemarketing vendors. These agents use automated dialers and are motivated by sales commissions.
+))
+
+**Verdict: broadly supported as industry practice; no official public roster found that names a specific outbound telemarketing vendor for this campaign type.**
+
+Supporting material:
+
+* Communications Workers of America reporting on AT&T **authorized retailers**, commission pressure, and customer harm from third-party dealer sales practices @cite[keys="cwa-2017,cwa-2023"]
+* AT&T wireless help for the internal Do Not Call list: “**We and our representatives** won't call you for sales promotions or other campaigns” @cite[key="att-dnc-help"]
+* AT&T Consumer Do-Not-Call Policy acknowledging promotional calling and texts @cite[key="att-dnc-policy"]
+
+I did not find a public AT&T press release that names a specific third-party dialer for “bundling campaigns,” or that assigns **877-770-8065** to such a vendor.
+
+## Claim B: this number is that AT&T marketing vendor line
+
+**Verdict: not independently verified.**
+
+Evidence is mixed and includes spoofing risk:
+
+* Gemini’s own cites (Nomorobo / SoloSuit) do not establish a marketing-vendor identity for this number @cite[keys="nomorobo-877,solosuit-877"]
+* Call-log / complaint boards report “Caller: AT&T,” telemarketing, silent calls, and scam suspicions side by side @cite[keys="800notes-877,whocallsme-877"]
+* Spam/scam lookups and phishing writeups lean toward social-engineering risk rather than confirmed carrier marketing @cite[keys="robokiller-877,scammerinfo-877"]
+* Related toll-free neighbors in the same 877-770 block include community reports that AT&T said a similar number did not belong to them @cite[key="800notes-8125"]
+
+Treat caller ID as untrusted. If the call is about your account, hang up and use an official channel you open yourself.
+
+## Practical steps (official paths)
+
+1. **AT&T internal Do Not Call** — Chat, call from 611 / published support numbers, or follow AT&T’s DNC instructions so **AT&T and its representatives** stop promotional calls @cite[keys="att-dnc-help,att-dnc-policy,att-contact-prefs"]
+2. **National Do Not Call Registry** — [[https://www.donotcall.gov | donotcall.gov]] @cite[key="donotcall"]
+3. **Device / carrier filtering** — block the number locally; on AT&T wireless, carrier tools such as ActiveArmor may help drop known spam patterns (still imperfect against spoofing)
+4. **Complaints** — If calls continue after formal opt-out, document dates/times and consider an FCC consumer complaint for unwanted calls / TCPA issues @cite[key="fcc-complaints"]
+
+## Why document this
+
+Two process failures are easy to miss:
+
+1. **Exporter fidelity** — The Markdown dump looked “complete” but omitted the chat’s citations, which changes how readers judge confidence.
+2. **Citation quality** — Having citations is not the same as having citations that support the precise claim. Gemini’s marketing-vendor story for **this** number is under-determined; the broader AT&T third-party sales ecosystem is better attested.
+
+CentrMark’s literary-sources directives (`@cite`, `::: sources`) exist so posts like this can keep claims tied to evidence in the published HTML, not only in a chat sidebar.
+
+::: sources [title="Sources"]
+::: source [key="nomorobo-877" type="webpage" title="(877) 770-8065 - Nomorobo (Unknown Caller)" url="https://www.nomorobo.com/lookup/18777708065" accessed="2026-08-04"]
+:::
+::: source [key="solosuit-877" type="webpage" title="How to Stop Calls From 877-770-8065 | SoloSuit" url="https://www.solosuit.com/stop-calls/877-770-8065" accessed="2026-08-04"]
+:::
+::: source [key="cwa-2017" type="webpage" title="AT&T’s Retail Sales Problem (CWA consumer report, 2017)" url="https://www.cwa-union.org/sites/default/files/consumerreport-6-5-2017.pdf" accessed="2026-08-04"]
+:::
+::: source [key="cwa-2023" type="webpage" title="Broken Network (CWA / NELP, 2023)" url="https://cwa-union.org/sites/default/files/2023-02/20230206_BrokenNetwork.pdf" accessed="2026-08-04"]
+:::
+::: source [key="att-dnc-help" type="webpage" title="Register for the AT&T Do Not Call List" url="https://www.att.com/support/article/wireless/KM1022818/" accessed="2026-08-04"]
+:::
+::: source [key="att-dnc-policy" type="webpage" title="AT&T Consumer Do-Not-Call Policy" url="https://www.att.com/legal/terms.dtv_doNotCallPolicy.html" accessed="2026-08-04"]
+:::
+::: source [key="att-contact-prefs" type="webpage" title="AT&T Contact Preferences" url="https://about.att.com/privacy/privacy-notice/contact-preferences.html" accessed="2026-08-04"]
+:::
+::: source [key="800notes-877" type="webpage" title="Who calls from 877-770-8065? (800notes)" url="https://800notes.com/Phone.aspx/1-877-770-8065/3" accessed="2026-08-04"]
+:::
+::: source [key="whocallsme-877" type="webpage" title="877-770-8065 on whocallsme.com" url="https://whocallsme.com/Phone-Number.aspx/8777708065" accessed="2026-08-04"]
+:::
+::: source [key="robokiller-877" type="webpage" title="(877) 770-8065 - RoboKiller Lookup" url="https://lookup.robokiller.com/p/877-770-8065" accessed="2026-08-04"]
+:::
+::: source [key="scammerinfo-877" type="webpage" title="AT&T phishing scammer thread (scammer.info)" url="https://scammer.info/t/at-t-phishing-scammer/82385" accessed="2026-08-04"]
+:::
+::: source [key="800notes-8125" type="webpage" title="877-770-8125 community reports (related block)" url="https://800notes.com/Phone.aspx/1-877-770-8125" accessed="2026-08-04"]
+:::
+::: source [key="donotcall" type="webpage" title="National Do Not Call Registry" url="https://www.donotcall.gov/" accessed="2026-08-04"]
+:::
+::: source [key="fcc-complaints" type="webpage" title="FCC Consumer Complaint Center" url="https://consumercomplaints.fcc.gov/" accessed="2026-08-04"]
+:::
+:::
