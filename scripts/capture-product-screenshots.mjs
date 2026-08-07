@@ -40,6 +40,14 @@ const staticSources = [
     id: "bigrpic",
     input: path.join(root, "public", "photography", "bigrpic-home.webp"),
   },
+  {
+    id: "easy-installer",
+    input: path.join(root, "public", "products", "easy-installer.png"),
+  },
+  {
+    id: "easy-installer-devcentr",
+    input: path.join(root, "public", "products", "easy-installer-devcentr.png"),
+  },
 ];
 
 function runProcessor(inputPath, id) {

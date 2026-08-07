@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Post**: [Installers as OS-native craft](/blog/posts/installers-as-os-native-craft) — PATH-in-place, Easy Installer plugins, and real MSI bytes.
+- **Homepage showcase**: **Easy Installer** (standalone) and **Easy Installer in DevCentr** (extension) product cards with idealized frosted-glass UI art (`public/products/easy-installer-*.webp`).
+- **Post**: [Installers as OS-native craft](/blog/posts/installers-as-os-native-craft) — PATH-in-place, Easy Installer plugins, and real MSI bytes (hero + extension images).
 - **Taxonomy**: `devtools`, `packaging`, `windows` tags.
 
 ## [Unreleased] - 2026-08-04

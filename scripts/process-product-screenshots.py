@@ -29,7 +29,14 @@ TIERS: list[tuple[int, int]] = [
     (800, 600),
 ]
 WEBP_QUALITY = 90
-PRODUCT_IDS = ["linx", "dev-centr", "foodtrucknerdz", "bigrpic"]
+PRODUCT_IDS = [
+    "linx",
+    "dev-centr",
+    "foodtrucknerdz",
+    "bigrpic",
+    "easy-installer",
+    "easy-installer-devcentr",
+]
 
 # Prefer these masters over `public/products/{id}.png` (e.g. live capture hits loading UI).
 ALT_SOURCES: dict[str, Path] = {
