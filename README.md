@@ -1,18 +1,18 @@
 <a id="readme-top"></a>
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
 <div align="center">
+  <a href="https://github.com/AMDphreak/amdphreak.github.io/graphs/contributors"><img src="https://img.shields.io/github/contributors/AMDphreak/amdphreak.github.io.svg?style=for-the-badge" alt="Contributors"></a>
+  <a href="https://github.com/AMDphreak/amdphreak.github.io/network/members"><img src="https://img.shields.io/github/forks/AMDphreak/amdphreak.github.io.svg?style=for-the-badge" alt="Forks"></a>
+  <a href="https://github.com/AMDphreak/amdphreak.github.io/stargazers"><img src="https://img.shields.io/github/stars/AMDphreak/amdphreak.github.io.svg?style=for-the-badge" alt="Stargazers"></a>
+  <a href="https://github.com/AMDphreak/amdphreak.github.io/issues"><img src="https://img.shields.io/github/issues/AMDphreak/amdphreak.github.io.svg?style=for-the-badge" alt="Issues"></a>
+
   <h1>amdphreak.github.io</h1>
   <p>Developer homepage for AMDphreak (Ryan Johnson). Hosted on GitHub Pages.</p>
   <p>
-    <a href="https://ryanjohnson.dev">Explore the site</a>
-    ·
+    <a href="https://ryanjohnson.dev"><strong>Explore the site »</strong></a>
+    <br />
+    <br />
     <a href="https://github.com/AMDphreak/amdphreak.github.io/issues">Report Bug</a>
-    ·
+    &middot;
     <a href="https://github.com/AMDphreak/amdphreak.github.io/issues">Request Feature</a>
   </p>
 </div>
@@ -20,8 +20,12 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#built-with">Built With</a></li>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
     <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -37,10 +41,10 @@ Developer homepage for AMDphreak (Ryan Johnson). Hosted on GitHub Pages.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Built With
+### Built With
 
-* TypeScript
-* Astro (static site)
+* **Site** — [![Astro][Astro.build]][Astro-url]
+  * [![TypeScript][TypeScript.com]][TypeScript-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -87,6 +91,14 @@ Microsoft Feedback Hub has no owner API and no clear-web article pages. Filings 
 
 Contributions are welcome. Open an issue to discuss larger changes before submitting a pull request.
 
+### Top contributors
+
+<a href="https://github.com/AMDphreak/amdphreak.github.io/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=AMDphreak/amdphreak.github.io" alt="contributors" />
+</a>
+
+For per-person profile links, prefer [all-contributors](https://allcontributors.org/).
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contact
@@ -100,11 +112,7 @@ Site: [https://ryanjohnson.dev](https://ryanjohnson.dev)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/AMDphreak/amdphreak.github.io.svg?style=for-the-badge
-[contributors-url]: https://github.com/AMDphreak/amdphreak.github.io/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/AMDphreak/amdphreak.github.io.svg?style=for-the-badge
-[forks-url]: https://github.com/AMDphreak/amdphreak.github.io/network/members
-[stars-shield]: https://img.shields.io/github/stars/AMDphreak/amdphreak.github.io.svg?style=for-the-badge
-[stars-url]: https://github.com/AMDphreak/amdphreak.github.io/stargazers
-[issues-shield]: https://img.shields.io/github/issues/AMDphreak/amdphreak.github.io.svg?style=for-the-badge
-[issues-url]: https://github.com/AMDphreak/amdphreak.github.io/issues
+[Astro.build]: https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white
+[Astro-url]: https://astro.build/
+[TypeScript.com]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
