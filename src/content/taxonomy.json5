@@ -22,5 +22,20 @@
       label: "Privacy",
       description: "Clear-web visibility, redaction, and account data access",
     },
+    {
+      id: "devtools",
+      label: "Developer tools",
+      description: "CLIs, IDEs, packaging, and workstation tooling",
+    },
+    {
+      id: "packaging",
+      label: "Packaging",
+      description: "Installers, PATH registration, MSI/MSIX, and distribution",
+    },
+    {
+      id: "windows",
+      label: "Windows",
+      description: "Windows-specific product and platform notes",
+    },
   ],
 }
