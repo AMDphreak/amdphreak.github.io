@@ -5,16 +5,10 @@
   <a href="https://github.com/AMDphreak/amdphreak.github.io/stargazers"><img src="https://img.shields.io/github/stars/AMDphreak/amdphreak.github.io.svg?style=for-the-badge" alt="Stargazers"></a>
   <a href="https://github.com/AMDphreak/amdphreak.github.io/issues"><img src="https://img.shields.io/github/issues/AMDphreak/amdphreak.github.io.svg?style=for-the-badge" alt="Issues"></a>
 
-<<<<<<< Updated upstream
-  <h1>amdphreak.github.io</h1>
-  <p>Developer homepage for AMDphreak (Ryan Johnson). Hosted on GitHub Pages.</p>
-  <p>
-=======
   <h3 align="center">amdphreak.github.io</h3>
   <p align="center">
     Developer homepage for AMDphreak (Ryan Johnson). Hosted on GitHub Pages.
     <br />
->>>>>>> Stashed changes
     <a href="https://ryanjohnson.dev"><strong>Explore the site »</strong></a>
     <br />
     <br />
