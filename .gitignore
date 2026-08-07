@@ -26,3 +26,7 @@ pnpm-debug.log*
 # local/CI checkout of dev-centr/content-tags
 vendor/
 
+
+# Local full-res product masters (WebP tiers are committed)
+public/products/*.png
+
