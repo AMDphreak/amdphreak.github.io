@@ -89,13 +89,18 @@ function ghJson(args) {
 }
 
 function glabJson() {
-  const out = execSync("glab repo list --per-page 100 --output json", {
-    encoding: "utf8",
-    maxBuffer: 20 * 1024 * 1024,
-  });
-  const start = out.indexOf("[");
-  if (start < 0) return [];
-  return JSON.parse(out.slice(start));
+  try {
+    const out = execSync("glab repo list --per-page 100 --output json", {
+      encoding: "utf8",
+      maxBuffer: 20 * 1024 * 1024,
+    });
+    const start = out.indexOf("[");
+    if (start < 0) return [];
+    return JSON.parse(out.slice(start));
+  } catch (err) {
+    console.warn("skip gitlab (glab unavailable):", err?.message || err);
+    return [];
+  }
 }
 
 function normalizeGh(repo, owner) {
