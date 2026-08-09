@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2026-08-08
+
+### Added
+
+- **Post**: [Blog as inner thought](/blog/posts/blog-as-inner-thought) — news faces outward (shared record); blog faces inward (ideas, ideals, philosophy, tutorials); linked from HCI `STYLE.adoc` and Dev-Centr agent-rules.
+- **Post**: [Secrets as a matrix, not a scavenger hunt](/blog/posts/secrets-as-a-matrix-not-a-scavenger-hunt) — vendor create / vault store / CLI(+MCP) distribute / ESC hub; illustrated with redacted session art; links to Dev-Centr Diátaxis pages and `agent-rules` `suggestions/`.
+- **Post**: [When the inbox is the CI pager](/blog/posts/when-the-inbox-is-the-ci-pager) — Composio as an MCP connector plane for CI-mail triage in Cursor; links to Dev-Centr how-to, stack docs, [studio MCP install strategies](https://docs.devcentr.org/general-knowledge/explanation/infrastructure/studio-mcp-install-strategies.html), and the [AI studio tooling catalog](https://docs.devcentr.org/general-knowledge/reference/ai-studio-tooling-catalog.html).
+
 ## [Unreleased] - 2026-08-06
 
 ### Added
