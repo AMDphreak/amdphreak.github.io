@@ -37,5 +37,43 @@
       label: "Windows",
       description: "Windows-specific product and platform notes",
     },
+    {
+      id: "writing",
+      label: "Writing",
+      description: "Essays on craft, genre, and how words face the reader",
+      children: [
+        {
+          id: "writing/editorial",
+          label: "Editorial",
+          description: "House style, channels, and editorial stance",
+        },
+        {
+          id: "writing/news",
+          label: "News",
+          description: "Outward-facing shared-record announcements",
+        },
+        {
+          id: "writing/blog",
+          label: "Blog",
+          description: "Inward-facing ideas, ideals, and thinking in public",
+        },
+      ],
+    },
+    // Flat aliases used in post frontmatter (content-tags requires exact ids)
+    {
+      id: "editorial",
+      label: "Editorial",
+      description: "Alias for writing/editorial",
+    },
+    {
+      id: "news",
+      label: "News",
+      description: "Alias for writing/news",
+    },
+    {
+      id: "blog",
+      label: "Blog",
+      description: "Alias for writing/blog",
+    },
   ],
 }

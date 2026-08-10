@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2026-08-10
+
+### Added
+
+- **Unlisted page**: [/u/n7xq4m2k-gift-laptop](/u/n7xq4m2k-gift-laptop/) — private family laptop gift comparison (Win/Lin used options, plain-language + technical trays, `noindex`).
+
+### Fixed
+
+- **GitHub Pages deploy**: CentrMark packages resolve from `vendor/centrmark` (CI checkout) instead of a machine-local `../../dev-centr/centrmark` path; workflow builds `@centrmark/parse`, `cmk-renderer`, and `cmk-astro`. Taxonomy gains `writing` / `editorial` / `news` / `blog` tags so `blog-as-inner-thought` builds. CI skips `.cmk` posts until a Linux CentrMark CLI is available.
+
 ## [Unreleased] - 2026-08-08
 
 ### Added

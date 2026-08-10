@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@astrojs/solid-js": "^5.1.1",
-    "@centrmark/astro": "file:../../dev-centr/centrmark/packages/cmk-astro",
-    "@centrmark/cmk-renderer": "file:../../dev-centr/centrmark/packages/cmk-renderer",
-    "@centrmark/parse": "file:../../dev-centr/centrmark/packages/cmk-parse",
+    "@centrmark/astro": "file:vendor/centrmark/packages/cmk-astro",
+    "@centrmark/cmk-renderer": "file:vendor/centrmark/packages/cmk-renderer",
+    "@centrmark/parse": "file:vendor/centrmark/packages/cmk-parse",
     "@content-tags/astro": "file:vendor/content-tags/packages/astro",
     "@content-tags/core": "file:vendor/content-tags/packages/core",
     "@content-tags/solid": "file:vendor/content-tags/packages/solid",
@@ -46,6 +46,9 @@
       "sharp"
     ],
     "overrides": {
+      "@centrmark/astro": "file:vendor/centrmark/packages/cmk-astro",
+      "@centrmark/cmk-renderer": "file:vendor/centrmark/packages/cmk-renderer",
+      "@centrmark/parse": "file:vendor/centrmark/packages/cmk-parse",
       "@content-tags/core": "file:vendor/content-tags/packages/core",
       "@content-tags/astro": "file:vendor/content-tags/packages/astro",
       "@content-tags/solid": "file:vendor/content-tags/packages/solid"

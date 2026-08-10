@@ -9,7 +9,7 @@ import centrmark from "@centrmark/astro";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const winCli = path.resolve(
+const hiveWinCli = path.resolve(
   __dirname,
   "..",
   "..",
@@ -20,7 +20,7 @@ const winCli = path.resolve(
   "bin",
   "centrmark-cli.exe"
 );
-const unixCli = path.resolve(
+const hiveUnixCli = path.resolve(
   __dirname,
   "..",
   "..",
@@ -31,7 +31,22 @@ const unixCli = path.resolve(
   "bin",
   "centrmark-cli"
 );
-const defaultCli = existsSync(winCli) ? winCli : existsSync(unixCli) ? unixCli : undefined;
+const vendorUnixCli = path.resolve(
+  __dirname,
+  "vendor",
+  "centrmark",
+  "dlang",
+  "centrmark-cli",
+  "bin",
+  "centrmark-cli"
+);
+const defaultCli = existsSync(hiveWinCli)
+  ? hiveWinCli
+  : existsSync(hiveUnixCli)
+    ? hiveUnixCli
+    : existsSync(vendorUnixCli)
+      ? vendorUnixCli
+      : undefined;
 
 // https://astro.build/config
 export default defineConfig({

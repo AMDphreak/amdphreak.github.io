@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  '@centrmark/astro': file:vendor/centrmark/packages/cmk-astro
+  '@centrmark/cmk-renderer': file:vendor/centrmark/packages/cmk-renderer
+  '@centrmark/parse': file:vendor/centrmark/packages/cmk-parse
   '@content-tags/core': file:vendor/content-tags/packages/core
   '@content-tags/astro': file:vendor/content-tags/packages/astro
   '@content-tags/solid': file:vendor/content-tags/packages/solid
@@ -17,14 +20,14 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1(@types/node@20.19.21)(jiti@2.6.1)(lightningcss@1.30.1)(solid-js@1.9.9)(yaml@2.8.1)
       '@centrmark/astro':
-        specifier: file:../../dev-centr/centrmark/packages/cmk-astro
-        version: file:../../dev-centr/centrmark/packages/cmk-astro(astro@5.14.4(@types/node@20.19.21)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.48.1)(typescript@5.9.2)(yaml@2.8.1))
+        specifier: file:vendor/centrmark/packages/cmk-astro
+        version: file:vendor/centrmark/packages/cmk-astro(astro@5.14.4(@types/node@20.19.21)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.48.1)(typescript@5.9.2)(yaml@2.8.1))
       '@centrmark/cmk-renderer':
-        specifier: file:../../dev-centr/centrmark/packages/cmk-renderer
-        version: file:../../dev-centr/centrmark/packages/cmk-renderer
+        specifier: file:vendor/centrmark/packages/cmk-renderer
+        version: file:vendor/centrmark/packages/cmk-renderer
       '@centrmark/parse':
-        specifier: file:../../dev-centr/centrmark/packages/cmk-parse
-        version: file:../../dev-centr/centrmark/packages/cmk-parse
+        specifier: file:vendor/centrmark/packages/cmk-parse
+        version: file:vendor/centrmark/packages/cmk-parse
       '@content-tags/astro':
         specifier: file:vendor/content-tags/packages/astro
         version: file:vendor/content-tags/packages/astro
@@ -343,17 +346,17 @@ packages:
     resolution: {integrity: sha512-+ntATQe1AlL7nTOYjwjj6w3299CgRot48wL761TUGYpYgAou3AaONZazp0PKZyCyWhudWsjhq1nvRHOvbMzhTA==}
     engines: {node: '>=18'}
 
-  '@centrmark/astro@file:../../dev-centr/centrmark/packages/cmk-astro':
-    resolution: {directory: ../../dev-centr/centrmark/packages/cmk-astro, type: directory}
+  '@centrmark/astro@file:vendor/centrmark/packages/cmk-astro':
+    resolution: {directory: vendor/centrmark/packages/cmk-astro, type: directory}
     engines: {node: '>=18'}
     peerDependencies:
       astro: ^5.0.0
 
-  '@centrmark/cmk-renderer@file:../../dev-centr/centrmark/packages/cmk-renderer':
-    resolution: {directory: ../../dev-centr/centrmark/packages/cmk-renderer, type: directory}
+  '@centrmark/cmk-renderer@file:vendor/centrmark/packages/cmk-renderer':
+    resolution: {directory: vendor/centrmark/packages/cmk-renderer, type: directory}
 
-  '@centrmark/parse@file:../../dev-centr/centrmark/packages/cmk-parse':
-    resolution: {directory: ../../dev-centr/centrmark/packages/cmk-parse, type: directory}
+  '@centrmark/parse@file:vendor/centrmark/packages/cmk-parse':
+    resolution: {directory: vendor/centrmark/packages/cmk-parse, type: directory}
     engines: {node: '>=18'}
 
   '@clack/core@0.4.2':
@@ -2791,17 +2794,17 @@ snapshots:
     dependencies:
       fontkit: 2.0.4
 
-  '@centrmark/astro@file:../../dev-centr/centrmark/packages/cmk-astro(astro@5.14.4(@types/node@20.19.21)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.48.1)(typescript@5.9.2)(yaml@2.8.1))':
+  '@centrmark/astro@file:vendor/centrmark/packages/cmk-astro(astro@5.14.4(@types/node@20.19.21)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.48.1)(typescript@5.9.2)(yaml@2.8.1))':
     dependencies:
-      '@centrmark/cmk-renderer': file:../../dev-centr/centrmark/packages/cmk-renderer
-      '@centrmark/parse': file:../../dev-centr/centrmark/packages/cmk-parse
+      '@centrmark/cmk-renderer': file:vendor/centrmark/packages/cmk-renderer
+      '@centrmark/parse': file:vendor/centrmark/packages/cmk-parse
       astro: 5.14.4(@types/node@20.19.21)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.48.1)(typescript@5.9.2)(yaml@2.8.1)
 
-  '@centrmark/cmk-renderer@file:../../dev-centr/centrmark/packages/cmk-renderer': {}
+  '@centrmark/cmk-renderer@file:vendor/centrmark/packages/cmk-renderer': {}
 
-  '@centrmark/parse@file:../../dev-centr/centrmark/packages/cmk-parse':
+  '@centrmark/parse@file:vendor/centrmark/packages/cmk-parse':
     dependencies:
-      '@centrmark/cmk-renderer': file:../../dev-centr/centrmark/packages/cmk-renderer
+      '@centrmark/cmk-renderer': file:vendor/centrmark/packages/cmk-renderer
 
   '@clack/core@0.4.2':
     dependencies:

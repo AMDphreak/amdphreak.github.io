@@ -27,6 +27,12 @@ jobs:
           repository: dev-centr/content-tags
           path: vendor/content-tags
 
+      - name: Checkout centrmark
+        uses: actions/checkout@v4
+        with:
+          repository: dev-centr/centrmark
+          path: vendor/centrmark
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
@@ -42,8 +48,21 @@ jobs:
           pnpm install
           pnpm -r --filter "!@content-tags/demo" run build
 
+      - name: Build centrmark packages
+        working-directory: vendor/centrmark
+        run: |
+          pnpm install
+          pnpm --filter @centrmark/parse --filter @centrmark/cmk-renderer --filter @centrmark/astro run build
+
       - name: Install dependencies
         run: pnpm install
+
+      # CentrMark CLI ships as a local Windows binary today; CI has no Linux build yet.
+      # Skip .cmk posts in Actions so Markdown routes still deploy (restore when Linux CLI is published).
+      - name: Skip CentrMark posts without Linux CLI
+        run: |
+          mkdir -p /tmp/centrmark-skipped
+          find src/content/blog -name '*.cmk' -print -exec mv {} /tmp/centrmark-skipped/ \;
 
       - name: Build
         run: pnpm build

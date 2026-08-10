@@ -1,0 +1,376 @@
+---
+import NoiseOverlay from "../../../components/NoiseOverlay.astro";
+import ThemeScript from "../../../components/ThemeScript.astro";
+import ThemeToggle from "../../../components/ThemeToggle.astro";
+import "../../../styles/tailwind.css";
+
+const pageUrl = "https://ryanjohnson.dev/u/n7xq4m2k-gift-laptop/";
+const updated = "August 10, 2026";
+
+type Listing = {
+  label: string;
+  price: string;
+  note: string;
+  href?: string;
+};
+
+type Option = {
+  id: string;
+  rank: string;
+  name: string;
+  tagline: string;
+  priceBand: string;
+  fit: string;
+  bullets: string[];
+  watchFor: string[];
+  listings: Listing[];
+  tech: string[];
+};
+
+const options: Option[] = [
+  {
+    id: "p14s-oled",
+    rank: "Best overall match",
+    name: "Lenovo ThinkPad P14s Gen 5 (AMD) with OLED photo screen",
+    tagline: "Same size as Ryan’s current laptop, with a real photography-grade screen.",
+    priceBand: "About $750–$1,100 used / refurbished",
+    fit: "Best balance of photo color, speed, repairability, and budget.",
+    bullets: [
+      "14-inch screen — familiar size, not cramped.",
+      "OLED panel with modern photography color (DCI-P3) and smooth motion (120 Hz).",
+      "Fast AMD processor that runs cool enough for all-day work.",
+      "Fast SSD storage (look for 512 GB or 1 TB).",
+      "Memory can be upgraded later — important while RAM prices are high.",
+      "Runs Windows and Linux natively.",
+    ],
+    watchFor: [
+      "Confirm the listing says OLED or “100% DCI-P3” — cheaper FHD screens are duller for photos.",
+      "Prefer 32 GB of memory already installed so you are not buying expensive RAM separately.",
+      "Prefer 512 GB SSD or larger.",
+    ],
+    listings: [
+      {
+        label: "Jawa marketplace",
+        price: "~$751",
+        note: "Like-new P14s Gen 5 AMD, OLED 120 Hz, 64 GB memory — strong photo-screen deal if still available.",
+        href: "https://www.jawa.gg/product/74758/lenovo-thinkpad-p14s-gen-5-amd",
+      },
+      {
+        label: "Lenovo Outlet (when stocked)",
+        price: "~$905",
+        note: "Certified refurbished OLED + 64 GB configs have hit about $905 with coupon in recent outlet sales.",
+        href: "https://www.lenovo.com/us/en/d/deals/outlet/",
+      },
+      {
+        label: "eBay (spot check)",
+        price: "$1,000–$1,225",
+        note: "Ryzen 7 PRO 8840HS with 32 GB / 1 TB listings in this range; verify screen type before buying.",
+        href: "https://www.ebay.com/sch/i.html?_nkw=ThinkPad+P14s+Gen+5+AMD+OLED&_udhi=1400&LH_BIN=1",
+      },
+    ],
+    tech: [
+      "Target CPU: AMD Ryzen 7 PRO 8840HS (or Ryzen 5 PRO 8640HS if priced much lower).",
+      "Display target: 14\" 2880×1800 OLED, 120 Hz, 100% DCI-P3, DisplayHDR True Black class.",
+      "Memory: dual SODIMM DDR5, up to 96 GB — not soldered.",
+      "Storage: user-replaceable NVMe SSD.",
+      "Battery reality: roughly 9–12 hours on moderate work with brightness managed; OLED uses more power than duller panels.",
+      "Repairability: Lenovo Hardware Maintenance Manuals + strong used-parts market.",
+    ],
+  },
+  {
+    id: "p16s",
+    rank: "Best for larger hands / desk comfort",
+    name: "Lenovo ThinkPad P16s Gen 1 or Gen 2 (AMD)",
+    tagline: "Roomier 16-inch keyboard and screen — closer to Ryan’s preferred size.",
+    priceBand: "About $750–$1,000 used for complete 32 GB machines",
+    fit: "Choose this if comfort and screen real estate matter more than the prettiest photo panel.",
+    bullets: [
+      "16-inch size — easier on larger hands than 13–14\".",
+      "Solid business build (ThinkPad durability).",
+      "Good battery options on AMD models.",
+      "Often sold complete with 32 GB memory already installed.",
+      "Runs Windows and Linux natively.",
+    ],
+    watchFor: [
+      "Many cheap listings use a basic office screen (not photography-grade). Ask for DCI-P3 / OLED if photos matter.",
+      "On these 16\" AMD models, memory is usually fixed at purchase — buy 32 GB already installed.",
+      "Skip incomplete “motherboard only” listings.",
+    ],
+    listings: [
+      {
+        label: "eBay — P16s Gen 1 AMD 32 GB",
+        price: "$750–$882",
+        note: "Ryzen 7 PRO 6850U + 32 GB + 512 GB SSD examples seen around $750 and $882.",
+        href: "https://www.ebay.com/sch/i.html?_nkw=ThinkPad+P16s+AMD+32GB&_udhi=1200&LH_BIN=1",
+      },
+      {
+        label: "eBay — P16s Gen 2 AMD 32 GB",
+        price: "~$950",
+        note: "Newer Ryzen 7 PRO 7840U + 32 GB + 512 GB listing around $950 with free shipping.",
+        href: "https://www.ebay.com/sch/i.html?_nkw=ThinkPad+P16s+Gen+2+7840U+32GB&_udhi=1400&LH_BIN=1",
+      },
+    ],
+    tech: [
+      "Gen 1 AMD: Ryzen 7 PRO 6850U class; Gen 2 AMD: Ryzen 7 PRO 7840U class.",
+      "Display: common WUXGA IPS (sRGB / office); rare WQUXGA OLED = 100% DCI-P3 photography panel.",
+      "Memory on P16s AMD Gen 1/2: soldered LPDDR — choose the memory size at purchase.",
+      "Battery: often ~86 Wh class; strong all-day candidate when the panel is not max-bright OLED.",
+    ],
+  },
+  {
+    id: "framework-16",
+    rank: "Stretch / modular pick",
+    name: "Framework Laptop 16",
+    tagline: "Excellent photo screen and repair story — usually costs more.",
+    priceBand: "About $1,200–$1,600 used for complete machines",
+    fit: "Only if you are comfortable near the top of the gift budget for modularity.",
+    bullets: [
+      "16-inch screen with photography-grade color (DCI-P3) and high refresh.",
+      "Designed so parts can be repaired or upgraded over years.",
+      "Full-size keyboard — comfortable for larger hands.",
+      "Runs Windows and Linux natively.",
+    ],
+    watchFor: [
+      "Incomplete shells are a trap while RAM/SSD prices are high — buy a complete working laptop.",
+      "Often sits above the ideal $1,000 target; may touch or exceed $1,400.",
+      "Used market is thin; good complete units sell quickly.",
+    ],
+    listings: [
+      {
+        label: "Used market / community sales",
+        price: "$1,200–$1,600",
+        note: "Complete used Framework 16 units commonly land here; well-equipped builds can go higher.",
+        href: "https://community.frame.work/c/marketplace/76",
+      },
+    ],
+    tech: [
+      "Display: 16\" 2560×1600, 165 Hz, 100% DCI-P3, ~500 nits.",
+      "Memory/storage: socketed DDR5 + dual M.2 — great long-term, expensive to fill from empty today.",
+      "iFixit-class repairability; expansion cards for ports.",
+    ],
+  },
+];
+
+const rejected = [
+  {
+    name: "Framework Laptop 13 (incomplete or small)",
+    why: "Too small for Ryan’s hands (smaller than his current 14\"). Incomplete “chassis only” deals look cheap, then memory and storage cost a lot right now.",
+  },
+  {
+    name: "Apple MacBook Pro",
+    why: "Beautiful screen, but it cannot run Windows as a normal laptop. Windows would only work in a slow virtual window on top of Apple’s system — a poor fit for Ryan’s daily tools.",
+  },
+  {
+    name: "Bargain ThinkPads with dull screens",
+    why: "A cheap FHD office panel saves money but loses the photography color Ryan cares about. Prefer OLED / DCI-P3 wording in the listing.",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Private laptop gift options for Ryan — plain-language comparison with optional technical details."
+    />
+    <link rel="canonical" href={pageUrl} />
+    <title>Laptop gift options for Ryan · private</title>
+    <ThemeScript />
+  </head>
+  <body
+    class="bg-background text-foreground min-h-screen font-sans antialiased selection:bg-stone-200 dark:selection:bg-stone-800"
+  >
+    <NoiseOverlay />
+    <div
+      class="fixed inset-0 pointer-events-none border-[12px] border-stone-100/50 dark:border-stone-900/50 z-[100]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+      <div
+        class="absolute -top-24 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(120,53,15,0.12),transparent_68%)] dark:bg-[radial-gradient(circle_at_center,rgba(214,211,209,0.08),transparent_68%)]"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 right-0 h-[28rem] w-[28rem] translate-x-1/4 translate-y-1/4 rounded-full bg-[radial-gradient(circle_at_center,rgba(68,64,60,0.08),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(168,162,158,0.06),transparent_70%)]"
+      >
+      </div>
+    </div>
+
+    <main class="relative z-10 mx-auto max-w-3xl px-6 py-12 sm:py-16 space-y-14">
+      <header class="space-y-8 border-b border-stone-200 dark:border-stone-800 pb-10">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-stone-500">
+            Private link · not in the site menu
+          </p>
+          <ThemeToggle />
+        </div>
+        <div class="space-y-5">
+          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
+            Possible gift · updated {updated}
+          </p>
+          <h1 class="font-heading text-4xl sm:text-5xl tracking-tight text-stone-900 dark:text-stone-50">
+            Laptop options for Ryan
+          </h1>
+          <p class="text-lg leading-relaxed text-stone-600 dark:text-stone-300 max-w-2xl">
+            A short list of used / refurbished Windows-and-Linux laptops that fit Ryan’s work and
+            photography, ideally under <strong class="font-medium text-stone-800 dark:text-stone-100">$1,000</strong>,
+            and not more than about <strong class="font-medium text-stone-800 dark:text-stone-100">$1,400</strong>.
+          </p>
+        </div>
+      </header>
+
+      <section class="space-y-4" aria-labelledby="need-to-know">
+        <h2 id="need-to-know" class="font-heading text-2xl tracking-tight">What matters, in plain words</h2>
+        <ul class="space-y-3 text-stone-600 dark:text-stone-300 leading-relaxed">
+          <li>
+            <span class="text-stone-900 dark:text-stone-100 font-medium">Photo color:</span>
+            modern photo work expects a wide-color screen (DCI-P3), not a basic office panel.
+          </li>
+          <li>
+            <span class="text-stone-900 dark:text-stone-100 font-medium">Fast SSD + enough memory:</span>
+            solid-state storage, and ideally 32 GB of memory already installed (extra memory sticks are
+            unusually expensive right now).
+          </li>
+          <li>
+            <span class="text-stone-900 dark:text-stone-100 font-medium">Size:</span>
+            Ryan’s current laptop is 14&quot;. 15–16&quot; would feel better; 13&quot; is too cramped; 17&quot; is too much.
+          </li>
+          <li>
+            <span class="text-stone-900 dark:text-stone-100 font-medium">Software:</span>
+            needs to run Windows and Linux for real — Apple Silicon MacBooks do not do that well.
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-10" aria-labelledby="picks">
+        <div class="space-y-2">
+          <h2 id="picks" class="font-heading text-2xl tracking-tight">Suggested picks</h2>
+          <p class="text-stone-600 dark:text-stone-300">
+            Open “More detail” under any laptop for the technical notes. Prices move quickly on used markets.
+          </p>
+        </div>
+
+        <div class="space-y-10">
+          {
+            options.map((opt) => (
+              <article class="space-y-5 border-t border-stone-200 dark:border-stone-800 pt-8">
+                <div class="space-y-3">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-amber-800/80 dark:text-amber-200/80">
+                    {opt.rank}
+                  </p>
+                  <h3 class="font-heading text-xl sm:text-2xl tracking-tight text-stone-900 dark:text-stone-50">
+                    {opt.name}
+                  </h3>
+                  <p class="text-stone-600 dark:text-stone-300 leading-relaxed">{opt.tagline}</p>
+                  <p class="font-mono text-sm text-stone-800 dark:text-stone-200">{opt.priceBand}</p>
+                  <p class="text-sm text-stone-500 dark:text-stone-400">{opt.fit}</p>
+                </div>
+
+                <ul class="space-y-2 text-stone-700 dark:text-stone-300">
+                  {opt.bullets.map((b) => (
+                    <li class="flex gap-3 leading-relaxed">
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400 dark:bg-stone-500" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="space-y-2">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">When shopping</p>
+                  <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+                    {opt.watchFor.map((w) => (
+                      <li class="leading-relaxed">• {w}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="space-y-3">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+                    Example listings (spot-checked {updated})
+                  </p>
+                  <ul class="space-y-4">
+                    {opt.listings.map((listing) => (
+                      <li class="border-l-2 border-stone-300 dark:border-stone-700 pl-4 space-y-1">
+                        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                          <span class="font-medium text-stone-900 dark:text-stone-100">{listing.label}</span>
+                          <span class="font-mono text-sm text-stone-700 dark:text-stone-300">{listing.price}</span>
+                        </div>
+                        <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">{listing.note}</p>
+                        {listing.href && (
+                          <a
+                            href={listing.href}
+                            class="inline-block text-sm underline underline-offset-4 decoration-stone-400 hover:decoration-stone-700 dark:hover:decoration-stone-200"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Open listing search
+                          </a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <details class="group border border-stone-200 dark:border-stone-800 bg-stone-50/40 dark:bg-stone-900/30">
+                  <summary class="cursor-pointer list-none px-4 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-600 dark:text-stone-400 flex items-center justify-between gap-4">
+                    <span>More detail / technical notes</span>
+                    <span class="text-stone-400 group-open:hidden">Open</span>
+                    <span class="text-stone-400 hidden group-open:inline">Close</span>
+                  </summary>
+                  <div class="px-4 pb-4 pt-1 border-t border-stone-200 dark:border-stone-800">
+                    <ul class="space-y-2 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                      {opt.tech.map((t) => (
+                        <li>• {t}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="space-y-5 border-t border-stone-200 dark:border-stone-800 pt-10" aria-labelledby="skip">
+        <h2 id="skip" class="font-heading text-2xl tracking-tight">Skipped on purpose</h2>
+        <ul class="space-y-5">
+          {
+            rejected.map((r) => (
+              <li class="space-y-1">
+                <p class="font-medium text-stone-900 dark:text-stone-100">{r.name}</p>
+                <p class="text-stone-600 dark:text-stone-400 leading-relaxed">{r.why}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="space-y-4 border-t border-stone-200 dark:border-stone-800 pt-10" aria-labelledby="howto">
+        <h2 id="howto" class="font-heading text-2xl tracking-tight">If you want to help buy one</h2>
+        <ol class="list-decimal pl-5 space-y-3 text-stone-600 dark:text-stone-300 leading-relaxed">
+          <li>Start with the P14s OLED if you want the best photo screen under budget.</li>
+          <li>Choose a P16s if a bigger keyboard/screen matters more than perfect photo color.</li>
+          <li>Prefer sellers with returns (Lenovo Outlet, reputable refurbished shops, eBay money-back).</li>
+          <li>Ask Ryan to double-check the exact listing before checkout — used stock changes daily.</li>
+        </ol>
+      </section>
+
+      <footer class="border-t border-stone-200 dark:border-stone-800 pt-8 space-y-3 text-sm text-stone-500">
+        <p>
+          Unlisted page for family shopping — not linked from ryanjohnson.dev navigation. Please don’t
+          share widely.
+        </p>
+        <p class="font-mono text-[10px] uppercase tracking-[0.2em]">
+          Prices checked {updated} · listings may sell out
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
