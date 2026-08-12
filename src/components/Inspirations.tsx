@@ -239,26 +239,55 @@ export const Inspirations = (props: InspirationsProps) => {
               <p class="text-sm text-stone-600 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed">
                 {profile.description}
               </p>
-            </header>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <For each={profile.images}>
-                {(src, i) => (
-                  <img
-                    src={src}
-                    alt=""
-                    class={cn(
-                      "w-full object-cover structural-border",
-                      profile.id === "paul-graham" && i() === 0
-                        ? "h-56 md:h-64"
-                        : profile.id === "paul-graham" && i() === 1
-                          ? "h-56 md:h-64 object-cover object-center"
-                          : "h-48 md:h-56",
+              <Show when={profile.links?.length}>
+                <p class="flex flex-wrap justify-center gap-x-4 gap-y-1 pt-1">
+                  <For each={profile.links}>
+                    {(link) => (
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="font-mono text-[10px] uppercase tracking-widest text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                      >
+                        {link.label} ↗
+                      </a>
                     )}
-                    loading="lazy"
-                  />
+                  </For>
+                </p>
+              </Show>
+            </header>
+            <Show when={profile.images.length > 0}>
+              <div
+                class={cn(
+                  "grid gap-4",
+                  profile.images.length >= 3
+                    ? "grid-cols-1 sm:grid-cols-3"
+                    : "grid-cols-1 sm:grid-cols-2",
                 )}
-              </For>
-            </div>
+              >
+                <For each={profile.images}>
+                  {(src, i) => (
+                    <img
+                      src={src}
+                      alt=""
+                      class={cn(
+                        "w-full object-cover structural-border",
+                        profile.id === "paul-graham" && i() === 0
+                          ? "h-56 md:h-64"
+                          : profile.id === "paul-graham" && i() === 1
+                            ? "h-56 md:h-64 object-cover object-center"
+                            : profile.id === "randall-munroe" && i() === 0
+                              ? "h-56 md:h-64 object-top"
+                              : profile.id === "randall-munroe"
+                                ? "h-48 md:h-56 object-contain bg-stone-50 dark:bg-stone-900 p-3"
+                                : "h-48 md:h-56",
+                      )}
+                      loading="lazy"
+                    />
+                  )}
+                </For>
+              </div>
+            </Show>
           </article>
         )}
       </For>

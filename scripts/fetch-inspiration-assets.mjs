@@ -26,6 +26,12 @@ const assets = [
     "albert-einstein.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg",
   ],
+  [
+    "randall-munroe.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/4/4b/XkcdMunroe.jpg",
+  ],
+  ["xkcd-compiling.png", "https://imgs.xkcd.com/comics/compiling.png"],
+  ["xkcd-duty-calls.png", "https://imgs.xkcd.com/comics/duty_calls.png"],
 ];
 
 mkdirSync(outDir, { recursive: true });

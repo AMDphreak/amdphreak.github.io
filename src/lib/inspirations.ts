@@ -25,6 +25,8 @@ export type InspirationProfile = {
   title: string;
   description: string;
   images: string[];
+  /** Optional outbound links (sites, archives) under the blurb. */
+  links?: { label: string; url: string }[];
 };
 
 export type InspirationSection = {
@@ -164,6 +166,34 @@ export const inspirationProfiles: InspirationProfile[] = [
     images: [
       "/inspirations/paul-graham.jpg",
       "/inspirations/hackers-and-painters.jpg",
+    ],
+  },
+  {
+    id: "cat-v",
+    title: "cat-v.org",
+    description:
+      "A living archive of Unix, Plan 9, and systems culture—primary sources, essays, and the harmful.cat-v.org collection that keeps sharp critiques of software fashion in circulation. Useful when you want the original argument, not a blog summary of it.",
+    images: [],
+    links: [
+      { label: "cat-v.org", url: "https://cat-v.org/" },
+      { label: "doc.cat-v.org", url: "https://doc.cat-v.org/" },
+      { label: "harmful.cat-v.org", url: "https://harmful.cat-v.org/" },
+    ],
+  },
+  {
+    id: "randall-munroe",
+    title: "Randall Munroe · xkcd",
+    description:
+      "Cartoonist and engineer behind xkcd—romance, sarcasm, math, and language—and the What If? / Thing Explainer vein of making hard ideas plain without making them cute. Portrait: MIT talk, 2007 (CC BY-SA). Comics shown: Compiling and Duty Calls (xkcd, CC BY-NC).",
+    images: [
+      "/inspirations/randall-munroe.jpg",
+      "/inspirations/xkcd-compiling.png",
+      "/inspirations/xkcd-duty-calls.png",
+    ],
+    links: [
+      { label: "xkcd.com", url: "https://xkcd.com/" },
+      { label: "What If?", url: "https://what-if.xkcd.com/" },
+      { label: "About Randall", url: "https://xkcd.com/about/" },
     ],
   },
 ];
