@@ -138,6 +138,15 @@ export const hubSections: HubSection[] = [
         secondaryLabel: "Site",
       },
       {
+        id: "org-desktop-tooling",
+        name: "Desktop Tooling",
+        tagline: "OS-level desktop utilities: Explorer, theming, launchers.",
+        href: "https://github.com/Desktop-Tooling",
+        external: true,
+        secondaryHref: "https://desktop-tooling.github.io",
+        secondaryLabel: "Site",
+      },
+      {
         id: "org-antora",
         name: "Antora Supplemental",
         tagline: "Documentation themes and Antora extensions.",
