@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2026-09-01
+
+### Added
+
+- **Inspirations**: Joe Armstrong — *The Mess We're In* (Strange Loop, September 2014): combined medals + billions-of-lines quote, YouTube / timestamp / Drive backup links, Dev-Centr catalog cross-link.
+
 ## [Unreleased] - 2026-08-18
 
 ### Added

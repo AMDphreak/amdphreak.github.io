@@ -135,7 +135,24 @@ export const joeArmstrongSection = {
   quotesHeading: "Favorite quotes",
   portraitImage: "/inspirations/joe-armstrong-header.jpeg",
   imagePosition: "50% 52%",
+  featuredTalk: {
+    title: "The Mess We're In",
+    event: "Strange Loop",
+    eventDate: "September 2014",
+    youtubeUrl: "https://www.youtube.com/watch?v=lKXe3HUG2l4",
+    timestampUrl: "https://youtu.be/lKXe3HUG2l4?t=494",
+    driveBackupUrl:
+      "https://drive.google.com/file/d/16ZKlSFbi1SKPWbPkzvjqwNb34smaGo3p/view?usp=drivesdk",
+    docsUrl:
+      "https://docs.devcentr.org/general-knowledge/explanation/programming/curated-watching/",
+  },
   quotes: [
+    {
+      quote:
+        "I think we should get big medals. My generation of programmers should get the Congressional Medal for creating employment—because in the last forty years we have written billions of lines of code that will keep programmers employed for trillions of man-hours in the next few thousand years to clean up this mess we've made. We are the job creators of the future; all that stuff we wrote years ago, these poor sods will be scratching their heads and going, what the hell does this stuff do?",
+      attribution: "Joe Armstrong, The Mess We're In, Strange Loop, September 2014",
+      attributionUrl: "https://www.youtube.com/watch?v=lKXe3HUG2l4",
+    },
     {
       quote:
         "Being really good at C++ is like being really good at using rocks to sharpen sticks.",

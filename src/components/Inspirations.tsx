@@ -146,7 +146,7 @@ const QuoteGrid = (props: { quotes: InspirationQuote[] }) => (
               <p class="text-base text-stone-700 dark:text-stone-300 leading-relaxed font-sans">
                 &ldquo;{q.quote}&rdquo;
               </p>
-              <QuoteAttribution attribution={q.attribution} />
+              <QuoteAttribution attribution={q.attribution} url={q.attributionUrl} />
             </blockquote>
           </div>
         )}
@@ -228,6 +228,52 @@ export const Inspirations = (props: InspirationsProps) => {
           decoding="async"
         />
         <QuoteGrid quotes={joeArmstrongSection.quotes} />
+        <Show when={joeArmstrongSection.featuredTalk}>
+          {(talk) => (
+            <div class="structural-border p-6 md:p-8 space-y-4 bg-stone-50 dark:bg-stone-900/40">
+              <h4 class="text-lg font-heading tracking-tight text-center">
+                {talk().title}
+              </h4>
+              <p class="text-sm text-stone-600 dark:text-stone-400 text-center">
+                {talk().event}, {talk().eventDate} · ~46 min
+              </p>
+              <p class="flex flex-wrap justify-center gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-widest">
+                <a
+                  href={talk().youtubeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                >
+                  YouTube ↗
+                </a>
+                <a
+                  href={talk().timestampUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                >
+                  Medals riff (~8:14) ↗
+                </a>
+                <a
+                  href={talk().driveBackupUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                >
+                  Drive backup ↗
+                </a>
+                <a
+                  href={talk().docsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                >
+                  Dev-Centr catalog ↗
+                </a>
+              </p>
+            </div>
+          )}
+        </Show>
         <JoeArmstrongIntro />
       </article>
 
