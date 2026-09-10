@@ -9,7 +9,7 @@ export type ForFunPage = {
 export const forFunPages: ForFunPage[] = [
   {
     id: "chatgpt-roast",
-    title: "ChatGPT roast",
+    title: "The Roast of Ryan Johnson",
     tagline:
       "Personality assessment as comedy: scope creep in a fake mustache, archaeological WSL stacks, and “I could build that.”",
     href: "/for-fun/chatgpt-roast",

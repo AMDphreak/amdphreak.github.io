@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2026-09-09
 
+### Changed
+
+- **For fun**: roast page title is now [The Roast of Ryan Johnson](/for-fun/chatgpt-roast).
+
 ### Added
 
-- **For fun** at [/for-fun](/for-fun): hub for light asides, with [ChatGPT roast](/for-fun/chatgpt-roast) (personality assessment, 7 Sep 2026) linked from the home hero CTA row.
+- **For fun** at [/for-fun](/for-fun): hub for light asides, with [The Roast of Ryan Johnson](/for-fun/chatgpt-roast) (personality assessment, 7 Sep 2026) linked from the home hero CTA row.
 
 ## [Unreleased] - 2026-09-01
 
