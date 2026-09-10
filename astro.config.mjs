@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { existsSync } from "node:fs";
 import { defineConfig } from "astro/config";
 import solid from "@astrojs/solid-js";
+import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import centrmark from "@centrmark/astro";
 
@@ -50,8 +51,13 @@ const defaultCli = existsSync(hiveWinCli)
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://ryanjohnson.dev",
   integrations: [
     solid(),
+    sitemap({
+      // Unlisted / private pages use noindex; keep them out of the sitemap.
+      filter: (page) => !page.includes("/u/"),
+    }),
     centrmark({
       cliPath: process.env.CENTRMARK_CLI || defaultCli,
     }),

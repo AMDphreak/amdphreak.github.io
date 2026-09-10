@@ -12,6 +12,7 @@
     "fetch:inspirations": "node scripts/fetch-inspiration-assets.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/solid-js": "^5.1.1",
     "@centrmark/astro": "file:vendor/centrmark/packages/cmk-astro",
     "@centrmark/cmk-renderer": "file:vendor/centrmark/packages/cmk-renderer",

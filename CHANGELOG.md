@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2026-09-10
+
+### Added
+
+- **Crawlability**: `site` set to `https://ryanjohnson.dev`, `@astrojs/sitemap` (emits `sitemap-index.xml`), and [`public/robots.txt`](public/robots.txt) with a Sitemap line; unlisted `/u/` routes stay out of the sitemap.
+
 ## [Unreleased] - 2026-09-09
 
 ### Changed
