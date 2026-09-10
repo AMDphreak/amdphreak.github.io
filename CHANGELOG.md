@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **For fun**: roast page title is now [The Roast of Ryan Johnson](/for-fun/chatgpt-roast).
+- **For fun**: roast page title is now [The Roast of Ryan Johnson](/for-fun/chatgpt-roast); hub blurb is “Amusing content for the discerning mind.”
 
 ### Added
 
