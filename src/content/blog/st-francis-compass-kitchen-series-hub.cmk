@@ -1,0 +1,56 @@
+---
+title "My time at St. Francis Hospital (Compass Group kitchen)"
+description "Series hub: Nov 2023–Aug 2024 food service at St. Francis Hospital in Memphis — the story behind the deep cleans, dish room rebuild, pest fixes, and Safety Champion work."
+pubDate "2024-05-13"
+draft true
+series "st-francis"
+seriesOrder 0
+seriesHub true
+---
+
+When I started at St. Francis Hospital in Memphis, the Compass Group kitchen and dish room were carrying years of deferred cleaning, broken equipment habits, and workflows that made a hard job harder. I was hired as a cook and flex worker, floated between kitchen, dish room, and store room, and spent most of my tenure (November 2023 through August 2024) doing the unglamorous work of making the place survivable again — then documentable.
+
+This series expands the short story I published in May 2024 @cite[key="wp-st-francis-story"] into project-sized posts. Kitchen SOPs and workflow guides I wrote for Compass live in a separate document index @cite[key="sop-index"]; they are cited here as evidence, not republished on the blog.
+
+## What the kitchen felt like on day one
+
+The floor was always dirty. Equipment sat in layers of grease. The dish room was understaffed, interpersonally tense, and laid out like it had never been thought through for steam, water, or one-person coverage. Delivery carts had mold. Most coworkers had stopped expecting the environment to improve; a few cared but did not want to carry the whole building on their backs.
+
+I did not think that was a moral failure on their part. I thought it was a systems failure — and I had energy, tools knowledge, and management that was willing to listen once results showed up.
+
+## How the role grew
+
+On paper I was a short-order cook and flex worker. In practice I also advised the general manager on workflow, storage, equipment, and personnel patterns; documented processes; and eventually held the informal title **Safety Champion** to teach and reinforce health standards. Coworkers and managers had nicknames for the pattern: Mr. Clean, Mr. Fix-it, Superman, Aquaman, Work Son.
+
+The work was not a single hero weekend. It was months of scrubbing, repairing, reorganizing, and writing down what actually worked when the machine failed or the crew shrank to one person.
+
+## Series map
+
+Read these as standalone project logs, in roughly chronological order:
+
+1. **Deep-clean campaign** — floors, grease, mold, scrubber vacuum repair, dry-storage chemistry with the floor machine
+2. **Dish room systems** — buffer zones, one-person workflow, moldy patient carts, emergency protocol when water pressure or the machine failed
+3. **Pest ecology** — dish-room airflow, steam, roaches, fruit flies, and why contractor pest control was not enough
+4. **Storage and operations reorg** — closets, chef office, purchased racks and tools, fewer trips for new staff
+5. **Safety Champion and culture** — teaching standards, reporting unsafe conditions, turnover, and what “improvement mindset” looked like to management
+6. **Friends and life around the job** — placeholder for photos and lighter stories (album TBD)
+
+## Outcomes I can stand behind
+
+Health inspection scores improved enough that my manager could show her superiors a credible turnaround narrative @cite[key="wp-st-francis-story"]. That mattered politically inside the hospital food-service chain, not just aesthetically.
+
+Mechanically, we fixed the Tennant scrubber vacuum attachment problem that had stopped anyone from running the floor machine through doorways @cite[key="sop-floor-scrubber"]. Operationally, we re-engineered dish flow for worst-case staffing @cite[key="sop-dish-guide"]. Ecologically, we addressed roach habitat and fruit-fly breeding behaviors the hospital’s pest contractor had not cleared @cite[key="sop-roach-materials"].
+
+## What this series is not
+
+No payroll documents, no credential dumps, no copy-paste of internal SOP text. When I reference a procedure, I point at the indexed source @cite[key="sop-index"] and describe what changed in the building, not the manual’s step list.
+
+*[Photo placeholder: wide shot of kitchen serving line — shared album TBD]*
+
+::: sources [title="Sources"]
+::: source [key="wp-st-francis-story" type="webpage" title="My time working at St. Francis Hospital (WordPress, May 2024)" url="https://www.ryanjohnson.website/6978/" accessed="2026-09-28"]
+::: source [key="sop-index" type="webpage" title="St. Francis / Compass kitchen document index" url="https://docs.google.com/document/d/1x3IIJkD6raPVZcxkpZEyFZICK824IdywPFehFnEqwJU/edit" accessed="2026-09-28"]
+::: source [key="sop-floor-scrubber" type="webpage" title="Floor Scrubbing Machine Instructions (Tennant T5) — indexed in Drive corpus" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+::: source [key="sop-dish-guide" type="webpage" title="Dish Washing Guide — indexed in Drive corpus" url="https://docs.google.com/document/d/1x3IIJkD6raPVZcxkpZEyFZICK824IdywPFehFnEqwJU/edit" accessed="2026-09-28"]
+::: source [key="sop-roach-materials" type="webpage" title="Roach / pest control materials — indexed in Drive corpus" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+:::

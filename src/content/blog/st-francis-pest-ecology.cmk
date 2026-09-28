@@ -1,0 +1,43 @@
+---
+title "Pest ecology in a steam-trap dish room"
+description "Roaches, fruit flies, airflow, and recycling-bin behavior — why contractor pest control failed and what environmental fixes actually moved the score."
+pubDate "2024-04-01"
+draft true
+series "st-francis"
+seriesOrder 3
+seriesHub false
+---
+
+Hospital kitchens do not get a moral pass on pests because the building is large. If you build a warm, wet, low-airflow room around an industrial dish machine, you have designed roach habitat. If you park a recycling bin in a wet zone and let food waste ride in it, you have designed fruit fly nursery.
+
+At St. Francis I treated pests as **ecology problems**, not as “call the guy with the sprayer again.” The hospital’s pest control contractor had not cleared infestations that were rooted in engineering and behavior @cite[key="ois-pest"].
+
+## The dish-room engineering flaw
+
+There is no meaningful airflow in the dish room. The machine produces steam, standing water, and heat — a permanent microclimate on the ceiling and in voids @cite[key="wp-st-francis-story"].
+
+Spraying without changing that climate is triage on a flooded basement. Deep cleaning and power-washing bought headroom @cite[key="st-francis-deep-clean"], but the structural diagnosis was airflow and moisture control. Notes in the Drive corpus also explore sound and vibration issues in the same room (Helmholtz / Acoustiblok ideas) @cite[key="sop-acoustics"] — adjacent to “why this room feels cursed” even if acoustics are not pests.
+
+## Roaches
+
+Roach materials and response steps are documented in the indexed SOP set @cite[key="sop-roach-materials"]. Publicly, the story is simpler: once habitat shrank and surfaces were actually clean, contractor visits started matching reality instead of fighting a grease waterfall.
+
+## Fruit flies
+
+Fruit flies traced to employee behaviors: trash routed into recycling, and a recycling bin positioned in a wet location that kept organic residue fermenting @cite[key="wp-st-francis-story"].
+
+Fixing flies was partly education, partly moving the bin, partly enforcing separation so recycling was not a stealth compost heap.
+
+## Inspection narrative
+
+Improved pest outcomes fed the same inspection story as the deep-clean campaign — management could demonstrate an improvement mindset to hospital leadership @cite[key="wp-st-francis-story"].
+
+*[Photo placeholder: recycling bin relocation area — album TBD]*
+
+::: sources [title="Sources"]
+::: source [key="wp-st-francis-story" type="webpage" title="My time working at St. Francis Hospital" url="https://www.ryanjohnson.website/6978/" accessed="2026-09-28"]
+::: source [key="ois-pest" type="webpage" title="Operations Improvement Specialist — pest diagnosis bullets" url="https://docs.google.com/document/d/1x3IIJkD6raPVZcxkpZEyFZICK824IdywPFehFnEqwJU/edit" accessed="2026-09-28"]
+::: source [key="st-francis-deep-clean" type="webpage" title="Deep-clean campaign (series post)" url="https://ryanjohnson.dev/blog/posts/st-francis-deep-clean-campaign" accessed="2026-09-28"]
+::: source [key="sop-roach-materials" type="webpage" title="Roach / pest control materials (indexed)" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+::: source [key="sop-acoustics" type="webpage" title="Noise / Acoustiblok notes (indexed)" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+:::
