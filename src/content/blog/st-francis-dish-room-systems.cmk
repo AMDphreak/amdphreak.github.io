@@ -1,0 +1,54 @@
+---
+title "Dish room systems: buffer zones and emergency flow"
+description "Re-engineering a dysfunctional dish room for one-person coverage, moldy carts, and machine outages — citing Compass dish guides without republishing them."
+pubDate "2024-03-10"
+draft true
+series "st-francis"
+seriesOrder 2
+seriesHub false
+---
+
+The dish room at St. Francis was the bottleneck for everything upstream: trays, morale, pests, and inspection risk. It was habitually understaffed, high-turnover, and designed without buffer space — so every rush became a traffic jam.
+
+I spent weeks watching the actual sequence of moves before changing anything. The written Dish Washing Guide and Emergency Dish-Washing Protocol in the Compass corpus became the baseline I improved, not blog fodder to copy @cite[keys="sop-dish-guide,sop-emergency-dish"].
+
+## What was broken socially and physically
+
+Dish crews fought each other as much as they fought grime. That is what happens when one room is expected to absorb the sins of the entire kitchen with no slack in the layout.
+
+Meanwhile mold lived in patient delivery carts. That is not “dish drama”; it is a reason a tray line should stop until carts are remediated @cite[key="ois-dish-projects"].
+
+## Buffer zones and one-person worst case
+
+I re-engineered flow by introducing buffer zones and repositioning equipment using material already on site — unused racks and tables that had never been drafted into a coherent layout @cite[key="wp-st-francis-story"].
+
+The design goal was explicit: **maximize throughput when only one person is in the room**, then scale cleanly when a second or third person appears. Most dish “systems” are written for fantasy staffing levels.
+
+### Emergency protocol when the machine lies
+
+Two real outages drove the emergency workflow:
+
+* Ice storm week — municipal water pressure dropped below what the industrial machine needed
+* Later physical damage to the machine itself
+
+The emergency protocol (indexed separately from the daily guide) covers manual breakdown, sanitation steps, and how to keep patient service legal when the machine is down @cite[key="sop-emergency-dish"]. I am not republishing those steps here; the operational point is that **the hospital kept serving through weather and equipment failure because the room had a written fallback**.
+
+## Relationship to the deep-clean arc
+
+Dish-room ceilings and walls needed the power-wash and chemistry work described in the deep-clean post. Systems work without hygiene only rearranges roaches. Hygiene work without systems only buys a few weeks before chaos returns.
+
+*[Photo placeholder: dish room layout sketch on whiteboard — album TBD]*
+
+## Documentation as leverage
+
+Management already had fragments of procedure. I consolidated existing and proposed knowledge into the indexed document set so new dish workers were not initiated by oral tradition alone @cite[key="sop-index"].
+
+That index is internal Compass material. This post points at it so future-me remembers **why** the buffers exist, not to leak step-by-step SOP text onto the public web.
+
+::: sources [title="Sources"]
+::: source [key="wp-st-francis-story" type="webpage" title="My time working at St. Francis Hospital" url="https://www.ryanjohnson.website/6978/" accessed="2026-09-28"]
+::: source [key="ois-dish-projects" type="webpage" title="Resume scratchpad — dish room optimization bullets" url="https://docs.google.com/document/d/1x3IIJkD6raPVZcxkpZEyFZICK824IdywPFehFnEqwJU/edit" accessed="2026-09-28"]
+::: source [key="sop-dish-guide" type="webpage" title="Dish Washing Guide (indexed)" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+::: source [key="sop-emergency-dish" type="webpage" title="Emergency Dish-Washing Protocol (indexed)" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+::: source [key="sop-index" type="webpage" title="Document index" url="https://docs.google.com/document/d/1x3IIJkD6raPVZcxkpZEyFZICK824IdywPFehFnEqwJU/edit" accessed="2026-09-28"]
+:::
