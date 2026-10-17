@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Refreshed deprecated transitive dependencies within existing ranges: `@ungap/structured-clone` 1.4.0 and `tar` 7.5.22.
 
+## [Unreleased] - 2026-09-28
+
+### Added
+
+- **Blog**: St. Francis / Compass Group kitchen work-history series as draft CentrMark posts (`series: st-francis`, hub + six project articles); kitchen SOPs cited via `@cite` / `::: sources`, not republished.
+- **Blog layout**: docs-style right-rail table of contents on post pages (sticky `h2`/`h3` on desktop, collapsible on mobile); series navigation block when `series` frontmatter is set.
+- **Content pipeline**: `centrmarkBlogLoader` extends CentrMark frontmatter with `series`, `seriesOrder`, and `seriesHub` (same fields optional on Markdown posts).
+
 ## [Unreleased] - 2026-09-10
 
 ### Added

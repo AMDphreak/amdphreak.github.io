@@ -1,0 +1,98 @@
+<script>
+  function slugifyHeading(text: string): string {
+    return text
+      .trim()
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  }
+
+  function uniqueId(base: string, used: Set<string>): string {
+    let id = base || "section";
+    let n = 2;
+    while (used.has(id)) {
+      id = `${base}-${n}`;
+      n += 1;
+    }
+    used.add(id);
+    return id;
+  }
+
+  function buildTocLists() {
+    const body = document.querySelector("[data-post-body]");
+    if (!body) return;
+
+    const desktopList = document.querySelector("[data-post-toc-list]");
+    const mobileList = document.querySelector("[data-post-toc-list-mobile]");
+    const nav = document.querySelector("[data-post-toc]");
+    const mobileWrap = document.querySelector(".post-toc-mobile");
+
+    const headings = body.querySelectorAll("h2, h3");
+    if (headings.length === 0) {
+      nav?.classList.add("hidden");
+      mobileWrap?.classList.add("hidden");
+      return;
+    }
+
+    const usedIds = new Set<string>();
+    const items: { id: string; text: string; level: 2 | 3 }[] = [];
+
+    headings.forEach((el) => {
+      const level = el.tagName === "H2" ? 2 : 3;
+      const text = el.textContent?.trim() ?? "";
+      if (!text) return;
+      let id = el.id;
+      if (!id) {
+        id = uniqueId(slugifyHeading(text), usedIds);
+        el.id = id;
+      } else {
+        usedIds.add(id);
+      }
+      items.push({ id, text, level });
+    });
+
+    const renderList = (ol: Element | null) => {
+      if (!ol) return;
+      ol.innerHTML = "";
+      for (const item of items) {
+        const li = document.createElement("li");
+        if (item.level === 3) li.className = "toc-h3";
+        const a = document.createElement("a");
+        a.href = `#${item.id}`;
+        a.textContent = item.text;
+        li.appendChild(a);
+        ol.appendChild(li);
+      }
+    };
+
+    renderList(desktopList);
+    renderList(mobileList);
+
+    nav?.classList.remove("hidden");
+    mobileWrap?.classList.remove("hidden");
+
+    const links = document.querySelectorAll(".post-toc-list a");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible.length === 0) return;
+        const activeId = visible[0].target.id;
+        links.forEach((link) => {
+          const href = link.getAttribute("href")?.slice(1);
+          link.classList.toggle("is-active", href === activeId);
+        });
+      },
+      { rootMargin: "-20% 0px -70% 0px", threshold: [0, 0.25, 0.5, 1] },
+    );
+
+    headings.forEach((h) => {
+      if (h.id) observer.observe(h);
+    });
+  }
+
+  buildTocLists();
+  document.addEventListener("astro:page-load", buildTocLists);
+</script>

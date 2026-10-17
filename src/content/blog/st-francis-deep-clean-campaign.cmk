@@ -1,0 +1,56 @@
+---
+title "Deep-clean campaign: five years of floor and grease in one kitchen"
+description "How manual scrubbing, a repaired Tennant vacuum head, power-washing, and a grill-cleaner plus floor-scrubber method cleared Memphis hospital kitchen build-up."
+pubDate "2024-02-15"
+draft true
+series "st-francis"
+seriesOrder 1
+seriesHub false
+---
+
+The St. Francis Compass kitchen did not need “a little extra attention.” It needed a reset. Grease had cemented onto short-order equipment, serving surfaces, and walls; non-slip flooring had ingrained dirt the ride-on scrubber could not lift because nobody could keep the machine running through doorways.
+
+This post is the cleaning arc: what was physically wrong, what I did with my hands and with hospital-approved chemicals, and how one repaired vacuum attachment changed daily floor hygiene.
+
+## Why the scrubber sat unused
+
+The Tennant T5 scrubber had the wrong vacuum attachment size. Every doorway became a wrestling match — the vacuum would fall off and had to be reattached constantly. So people stopped using the machine, and floors stayed filthy @cite[key="sop-floor-scrubber"].
+
+I found a properly sized attachment in a forgotten room. It had been discarded as damaged. I repaired it instead of waiting on a purchase order. After that, machine scrubbing was possible again — but machine scrubbing alone still could not remove set-in dirt in the non-slip texture.
+
+## Manual pass first
+
+I scrubbed the kitchen, serving area, lunchroom, dish room, and connecting hallways by hand to break through years of compacted grime the scrubber could not reach @cite[key="wp-st-francis-story"]. That work is not glamorous; it is kneeling with brushes while cooks still need to produce trays.
+
+The point was not perfection in one shift. It was to cross a threshold where routine maintenance could stick instead of sliding backward every week.
+
+## Grease, mold, and vertical surfaces
+
+Horizontal floors were only part of the problem. Grease climbed walls and pipes near the short-order line. Mold grew on fridge walls, dish-room ceilings, the lunchroom conveyor, and patient meal delivery carts @cite[key="ois-deep-clean"].
+
+Management bought a power washer at my request for dish-room walls and ceiling mold @cite[key="wp-st-francis-story"]. I tested chemical combinations already on site — grill cleaner, degreasers, floor solutions — to see which reactions actually lifted build-up without contaminating food storage @cite[key="sop-grill-cleaning"].
+
+## Dry storage: fork-in-the-floor moment
+
+The dry storage floor had dirt so thick you could stick a fork into it — and I did, to show managers how deep the layer went @cite[key="wp-st-francis-story"]. I scraped by hand to start.
+
+A coworker suggested grill cleaner on that floor. The chemistry worked, but he was scrubbing with a deck brush — too slow for the square footage. I kept his chemical insight and changed the application: small amounts of floor cleaning solution through the scrubber to dilute and spread the stronger chemical, soak time, then a second machine pass @cite[key="wp-st-francis-story"]. That distributed chemistry evenly and kept concentrated degreaser from sitting where dry goods sit.
+
+## Equipment and patient carts
+
+Cooking equipment needed degreasing, not just wiping. Patient food carts needed deep mold removal — a patient-safety optics problem as much as a smell problem @cite[key="ois-deep-clean"].
+
+*[Photo placeholder: dish-room ceiling before power-wash — album TBD]*
+
+## What changed after the campaign
+
+Floors became maintainable instead of hopeless. Managers could assign machine scrubbing without cursing doorways. Inspection narratives shifted because the baseline was finally honest @cite[key="wp-st-francis-story"].
+
+The deeper lesson for me: **capital equipment failures masquerade as laziness.** A wrong vacuum head silently vetoed an entire cleaning program.
+
+::: sources [title="Sources"]
+::: source [key="wp-st-francis-story" type="webpage" title="My time working at St. Francis Hospital" url="https://www.ryanjohnson.website/6978/" accessed="2026-09-28"]
+::: source [key="ois-deep-clean" type="webpage" title="Operations Improvement Specialist — cleaning projects (resume source)" url="https://docs.google.com/document/d/1x3IIJkD6raPVZcxkpZEyFZICK824IdywPFehFnEqwJU/edit" accessed="2026-09-28"]
+::: source [key="sop-floor-scrubber" type="webpage" title="Floor Scrubbing Machine Instructions (Tennant T5)" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+::: source [key="sop-grill-cleaning" type="webpage" title="Grill Cleaning and Degreaser use — indexed SOP" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+:::

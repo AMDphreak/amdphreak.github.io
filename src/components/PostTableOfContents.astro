@@ -1,0 +1,74 @@
+---
+interface Props {
+  variant: "mobile" | "desktop";
+}
+
+const { variant } = Astro.props;
+---
+
+{
+  variant === "mobile" ? (
+    <details
+      class="post-toc-mobile xl:hidden mb-6 rounded-md border border-stone-200 dark:border-stone-800 bg-stone-50/80 dark:bg-stone-900/40"
+    >
+      <summary
+        class="cursor-pointer select-none px-4 py-3 font-mono text-[10px] uppercase tracking-[0.28em] text-stone-600 dark:text-stone-400"
+      >
+        On this page
+      </summary>
+      <ol
+        class="post-toc-list m-0 px-4 pb-4 list-none space-y-1 text-sm border-t border-stone-200 dark:border-stone-800 pt-3"
+        data-post-toc-list-mobile
+      >
+      </ol>
+    </details>
+  ) : (
+    <nav class="post-toc w-full" aria-label="On this page" data-post-toc>
+      <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-stone-500 mb-3">
+        On this page
+      </p>
+      <ol
+        class="post-toc-list m-0 p-0 list-none space-y-1 text-sm border-l border-stone-200 dark:border-stone-800"
+        data-post-toc-list
+      >
+      </ol>
+    </nav>
+  )
+}
+
+<style is:global>
+  .post-toc-list a {
+    display: block;
+    padding: 0.2rem 0 0.2rem 0.75rem;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    color: rgb(87 83 78);
+    text-decoration: none;
+    line-height: 1.35;
+    transition:
+      color 0.15s,
+      border-color 0.15s;
+  }
+  .dark .post-toc-list a {
+    color: rgb(168 162 158);
+  }
+  .post-toc-list a:hover {
+    color: rgb(28 25 23);
+  }
+  .dark .post-toc-list a:hover {
+    color: rgb(245 245 244);
+  }
+  .post-toc-list a.is-active {
+    border-left-color: rgb(120 113 108);
+    color: rgb(28 25 23);
+    font-weight: 500;
+  }
+  .dark .post-toc-list a.is-active {
+    border-left-color: rgb(168 162 158);
+    color: rgb(250 250 249);
+  }
+  .post-toc-list .toc-h3 a {
+    padding-left: 1.25rem;
+    font-size: 0.8125rem;
+  }
+</style>

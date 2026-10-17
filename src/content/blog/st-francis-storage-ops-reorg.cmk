@@ -1,0 +1,41 @@
+---
+title "Storage and ops reorg: fewer trips, less frustration"
+description "Reorganizing kitchen closets, chef office, and long-term storage — plus equipment purchases — so new cooks and dish workers could find things without oral tradition."
+pubDate "2024-05-01"
+draft true
+series "st-francis"
+seriesOrder 4
+seriesHub false
+---
+
+Kitchen speed is often a storage problem wearing a chef coat. At St. Francis, new employees, dish workers, and cooks burned minutes on hunts for pans, lids, chemicals, and backup tools because **nothing lived where the work happened**.
+
+I reorganized on behalf of management using functional layout principles: group by task frequency, keep heavy-use paths short, and separate “daily reach” from “monthly crawl” storage @cite[keys="wp-st-francis-story,ois-organizing"].
+
+## Chef office and working closets
+
+The chef office had become a paperwork and junk gravity well. Cleaning and re-strategizing that space was part of making management decisions visible to the floor @cite[key="ois-organizing"].
+
+Kitchen closets near the line got the same treatment: labels, shelf logic, and Metro rack adjustments where casters and pan sizing notes in the Drive corpus mattered @cite[key="sop-metro-notes"].
+
+## Purchased equipment
+
+When racks and cleaning tools were the bottleneck, I helped justify purchases — new storage hardware and cleaning equipment that paid back in labor @cite[key="ois-organizing"]. That is boring procurement work, but it is how “we should be cleaner” becomes physically possible.
+
+## Long-term storage
+
+Dry storage floors and back closets held years of “we might need this” without a map. The deep-clean post covers the fork-in-the-floor extreme; this post covers **where** items landed after the purge and scrub @cite[key="st-francis-deep-clean"].
+
+## Documented responsibilities
+
+Prep team vs nutrition team boundaries show up in the indexed Kitchen Team / Nutrition Team responsibility notes @cite[key="sop-team-roles"]. Reorg only sticks when job descriptions match shelf labels.
+
+*[Photo placeholder: reorganized Metro rack wall — album TBD]*
+
+::: sources [title="Sources"]
+::: source [key="wp-st-francis-story" type="webpage" title="My time working at St. Francis Hospital" url="https://www.ryanjohnson.website/6978/" accessed="2026-09-28"]
+::: source [key="ois-organizing" type="webpage" title="Operations Improvement Specialist — storage and purchasing bullets" url="https://docs.google.com/document/d/1x3IIJkD6raPVZcxkpZEyFZICK824IdywPFehFnEqwJU/edit" accessed="2026-09-28"]
+::: source [key="st-francis-deep-clean" type="webpage" title="Deep-clean campaign (series post)" url="https://ryanjohnson.dev/blog/posts/st-francis-deep-clean-campaign" accessed="2026-09-28"]
+::: source [key="sop-metro-notes" type="webpage" title="Pan sizing, Metro casters, shelves (indexed)" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+::: source [key="sop-team-roles" type="webpage" title="Kitchen Team / Nutrition Team responsibilities (indexed)" url="https://drive.google.com/drive/folders/1sP8WZ5qDpJYFSA3hx3edkL6axXI-etgc" accessed="2026-09-28"]
+:::

@@ -1,0 +1,57 @@
+---
+import type { SeriesPostRef } from "../lib/blog-series";
+
+interface Props {
+  seriesLabel: string;
+  posts: SeriesPostRef[];
+  currentSlug: string;
+}
+
+const { seriesLabel, posts, currentSlug } = Astro.props;
+const hub = posts.find((p) => p.seriesHub);
+const articles = posts.filter((p) => !p.seriesHub || p.slug !== hub?.slug);
+---
+
+{
+  posts.length > 0 && (
+    <aside
+      class="rounded-md border border-stone-200 dark:border-stone-800 bg-stone-50/60 dark:bg-stone-900/30 px-5 py-4 space-y-3"
+      aria-label="Series"
+    >
+      <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-stone-500 m-0">
+        Series · {seriesLabel}
+      </p>
+      {hub && hub.slug !== currentSlug && (
+        <p class="m-0 text-sm">
+          <a
+            href={`/blog/posts/${hub.slug}`}
+            class="text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500"
+          >
+            ← {hub.title}
+          </a>
+        </p>
+      )}
+      <ol class="m-0 p-0 list-none space-y-2 text-sm">
+        {articles.map((post) => {
+          const isCurrent = post.slug === currentSlug;
+          return (
+            <li>
+              {isCurrent ? (
+                <span class="font-medium text-stone-900 dark:text-stone-100" aria-current="page">
+                  {post.title}
+                </span>
+              ) : (
+                <a
+                  href={`/blog/posts/${post.slug}`}
+                  class="text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 underline decoration-stone-300/80 underline-offset-4"
+                >
+                  {post.title}
+                </a>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </aside>
+  )
+}
