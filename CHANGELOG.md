@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Home**: the two project grids are gone. The hero button opens the [Catalog](/repositories). Profile names sit beside the icons under the hero.
+- **Home**: the hero is the name and username. Catalog, the software [résumé](/resume), and the other software links sit in a Software section under the hero so that section is partly in view on a desktop screen.
 - **Catalog**: the project card grid is gone. Each index row is a collapsed project expander. Personal Projects is first; the anchor stays `#AMDphreak`. Opening a project shows its screenshot or pattern and the Visit / organization links (Dev-Centr also links to [Apps](https://devcentr.org/apps)). Repositories sit in an inner expander with their own filter. A search above the index keeps matches under that project, and choosing one opens both expanders and marks the matching rows. The organization logo is the GitHub avatar on the right of the row. A group is still one org or person (`identity`). Index numbers sit `2ch` from the names.
 - **Photography**: the visible name is bigr picture. The Capture_Engine watermark is gone.
 - **Blog**: the landing lists Posts, Feedback Hub filings, and the Old WordPress Blog, with Archive and Live site on the old blog card. Titles are the links. The kicker is “Essays · notes · ideas.”

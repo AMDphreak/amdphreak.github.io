@@ -11,8 +11,8 @@ import "../styles/tailwind.css";
 const navBtnBase =
   "inline-flex items-center justify-center gap-1.5 h-12 px-5 font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const navBtnPrimary = `${navBtnBase} structural-border bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
-/** Ghost secondary: no fill; border blends with frost/tapestry via .hero-cta-ghost */
-const navBtnSecondary = `${navBtnBase} hero-cta-ghost`;
+/** Section links sit on the page, not the frosted tapestry. */
+const navBtnSecondary = `${navBtnBase} structural-border bg-background text-foreground hover:bg-stone-100 dark:hover:bg-stone-900`;
 
 /** Hero tapestry tiers (Lanczos): 1280 / 1920 / 2560.
  * Display width is rem (not vw) so browser zoom scales it with page content.
@@ -44,9 +44,9 @@ const heroTapestrySizes = "120rem";
     >
     </div>
 
-    <!-- Full-bleed brand-first hero: tall viewport + vertically centered full-width tapestry -->
+    <!-- Name and username over the tapestry. Short enough that Software peeks in on a desktop. -->
     <section
-      class="relative z-10 min-h-[100svh] w-full overflow-x-hidden"
+      class="relative z-10 w-full overflow-hidden"
       aria-label="Introduction"
     >
       <!-- rem width (not vw): zooms with content; ~10% past edges of a typical desktop at 100% -->
@@ -90,80 +90,35 @@ const heroTapestrySizes = "120rem";
       </div>
 
       <div
-        class="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-7xl flex-col px-6 py-12 lg:py-16"
+        class="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-6 pt-8 pb-8 lg:pt-10 lg:pb-10"
       >
         <header
-          class="flex flex-wrap items-center justify-between gap-6 border-b border-stone-200/80 pb-8 dark:border-stone-800/80"
+          class="flex flex-wrap items-center justify-between gap-6 border-b border-stone-200/80 pb-6 dark:border-stone-800/80"
         >
           <Breadcrumb class="border-0 pb-0" items={[{ label: "Home", href: "/" }]} />
           <ThemeToggle />
         </header>
 
-        <div class="relative isolate flex flex-1 flex-col justify-center py-10 lg:py-16">
-          <!-- Frosted blur plane behind copy row + CTAs (lesser blur than 7da684c / 863f2ad) -->
+        <div class="relative isolate pt-8 lg:pt-10">
           <div
-            class="hero-content-frost absolute -inset-x-8 -inset-y-6 sm:-inset-x-10 sm:-inset-y-8 lg:-inset-x-16 lg:-inset-y-10"
+            class="hero-content-frost absolute -inset-x-8 -inset-y-4 sm:-inset-x-10 lg:-inset-x-16"
             aria-hidden="true"
           >
           </div>
 
-          <div class="relative z-10 flex flex-col gap-10 pointer-events-auto">
-            <div class="flex flex-col gap-10">
-              <div class="max-w-3xl min-w-0 flex-1 space-y-6">
-                <h1
-                  class="font-heading text-6xl font-light tracking-tight text-foreground md:text-8xl"
-                >
-                  Ryan<br />Johnson
-                </h1>
-                <div class="flex items-center gap-3">
-                  <div class="blueprint-dot"></div>
-                  <p
-                    class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
-                  >
-                    AMDphreak / Software Architect
-                  </p>
-                </div>
-                <p
-                  class="max-w-2xl font-sans text-lg leading-relaxed text-stone-700 dark:text-stone-300 md:text-xl"
-                >
-                  Software and systems, built carefully — UX, DevX, ITIL, Architecture, RelyOps, DevOps. More than a software developer: a visionary.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap items-center gap-3">
-              <a href="/repositories" class={navBtnPrimary}>
-                Catalog
-                <span class="font-mono text-[10px] opacity-60" aria-hidden="true">→</span>
-              </a>
-              <a href="/resume" class={navBtnSecondary}>
-                Résumé
-                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-              </a>
-              <a href="/philosophy" class={navBtnSecondary}>
-                Philosophy
-                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-              </a>
-              <a
-                href="/gui-demos"
-                class={navBtnSecondary}
-                aria-label="UI/UX — philosophy and interactive demos"
+          <div class="relative z-10 max-w-3xl min-w-0 space-y-6 pointer-events-auto">
+            <h1
+              class="font-heading text-6xl font-light tracking-tight text-foreground md:text-8xl"
+            >
+              Ryan<br />Johnson
+            </h1>
+            <div class="flex items-center gap-3">
+              <div class="blueprint-dot"></div>
+              <p
+                class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
               >
-                UI/UX
-                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-              </a>
-              <a href="/inspirations" class={navBtnSecondary}>
-                Inspirations
-                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-              </a>
-              <a href="/for-fun" class={navBtnSecondary}>
-                For fun
-                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-              </a>
-              <a href="/blog" class={navBtnSecondary}>
-                Blog
-                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
-              </a>
+                AMDphreak
+              </p>
             </div>
           </div>
         </div>
@@ -171,6 +126,52 @@ const heroTapestrySizes = "120rem";
     </section>
 
     <main class="relative z-10 container mx-auto max-w-7xl space-y-20 px-6 py-12 lg:space-y-28">
+      <section aria-label="Software" class="space-y-6">
+        <h2 class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-700 dark:text-stone-400">
+          Software
+        </h2>
+        <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400">
+          Software Architect
+        </p>
+        <p class="max-w-2xl font-sans text-lg leading-relaxed text-stone-700 dark:text-stone-300 md:text-xl">
+          Software and systems, built carefully — UX, DevX, ITIL, Architecture, RelyOps, DevOps. More than a software developer: a visionary.
+        </p>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="/repositories" class={navBtnPrimary}>
+            Catalog
+            <span class="font-mono text-[10px] opacity-60" aria-hidden="true">→</span>
+          </a>
+          <a href="/resume" class={navBtnSecondary}>
+            Résumé
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+          <a href="/philosophy" class={navBtnSecondary}>
+            Philosophy
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+          <a
+            href="/gui-demos"
+            class={navBtnSecondary}
+            aria-label="UI/UX — philosophy and interactive demos"
+          >
+            UI/UX
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+          <a href="/inspirations" class={navBtnSecondary}>
+            Inspirations
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+          <a href="/for-fun" class={navBtnSecondary}>
+            For fun
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+          <a href="/blog" class={navBtnSecondary}>
+            Blog
+            <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
       <section aria-label="Profiles" class="space-y-4">
         <h2 class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-700 dark:text-stone-400">
           Profiles
