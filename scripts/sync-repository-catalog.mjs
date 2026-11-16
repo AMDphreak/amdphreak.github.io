@@ -27,45 +27,76 @@ const GITHUB_ORGS = [
   "Cook-Systems-Team-Blue-Feb-2021-Ryan",
 ];
 
-/** GitLab repos under AMDphreak that belong with an org/project group (not personal misc). */
+/**
+ * GitLab project name -> group identity, when that repo belongs with an org
+ * even though the GitLab owner is the personal account.
+ */
 const GITLAB_PROJECT_ASSIGNMENTS = {
   antora: "antora-supplemental",
   "antora-ui-default": "antora-supplemental",
 };
 
+/**
+ * `${provider}:${ownerOnThatHost}` -> stable group identity.
+ * Identity is the org or the person, never host+slug. Add a line here when a
+ * GitLab or Codeberg owner should join an existing group.
+ */
+const OWNER_IDENTITY = {
+  "github:dev-centr": "dev-centr",
+  "github:FoodTruckNerdz": "FoodTruckNerdz",
+  "github:HCI-Nerdz": "HCI-Nerdz",
+  "github:antora-supplemental": "antora-supplemental",
+  "github:dlang-supplemental": "dlang-supplemental",
+  "github:AMDphreak": "personal",
+  "github:formatte": "formatte",
+  "github:openshellorg": "openshellorg",
+  "github:LinxPhotos": "LinxPhotos",
+  "github:memphis-cs-projects": "memphis-cs-projects",
+  "github:Cook-Systems-Team-Blue-Feb-2021-Ryan": "cook-systems",
+  "gitlab:AMDphreak": "personal",
+};
+
 const GROUP_META = {
   "dev-centr": {
+    id: "dev-centr",
     title: "Dev-Centr",
     tagline: "Developer environment configuration, tooling, and documentation.",
   },
   FoodTruckNerdz: {
+    id: "FoodTruckNerdz",
     title: "Food Truck Nerdz",
     tagline: "Food truck discovery platform — web, mobile, and API.",
   },
   "HCI-Nerdz": {
+    id: "HCI-Nerdz",
     title: "HCI Nerdz",
     tagline: "HCI and UI/UX innovation — honest surfaces, lower cognitive tax.",
   },
   "antora-supplemental": {
+    id: "antora-supplemental",
     title: "Antora Supplemental",
     tagline: "Themes, workflows, and extensions for Antora documentation sites.",
   },
   "dlang-supplemental": {
+    id: "dlang-supplemental",
     title: "Dlang Supplemental",
     tagline: "D language libraries, GUI tooling, and documentation.",
   },
-  AMDphreak: {
-    title: "AMDphreak",
-    tagline: "Personal repositories across GitHub and GitLab.",
+  personal: {
+    id: "AMDphreak",
+    title: "Personal Projects",
+    tagline: "Personal repositories on any git host.",
   },
-  formatte: { title: "formatte", tagline: "Formatting tooling organization." },
-  openshellorg: { title: "Open Shell Org", tagline: "Open Shell community." },
-  LinxPhotos: { title: "LinxPhotos", tagline: "Photo service and documentation." },
+  formatte: { id: "formatte", title: "formatte", tagline: "Formatting tooling organization." },
+  openshellorg: { id: "openshellorg", title: "Open Shell Org", tagline: "Open Shell community." },
+  LinxPhotos: { id: "LinxPhotos", title: "LinxPhotos", tagline: "Photo service and documentation." },
   "memphis-cs-projects": {
+    id: "memphis-cs-projects",
     title: "Memphis CS Projects",
     tagline: "University coursework and team projects.",
   },
-  "Cook-Systems-Team-Blue-Feb-2021-Ryan": {
+  "cook-systems": {
+    id: "Cook-Systems-Team-Blue-Feb-2021-Ryan",
     title: "Cook Systems (Team Blue)",
     tagline: "Cook Systems training cohort repositories.",
   },
@@ -77,12 +108,12 @@ const GROUP_ORDER = [
   "HCI-Nerdz",
   "antora-supplemental",
   "dlang-supplemental",
-  "AMDphreak",
+  "personal",
   "formatte",
   "openshellorg",
   "LinxPhotos",
   "memphis-cs-projects",
-  "Cook-Systems-Team-Blue-Feb-2021-Ryan",
+  "cook-systems",
 ];
 
 function ghJson(args) {
@@ -117,14 +148,19 @@ function normalizeGh(repo, owner) {
   };
 }
 
+function gitlabOwner(project) {
+  const full = project.path_with_namespace || project.namespace?.full_path || "";
+  const owner = String(full).split("/")[0];
+  return owner || "AMDphreak";
+}
+
 function normalizeGl(project) {
-  const path = project.path_with_namespace || `${project.namespace?.full_path}/${project.path}`;
   return {
     name: project.path,
     description: (project.description || "").trim() || undefined,
     url: project.web_url,
     provider: "gitlab",
-    owner: "AMDphreak",
+    owner: gitlabOwner(project),
     isPrivate: project.visibility === "private",
     isFork: Boolean(project.forked_from_project),
   };
@@ -140,11 +176,18 @@ function sortRepos(a, b) {
 
 if (!websitesOnly) {
 const groups = new Map();
-for (const id of GROUP_ORDER) {
-  groups.set(id, { id, ...GROUP_META[id], repositories: [] });
+for (const identity of GROUP_ORDER) {
+  const meta = GROUP_META[identity];
+  groups.set(identity, { identity, ...meta, repositories: [] });
 }
 
 for (const org of GITHUB_ORGS) {
+  const identity = OWNER_IDENTITY[`github:${org}`];
+  const group = identity && groups.get(identity);
+  if (!group) {
+    console.warn(`skip github ${org} (no group identity)`);
+    continue;
+  }
   let repos = [];
   try {
     repos = ghJson(
@@ -154,22 +197,22 @@ for (const org of GITHUB_ORGS) {
     console.warn(`skip github ${org}`);
     continue;
   }
-  const group = groups.get(org);
-  if (!group) continue;
   for (const r of repos) {
     group.repositories.push(normalizeGh(r, org));
   }
 }
 
-const amdphreak = groups.get("AMDphreak");
 for (const p of glabJson()) {
   const entry = normalizeGl(p);
-  const assign = GITLAB_PROJECT_ASSIGNMENTS[entry.name];
-  if (assign && groups.has(assign)) {
-    groups.get(assign).repositories.push(entry);
-  } else {
-    amdphreak.repositories.push(entry);
+  const assigned = GITLAB_PROJECT_ASSIGNMENTS[entry.name];
+  const identity =
+    (assigned && groups.has(assigned) && assigned) || OWNER_IDENTITY[`gitlab:${entry.owner}`];
+  const group = identity && groups.get(identity);
+  if (!group) {
+    console.warn(`skip gitlab ${entry.owner}/${entry.name} (no group identity)`);
+    continue;
   }
+  group.repositories.push(entry);
 }
 
 for (const g of groups.values()) {
@@ -180,7 +223,7 @@ const catalog = GROUP_ORDER.map((id) => groups.get(id)).filter((g) => g.reposito
 
 const generated = `/* eslint-disable */
 /** Auto-generated by scripts/sync-repository-catalog.mjs — do not edit by hand. */
-export type RepositoryProvider = "github" | "gitlab";
+export type RepositoryProvider = "github" | "gitlab" | "codeberg";
 
 export type CatalogRepository = {
   name: string;
@@ -194,6 +237,8 @@ export type CatalogRepository = {
 
 export type CatalogProjectGroup = {
   id: string;
+  /** Org or person. Repos from any git host with this identity share the group. */
+  identity: string;
   title: string;
   tagline?: string;
   repositories: CatalogRepository[];

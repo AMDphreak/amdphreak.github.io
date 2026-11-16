@@ -177,7 +177,7 @@ const seeds: CardSeed[] = [
   },
   {
     id: "personal",
-    name: "Personal projects",
+    name: "Personal Projects",
     tagline: "Repositories under AMDphreak. This site is the directory for every project.",
     inPageHref: "#AMDphreak",
     pattern: "waves",
