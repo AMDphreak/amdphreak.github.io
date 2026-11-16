@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Photography**: the frequent-clients line is gone.
 - **Catalog**: space above the synced status line.
 - **Home**: the two project grids are gone. The hero button opens the [Catalog](/repositories). Profile names sit beside the icons under the hero.
 - **Home**: the hero is the name and username. Catalog, the software [résumé](/resume), and the other software links sit in a Software section under the hero so that section is partly in view on a desktop screen.

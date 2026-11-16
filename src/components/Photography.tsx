@@ -60,10 +60,6 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
               performances, weddings, and portraits of friends and family. Sometimes I do TFP
               shoots helping models with their portfolios.
             </p>
-            <p class="text-stone-600 dark:text-stone-400 leading-relaxed">
-              Frequent clients: Germantown Symphony Orchestra and the Down Syndrome Association
-              of Memphis.
-            </p>
           </div>
 
           <div class="flex flex-wrap gap-4 pt-2">
