@@ -11,15 +11,9 @@ import "../styles/tailwind.css";
 const navBtnBase =
   "inline-flex items-center justify-center gap-1.5 h-12 px-5 font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const navBtnPrimary = `${navBtnBase} structural-border bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
-/** Section links sit on the page, not the frosted tapestry. */
+/** Section links sit on the page background, including over a section wash. */
 const navBtnSecondary = `${navBtnBase} structural-border bg-background text-foreground hover:bg-stone-100 dark:hover:bg-stone-900`;
 
-/** Hero tapestry tiers (Lanczos): 1280 / 1920 / 2560.
- * Display width is rem (not vw) so browser zoom scales it with page content.
- * 120rem ≈ 1920px — covers typical desktops with ~10% past each edge of a ~1600px viewport. */
-const heroTapestrySrcset =
-  "/hero/rainbow-crystal-tapestry-1280.webp 1280w, /hero/rainbow-crystal-tapestry-1920.webp 1920w, /hero/rainbow-crystal-tapestry-2560.webp 2560w";
-const heroTapestrySizes = "120rem";
 ---
 
 <html lang="en">
@@ -44,53 +38,13 @@ const heroTapestrySizes = "120rem";
     >
     </div>
 
-    <!-- Name and username over the tapestry. Short enough that Software peeks in on a desktop. -->
+    <!-- Name and username. A little taller than the copy, not a full screen. -->
     <section
-      class="relative z-10 w-full overflow-hidden"
+      class="relative z-10 flex w-full min-h-[24rem] flex-col md:min-h-[28rem]"
       aria-label="Introduction"
     >
-      <!-- rem width (not vw): zooms with content; ~10% past edges of a typical desktop at 100% -->
       <div
-        class="pointer-events-none absolute left-1/2 top-1/2 w-[120rem] max-w-none -translate-x-1/2 -translate-y-1/2"
-        aria-hidden="true"
-      >
-        <img
-          class="hero-tapestry block h-auto w-full max-w-none"
-          src="/hero/rainbow-crystal-tapestry-1920.webp"
-          srcset={heroTapestrySrcset}
-          sizes={heroTapestrySizes}
-          width={1920}
-          height={800}
-          alt="Rainbow crystal tapestry — three frames of prism light and orchids at a bright window"
-          fetchpriority="high"
-          decoding="async"
-        />
-      </div>
-      <!-- Light global scrims; localized readability comes from hero-content-frost -->
-      <div class="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
-        <!-- Gentle R→L lift on the right — blur panel handles social column -->
-        <div
-          class="absolute inset-0 bg-gradient-to-l from-background/55 from-0% via-background/28 via-28% to-transparent to-62% dark:from-background/60 dark:via-background/32 dark:via-26% dark:to-transparent dark:to-58%"
-        >
-        </div>
-        <!-- Soft left band for name column -->
-        <div
-          class="absolute inset-y-0 left-0 w-[min(100%,52rem)] bg-gradient-to-r from-background/62 via-background/32 to-transparent dark:from-background/68 dark:via-background/36"
-        >
-        </div>
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-background via-background/35 to-background/55 dark:from-background dark:via-background/42 dark:to-background/65"
-        >
-        </div>
-        <!-- Top-right corner: subtle blend where tapestry meets page bg -->
-        <div
-          class="absolute inset-0 bg-gradient-to-bl from-background/85 from-16% via-background/25 via-38% to-transparent dark:from-background dark:from-18% dark:via-background/32 dark:via-40%"
-        >
-        </div>
-      </div>
-
-      <div
-        class="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-6 pt-8 pb-8 lg:pt-10 lg:pb-10"
+        class="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 pt-8 pb-12 lg:pt-10 lg:pb-16"
       >
         <header
           class="flex flex-wrap items-center justify-between gap-6 border-b border-stone-200/80 pb-6 dark:border-stone-800/80"
@@ -99,18 +53,12 @@ const heroTapestrySizes = "120rem";
           <ThemeToggle />
         </header>
 
-        <div class="relative isolate pt-8 lg:pt-10">
-          <div
-            class="hero-content-frost absolute -inset-x-8 -inset-y-4 sm:-inset-x-10 lg:-inset-x-16"
-            aria-hidden="true"
-          >
-          </div>
-
-          <div class="relative z-10 max-w-3xl min-w-0 space-y-6 pointer-events-auto">
+        <div class="flex flex-1 flex-col justify-center pt-8 lg:pt-10">
+          <div class="max-w-3xl min-w-0 space-y-6">
             <h1
-              class="font-heading text-6xl font-light tracking-tight text-foreground md:text-8xl"
+              class="max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
             >
-              Ryan<br />Johnson
+              Ryan Johnson
             </h1>
             <div class="flex items-center gap-3">
               <div class="blueprint-dot"></div>
@@ -125,14 +73,15 @@ const heroTapestrySizes = "120rem";
       </div>
     </section>
 
-    <main class="relative z-10 container mx-auto max-w-7xl space-y-20 px-6 py-12 lg:space-y-28">
-      <section aria-label="Software" class="space-y-6">
-        <h2 class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-700 dark:text-stone-400">
-          Software
-        </h2>
-        <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400">
-          Software Architect
-        </p>
+    <main class="relative z-10 space-y-16 py-12 lg:space-y-24 lg:py-16">
+      <section aria-label="Software" class="bg-sky-50 text-foreground dark:bg-sky-950/60">
+        <div class="mx-auto w-full max-w-7xl space-y-6 px-6 py-12 lg:py-16">
+          <h2 class="font-heading text-3xl tracking-tighter text-foreground">
+            Software
+          </h2>
+          <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-300">
+            Software Architect
+          </p>
         <p class="max-w-2xl font-sans text-lg leading-relaxed text-stone-700 dark:text-stone-300 md:text-xl">
           Software and systems, built carefully — UX, DevX, ITIL, Architecture, RelyOps, DevOps. More than a software developer: a visionary.
         </p>
@@ -170,16 +119,15 @@ const heroTapestrySizes = "120rem";
             <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
           </a>
         </div>
-      </section>
-
-      <section aria-label="Profiles" class="space-y-4">
-        <h2 class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-700 dark:text-stone-400">
-          Profiles
-        </h2>
         <ProfileLinks client:load />
+        </div>
       </section>
 
-      <Photography client:load collapsible={false} />
+      <div class="bg-amber-50 text-foreground dark:bg-amber-950/55">
+        <div class="mx-auto w-full max-w-7xl px-6 py-12 lg:py-16">
+          <Photography client:load collapsible={false} />
+        </div>
+      </div>
     </main>
 
     <Footer client:load />

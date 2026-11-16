@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Home**: the Software title is the word Software in the heading face. Profile links sit under those buttons. The hero tapestry and its frost are gone, the name stays on one line, and Software and Photography have separate color washes.
 - **Photography**: the site screenshot uses the normal cursor on hover. It is not a link.
 - **Photography**: the frequent-clients line is gone.
 - **Catalog**: space above the synced status line.
