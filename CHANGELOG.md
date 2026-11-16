@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Photography**: the site screenshot uses the normal cursor on hover. It is not a link.
 - **Photography**: the frequent-clients line is gone.
 - **Catalog**: space above the synced status line.
 - **Home**: the two project grids are gone. The hero button opens the [Catalog](/repositories). Profile names sit beside the icons under the hero.
