@@ -53,7 +53,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
             </p>
             <p class="text-stone-600 dark:text-stone-400 leading-relaxed">
               Through{" "}
-              <span class="font-mono uppercase tracking-wider text-xs border-b border-stone-400">
+              <span class="font-heading text-foreground">
                 bigr picture
               </span>
               , I explore a huge range of photographic styles. Most of what I shoot is events,
