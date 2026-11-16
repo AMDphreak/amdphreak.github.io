@@ -3,13 +3,15 @@
  * Run: node scripts/sync-repository-catalog.mjs
  */
 import { execSync } from "node:child_process";
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 const outPath = join(root, "src/lib/repository-catalog.ts");
+const websitesPath = join(root, "src/lib/org-websites.json");
+const websitesOnly = process.argv.includes("--websites-only");
 
 const GITHUB_ORGS = [
   "AMDphreak",
@@ -136,6 +138,7 @@ function sortRepos(a, b) {
   return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
 }
 
+if (!websitesOnly) {
 const groups = new Map();
 for (const id of GROUP_ORDER) {
   groups.set(id, { id, ...GROUP_META[id], repositories: [] });
@@ -208,3 +211,67 @@ export function catalogRepoCount(): number {
 writeFileSync(outPath, generated, "utf8");
 const total = catalog.reduce((n, g) => n + g.repositories.length, 0);
 console.log(`Wrote ${outPath} (${catalog.length} groups, ${total} repos)`);
+}
+
+await updateOrgWebsites();
+
+/**
+ * Refresh GitHub org/user `blog` into src/lib/org-websites.json.
+ * No token. On rate limit, network failure, or a non-OK response, keep the last blog.
+ */
+async function updateOrgWebsites() {
+  let data = { generatedAt: null, profiles: {} };
+  try {
+    data = JSON.parse(readFileSync(websitesPath, "utf8"));
+  } catch {
+    console.warn("no org-websites.json yet; starting empty");
+  }
+  const profiles = data.profiles ?? {};
+  for (const [login, profile] of Object.entries(profiles)) {
+    if (profile.kind !== "org" && profile.kind !== "user") continue;
+    const endpoint =
+      profile.kind === "user"
+        ? `https://api.github.com/users/${encodeURIComponent(login)}`
+        : `https://api.github.com/orgs/${encodeURIComponent(login)}`;
+    try {
+      const res = await fetch(endpoint, {
+        headers: {
+          Accept: "application/vnd.github+json",
+          "User-Agent": "amdphreak-github-io-catalog",
+        },
+      });
+      if (!res.ok) {
+        console.warn(`keep last website for ${login} (HTTP ${res.status})`);
+        continue;
+      }
+      const body = await res.json();
+      profile.blog = normalizeBlog(body.blog);
+      console.log(`${login} website: ${profile.blog ?? "(none)"}`);
+    } catch (err) {
+      console.warn(`keep last website for ${login}: ${err?.message || err}`);
+    }
+  }
+  data.generatedAt = new Date().toISOString().slice(0, 10);
+  data.profiles = profiles;
+  writeFileSync(websitesPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  console.log(`Wrote ${websitesPath}`);
+}
+
+function normalizeBlog(blog) {
+  if (typeof blog !== "string") return null;
+  const trimmed = blog.trim();
+  if (!trimmed) return null;
+  const withScheme = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  let url;
+  try {
+    url = new URL(withScheme);
+  } catch {
+    console.warn(`ignore unusable website ${trimmed}`);
+    return null;
+  }
+  if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+  if ((url.pathname === "/" || url.pathname === "") && !url.search && !url.hash) {
+    return `${url.protocol}//${url.host}`;
+  }
+  return url.href;
+}

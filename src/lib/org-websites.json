@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-11-16",
+  "profiles": {
+    "dev-centr": {
+      "kind": "org",
+      "blog": "https://devcentr.org"
+    },
+    "FoodTruckNerdz": {
+      "kind": "org",
+      "blog": "https://www.foodtrucknerdz.com"
+    },
+    "HCI-Nerdz": {
+      "kind": "org",
+      "blog": "https://hci-nerdz.github.io"
+    },
+    "Desktop-Tooling": {
+      "kind": "org",
+      "blog": "https://desktop-tooling.github.io"
+    },
+    "antora-supplemental": {
+      "kind": "org",
+      "blog": "https://antora-supplemental.org"
+    },
+    "dlang-supplemental": {
+      "kind": "org",
+      "blog": "https://dlang-supplemental.github.io"
+    },
+    "formatte": {
+      "kind": "org",
+      "blog": null
+    },
+    "openshellorg": {
+      "kind": "org",
+      "blog": "https://opensh.org"
+    },
+    "LinxPhotos": {
+      "kind": "org",
+      "blog": "https://linx.photos"
+    },
+    "AMDphreak": {
+      "kind": "user",
+      "blog": "https://ryanjohnson.dev"
+    }
+  }
+}
