@@ -1,0 +1,41 @@
+= Section page slots
+:page-audience: agent
+:page-usage-context: template
+:description: What belongs in each slot of an interior page. Read this before adding a page. Do not copy a neighbor page's kicker.
+
+Agents invent the wrong field when they copy an existing page. These slots are the contract. A later page that needs a different shape should say so here before it ships.
+
+== Breadcrumb
+
+One trail, left to right: `Home / parent / current`.
+
+* Home and every ancestor are links.
+* The current page is text, not a link.
+* The slash is a separator between crumbs. It is not part of the Home label, and it does not mean the site root is a parent folder of Home.
+* A link that is not an ancestor (Tags on a post, a sibling section) does not sit in the trail.
+
+Use `src/components/Breadcrumb.astro`. Pass every crumb. Omit `href` on the last item.
+
+== Title
+
+The page name. One `h1`.
+
+== Mono line
+
+Related terms for that title: genres, synonyms, the kind of thing the page holds.
+
+Not a map of the sections rendered below. Not a negation of another page ("not the résumé"). Not a status of the site's migration.
+
+Examples: Blog uses "Essays · notes · ideas". For fun uses "Roasts · jokes · asides".
+
+== Intro
+
+A plain-English description of the page. Say what the page is. Do not tell the reader to choose among doors that the list below already shows.
+
+== List items
+
+The item title is the link to that item. A second action is only for a different destination, such as an archive next to a live site.
+
+== What not to copy
+
+Older pages used a split bar whose link text was `/ Home`, with the current page name parked on the right. That read as if the current page were Home. Do not revive it.

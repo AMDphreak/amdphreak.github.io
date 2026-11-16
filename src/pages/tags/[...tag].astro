@@ -5,6 +5,7 @@ import {
   tagStaticPaths,
   tagIdFromRestParam,
 } from "@content-tags/astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import { Footer } from "../../components/Footer";
 import NoiseOverlay from "../../components/NoiseOverlay.astro";
 import ThemeScript from "../../components/ThemeScript.astro";
@@ -19,6 +20,12 @@ export async function getStaticPaths() {
 
 const { tagId, tag, posts, index } = Astro.props;
 const breadcrumb = getTagBreadcrumb(index.byId, tagId);
+const crumbTrail = [
+  { label: "Home", href: "/" },
+  { label: "Tags", href: "/tags" },
+  ...breadcrumb.slice(0, -1).map((b) => ({ label: b.label, href: tagIdToHref(b.id) })),
+  { label: tag.label },
+];
 const paramCheck = tagIdFromRestParam(Astro.params.tag);
 if (paramCheck && paramCheck !== tagId) {
   // paths are generated from index; keep assert soft
@@ -40,36 +47,9 @@ if (paramCheck && paramCheck !== tagId) {
     <main class="w-full flex-1 mt-8 mb-12">
       <ThemeToggleBar container maxWidth="max-w-4xl" />
       <div class="container mx-auto px-6 py-12 max-w-4xl structural-border border-t-0 p-8 md:p-12 space-y-12">
-        <nav
-          class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
-        >
-          <a
-            href="/tags"
-            class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-            >/ Tags</a
-          >
-          <span
-            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
-            >{tag.id}</span
-          >
-        </nav>
+        <Breadcrumb items={crumbTrail} />
 
         <header class="space-y-4 max-w-3xl">
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 flex flex-wrap gap-2">
-            {
-              breadcrumb.map((b, i) => (
-                <>
-                  {i > 0 && <span aria-hidden="true">/</span>}
-                  <a
-                    href={tagIdToHref(b.id)}
-                    class="hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-                  >
-                    {b.label}
-                  </a>
-                </>
-              ))
-            }
-          </p>
           <h1 class="text-5xl font-heading tracking-tighter">{tag.label}</h1>
           {
             tag.description && (

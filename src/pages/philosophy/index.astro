@@ -1,4 +1,5 @@
 ---
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import { Philosophy } from "../../components/Philosophy";
 import { Footer } from "../../components/Footer";
 import NoiseOverlay from "../../components/NoiseOverlay.astro";
@@ -22,19 +23,7 @@ import "../../styles/tailwind.css";
     <main class="w-full flex-1 mt-8 mb-12">
       <ThemeToggleBar container maxWidth="max-w-4xl" />
       <div class="container mx-auto px-6 py-12 max-w-4xl structural-border border-t-0 p-8 md:p-12 space-y-8">
-        <nav
-          class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
-        >
-          <a
-            href="/"
-            class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-            >/ Home</a
-          >
-          <span
-            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
-            >Philosophy</span
-          >
-        </nav>
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Philosophy" }]} />
 
         <Philosophy client:load />
       </div>
