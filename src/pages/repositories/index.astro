@@ -1,14 +1,15 @@
 ---
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import { Footer } from "../../components/Footer";
-import ProjectGrid from "../../components/ProjectGrid.astro";
 import NoiseOverlay from "../../components/NoiseOverlay.astro";
+import ProjectFace from "../../components/ProjectFace.astro";
 import ThemeScript from "../../components/ThemeScript.astro";
 import ThemeToggleBar from "../../components/ThemeToggleBar.astro";
-import { projects } from "../../lib/hub-destinations";
+import { projects, type HubDestination } from "../../lib/hub-destinations";
 import {
   catalogGeneratedAt,
   repositoryCatalog,
+  type CatalogRepository,
 } from "../../lib/repository-catalog";
 import "../../styles/tailwind.css";
 
@@ -22,6 +23,52 @@ function hostLabel(provider: string) {
   return hostNames[provider] ?? provider;
 }
 
+type CatalogEntry = {
+  anchor: string;
+  title: string;
+  tagline?: string;
+  identity: string;
+  repositories: CatalogRepository[];
+  face?: HubDestination;
+  avatarLogin?: string;
+};
+
+const faceByGroup = new Map(
+  projects.filter((project) => project.catalogId).map((project) => [project.catalogId as string, project]),
+);
+
+const orderedGroups = [...repositoryCatalog].sort((a, b) => {
+  if (a.identity === "personal") return -1;
+  if (b.identity === "personal") return 1;
+  return 0;
+});
+
+const entries: CatalogEntry[] = orderedGroups.map((group) => {
+  const face = faceByGroup.get(group.id);
+  const githubOwner = group.repositories.find((repo) => repo.provider === "github")?.owner;
+  return {
+    anchor: group.id,
+    title: group.title,
+    tagline: group.tagline ?? face?.tagline,
+    identity: group.identity,
+    repositories: group.repositories,
+    face,
+    avatarLogin: face?.githubLogin ?? githubOwner,
+  };
+});
+
+for (const face of projects) {
+  if (face.catalogId) continue;
+  entries.push({
+    anchor: face.id,
+    title: face.name,
+    tagline: face.tagline,
+    identity: face.id,
+    repositories: [],
+    face,
+    avatarLogin: face.githubLogin,
+  });
+}
 ---
 
 <html lang="en">
@@ -50,111 +97,157 @@ function hostLabel(provider: string) {
             Projects · organizations · repositories
           </p>
           <p class="text-lg text-stone-700 dark:text-stone-400 leading-relaxed font-sans">
-            Each card is a project, usually a GitHub organization. The index lists those groups.
-            The sections under the cards list the repos inside them. A group can include repos from
-            more than one git host.
+            My projects and repositories. Browse and search globally or within each project.
+            A project may contain repositories on both GitHub and GitLab, and on Codeberg.
           </p>
         </header>
 
-        <nav
-          class="structural-border p-6 space-y-3"
-          aria-label="Project and organization index"
-        >
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">Index</p>
-          <ol class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 list-none m-0 p-0">
-            {
-              repositoryCatalog.map((group, index) => (
-                <li class="grid grid-cols-[4ch_minmax(0,1fr)] items-baseline gap-[2ch] text-sm">
-                  <span class="text-right font-mono tabular-nums text-stone-600 dark:text-stone-400">
-                    {index + 1}.
-                  </span>
-                  <span class="min-w-0">
-                    <a
-                      href={`#${group.id}`}
-                      class="font-heading text-stone-800 dark:text-stone-200 hover:underline decoration-stone-300 underline-offset-4"
-                    >
-                      {group.title}
-                    </a>
-                    <span class="font-mono text-[9px] text-stone-600 dark:text-stone-400 ml-2">
-                      ({group.repositories.length})
-                    </span>
-                  </span>
-                </li>
-              ))
-            }
-          </ol>
-        </nav>
+        <div class="space-y-4">
+          <label class="block space-y-2" for="catalog-search">
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
+              Search
+            </span>
+            <input
+              id="catalog-search"
+              type="search"
+              placeholder="Search projects and repositories"
+              autocomplete="off"
+              class="w-full rounded-2xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm text-stone-900 outline-none ring-stone-400 placeholder:text-stone-500 focus:ring-2 dark:border-stone-700 dark:bg-stone-950 dark:text-stone-100 dark:placeholder:text-stone-500"
+            />
+          </label>
+          <p id="catalog-search-status" class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-600 dark:text-stone-400" aria-live="polite"></p>
+        </div>
 
-        <ProjectGrid destinations={projects} />
-
-        <div class="space-y-6">
+        <ol class="m-0 list-none space-y-4 p-0" aria-label="Project and organization index">
           {
-            repositoryCatalog.map((group) => (
-              <details
-                id={group.id}
-                class="structural-border group/section"
-              >
-                <summary class="cursor-pointer list-none p-6 hover:bg-stone-50/50 dark:hover:bg-stone-900/30 transition-colors [&::-webkit-details-marker]:hidden">
-                  <div class="flex flex-wrap items-baseline justify-between gap-3">
-                    <div class="space-y-1">
-                      <h2 class="text-2xl font-heading font-medium tracking-tight inline">
-                        {group.title}
-                      </h2>
-                      <span class="font-mono text-[10px] uppercase tracking-widest text-stone-600 dark:text-stone-400 ml-3">
-                        {group.repositories.length} repos
-                      </span>
-                      {group.tagline && (
-                        <p class="text-sm text-stone-600 dark:text-stone-400 mt-2 max-w-2xl">
-                          {group.tagline}
-                        </p>
-                      )}
-                    </div>
-                    <span class="font-mono text-stone-300 group-open/section:rotate-90 transition-transform">
-                      →
-                    </span>
-                  </div>
-                </summary>
-                <ul class="border-t border-stone-200 dark:border-stone-800 divide-y divide-stone-200 dark:divide-stone-800 list-none m-0 p-0">
-                  {group.repositories.map((repo) => (
-                    <li>
-                      <a
-                        href={repo.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6 px-6 py-4 hover:bg-stone-50 dark:hover:bg-stone-900/40 transition-colors no-underline text-inherit"
-                      >
-                        <div class="flex items-center gap-2 shrink-0 sm:w-48">
-                          <span class="font-mono text-sm text-stone-900 dark:text-stone-100">
-                            {repo.name}
-                          </span>
-                        </div>
-                        <div class="flex-1 min-w-0 space-y-1">
-                          {repo.description && (
-                            <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                              {repo.description}
-                            </p>
-                          )}
-                          <p class="flex flex-wrap gap-2 font-mono text-[9px] uppercase tracking-widest text-stone-600 dark:text-stone-400">
-                            <span>{hostLabel(repo.provider)}</span>
-                            <span>{repo.owner}</span>
-                            {repo.isPrivate && <span>private</span>}
-                            {repo.isFork && <span>fork</span>}
-                          </p>
-                        </div>
-                        <span
-                          class="font-mono text-stone-300 shrink-0 hidden sm:inline"
-                          aria-hidden="true"
-                        >
-                          ↗
+            entries.map((entry, index) => (
+              <li class="catalog-project" data-project data-title={`${entry.title} ${entry.tagline ?? ""}`.toLowerCase()}>
+                <details id={entry.anchor} class="structural-border group/section">
+                  <summary class="cursor-pointer list-none p-6 hover:bg-stone-50/50 dark:hover:bg-stone-900/30 transition-colors [&::-webkit-details-marker]:hidden">
+                    <div class="flex items-center gap-4">
+                      <span class="grid min-w-0 flex-1 grid-cols-[4ch_minmax(0,1fr)] items-baseline gap-x-[2ch]">
+                        <span class="text-right font-mono text-sm tabular-nums text-stone-600 dark:text-stone-400">
+                          {index + 1}.
                         </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </details>
+                        <span class="min-w-0 space-y-1">
+                          <span class="block">
+                            <h2 class="inline text-2xl font-heading font-medium tracking-tight">
+                              {entry.title}
+                            </h2>
+                            {
+                              entry.repositories.length > 0 && (
+                                <span class="ml-3 font-mono text-[10px] uppercase tracking-widest text-stone-600 dark:text-stone-400">
+                                  {entry.repositories.length} repos
+                                </span>
+                              )
+                            }
+                          </span>
+                          {
+                            entry.tagline && (
+                              <p class="text-sm text-stone-600 dark:text-stone-400 max-w-2xl">
+                                {entry.tagline}
+                              </p>
+                            )
+                          }
+                        </span>
+                      </span>
+                      {
+                        entry.avatarLogin && (
+                          <img
+                            src={`https://github.com/${entry.avatarLogin}.png?size=80`}
+                            alt={entry.title}
+                            width="32"
+                            height="32"
+                            loading="lazy"
+                            decoding="async"
+                            class="h-8 w-8 shrink-0 object-contain"
+                          />
+                        )
+                      }
+                      <span class="font-mono text-stone-300 group-open/section:rotate-90 transition-transform" aria-hidden="true">
+                        →
+                      </span>
+                    </div>
+                  </summary>
+                  <div class="space-y-6 border-t border-stone-200 px-6 py-6 dark:border-stone-800">
+                    {entry.face && <ProjectFace destination={entry.face} />}
+                    {
+                      entry.repositories.length > 0 && (
+                        <details data-repos class="group/repos rounded-2xl border border-stone-200 dark:border-stone-800">
+                          <summary class="cursor-pointer list-none px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 hover:bg-stone-50 dark:text-stone-300 dark:hover:bg-stone-900/40 [&::-webkit-details-marker]:hidden">
+                            <span class="inline-block transition-transform group-open/repos:rotate-90" aria-hidden="true">→</span>
+                            <span class="ml-3">Repositories</span>
+                          </summary>
+                          <div class="space-y-3 border-t border-stone-200 px-4 py-4 dark:border-stone-800">
+                            <label class="block space-y-2">
+                              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-600 dark:text-stone-400">
+                                Filter this project
+                              </span>
+                              <input
+                                type="search"
+                                data-repo-filter
+                                placeholder="Filter repositories"
+                                autocomplete="off"
+                                class="w-full rounded-xl border border-stone-300 bg-stone-50 px-3 py-2 text-sm text-stone-900 outline-none ring-stone-400 placeholder:text-stone-500 focus:ring-2 dark:border-stone-700 dark:bg-stone-950 dark:text-stone-100"
+                              />
+                            </label>
+                            <p data-repo-empty hidden class="text-sm text-stone-600 dark:text-stone-400">
+                              No repositories match.
+                            </p>
+                            <ul class="m-0 list-none divide-y divide-stone-200 p-0 dark:divide-stone-800">
+                              {entry.repositories.map((repo) => (
+                                <li
+                                  data-repo
+                                  data-name={repo.name}
+                                  data-blob={`${repo.name} ${repo.description ?? ""} ${repo.owner} ${hostLabel(repo.provider)}`.toLowerCase()}
+                                >
+                                  <a
+                                    href={repo.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex flex-col gap-2 py-4 no-underline text-inherit transition-colors hover:bg-stone-50 sm:flex-row sm:items-start sm:gap-6 dark:hover:bg-stone-900/40"
+                                  >
+                                    <span class="catalog-match-cue shrink-0 font-mono text-[9px] uppercase tracking-widest">
+                                      Match
+                                    </span>
+                                    <div class="flex shrink-0 items-center gap-2 sm:w-48">
+                                      <span class="font-mono text-sm text-stone-900 dark:text-stone-100">
+                                        {repo.name}
+                                      </span>
+                                    </div>
+                                    <div class="min-w-0 flex-1 space-y-1">
+                                      {
+                                        repo.description && (
+                                          <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+                                            {repo.description}
+                                          </p>
+                                        )
+                                      }
+                                      <p class="flex flex-wrap gap-2 font-mono text-[9px] uppercase tracking-widest text-stone-600 dark:text-stone-400">
+                                        <span>{hostLabel(repo.provider)}</span>
+                                        <span>{repo.owner}</span>
+                                        {repo.isPrivate && <span>private</span>}
+                                        {repo.isFork && <span>fork</span>}
+                                      </p>
+                                    </div>
+                                    <span class="hidden shrink-0 font-mono text-stone-300 sm:inline" aria-hidden="true">
+                                      ↗
+                                    </span>
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </details>
+                      )
+                    }
+                  </div>
+                </details>
+                <ul data-surface hidden class="m-0 mt-2 list-none space-y-1 px-6 py-2"></ul>
+              </li>
             ))
           }
-        </div>
+        </ol>
 
         <p class="font-mono text-[9px] uppercase tracking-widest text-stone-600 dark:text-stone-400">
           Synced {catalogGeneratedAt}. Regenerate with <code class="text-stone-700 dark:text-stone-400">pnpm sync:repos</code> after adding
@@ -164,5 +257,130 @@ function hostLabel(provider: string) {
     </main>
 
     <Footer client:load />
+    <style is:global>
+      .catalog-hit {
+        background-color: #fef3c7;
+        box-shadow: inset 3px 0 0 #b45309;
+      }
+      html.dark .catalog-hit {
+        background-color: #451a03;
+        box-shadow: inset 3px 0 0 #fbbf24;
+      }
+      .catalog-match-cue {
+        display: none;
+      }
+      .catalog-hit .catalog-match-cue {
+        display: inline-flex;
+        align-items: center;
+        margin: 0.15rem 0.5rem 0 0;
+        padding: 0.15rem 0.4rem;
+        border-radius: 999px;
+        background: #b45309;
+        color: #fffbeb;
+      }
+      html.dark .catalog-hit .catalog-match-cue {
+        background: #fbbf24;
+        color: #451a03;
+      }
+    </style>
+    <script>
+      const globalInput = document.querySelector<HTMLInputElement>("#catalog-search");
+      const status = document.querySelector("#catalog-search-status");
+      const projects = [...document.querySelectorAll<HTMLElement>("[data-project]")];
+
+      function text(value: string | null | undefined) {
+        return (value ?? "").trim().toLowerCase();
+      }
+
+      function apply() {
+        const globalQuery = text(globalInput?.value);
+        let visibleProjects = 0;
+        for (const project of projects) {
+          const details = project.querySelector("details");
+          const repos = [...project.querySelectorAll<HTMLElement>("[data-repo]")];
+          const localInput = project.querySelector<HTMLInputElement>("[data-repo-filter]");
+          const localQuery = text(localInput?.value);
+          const title = project.dataset.title ?? "";
+          const titleMatch = !globalQuery || title.includes(globalQuery);
+          let repoGlobalHits = 0;
+          let visibleRows = 0;
+          for (const row of repos) {
+            const blob = row.dataset.blob ?? "";
+            const globalHit = Boolean(globalQuery) && blob.includes(globalQuery);
+            const passesGlobal = !globalQuery || titleMatch || globalHit;
+            const passesLocal = !localQuery || blob.includes(localQuery);
+            const show = passesGlobal && passesLocal;
+            row.hidden = !show;
+            row.classList.toggle("catalog-hit", globalHit && show);
+            if (globalHit) repoGlobalHits += 1;
+            if (show) visibleRows += 1;
+          }
+          const showProject = !globalQuery || titleMatch || repoGlobalHits > 0;
+          project.hidden = !showProject;
+          if (showProject) visibleProjects += 1;
+          const empty = project.querySelector<HTMLElement>("[data-repo-empty]");
+          if (empty) empty.hidden = repos.length === 0 || visibleRows > 0;
+          const surface = project.querySelector<HTMLElement>("[data-surface]");
+          if (surface) {
+            surface.replaceChildren();
+            const open = details instanceof HTMLDetailsElement && details.open;
+            if (globalQuery && repoGlobalHits > 0 && !open) {
+              for (const row of repos) {
+                if (!row.classList.contains("catalog-hit") && !(row.dataset.blob ?? "").includes(globalQuery)) continue;
+                if (row.hidden && localQuery) continue;
+                const name = row.dataset.name ?? "Repository";
+                const item = document.createElement("li");
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "text-left font-mono text-xs text-stone-700 underline decoration-stone-300 underline-offset-4 dark:text-stone-300";
+                button.textContent = name;
+                button.addEventListener("click", () => {
+                  openProject(project, row);
+                });
+                item.append(button);
+                surface.append(item);
+              }
+              surface.hidden = surface.childElementCount === 0;
+            } else {
+              surface.hidden = true;
+            }
+          }
+        }
+        if (status) {
+          status.textContent = globalQuery
+            ? `${visibleProjects} project${visibleProjects === 1 ? "" : "s"}`
+            : "";
+        }
+      }
+
+      function openProject(project: HTMLElement, row?: HTMLElement) {
+        const details = project.querySelector("details");
+        const inner = project.querySelector<HTMLDetailsElement>("[data-repos]");
+        if (details instanceof HTMLDetailsElement) details.open = true;
+        if (inner) inner.open = true;
+        apply();
+        row?.scrollIntoView({ block: "nearest" });
+      }
+
+      for (const avatar of document.querySelectorAll<HTMLImageElement>('img[src*="github.com/"]')) {
+        avatar.addEventListener("error", () => avatar.remove());
+      }
+      globalInput?.addEventListener("input", apply);
+      for (const project of projects) {
+        const details = project.querySelector("details");
+        details?.addEventListener("toggle", () => {
+          const openRepos = details instanceof HTMLDetailsElement && details.open && text(globalInput?.value);
+          apply();
+          if (openRepos) {
+            queueMicrotask(() => {
+              const inner = project.querySelector<HTMLDetailsElement>("[data-repos]");
+              if (inner) inner.open = true;
+            });
+          }
+        });
+        project.querySelector("[data-repo-filter]")?.addEventListener("input", apply);
+      }
+      apply();
+    </script>
   </body>
 </html>

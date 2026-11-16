@@ -6,8 +6,8 @@
  * Visit comes from the GitHub profile `blog` field in org-websites.json
  * (refreshed by scripts/sync-repository-catalog.mjs). The other link is the
  * organization on GitHub, never one repository. A missing blog means no Visit.
- * Personal projects stays an in-page jump to the AMDphreak group.
- * bigr picture is not a GitHub org, so its site stays on the card.
+ * Personal Projects has no product site. Its org link is the AMDphreak user.
+ * bigr picture is not a GitHub org, so its site stays on the preview.
  */
 
 import orgWebsites from "./org-websites.json";
@@ -31,6 +31,10 @@ export type HubDestination = {
   screenshot?: string;
   /** Used only when `screenshot` is absent. */
   pattern?: HubPattern;
+  /** Catalog group id this preview belongs to, when the project has repositories. */
+  catalogId?: string;
+  /** GitHub org or user login for the org link and avatar. */
+  githubLogin?: string;
 };
 
 type OrgProfile = {
@@ -52,6 +56,9 @@ type CardSeed = {
   pattern?: HubPattern;
   extraHref?: string;
   extraLabel?: string;
+  catalogId?: string;
+  /** Avatar and org link when `org` is not the login used for the website lookup. */
+  githubLogin?: string;
 };
 
 const profiles = orgWebsites.profiles as Record<string, OrgProfile>;
@@ -76,16 +83,23 @@ function resolveCard(seed: CardSeed): HubDestination {
     extraLabel: seed.extraLabel,
   };
 
+  const login = seed.githubLogin ?? seed.org;
+  const withIdentity = {
+    ...base,
+    catalogId: seed.catalogId,
+    githubLogin: login,
+  };
+
   if (seed.inPageHref) {
-    return { ...base, href: seed.inPageHref, actionLabel: "Open" };
+    return { ...withIdentity, href: seed.inPageHref, actionLabel: "Open" };
   }
 
   const live = seed.org ? orgBlog(seed.org) : (seed.website ?? null);
-  const orgHref = seed.org ? githubOrg(seed.org) : undefined;
+  const orgHref = login ? githubOrg(login) : undefined;
 
   if (live && orgHref) {
     return {
-      ...base,
+      ...withIdentity,
       href: live,
       external: true,
       actionLabel: "Visit",
@@ -94,10 +108,10 @@ function resolveCard(seed: CardSeed): HubDestination {
     };
   }
   if (live) {
-    return { ...base, href: live, external: true, actionLabel: "Visit" };
+    return { ...withIdentity, href: live, external: true, actionLabel: "Visit" };
   }
   if (orgHref) {
-    return { ...base, href: orgHref, external: true, actionLabel: "GitHub" };
+    return { ...withIdentity, href: orgHref, external: true, actionLabel: "GitHub" };
   }
   throw new Error(`Project card ${seed.id} has neither a live site nor an org`);
 }
@@ -108,6 +122,7 @@ const seeds: CardSeed[] = [
     name: "Dev-Centr",
     tagline: "Environment configuration and developer tooling.",
     org: "dev-centr",
+    catalogId: "dev-centr",
     extraHref: "https://devcentr.org/apps",
     extraLabel: "Apps",
     screenshot: "/products/dev-centr-800.webp",
@@ -117,6 +132,7 @@ const seeds: CardSeed[] = [
     name: "LinxPhotos",
     tagline: "Photo service and documentation.",
     org: "LinxPhotos",
+    catalogId: "LinxPhotos",
     screenshot: "/products/linx-800.webp",
   },
   {
@@ -124,6 +140,7 @@ const seeds: CardSeed[] = [
     name: "Food Truck Nerdz",
     tagline: "Food truck discovery platform.",
     org: "FoodTruckNerdz",
+    catalogId: "FoodTruckNerdz",
     screenshot: "/products/foodtrucknerdz-800.webp",
   },
   {
@@ -138,6 +155,7 @@ const seeds: CardSeed[] = [
     name: "HCI Nerdz",
     tagline: "HCI and UI/UX innovation.",
     org: "HCI-Nerdz",
+    catalogId: "HCI-Nerdz",
     pattern: "dots",
   },
   {
@@ -152,6 +170,7 @@ const seeds: CardSeed[] = [
     name: "Antora Supplemental",
     tagline: "Documentation themes and Antora extensions.",
     org: "antora-supplemental",
+    catalogId: "antora-supplemental",
     pattern: "grid",
   },
   {
@@ -159,6 +178,7 @@ const seeds: CardSeed[] = [
     name: "Dlang Supplemental",
     tagline: "D language libraries and tooling.",
     org: "dlang-supplemental",
+    catalogId: "dlang-supplemental",
     pattern: "rings",
   },
   {
@@ -166,6 +186,7 @@ const seeds: CardSeed[] = [
     name: "formatte",
     tagline: "Formatting tooling organization.",
     org: "formatte",
+    catalogId: "formatte",
     pattern: "cross",
   },
   {
@@ -173,13 +194,15 @@ const seeds: CardSeed[] = [
     name: "Open Shell Org",
     tagline: "Open Shell community.",
     org: "openshellorg",
+    catalogId: "openshellorg",
     pattern: "chevron",
   },
   {
     id: "personal",
     name: "Personal Projects",
     tagline: "Repositories under AMDphreak. This site is the directory for every project.",
-    inPageHref: "#AMDphreak",
+    catalogId: "AMDphreak",
+    githubLogin: "AMDphreak",
     pattern: "waves",
   },
 ];
