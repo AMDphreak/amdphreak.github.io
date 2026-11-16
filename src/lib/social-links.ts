@@ -59,3 +59,20 @@ export const githubBrand = {
   brandFg: "#ffffff",
   label: "GitHub/AMDphreak",
 };
+
+/** Personal forges and socials, label beside the icon. Orgs live on project cards. */
+export const profileLinks: SocialLinkItem[] = [
+  {
+    id: "github",
+    label: githubBrand.label,
+    href: "https://github.com/AMDphreak",
+    brand: githubBrand.brand,
+    brandFg: githubBrand.brandFg,
+  },
+  socialLinks.find((item) => item.id === "gitlab")!,
+  socialLinks.find((item) => item.id === "codeberg")!,
+  socialLinks.find((item) => item.id === "linkedin")!,
+  socialLinks.find((item) => item.id === "x")!,
+  socialLinks.find((item) => item.id === "chess")!,
+  socialLinks.find((item) => item.id === "codersrank")!,
+];

@@ -1,6 +1,7 @@
 /**
- * Destination tiles for the creator hub homepage.
+ * Project cards for the catalog page.
  * Omits memphis-cs-projects (legacy coursework) from featured orgs.
+ * Easy Installer / Ibex is a Dev-Centr subproject, listed on devcentr.org/apps.
  */
 
 export type HubDestination = {
@@ -11,182 +12,99 @@ export type HubDestination = {
   external?: boolean;
   secondaryHref?: string;
   secondaryLabel?: string;
-  /** Homepage screenshot: path to 800w WebP (`{id}-800.webp`); 400w sibling used in srcset. */
+  /** 800w WebP; 400w sibling is `{id}-400.webp` when `screenshot` is set. */
   screenshot?: string;
 };
 
-export type HubSection = {
-  id: string;
-  title: string;
-  tagline: string;
-  destinations: HubDestination[];
-};
-
-export const hubSections: HubSection[] = [
+export const projects: HubDestination[] = [
   {
-    id: "products",
-    title: "Products & sites",
-    tagline: "Live surfaces",
-    destinations: [
-      {
-        id: "linx",
-        name: "LinxPhotos",
-        tagline: "Photo service and documentation.",
-        href: "https://linx.photos",
-        external: true,
-        secondaryHref: "https://github.com/LinxPhotos",
-        secondaryLabel: "GitHub",
-        screenshot: "/products/linx-800.webp",
-      },
-      {
-        id: "dev-centr",
-        name: "Dev-Centr",
-        tagline: "Environment configuration and developer tooling.",
-        href: "https://devcentr.org",
-        external: true,
-        secondaryHref: "https://docs.devcentr.org",
-        secondaryLabel: "Docs",
-        screenshot: "/products/dev-centr-800.webp",
-      },
-      {
-        id: "easy-installer",
-        name: "Easy Installer",
-        tagline: "Installer projects, plugins, and Install in-place PATH.",
-        href: "https://github.com/dev-centr/easy-installer",
-        external: true,
-        secondaryHref: "https://docs.devcentr.org/easy-installer/latest/index.html",
-        secondaryLabel: "Docs",
-        screenshot: "/products/easy-installer-800.webp",
-      },
-      {
-        id: "easy-installer-devcentr",
-        name: "Easy Installer in DevCentr",
-        tagline: "Explorer menu and toolbar — New Installer Project, in-place PATH.",
-        href: "https://github.com/dev-centr/devcentr",
-        external: true,
-        secondaryHref: "https://devcentr.org/news/easy-installer-ships",
-        secondaryLabel: "News",
-        screenshot: "/products/easy-installer-devcentr-800.webp",
-      },
-      {
-        id: "foodtrucknerdz",
-        name: "FoodTruckNerdz",
-        tagline: "Food truck discovery platform.",
-        href: "https://foodtrucknerdz.com",
-        external: true,
-        secondaryHref: "https://docs.foodtrucknerdz.com",
-        secondaryLabel: "Docs",
-        screenshot: "/products/foodtrucknerdz-800.webp",
-      },
-      {
-        id: "bigrpic",
-        name: "bigr Picture",
-        tagline: "Photography — urban landscape, events, geometry.",
-        href: "https://www.bigrpic.com",
-        external: true,
-        screenshot: "/products/bigrpic-800.webp",
-      },
-    ],
+    id: "dev-centr",
+    name: "Dev-Centr",
+    tagline: "Environment configuration and developer tooling.",
+    href: "https://devcentr.org",
+    external: true,
+    secondaryHref: "https://devcentr.org/apps",
+    secondaryLabel: "Apps",
+    screenshot: "/products/dev-centr-800.webp",
   },
   {
-    id: "code",
-    title: "Code & organizations",
-    tagline: "GitHub · GitLab · Codeberg",
-    destinations: [
-      {
-        id: "github-personal",
-        name: "GitHub/AMDphreak",
-        tagline: "Personal repositories on GitHub.",
-        href: "https://github.com/AMDphreak",
-        external: true,
-      },
-      {
-        id: "gitlab",
-        name: "GitLab/AMDphreak",
-        tagline: "Personal repositories on GitLab.",
-        href: "https://gitlab.com/AMDphreak",
-        external: true,
-      },
-      {
-        id: "codeberg",
-        name: "Codeberg/AMDphreak",
-        tagline: "Forge presence on Codeberg.",
-        href: "https://codeberg.org/AMDphreak",
-        external: true,
-      },
-      {
-        id: "org-dev-centr",
-        name: "dev-centr",
-        tagline: "Developer tooling organization.",
-        href: "https://github.com/dev-centr",
-        external: true,
-      },
-      {
-        id: "org-foodtrucknerdz",
-        name: "FoodTruckNerdz",
-        tagline: "Food truck platform organization.",
-        href: "https://github.com/FoodTruckNerdz",
-        external: true,
-      },
-      {
-        id: "org-hci-nerdz",
-        name: "HCI Nerdz",
-        tagline: "HCI and UI/UX innovation.",
-        href: "https://github.com/HCI-Nerdz",
-        external: true,
-        secondaryHref: "https://hci-nerdz.github.io",
-        secondaryLabel: "Site",
-      },
-      {
-        id: "org-desktop-tooling",
-        name: "Desktop Tooling",
-        tagline: "OS-level desktop utilities: Explorer, theming, launchers.",
-        href: "https://github.com/Desktop-Tooling",
-        external: true,
-        secondaryHref: "https://desktop-tooling.github.io",
-        secondaryLabel: "Site",
-      },
-      {
-        id: "org-antora",
-        name: "Antora Supplemental",
-        tagline: "Documentation themes and Antora extensions.",
-        href: "https://github.com/antora-supplemental",
-        external: true,
-      },
-      {
-        id: "org-dlang",
-        name: "Dlang Supplemental",
-        tagline: "D language libraries and tooling.",
-        href: "https://github.com/dlang-supplemental",
-        external: true,
-      },
-      {
-        id: "org-formatte",
-        name: "formatte",
-        tagline: "Formatting tooling organization.",
-        href: "https://github.com/formatte",
-        external: true,
-      },
-      {
-        id: "org-openshell",
-        name: "Open Shell Org",
-        tagline: "Open Shell community.",
-        href: "https://github.com/openshellorg",
-        external: true,
-      },
-      {
-        id: "org-linx",
-        name: "LinxPhotos",
-        tagline: "LinxPhotos photo service on GitHub.",
-        href: "https://github.com/LinxPhotos",
-        external: true,
-      },
-      {
-        id: "catalog",
-        name: "Repository catalog",
-        tagline: "Every project across GitHub and GitLab.",
-        href: "/repositories",
-      },
-    ],
+    id: "linx",
+    name: "LinxPhotos",
+    tagline: "Photo service and documentation.",
+    href: "https://linx.photos",
+    external: true,
+    secondaryHref: "https://github.com/LinxPhotos",
+    secondaryLabel: "GitHub",
+    screenshot: "/products/linx-800.webp",
+  },
+  {
+    id: "foodtrucknerdz",
+    name: "Food Truck Nerdz",
+    tagline: "Food truck discovery platform.",
+    href: "https://foodtrucknerdz.com",
+    external: true,
+    secondaryHref: "https://docs.foodtrucknerdz.com",
+    secondaryLabel: "Docs",
+    screenshot: "/products/foodtrucknerdz-800.webp",
+  },
+  {
+    id: "bigrpic",
+    name: "bigr picture",
+    tagline: "Photography — urban landscape, events, geometry.",
+    href: "https://www.bigrpic.com",
+    external: true,
+    screenshot: "/products/bigrpic-800.webp",
+  },
+  {
+    id: "org-hci-nerdz",
+    name: "HCI Nerdz",
+    tagline: "HCI and UI/UX innovation.",
+    href: "https://github.com/HCI-Nerdz",
+    external: true,
+    secondaryHref: "https://hci-nerdz.github.io",
+    secondaryLabel: "Site",
+  },
+  {
+    id: "org-desktop-tooling",
+    name: "Desktop Tooling",
+    tagline: "OS-level desktop utilities: Explorer, theming, launchers.",
+    href: "https://github.com/Desktop-Tooling",
+    external: true,
+    secondaryHref: "https://desktop-tooling.github.io",
+    secondaryLabel: "Site",
+  },
+  {
+    id: "org-antora",
+    name: "Antora Supplemental",
+    tagline: "Documentation themes and Antora extensions.",
+    href: "https://github.com/antora-supplemental",
+    external: true,
+  },
+  {
+    id: "org-dlang",
+    name: "Dlang Supplemental",
+    tagline: "D language libraries and tooling.",
+    href: "https://github.com/dlang-supplemental",
+    external: true,
+  },
+  {
+    id: "org-formatte",
+    name: "formatte",
+    tagline: "Formatting tooling organization.",
+    href: "https://github.com/formatte",
+    external: true,
+  },
+  {
+    id: "org-openshell",
+    name: "Open Shell Org",
+    tagline: "Open Shell community.",
+    href: "https://github.com/openshellorg",
+    external: true,
+  },
+  {
+    id: "personal",
+    name: "Personal projects",
+    tagline: "Repositories under AMDphreak. This site is the directory for every project.",
+    href: "#AMDphreak",
   },
 ];

@@ -37,7 +37,7 @@ const GROUP_META = {
     tagline: "Developer environment configuration, tooling, and documentation.",
   },
   FoodTruckNerdz: {
-    title: "FoodTruckNerdz",
+    title: "Food Truck Nerdz",
     tagline: "Food truck discovery platform — web, mobile, and API.",
   },
   "HCI-Nerdz": {

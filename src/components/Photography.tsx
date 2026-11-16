@@ -35,9 +35,6 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
               height={900}
               loading="lazy"
             />
-            <div class="absolute bottom-3 left-3 font-mono text-[8px] uppercase tracking-[0.3em] text-white/70 drop-shadow">
-              Capture_Engine / v2.0
-            </div>
           </div>
           <div class="absolute -top-1 -left-1 w-2 h-2 border-l border-t border-stone-400 pointer-events-none" />
           <div class="absolute -bottom-1 -right-1 w-2 h-2 border-r border-b border-stone-400 pointer-events-none" />
@@ -57,7 +54,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
             <p class="text-stone-600 dark:text-stone-400 leading-relaxed">
               Through{" "}
               <span class="font-mono uppercase tracking-wider text-xs border-b border-stone-400">
-                bigr Picture
+                bigr picture
               </span>
               , I explore a huge range of photographic styles. Most of what I shoot is events,
               performances, weddings, and portraits of friends and family. Sometimes I do TFP
@@ -96,7 +93,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
       <section id="photography-section" class="space-y-8 scroll-mt-24">
         <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
           <h2 class="text-3xl font-heading tracking-tighter">Photography</h2>
-          <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-stone-700 dark:text-stone-500 mb-1">
             Visual Arts / Media
           </span>
         </div>

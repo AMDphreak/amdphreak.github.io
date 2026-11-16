@@ -678,7 +678,7 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
   },
   {
     "id": "FoodTruckNerdz",
-    "title": "FoodTruckNerdz",
+    "title": "Food Truck Nerdz",
     "tagline": "Food truck discovery platform — web, mobile, and API.",
     "repositories": [
       {

@@ -130,7 +130,7 @@ const publicProjects: ProjectProps[] = [
 
 const privateProjects: ProjectProps[] = [
   {
-    name: "FoodTruckNerdz",
+    name: "Food Truck Nerdz",
     description: "Food Truck Nerdz Next.js Web App with Convex DB backend.",
     technologies: ["Next.js", "Vercel", "Convex"],
     url: "https://www.foodtrucknerdz.com",

@@ -59,6 +59,7 @@ export const IconGithub = (p: IconProps) => (
 );
 
 export const socialIconById: Record<string, (p: IconProps) => JSX.Element> = {
+  github: IconGithub,
   codeberg: IconCodeberg,
   gitlab: IconGitlab,
   linkedin: IconLinkedin,
