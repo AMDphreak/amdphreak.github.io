@@ -40,19 +40,5 @@
     "solidui-cli": "0.7.2",
     "typescript": "^5.0.0"
   },
-  "packageManager": "pnpm@10.29.1+sha512.48dae233635a645768a3028d19545cacc1688639eeb1f3734e42d6d6b971afbf22aa1ac9af52a173d9c3a20c15857cfa400f19994d79a2f626fcc73fccda9bbc",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ],
-    "overrides": {
-      "@centrmark/astro": "file:vendor/centrmark/packages/cmk-astro",
-      "@centrmark/cmk-renderer": "file:vendor/centrmark/packages/cmk-renderer",
-      "@centrmark/parse": "file:vendor/centrmark/packages/cmk-parse",
-      "@content-tags/core": "file:vendor/content-tags/packages/core",
-      "@content-tags/astro": "file:vendor/content-tags/packages/astro",
-      "@content-tags/solid": "file:vendor/content-tags/packages/solid"
-    }
-  }
+  "packageManager": "pnpm@12.21.0+sha512.66fd8278ee28935ce951792d34367ff3af5c432a2756445823029533835b8da529bbe0be5130afd56ed0713fb8789e47bad82d93bd5ae2fe54b15562d6276ef0"
 }
