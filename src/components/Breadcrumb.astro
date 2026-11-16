@@ -1,7 +1,8 @@
 ---
 /**
  * One trail: Home / parent / current.
- * Pass every crumb. The last item is the current page and is not a link.
+ * Pass every crumb. The last item is the current page and is not a link,
+ * except a lone Home crumb, which links to itself.
  * Do not put a slash in a label. Do not include siblings that are not ancestors.
  */
 export type Crumb = {
@@ -16,6 +17,8 @@ interface Props {
 
 const { items, class: className } = Astro.props;
 const last = items.length - 1;
+const soleHomeLink =
+  items.length === 1 && items[0]?.label === "Home" && Boolean(items[0]?.href);
 ---
 
 <nav aria-label="Breadcrumb" class:list={["border-b border-stone-200 pb-4 dark:border-stone-800", className]}>
@@ -32,6 +35,14 @@ const last = items.length - 1;
             <a
               href={item.href}
               class="text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+            >
+              {item.label}
+            </a>
+          ) : soleHomeLink && item.href ? (
+            <a
+              href={item.href}
+              class="text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+              aria-current="page"
             >
               {item.label}
             </a>

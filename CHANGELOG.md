@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Blog**: the landing lists Posts, Feedback Hub filings, and the Old WordPress Blog, with Archive and Live site on the old blog card. Titles are the links. The kicker is “Essays · notes · ideas.”
 - **Posts**: the page heading is Posts. [/for-fun](/for-fun) lists posts tagged `for-fun`.
 - **For fun**: [The Roast of Ryan Johnson](/blog/posts/the-roast-of-ryan-johnson) is a blog post. [/for-fun/chatgpt-roast](/for-fun/chatgpt-roast) redirects there.
-- **Breadcrumbs**: one trail. Home is a link. The current page is not a link.
+- **Breadcrumbs**: one trail. Home is a link. The current page is not a link. On Home, the Home crumb links to `/`.
 - **Footer**: GitHub Pages and the hand-coded line sit above the Software stack heading. The Infrastructure heading and right column are gone.
 - **Light theme**: muted labels and secondary chrome text are darker. Dark theme tokens are unchanged.
 

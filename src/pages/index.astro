@@ -1,4 +1,5 @@
 ---
+import Breadcrumb from "../components/Breadcrumb.astro";
 import { Footer } from "../components/Footer";
 import { Photography } from "../components/Photography";
 import { ProfileLinks } from "../components/ProfileLinks";
@@ -94,9 +95,7 @@ const heroTapestrySizes = "120rem";
         <header
           class="flex flex-wrap items-center justify-between gap-6 border-b border-stone-200/80 pb-8 dark:border-stone-800/80"
         >
-          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-700 dark:text-stone-400">
-            Home / 2026
-          </p>
+          <Breadcrumb class="border-0 pb-0" items={[{ label: "Home", href: "/" }]} />
           <ThemeToggle />
         </header>
 
