@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2026-11-16
+
+### Changed
+
+- **Home**: the two project grids are gone. The hero button opens the [Catalog](/repositories). Profile names sit beside the icons under the hero.
+- **Catalog**: project cards sit above the repository groups. Easy Installer cards are gone. Personal projects jump to the AMDphreak group. Dev-Centr’s secondary link is [Apps](https://devcentr.org/apps). Display names are Food Truck Nerdz and bigr picture. Memphis CS Projects is not a card.
+- **Photography**: the visible name is bigr picture. The Capture_Engine watermark is gone.
+- **Blog**: the landing lists Posts, Feedback Hub filings, and the Old WordPress Blog, with Archive and Live site on the old blog card. Titles are the links. The kicker is “Essays · notes · ideas.”
+- **Posts**: the page heading is Posts. [/for-fun](/for-fun) lists posts tagged `for-fun`.
+- **For fun**: [The Roast of Ryan Johnson](/blog/posts/the-roast-of-ryan-johnson) is a blog post. [/for-fun/chatgpt-roast](/for-fun/chatgpt-roast) redirects there.
+- **Breadcrumbs**: one trail. Home is a link. The current page is not a link.
+- **Footer**: GitHub Pages and the hand-coded line sit above the Software stack heading. The Infrastructure heading and right column are gone.
+- **Light theme**: muted labels and secondary chrome text are darker. Dark theme tokens are unchanged.
+
+### Added
+
+- **Post**: [The Roast of Ryan Johnson](/blog/posts/the-roast-of-ryan-johnson).
+
 ## [Unreleased] - 2026-10-06
 
 ### Changed
