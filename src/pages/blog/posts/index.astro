@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { tagIdToHref } from "@content-tags/core";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
 import { Footer } from "../../../components/Footer";
 import NoiseOverlay from "../../../components/NoiseOverlay.astro";
 import ThemeScript from "../../../components/ThemeScript.astro";
@@ -31,63 +32,41 @@ const allPosts = [...mdPosts, ...cmkPosts]
     <main class="w-full flex-1 mt-8 mb-12">
       <ThemeToggleBar container maxWidth="max-w-4xl" />
       <div class="container mx-auto px-6 py-12 max-w-4xl structural-border border-t-0 p-8 md:p-12 space-y-12">
-        <nav
-          class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
-        >
-          <div class="flex items-center gap-4">
-            <a
-              href="/"
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-              >/ Home</a
-            >
-            <a
-              href="/blog"
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-              >/ Blog</a
-            >
-          </div>
-          <div class="flex items-center gap-4">
-            <a
-              href="/tags"
-              class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-              >/ Tags</a
-            >
-            <span
-              class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
-              >Posts</span
-            >
-          </div>
-        </nav>
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+            { label: "Posts" },
+          ]}
+        />
 
         <header class="space-y-4 max-w-3xl">
-          <h1 class="text-5xl font-heading tracking-tighter">Continuing blog</h1>
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
-            Static posts · ryanjohnson.dev ·{" "}
-            <a href="/tags" class="hover:text-stone-900 dark:hover:text-stone-100"
-              >browse tags</a
-            >
+          <h1 class="text-5xl font-heading tracking-tighter">Posts</h1>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
+            Essays · notes · writing
           </p>
-          <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
-            New writing published on this site. For older WordPress material, see the{" "}
-            <a
-              href="/wordpress-archive"
-              class="underline decoration-stone-300 underline-offset-4"
-              >archive</a
-            >{" "}
-            or the{" "}
+          <p class="text-lg text-stone-700 dark:text-stone-400 leading-relaxed font-sans">
+            Posts published on this site. Older WordPress writing is on the{" "}
             <a
               href="https://www.ryanjohnson.website/posts"
               target="_blank"
               rel="noopener noreferrer"
               class="underline decoration-stone-300 underline-offset-4"
-              >live site</a
-            >.
+              >old blog</a
+            >
+            , with captured copies in the{" "}
+            <a
+              href="/wordpress-archive"
+              class="underline decoration-stone-300 underline-offset-4"
+              >archive</a
+            >. Browse by{" "}
+            <a href="/tags" class="underline decoration-stone-300 underline-offset-4">tag</a>.
           </p>
         </header>
 
         {
           allPosts.length === 0 ? (
-            <p class="text-sm text-stone-500">No posts yet.</p>
+            <p class="text-sm text-stone-700 dark:text-stone-500">No posts yet.</p>
           ) : (
             <ul class="space-y-6 m-0 p-0 list-none divide-y divide-stone-200 dark:divide-stone-800">
               {allPosts.map((post) => (
@@ -98,7 +77,7 @@ const allPosts = [...mdPosts, ...cmkPosts]
                   >
                     {post.data.title}
                   </a>
-                  <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400 mt-2">
+                  <p class="font-mono text-[10px] uppercase tracking-widest text-stone-600 dark:text-stone-400 mt-2">
                     {post.data.pubDate.toISOString().slice(0, 10)}
                   </p>
                   {post.data.description && (
@@ -114,7 +93,7 @@ const allPosts = [...mdPosts, ...cmkPosts]
                           <li>
                             <a
                               href={tagIdToHref(tagId)}
-                              class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                              class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 hover:text-stone-900 dark:text-stone-500 dark:hover:text-stone-100 transition-colors"
                             >
                               {label}
                             </a>

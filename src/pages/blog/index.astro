@@ -1,46 +1,42 @@
 ---
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import { Footer } from "../../components/Footer";
 import NoiseOverlay from "../../components/NoiseOverlay.astro";
 import ThemeScript from "../../components/ThemeScript.astro";
 import ThemeToggleBar from "../../components/ThemeToggleBar.astro";
 import "../../styles/tailwind.css";
 
+const liveBlog = "https://www.ryanjohnson.website/posts";
+
 const choices = [
   {
-    title: "Archived copies",
-    tagline: "WordPress archive on this site",
-    description:
-      "Verbatim captures of pages and posts from ryanjohnson.website, preserved for browsing here.",
-    href: "/wordpress-archive",
-    external: false,
-    cta: "Browse archive",
-  },
-  {
-    title: "Continuing blog",
-    tagline: "New writing on ryanjohnson.dev",
-    description:
-      "Static posts published on this site going forward — the long-term home after WordPress.",
+    title: "Posts",
+    tagline: "Writing on this site",
+    description: "Essays, notes, and posts published on ryanjohnson.dev.",
     href: "/blog/posts",
     external: false,
-    cta: "Read posts",
+    actions: [{ label: "Read posts", href: "/blog/posts", external: false }],
   },
   {
     title: "Feedback Hub filings",
-    tagline: "Clear-web mirror of Hub submissions",
+    tagline: "Clear-web mirror",
     description:
-      "Catalog of Microsoft Feedback Hub items documented here — Hub has no owner API or public HTML pages.",
+      "Catalog of Microsoft Feedback Hub items documented here. Hub has no owner API or public HTML pages.",
     href: "/feedback",
     external: false,
-    cta: "Browse filings",
+    actions: [{ label: "Browse filings", href: "/feedback", external: false }],
   },
   {
-    title: "Live WordPress",
+    title: "Old WordPress Blog",
     tagline: "ryanjohnson.website",
     description:
-      "The currently live WordPress blog. Still the source of truth until archival and migration are complete.",
-    href: "https://www.ryanjohnson.website/posts",
+      "No longer the source of truth. New posts are published on this site. If a post lands on the old blog by accident, it gets imported later.",
+    href: liveBlog,
     external: true,
-    cta: "Open live site",
+    actions: [
+      { label: "Archive", href: "/wordpress-archive", external: false },
+      { label: "Live site", href: liveBlog, external: true },
+    ],
   },
 ];
 ---
@@ -60,28 +56,15 @@ const choices = [
     <main class="w-full flex-1 mt-8 mb-12">
       <ThemeToggleBar container maxWidth="max-w-4xl" />
       <div class="container mx-auto px-6 py-12 max-w-4xl structural-border border-t-0 p-8 md:p-12 space-y-12">
-        <nav
-          class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4"
-        >
-          <a
-            href="/"
-            class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-            >/ Home</a
-          >
-          <span
-            class="font-mono text-[10px] uppercase tracking-widest text-stone-300 dark:text-stone-700"
-            >Blog</span
-          >
-        </nav>
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
 
         <header class="space-y-4 max-w-3xl">
           <h1 class="text-5xl font-heading tracking-tighter">Blog</h1>
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
-            Archive · continue · live
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
+            Essays · notes · ideas
           </p>
-          <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
-            Choose how you want to read: archived WordPress copies on this site, new static posts
-            here, or the live WordPress site.
+          <p class="text-lg text-stone-700 dark:text-stone-400 leading-relaxed font-sans">
+            Inward writing on this site: ideas, notes, and essays. New posts are published here.
           </p>
         </header>
 
@@ -90,23 +73,36 @@ const choices = [
             choices.map((choice) => (
               <div class="bg-background p-8 space-y-4">
                 <div class="space-y-2">
-                  <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400">
+                  <p class="font-mono text-[10px] uppercase tracking-widest text-stone-600 dark:text-stone-400">
                     {choice.tagline}
                   </p>
-                  <h2 class="text-2xl font-heading tracking-tight">{choice.title}</h2>
-                  <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl">
+                  <h2 class="text-2xl font-heading tracking-tight">
+                    <a
+                      href={choice.href}
+                      target={choice.external ? "_blank" : undefined}
+                      rel={choice.external ? "noopener noreferrer" : undefined}
+                      class="text-foreground hover:underline decoration-stone-300 underline-offset-4"
+                    >
+                      {choice.title}
+                    </a>
+                  </h2>
+                  <p class="text-sm text-stone-700 dark:text-stone-400 leading-relaxed max-w-2xl">
                     {choice.description}
                   </p>
                 </div>
-                <a
-                  href={choice.href}
-                  target={choice.external ? "_blank" : undefined}
-                  rel={choice.external ? "noopener noreferrer" : undefined}
-                  class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-70 transition-opacity"
-                >
-                  {choice.cta}
-                  <span aria-hidden="true">{choice.external ? "↗" : "→"}</span>
-                </a>
+                <div class="flex flex-wrap gap-4">
+                  {choice.actions.map((action) => (
+                    <a
+                      href={action.href}
+                      target={action.external ? "_blank" : undefined}
+                      rel={action.external ? "noopener noreferrer" : undefined}
+                      class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-70 transition-opacity"
+                    >
+                      {action.label}
+                      <span aria-hidden="true">{action.external ? "↗" : "→"}</span>
+                    </a>
+                  ))}
+                </div>
               </div>
             ))
           }

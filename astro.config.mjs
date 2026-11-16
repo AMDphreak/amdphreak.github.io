@@ -52,6 +52,9 @@ const defaultCli = existsSync(hiveWinCli)
 // https://astro.build/config
 export default defineConfig({
   site: "https://ryanjohnson.dev",
+  redirects: {
+    "/for-fun/chatgpt-roast": "/blog/posts/the-roast-of-ryan-johnson",
+  },
   integrations: [
     solid(),
     sitemap({
