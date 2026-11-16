@@ -18,14 +18,11 @@ export function Footer() {
             <br />
             Originally hand-coded. Redesigned with AI assistance.
           </p>
-          <h3 class="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-700 dark:text-stone-400">
-            Software stack
-          </h3>
           <p class="text-xs text-stone-700 leading-relaxed font-mono dark:text-stone-400">
             [FRAMEWORK]: ASTRO 5.x<br />
             [UI LIBRARY]: SOLIDJS + SOLID-UI<br />
             [DESIGN]: TAILWIND CSS V4<br />
-            [VERSION]: 2026.04.11<br />
+            [VERSION]: {import.meta.env.SITE_VERSION}<br />
             [LICENSE]: © {buildYear} RY-JH
           </p>
         </div>

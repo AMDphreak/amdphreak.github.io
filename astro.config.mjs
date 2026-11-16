@@ -1,4 +1,5 @@
 // @ts-check
+import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { existsSync } from "node:fs";
@@ -49,6 +50,26 @@ const defaultCli = existsSync(hiveWinCli)
       ? vendorUnixCli
       : undefined;
 
+function siteVersionFromBuild() {
+  try {
+    const out = execFileSync("git", ["log", "-1", "--format=%cs %h"], {
+      cwd: __dirname,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    const match = /^(\d{4}-\d{2}-\d{2})\s+([0-9a-f]+)$/i.exec(out);
+    if (match) return `${match[1].replace(/-/g, ".")}.${match[2]}`;
+  } catch {
+    // Git is missing or this tree is not a repository.
+  }
+  const now = new Date();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${now.getFullYear()}.${month}.${day}`;
+}
+
+const siteVersion = siteVersionFromBuild();
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://ryanjohnson.dev",
@@ -66,6 +87,9 @@ export default defineConfig({
     }),
   ],
   vite: {
+    define: {
+      "import.meta.env.SITE_VERSION": JSON.stringify(siteVersion),
+    },
     plugins: [tailwindcss()],
     resolve: {
       alias: {
