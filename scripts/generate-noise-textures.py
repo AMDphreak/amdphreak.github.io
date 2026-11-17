@@ -121,6 +121,67 @@ def generate_fine_tile(size: int = 64, seed: int = 42) -> Image.Image:
     return Image.fromarray(gray, mode="L")
 
 
+def generate_grain_tile(size: int = 512, seed: int = 42) -> Image.Image:
+    """
+    One seamless RGBA tile for normal background painting (no blend mode).
+
+    Highlights are white and shadows are black, each with its own alpha, so the
+    plate color shows through and the average tint stays small. Highlight alpha
+    is what makes the grain readable on the dark plates. Large-scale mottling
+    stays quieter than the fine grain so the repeat is not a row of blobs.
+    """
+    rng = np.random.default_rng(seed)
+    crisp = rng.normal(0.0, 1.0, (size, size))
+    crisp_u8 = ((crisp - crisp.min()) / (float(np.ptp(crisp)) + 1e-9) * 255).astype(np.uint8)
+    soft = np.array(
+        Image.fromarray(crisp_u8)
+        .resize((size // 2, size // 2), Image.Resampling.BOX)
+        .resize((size, size), Image.Resampling.BILINEAR),
+        dtype=np.float64,
+    )
+
+    def unit(field: np.ndarray) -> np.ndarray:
+        field = field - field.mean()
+        return field / (np.abs(field).max() + 1e-9)
+
+    # Dense small kernels, plus a weaker broad field. Few large stamps read as
+    # a tiled motif once the highlight alpha is high enough to see in dark mode.
+    fine_mottle = np.array(
+        generate_poisson_tile(
+            size=size,
+            expected_events=280,
+            sigma_range=(4.0, 14.0),
+            seed=20260725,
+        ),
+        dtype=np.float64,
+    )
+    broad = np.array(
+        generate_poisson_tile(
+            size=size,
+            expected_events=36,
+            sigma_range=(36.0, 90.0),
+            seed=20260801,
+        ),
+        dtype=np.float64,
+    )
+    field = unit(unit(crisp) * 0.78 + unit(soft) * 0.16 + unit(fine_mottle) * 0.18 + unit(broad) * 0.1)
+    scale = float(np.percentile(np.abs(field), 99.2)) + 1e-9
+    field = np.clip(field / scale, -1.0, 1.0)
+
+    # Tuned against the dark plates: visible sparkle, not a fog.
+    white_peak = 0.16
+    black_peak = 0.055
+    alpha = np.where(field >= 0.0, field * white_peak, -field * black_peak)
+    alpha = np.clip(alpha, 0.0, 1.0)
+
+    rgba = np.zeros((size, size, 4), dtype=np.uint8)
+    rgba[..., 0] = np.where(field >= 0.0, 255, 0)
+    rgba[..., 1] = rgba[..., 0]
+    rgba[..., 2] = rgba[..., 0]
+    rgba[..., 3] = np.round(alpha * 255).astype(np.uint8)
+    return Image.fromarray(rgba, mode="RGBA")
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
 
@@ -136,6 +197,11 @@ def main() -> None:
         print(f"wrote {fine_path}")
     else:
         print(f"kept existing {fine_path}")
+
+    grain = generate_grain_tile()
+    grain_path = OUT / "grain-tile.png"
+    grain.save(grain_path, optimize=True)
+    print(f"wrote {grain_path} ({grain.size[0]}x{grain.size[1]})")
 
 
 if __name__ == "__main__":
