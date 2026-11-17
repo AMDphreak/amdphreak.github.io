@@ -1,5 +1,10 @@
 import { CollapsibleSection } from "~/components/CollapsibleSection";
 
+const btnBase =
+  "inline-flex items-center justify-center gap-1.5 h-12 px-5 font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+const btnPrimary = `${btnBase} structural-border bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
+const btnSecondary = `${btnBase} structural-border bg-background text-foreground hover:bg-stone-100 dark:hover:bg-stone-900`;
+
 const IconCamera = (p: { size?: number; class?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 14} height={p.size || 14} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
     <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
@@ -67,7 +72,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
               href="https://www.bigrpic.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-3 structural-border font-mono text-[10px] uppercase tracking-[0.2em] hover:bg-stone-50 dark:hover:bg-stone-900 transition-all font-bold"
+              class={btnPrimary}
             >
               <IconCamera /> bigrpic.com
             </a>
@@ -75,7 +80,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
               href="https://instagram.com/bigrpicture"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-3 structural-border font-mono text-[10px] uppercase tracking-[0.2em] hover:bg-stone-50 dark:hover:bg-stone-900 transition-all font-bold"
+              class={btnSecondary}
             >
               <IconInstagram /> Instagram
             </a>
@@ -86,13 +91,11 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
 
   if (props.collapsible === false) {
     return (
-      <section id="photography-section" class="space-y-8 scroll-mt-24">
-        <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
-          <h2 class="text-3xl font-heading tracking-tighter">Photography</h2>
-          <span class="font-mono text-[10px] uppercase tracking-widest text-stone-700 dark:text-stone-500 mb-1">
-            Visual Arts / Media
-          </span>
-        </div>
+      <section id="photography-section" class="space-y-6 scroll-mt-24">
+        <h2 class="font-heading text-3xl tracking-tighter text-foreground">Photography</h2>
+        <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-300">
+          Photographer, Portraitist
+        </p>
         {content}
       </section>
     );
@@ -102,7 +105,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
     <CollapsibleSection
       id="photography-section"
       title="Photography"
-      tagline="Visual Arts / Media"
+      tagline="Photographer, Portraitist"
       defaultOpen={props.defaultOpen ?? false}
     >
       {content}

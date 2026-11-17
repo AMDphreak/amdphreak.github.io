@@ -34,7 +34,10 @@
 }
 
 @layer base {
+  /* Editing the base recalculates both themes. */
   :root {
+    --software-base: #2c506b;
+    --photography-base: #2c1205;
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
     --card: 0 0% 100%;
@@ -127,6 +130,20 @@
     @apply w-1.5 h-1.5 bg-stone-400 dark:bg-stone-600 rounded-full;
   }
 
+  /* Same lightness pair for every section plate. Hue and chroma come from the base. */
+  .home-software {
+    background: oklch(from var(--software-base) 0.93 c h);
+  }
+  .dark .home-software {
+    background: oklch(from var(--software-base) 0.417 c h);
+  }
+  .home-photography {
+    background: oklch(from var(--photography-base) 0.93 c h);
+  }
+  .dark .home-photography {
+    background: oklch(from var(--photography-base) 0.417 c h);
+  }
+
   /* Stacked tile layers — offsets + rotation break up visible repeat */
   .noise-overlay {
     --noise-tile-size: 64px;
@@ -147,14 +164,20 @@
     height: 300vmax;
     margin-left: -150vmax;
     margin-top: -150vmax;
-    opacity: var(--noise-layer-opacity, 0.022);
+    /* Same tile opacity in both themes. soft-light on white is invisible, so light mode multiplies. */
+    opacity: calc(var(--noise-layer-opacity, 0.022) * var(--noise-light-scale, 1.25));
     background-image: var(--noise-src, url("/textures/noise-tile.png"));
     background-size: var(--noise-tile-size, 64px) var(--noise-tile-size, 64px);
     background-repeat: repeat;
     background-position: var(--noise-x, 0px) var(--noise-y, 0px);
     transform: rotate(var(--noise-rot, 0deg));
-    mix-blend-mode: soft-light;
+    mix-blend-mode: multiply;
     image-rendering: auto;
+  }
+
+  .dark .noise-layer {
+    --noise-light-scale: 1;
+    mix-blend-mode: soft-light;
   }
 
   .noise-layer--fine {

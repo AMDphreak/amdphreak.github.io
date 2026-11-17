@@ -8,6 +8,8 @@ import ThemeScript from "../components/ThemeScript.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import "../styles/tailwind.css";
 
+const showHeroMark = false;
+
 const navBtnBase =
   "inline-flex items-center justify-center gap-1.5 h-12 px-5 font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const navBtnPrimary = `${navBtnBase} structural-border bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
@@ -61,7 +63,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
               Ryan Johnson
             </h1>
             <div class="flex items-center gap-3">
-              <div class="blueprint-dot"></div>
+              {showHeroMark && <div class="blueprint-dot"></div>}
               <p
                 class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
               >
@@ -74,17 +76,20 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     </section>
 
     <main class="relative z-10 py-12 lg:py-16">
-      <section aria-label="Software" class="bg-sky-50 text-foreground dark:bg-sky-950/60">
+      <section aria-label="Software" class="home-software text-foreground">
         <div class="mx-auto w-full max-w-7xl space-y-6 px-6 py-12 lg:py-16">
           <h2 class="font-heading text-3xl tracking-tighter text-foreground">
             Software
           </h2>
           <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-300">
-            Software Architect
+            Architect, Engineer, Designer
           </p>
-        <p class="max-w-2xl font-sans text-lg leading-relaxed text-stone-700 dark:text-stone-300 md:text-xl">
-          Software and systems, built carefully — UX, DevX, ITIL, Architecture, RelyOps, DevOps. More than a software developer: a visionary.
-        </p>
+          <p class="text-xl md:text-2xl font-heading leading-tight text-foreground/90">
+            Software and systems, built carefully.
+          </p>
+          <p class="max-w-2xl text-stone-600 dark:text-stone-400 leading-relaxed">
+            UX, DevX, ITIL, Architecture, RelyOps, DevOps. More than a software developer: a visionary.
+          </p>
         <div class="flex flex-wrap items-center gap-3">
           <a href="/repositories" class={navBtnPrimary}>
             Catalog
@@ -123,7 +128,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
         </div>
       </section>
 
-      <div class="bg-amber-50 text-foreground dark:bg-amber-950/55">
+      <div class="home-photography text-foreground">
         <div class="mx-auto w-full max-w-7xl px-6 py-12 lg:py-16">
           <Photography client:load collapsible={false} />
         </div>

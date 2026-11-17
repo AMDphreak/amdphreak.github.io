@@ -16,7 +16,7 @@ export function Footer() {
               GitHub Pages
             </a>
             <br />
-            Originally hand-coded. Redesigned with AI assistance.
+            Site redesign conducted with AI.
           </p>
           <p class="text-xs text-stone-700 leading-relaxed font-mono dark:text-stone-400">
             [FRAMEWORK]: ASTRO 5.x<br />
