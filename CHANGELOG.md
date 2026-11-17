@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Chrome**: in light mode the theme switch icon and border are darker, so the control reads as a button. The header rule uses its own light color at the same intensity as the footer divider.
-- **Grain**: light grain is much quieter, and dark grain is a little quieter, so the texture stays off the type.
+- **Chrome**: in light mode the theme switch border is stone-400, between the faint stone-200 line and the heavy stone-500 line. The icon stays stone-700. The header rule uses its own light color at the same intensity as the footer divider.
+- **Grain**: every page uses one tile at one strength. The home washes no longer stack a second copy. Light matches the strength those washes had. Dark sits between the plain pages and that stacked home strength.
 - **Photography**: the bigrpic screenshot selects a sharper file as browser zoom raises the pixel density, up to the full capture. The paragraph is the studio biography.
 - **Home**: the hero, Software, and Photography sit in the chrome column, left-aligned, at the same width as the header. The centered reading measure stays on blog, inspirations, and the other reading pages.
 - **Catalog**: project expanders other than Personal Projects are ordered by the newest repository `pushedAt`. Projects with no push date follow the dated ones.
