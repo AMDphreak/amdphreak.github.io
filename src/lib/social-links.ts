@@ -12,14 +12,14 @@ export type SocialLinkItem = {
 export const socialLinks: SocialLinkItem[] = [
   {
     id: "codeberg",
-    label: "Codeberg/AMDphreak",
+    label: "Codeberg",
     href: "https://codeberg.org/AMDphreak",
     brand: "#2185D0",
     brandFg: "#ffffff",
   },
   {
     id: "gitlab",
-    label: "GitLab/AMDphreak",
+    label: "GitLab",
     href: "https://gitlab.com/AMDphreak",
     brand: "#FC6D26",
     brandFg: "#ffffff",
@@ -57,7 +57,7 @@ export const socialLinks: SocialLinkItem[] = [
 export const githubBrand = {
   brand: "#181717",
   brandFg: "#ffffff",
-  label: "GitHub/AMDphreak",
+  label: "GitHub",
 };
 
 /** Personal forges and socials, label beside the icon. Orgs live on project cards. */
