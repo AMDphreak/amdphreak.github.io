@@ -58,8 +58,10 @@
     --input: 20 5.9% 90%;
     /* Header underline only. Same light intensity as the footer stone-200 rule. */
     --header-rule: oklch(92.3% 0.003 48.717);
-    /* Theme switch icon and border. One color per theme. */
-    --theme-toggle-mark: var(--color-stone-400);
+    /* Theme switch icon and border. One color per theme.
+       Dark reference is stone-500 on hsl(20 14.3% 4.1%), contrast 4.13.
+       stone-400 on white is 2.59 and stone-500 on white is 4.79, so light uses this. */
+    --theme-toggle-mark: #817c78;
     --ring: 20 14.3% 4.1%;
   }
 
