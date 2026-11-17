@@ -3,7 +3,6 @@ import Breadcrumb from "../components/Breadcrumb.astro";
 import { Footer } from "../components/Footer";
 import { Photography } from "../components/Photography";
 import { ProfileLinks } from "../components/ProfileLinks";
-import NoiseOverlay from "../components/NoiseOverlay.astro";
 import ThemeScript from "../components/ThemeScript.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import "../styles/tailwind.css";
@@ -34,7 +33,6 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
   <body
     class="bg-background text-foreground min-h-screen font-sans antialiased selection:bg-stone-200 dark:selection:bg-stone-800"
   >
-    <NoiseOverlay />
     <div
       class="fixed inset-0 pointer-events-none border-[12px] border-stone-100/50 dark:border-stone-900/50 z-[100]"
     >
@@ -84,7 +82,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
           <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-300">
             Architecture, Systems, UX
           </p>
-          <p class="max-w-2xl text-stone-600 dark:text-stone-400 leading-relaxed">
+          <p class="home-copy max-w-2xl leading-relaxed">
             Software and systems, built carefully. UX, DevX, ITIL, Architecture, RelyOps, DevOps. More than a software developer: a visionary.
           </p>
         <div class="flex flex-wrap items-center gap-3">

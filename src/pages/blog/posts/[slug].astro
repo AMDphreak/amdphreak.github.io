@@ -7,7 +7,6 @@ import { Footer } from "../../../components/Footer";
 import PostTableOfContents from "../../../components/PostTableOfContents.astro";
 import PostTableOfContentsScript from "../../../components/PostTableOfContentsScript.astro";
 import { PostTags } from "../../../components/PostTags";
-import NoiseOverlay from "../../../components/NoiseOverlay.astro";
 import ThemeScript from "../../../components/ThemeScript.astro";
 import ThemeToggleBar from "../../../components/ThemeToggleBar.astro";
 import { collectSeriesPosts } from "../../../lib/blog-series";
@@ -114,7 +113,6 @@ const seriesLabel =
   <body
     class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
   >
-    <NoiseOverlay />
     <main class="w-full flex-1 mt-8 mb-12">
       <ThemeToggleBar container maxWidth="max-w-5xl" />
       <div

@@ -88,6 +88,11 @@
   }
   body {
     @apply bg-background text-foreground font-sans selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100;
+    background-image: var(--grain-image);
+    background-size: var(--grain-size);
+    background-position: var(--grain-position);
+    background-repeat: repeat;
+    background-blend-mode: var(--grain-blend);
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -132,60 +137,101 @@
 
   /* Same lightness pair for every section plate. Hue and chroma come from the base. */
   .home-software {
-    background: oklch(from var(--software-base) 0.93 c h);
+    background-color: oklch(from var(--software-base) 0.93 c h);
   }
   .dark .home-software {
-    background: oklch(from var(--software-base) 0.417 c h);
+    background-color: oklch(from var(--software-base) 0.417 c h);
   }
   .home-photography {
-    background: oklch(from var(--photography-base) 0.93 c h);
+    background-color: oklch(from var(--photography-base) 0.93 c h);
   }
   .dark .home-photography {
-    background: oklch(from var(--photography-base) 0.417 c h);
+    background-color: oklch(from var(--photography-base) 0.417 c h);
   }
 
-  /* Stacked tile layers — offsets + rotation break up visible repeat */
-  .noise-overlay {
-    --noise-tile-size: 64px;
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 9999;
-    isolation: isolate;
-    contain: strict;
+  /*
+   * Grain lives in the plate's own background. background-blend-mode
+   * soft-lights each tile only with that element's background color.
+   * Text and other descendants paint above it, unblended.
+   * Opacities match the old overlay (about 0.018–0.08). List is top-first.
+   * -webkit-cross-fade's percentage is the second image. The clear gradient
+   * is only there so the tile can keep its opacity.
+   */
+  :root {
+    --grain-clear: linear-gradient(transparent, transparent);
+    --grain-image:
+      -webkit-cross-fade(var(--grain-clear), url("/textures/poisson-noise-tile.png"), 4%),
+      -webkit-cross-fade(var(--grain-clear), url("/textures/poisson-noise-tile.png"), 5.5%),
+      -webkit-cross-fade(var(--grain-clear), url("/textures/poisson-noise-tile.png"), 8%),
+      -webkit-cross-fade(var(--grain-clear), url("/textures/noise-tile.png"), 1.8%),
+      -webkit-cross-fade(var(--grain-clear), url("/textures/noise-tile.png"), 1.8%),
+      -webkit-cross-fade(var(--grain-clear), url("/textures/noise-tile.png"), 2.2%),
+      -webkit-cross-fade(var(--grain-clear), url("/textures/noise-tile.png"), 2.2%),
+      -webkit-cross-fade(var(--grain-clear), url("/textures/noise-tile.png"), 2.8%);
+    --grain-size:
+      768px 768px,
+      640px 640px,
+      512px 512px,
+      64px 64px,
+      64px 64px,
+      64px 64px,
+      64px 64px,
+      64px 64px;
+    --grain-position:
+      97px 61px,
+      -73px 29px,
+      11px -47px,
+      -43px 89px,
+      61px -17px,
+      -29px 71px,
+      37px 53px,
+      0px 0px;
+    --grain-blend: soft-light, soft-light, soft-light, soft-light, soft-light, soft-light, soft-light, soft-light;
   }
 
-  .noise-layer {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 300vmax;
-    height: 300vmax;
-    margin-left: -150vmax;
-    margin-top: -150vmax;
-    opacity: var(--noise-layer-opacity, 0.022);
-    background-image: var(--noise-src, url("/textures/noise-tile.png"));
-    background-size: var(--noise-tile-size, 64px) var(--noise-tile-size, 64px);
+  .home-software,
+  .home-photography {
+    background-image: var(--grain-image);
+    background-size: var(--grain-size);
+    background-position: var(--grain-position);
     background-repeat: repeat;
-    background-position: var(--noise-x, 0px) var(--noise-y, 0px);
-    transform: rotate(var(--noise-rot, 0deg));
-    mix-blend-mode: soft-light;
-    image-rendering: auto;
+    background-blend-mode: var(--grain-blend);
   }
 
-  .noise-layer--fine {
-    image-rendering: pixelated;
+  /* Body copy under the mono subheading. Same small lightness step in both themes. */
+  .home-copy {
+    color: color-mix(in oklch, var(--color-stone-600) 60%, var(--color-stone-500));
+  }
+  .dark .home-copy {
+    color: color-mix(in oklch, var(--color-stone-300) 72%, var(--color-stone-400));
+  }
+
+  @supports (background-image: cross-fade(url("/textures/noise-tile.png") 50%, url("/textures/poisson-noise-tile.png"))) {
+    :root {
+      --grain-image:
+        cross-fade(url("/textures/poisson-noise-tile.png") 4%, transparent),
+        cross-fade(url("/textures/poisson-noise-tile.png") 5.5%, transparent),
+        cross-fade(url("/textures/poisson-noise-tile.png") 8%, transparent),
+        cross-fade(url("/textures/noise-tile.png") 1.8%, transparent),
+        cross-fade(url("/textures/noise-tile.png") 1.8%, transparent),
+        cross-fade(url("/textures/noise-tile.png") 2.2%, transparent),
+        cross-fade(url("/textures/noise-tile.png") 2.2%, transparent),
+        cross-fade(url("/textures/noise-tile.png") 2.8%, transparent);
+    }
   }
 
   @media (prefers-reduced-data: reduce), (prefers-reduced-motion: reduce) {
-    .noise-overlay .noise-layer:nth-child(n + 2) {
-      display: none;
+    :root {
+      --grain-image: -webkit-cross-fade(var(--grain-clear), url("/textures/noise-tile.png"), 5%);
+      --grain-size: 64px 64px;
+      --grain-position: 0px 0px;
+      --grain-blend: soft-light;
     }
 
-    .noise-overlay .noise-layer:first-child {
-      --noise-rot: 0deg;
-      opacity: 0.05;
+    @supports (background-image: cross-fade(url("/textures/noise-tile.png") 50%, url("/textures/poisson-noise-tile.png"))) {
+      :root {
+        --grain-image: cross-fade(url("/textures/noise-tile.png") 5%, transparent);
+      }
     }
   }
 }

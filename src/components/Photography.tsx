@@ -7,15 +7,12 @@ const btnSecondary = `${btnBase} structural-border bg-background text-foreground
 
 const iconSquare = "inline-flex h-[18px] w-[18px] shrink-0 items-center justify-center";
 
-const IconBigrpic = () => (
+const IconCamera = () => (
   <span class={iconSquare} aria-hidden="true">
-    <img
-      src="/photography/bigrpic-icon.svg"
-      alt=""
-      width={18}
-      height={18}
-      class="h-full w-full object-contain object-center dark:invert"
-    />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-full w-full">
+      <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+      <circle cx="12" cy="13" r="3" />
+    </svg>
   </span>
 );
 
@@ -55,7 +52,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
         </div>
 
         <div class="flex-1 min-w-0 space-y-6">
-          <p class="max-w-2xl text-stone-600 dark:text-stone-400 leading-relaxed">
+          <p class="home-copy max-w-2xl leading-relaxed">
             When I&apos;m not writing code, I&apos;m usually out with a camera. The fuller picture: vibe coding and brainstorming ways to improve the software
             ecosystem fill a lot of hours. When I&apos;m not in that headspace, it&apos;s the
             camera—or League of Legends. Through{" "}
@@ -74,7 +71,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
               rel="noopener noreferrer"
               class={btnPrimary}
             >
-              <IconBigrpic /> bigrpic
+              <IconCamera /> bigrpic
             </a>
             <a
               href="https://instagram.com/bigrpicture"

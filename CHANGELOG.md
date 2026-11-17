@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Home**: Software and Photography paragraphs sit a small, similar step from their subheadings in both themes. Light paragraphs are a little lighter; dark paragraphs are light enough to read on the plates.
+- **Photography**: the bigrpic button uses the camera icon again.
+- **Grain**: noise blends only with the page and section-plate background colors, so text and controls stay sharp and scrolling is not a full-screen blend.
 - **Home**: Software and Photography leads sit in the body paragraph. Photography icons share an 18px square; the bigrpic button uses that site's mark and the label bigrpic.
 - **Home**: Software and Photography subheadings are nouns of the work in each topic (Architecture, Systems, UX; Events, Performances, Weddings, Portraits).
 - **Home**: Software and Photography use the same subheading style and the same lead-and-body paragraph sizes. Each section plate is one base color, with light and dark calculated from it. The hero username lines up with the name. The footer says the redesign was conducted with AI.
