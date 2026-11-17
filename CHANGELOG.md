@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Icon**: a smooth river stone with a carved R replaces the previous favicon. Light and dark files follow the saved theme. On the home page, a faded stone sits behind Johnson.
+- **Home**: Johnson darkens toward the middle of that stone in the light theme and lightens toward it in the dark theme. The shift fades back to the normal text color.
 
 ## [Unreleased] - 2026-11-16
 

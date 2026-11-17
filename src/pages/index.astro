@@ -49,7 +49,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
         <h1
           class="max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
         >
-          Ryan <span class="hero-johnson"><span class="hero-johnson-text">Johnson</span><img class="hero-rune hero-rune-sharp hero-rune-light" src="/icons/rune-rock-glyph.svg" alt="" aria-hidden="true" /><img class="hero-rune hero-rune-blur hero-rune-light" src="/icons/rune-rock-glyph.svg" alt="" aria-hidden="true" /><img class="hero-rune hero-rune-sharp hero-rune-dark" src="/icons/rune-rock-glyph-dark.svg" alt="" aria-hidden="true" /><img class="hero-rune hero-rune-blur hero-rune-dark" src="/icons/rune-rock-glyph-dark.svg" alt="" aria-hidden="true" /></span>
+          Ryan <span class="hero-johnson"><span class="hero-johnson-text">Johnson<svg class="hero-johnson-field" aria-hidden="true" focusable="false"><defs><filter id="johnson-falloff-blur" x="-50%" y="-80%" width="200%" height="260%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="10" /></filter><radialGradient id="johnson-falloff" cx="50%" cy="50%" r="52%"><stop offset="0%" style="stop-color: var(--johnson-near)" /><stop offset="100%" style="stop-color: var(--johnson-near); stop-opacity: 0" /></radialGradient></defs><rect width="100%" height="100%" fill="url(#johnson-falloff)" filter="url(#johnson-falloff-blur)" /></svg></span><img class="hero-rune hero-rune-sharp hero-rune-light" src="/icons/rune-rock-glyph.svg" alt="" aria-hidden="true" /><img class="hero-rune hero-rune-blur hero-rune-light" src="/icons/rune-rock-glyph.svg" alt="" aria-hidden="true" /><img class="hero-rune hero-rune-sharp hero-rune-dark" src="/icons/rune-rock-glyph-dark.svg" alt="" aria-hidden="true" /><img class="hero-rune hero-rune-blur hero-rune-dark" src="/icons/rune-rock-glyph-dark.svg" alt="" aria-hidden="true" /></span>
         </h1>
         <div class="flex items-center gap-3">
           {showHeroMark && <div class="blueprint-dot"></div>}
@@ -121,18 +121,40 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
 </html>
 <style>
   .hero-johnson {
+    --rune-x: 50%;
+    --rune-y: 50%;
+    --johnson-near: black;
     position: relative;
     display: inline-block;
     vertical-align: baseline;
   }
+  :global(html.dark) .hero-johnson {
+    --johnson-near: white;
+  }
   .hero-johnson-text {
     position: relative;
+    z-index: 1;
+    color: var(--color-foreground);
+    -webkit-mask-image: linear-gradient(#000, #000);
+    mask-image: linear-gradient(#000, #000);
+    -webkit-mask-clip: text;
+    mask-clip: text;
+  }
+  .hero-johnson-field {
+    position: absolute;
+    left: var(--rune-x);
+    top: var(--rune-y);
+    width: 2.6em;
+    height: 2.2em;
+    transform: translate(-50%, -50%);
+    overflow: visible;
+    pointer-events: none;
     z-index: 1;
   }
   .hero-rune {
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: var(--rune-x);
+    top: var(--rune-y);
     height: 1.85em;
     width: auto;
     transform: translate(-50%, -50%);
