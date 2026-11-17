@@ -13,8 +13,8 @@ export const Philosophy = () => {
         </p>
       </header>
 
-      <section class="space-y-4">
-        <h2 class="text-3xl font-heading font-medium tracking-tight">Software reliability</h2>
+      <section id="on-software-reliability" class="space-y-4">
+        <h2 class="text-3xl font-heading font-medium tracking-tight">On Software Reliability</h2>
         <p class={body}>{philosophyLeadSummary}</p>
       </section>
 
