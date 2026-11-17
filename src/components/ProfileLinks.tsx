@@ -1,11 +1,16 @@
 import { For } from "solid-js";
 import { socialIconById } from "~/components/social-icons";
-import { profileLinks } from "~/lib/social-links";
+import { profileLinks, type SocialLinkItem } from "~/lib/social-links";
 
-export const ProfileLinks = () => {
+export const ProfileLinks = (props: { links?: SocialLinkItem[]; label?: string }) => {
+  const items = () => props.links ?? profileLinks;
   return (
-    <ul class="m-0 flex list-none flex-wrap gap-x-6 gap-y-3 p-0" role="list" aria-label="Profiles">
-      <For each={profileLinks}>
+    <ul
+      class="m-0 flex list-none flex-wrap gap-x-6 gap-y-3 p-0"
+      role="list"
+      aria-label={props.label ?? "Profiles"}
+    >
+      <For each={items()}>
         {(item) => {
           const Icon = socialIconById[item.id];
           return (

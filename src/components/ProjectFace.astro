@@ -22,7 +22,7 @@ function screenshotSrcset(id: string) {
         href={destination.href}
         target={destination.external ? "_blank" : undefined}
         rel={destination.external ? "noopener noreferrer" : undefined}
-        class="block overflow-hidden rounded-[1.35rem] bg-stone-200 dark:bg-stone-950 aspect-[4/3]"
+        class="block aspect-square overflow-hidden bg-stone-200 dark:bg-stone-950"
       >
         <img
           src={destination.screenshot}
@@ -41,7 +41,7 @@ function screenshotSrcset(id: string) {
         href={destination.href}
         target={destination.external ? "_blank" : undefined}
         rel={destination.external ? "noopener noreferrer" : undefined}
-        class="relative flex min-h-[9rem] items-start overflow-hidden rounded-[1.35rem] bg-stone-200 no-underline dark:bg-stone-950"
+        class="relative flex aspect-square items-start overflow-hidden bg-stone-200 no-underline dark:bg-stone-950"
       >
         <svg
           class="pointer-events-none absolute inset-0 h-full w-full text-stone-500/55 dark:text-stone-400/40"

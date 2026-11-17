@@ -1,10 +1,10 @@
 ---
-import Breadcrumb from "../components/Breadcrumb.astro";
 import { Footer } from "../components/Footer";
 import { Photography } from "../components/Photography";
 import { ProfileLinks } from "../components/ProfileLinks";
+import SiteHeader from "../components/SiteHeader.astro";
 import ThemeScript from "../components/ThemeScript.astro";
-import ThemeToggle from "../components/ThemeToggle.astro";
+import { heroProfileLinks, softwareProfileLinks } from "../lib/social-links";
 import "../styles/tailwind.css";
 
 const showHeroMark = false;
@@ -43,17 +43,8 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
       class="relative z-10 flex w-full min-h-[24rem] flex-col md:min-h-[28rem]"
       aria-label="Introduction"
     >
-      <div
-        class="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 pt-8 lg:pt-10"
-      >
-        <header
-          class="flex flex-wrap items-center justify-between gap-6 border-b border-stone-200/80 pb-6 dark:border-stone-800/80"
-        >
-          <Breadcrumb class="border-0 pb-0" items={[{ label: "Home", href: "/" }]} />
-          <ThemeToggle />
-        </header>
-
-        <div class="flex flex-1 flex-col justify-end pt-8 lg:pt-10">
+      <SiteHeader items={[{ label: "Home", href: "/" }]} />
+      <div class="chrome-width flex flex-1 flex-col justify-end pt-8 lg:pt-10">
           <div class="max-w-3xl min-w-0 space-y-6">
             <h1
               class="max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
@@ -68,14 +59,14 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
                 AMDphreak
               </p>
             </div>
+            <ProfileLinks client:load links={heroProfileLinks} label="Other profiles" />
           </div>
-        </div>
       </div>
     </section>
 
     <main class="relative z-10 py-12 lg:py-16">
       <section aria-label="Software" class="home-software text-foreground">
-        <div class="mx-auto w-full max-w-7xl space-y-6 px-6 py-12 lg:py-16">
+        <div class="chrome-width space-y-6 py-12 lg:py-16">
           <h2 class="font-heading text-3xl tracking-tighter text-foreground">
             Software
           </h2>
@@ -119,12 +110,12 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
             <span class="font-mono text-[10px] opacity-70" aria-hidden="true">→</span>
           </a>
         </div>
-        <ProfileLinks client:load />
+        <ProfileLinks client:load links={softwareProfileLinks} label="Code profiles" />
         </div>
       </section>
 
       <div class="home-photography text-foreground">
-        <div class="mx-auto w-full max-w-7xl px-6 py-12 lg:py-16">
+        <div class="chrome-width py-12 lg:py-16">
           <Photography client:load collapsible={false} />
         </div>
       </div>

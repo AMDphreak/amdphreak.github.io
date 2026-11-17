@@ -1,8 +1,7 @@
 ---
-import Breadcrumb from "../../../components/Breadcrumb.astro";
 import { Footer } from "../../../components/Footer";
+import SiteHeader from "../../../components/SiteHeader.astro";
 import ThemeScript from "../../../components/ThemeScript.astro";
-import ThemeToggleBar from "../../../components/ThemeToggleBar.astro";
 import { listArchivePostSlugs, loadArchivePost } from "../../../lib/wordpress-archive";
 import "../../../styles/tailwind.css";
 
@@ -28,18 +27,17 @@ if (!post) {
   <body
     class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
   >
+    <SiteHeader
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Blog", href: "/blog" },
+        { label: "Archive", href: "/wordpress-archive" },
+        { label: post.title },
+      ]}
+    />
     <main class="w-full flex-1 mt-8 mb-12">
-      <ThemeToggleBar container maxWidth="max-w-3xl" />
-      <div class="container mx-auto px-6 py-12 max-w-3xl structural-border border-t-0 p-8 md:p-12">
-        <Breadcrumb
-          class="mb-12"
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Blog", href: "/blog" },
-            { label: "Archive", href: "/wordpress-archive" },
-            { label: post.title },
-          ]}
-        />
+      <div class="chrome-width">
+        <div class="structural-border border-t-0 p-8 md:p-12">
 
         <article class="space-y-8">
           <header class="space-y-4">
@@ -66,6 +64,7 @@ if (!post) {
             set:html={post.contentHtml}
           />
         </article>
+        </div>
       </div>
     </main>
 

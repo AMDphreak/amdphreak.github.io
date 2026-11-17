@@ -1,12 +1,11 @@
 ---
-import Breadcrumb from "../../components/Breadcrumb.astro";
 import { Profile } from "../../components/Profile";
 import { Experience } from "../../components/Experience";
 import { Projects } from "../../components/Projects";
 import { Skills } from "../../components/Skills";
 import { Footer } from "../../components/Footer";
+import SiteHeader from "../../components/SiteHeader.astro";
 import ThemeScript from "../../components/ThemeScript.astro";
-import ThemeToggle from "../../components/ThemeToggle.astro";
 import "../../styles/tailwind.css";
 ---
 
@@ -23,15 +22,9 @@ import "../../styles/tailwind.css";
   <body class="bg-background text-foreground min-h-screen font-sans antialiased selection:bg-stone-200 dark:selection:bg-stone-800">
     <div class="fixed inset-0 pointer-events-none border-[12px] border-stone-100/50 dark:border-stone-900/50 z-[100]"></div>
     
-    <main class="relative z-10 container mx-auto px-6 py-12 max-w-7xl space-y-16 lg:space-y-24">
-      <!-- Structural Top Header -->
-      <header class="flex flex-wrap justify-between items-center gap-6 border-b border-stone-200 dark:border-stone-800 pb-8">
-        <Breadcrumb class="border-0 pb-0" items={[{ label: "Home", href: "/" }, { label: "Résumé" }]} />
-        <div class="flex items-center gap-4">
-          <ThemeToggle />
-        </div>
-      </header>
-
+    <SiteHeader items={[{ label: "Home", href: "/" }, { label: "Résumé" }]} />
+    <main class="relative z-10">
+      <div class="chrome-width space-y-16 py-12 lg:space-y-24">
       <div id="profile-section" class="border-b border-stone-200 dark:border-stone-800 pb-16">
         <Profile client:load />
       </div>
@@ -47,6 +40,7 @@ import "../../styles/tailwind.css";
             <Skills client:load />
           </section>
         </aside>
+      </div>
       </div>
     </main>
 

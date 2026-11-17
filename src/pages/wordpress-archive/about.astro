@@ -1,8 +1,7 @@
 ---
-import Breadcrumb from "../../components/Breadcrumb.astro";
 import { Footer } from "../../components/Footer";
+import SiteHeader from "../../components/SiteHeader.astro";
 import ThemeScript from "../../components/ThemeScript.astro";
-import ThemeToggleBar from "../../components/ThemeToggleBar.astro";
 import { aboutWordPressArchive } from "../../lib/about-wordpress-archive";
 import "../../styles/tailwind.css";
 ---
@@ -18,19 +17,17 @@ import "../../styles/tailwind.css";
   <body
     class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
   >
+    <SiteHeader
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Blog", href: "/blog" },
+        { label: "Archive", href: "/wordpress-archive" },
+        { label: "About" },
+      ]}
+    />
     <main class="w-full flex-1 mt-8 mb-12">
-      <ThemeToggleBar container maxWidth="max-w-4xl" />
-      <div class="container mx-auto px-6 py-12 max-w-4xl structural-border border-t-0 p-8 md:p-12">
-      <Breadcrumb
-        class="mb-12"
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Blog", href: "/blog" },
-          { label: "Archive", href: "/wordpress-archive" },
-          { label: "About" },
-        ]}
-      />
-
+      <div class="chrome-width">
+        <div class="structural-border border-t-0 p-8 md:p-12">
       <article class="space-y-8">
         <header class="space-y-4">
           <h1 class="text-5xl font-heading tracking-tighter">{aboutWordPressArchive.title}</h1>
@@ -61,6 +58,7 @@ import "../../styles/tailwind.css";
           }
         </div>
       </article>
+        </div>
       </div>
     </main>
 

@@ -1,9 +1,8 @@
 ---
-import Breadcrumb from "../../components/Breadcrumb.astro";
 import { Footer } from "../../components/Footer";
 import ProjectFace from "../../components/ProjectFace.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
 import ThemeScript from "../../components/ThemeScript.astro";
-import ThemeToggleBar from "../../components/ThemeToggleBar.astro";
 import { projects, type HubDestination } from "../../lib/hub-destinations";
 import {
   catalogGeneratedAt,
@@ -82,13 +81,10 @@ for (const face of projects) {
   <body
     class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
   >
+    <SiteHeader items={[{ label: "Home", href: "/" }, { label: "Catalog" }]} />
     <main class="w-full flex-1 mt-8 mb-12">
-      <ThemeToggleBar />
-      <div
-        class="mx-auto max-w-5xl px-6 md:px-10 py-12 structural-border border-t-0 md:p-12 space-y-12"
-      >
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Catalog" }]} />
-
+      <div class="chrome-width">
+      <div class="structural-border border-t-0 p-8 md:p-12 space-y-12">
         <header class="space-y-4 max-w-3xl">
           <h1 class="text-5xl font-heading tracking-tighter">Catalog</h1>
           <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
@@ -251,6 +247,7 @@ for (const face of projects) {
           Synced {catalogGeneratedAt}. Regenerate with <code class="text-stone-700 dark:text-stone-400">pnpm sync:repos</code> after adding
           repositories on GitHub or GitLab.
         </p>
+      </div>
       </div>
     </main>
 

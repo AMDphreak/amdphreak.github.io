@@ -2,8 +2,8 @@ export function Footer() {
   const buildYear = import.meta.env.BUILD_YEAR || new Date().getFullYear();
 
   return (
-    <footer class="mt-24 border-t border-stone-200 dark:border-stone-800 pt-12 pb-24 px-6">
-      <div class="container mx-auto max-w-7xl">
+    <footer class="mt-24 border-t border-stone-200 dark:border-stone-800 pt-12 pb-24">
+      <div class="chrome-width">
         <div class="max-w-md space-y-4">
           <p class="text-[10px] uppercase tracking-widest leading-relaxed text-stone-600 dark:text-stone-400">
             Built with{" "}

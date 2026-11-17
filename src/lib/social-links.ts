@@ -60,19 +60,42 @@ export const githubBrand = {
   label: "GitHub",
 };
 
+const githubProfile: SocialLinkItem = {
+  id: "github",
+  label: githubBrand.label,
+  href: "https://github.com/AMDphreak",
+  brand: githubBrand.brand,
+  brandFg: githubBrand.brandFg,
+};
+
+function profile(id: string) {
+  const item = socialLinks.find((entry) => entry.id === id);
+  if (!item) throw new Error(`Missing profile ${id}`);
+  return item;
+}
+
 /** Personal forges and socials, label beside the icon. Orgs live on project cards. */
 export const profileLinks: SocialLinkItem[] = [
-  {
-    id: "github",
-    label: githubBrand.label,
-    href: "https://github.com/AMDphreak",
-    brand: githubBrand.brand,
-    brandFg: githubBrand.brandFg,
-  },
-  socialLinks.find((item) => item.id === "gitlab")!,
-  socialLinks.find((item) => item.id === "codeberg")!,
-  socialLinks.find((item) => item.id === "linkedin")!,
-  socialLinks.find((item) => item.id === "x")!,
-  socialLinks.find((item) => item.id === "chess")!,
-  socialLinks.find((item) => item.id === "codersrank")!,
+  githubProfile,
+  profile("gitlab"),
+  profile("codeberg"),
+  profile("linkedin"),
+  profile("x"),
+  profile("chess"),
+  profile("codersrank"),
+];
+
+/** Code forges stay in the Software row. */
+export const softwareProfileLinks: SocialLinkItem[] = [
+  githubProfile,
+  profile("gitlab"),
+  profile("codeberg"),
+  profile("codersrank"),
+];
+
+/** Not code forges. They sit under the hero username. */
+export const heroProfileLinks: SocialLinkItem[] = [
+  profile("linkedin"),
+  profile("x"),
+  profile("chess"),
 ];
