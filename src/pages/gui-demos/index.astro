@@ -22,14 +22,15 @@ import "../../styles/tailwind.css";
     <main class="w-full flex-1 mt-8 mb-12">
       <div class="chrome-width">
         <div class="structural-border border-t-0 p-8 md:p-12 space-y-16">
-        <header class="space-y-4 max-w-3xl">
+        <div class="mx-auto w-full max-w-3xl space-y-16">
+        <header class="space-y-4">
           <h1 class="text-5xl font-heading tracking-tighter">UI/UX</h1>
           <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
             Ref. INTERFACE_PHILOSOPHY · EXPLORATIONS
           </p>
         </header>
 
-        <section class="space-y-6 max-w-3xl">
+        <section class="space-y-6">
           <h2 class="text-xl font-heading font-medium tracking-tight">Philosophy</h2>
           <div
             class="space-y-4 text-base md:text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans"
@@ -62,15 +63,16 @@ import "../../styles/tailwind.css";
 
         <div class="h-px w-24 bg-stone-300 dark:bg-stone-700"></div>
 
-        <section class="w-full px-2 md:px-4 py-4 space-y-8">
-          <div class="space-y-2">
-            <h2 class="text-xl font-heading font-medium tracking-tight">Interactive explorations</h2>
-            <p class="text-sm text-stone-600 dark:text-stone-400 max-w-2xl leading-relaxed">
-              Prototypes and demos for interface ideas that do not belong on the homepage yet — small
-              experiments in explanation, notation, and developer experience.
-            </p>
-          </div>
+        <div class="space-y-2">
+          <h2 class="text-xl font-heading font-medium tracking-tight">Interactive explorations</h2>
+          <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+            Prototypes and demos for interface ideas that do not belong on the homepage yet — small
+            experiments in explanation, notation, and developer experience.
+          </p>
+        </div>
+        </div>
 
+        <section class="w-full px-2 md:px-4 py-4">
           <ul
             class="grid w-full gap-6 justify-center sm:justify-start grid-cols-[repeat(auto-fill,18rem)] list-none p-0 m-0"
             role="list"

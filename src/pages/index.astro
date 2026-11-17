@@ -45,7 +45,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     >
       <SiteHeader items={[{ label: "Home", href: "/" }]} />
       <div class="chrome-width flex flex-1 flex-col justify-end pt-8 lg:pt-10">
-          <div class="max-w-3xl min-w-0 space-y-6">
+          <div class="mx-auto w-full max-w-3xl min-w-0 space-y-6">
             <h1
               class="max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
             >
@@ -73,9 +73,11 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
           <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-300">
             Architecture, Systems, UX
           </p>
-          <p class="home-copy max-w-2xl leading-relaxed">
+          <div class="mx-auto w-full max-w-3xl">
+          <p class="home-copy leading-relaxed">
             Software and systems, built carefully. UX, DevX, ITIL, Architecture, RelyOps, DevOps. More than a software developer: a visionary.
           </p>
+          </div>
         <div class="flex flex-wrap items-center gap-3">
           <a href="/repositories" class={navBtnPrimary}>
             Catalog

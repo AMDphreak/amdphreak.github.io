@@ -15,7 +15,7 @@ const externalLinkClass =
   "text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100";
 
 const JoeArmstrongIntro = () => (
-  <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-sans max-w-3xl mx-auto text-center">
+  <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
     Dr. Joe Armstrong was a computer scientist and physicist, the inventor of Erlang, and a researcher
     at Ericsson Telecom. His TiddlyWiki blog is still online at{" "}
     <a
@@ -99,7 +99,7 @@ const InspirationHeroCard = (props: {
     />
     <div class="absolute inset-0 bg-stone-950/55 dark:bg-stone-950/65" aria-hidden="true" />
     <blockquote class="relative z-10 flex flex-col justify-end min-h-[inherit] p-8 md:p-10">
-      <p class="text-lg md:text-xl font-heading leading-snug text-stone-50 max-w-2xl">
+      <p class="text-lg md:text-xl font-heading leading-snug text-stone-50">
         &ldquo;{props.quote}&rdquo;
       </p>
       <QuoteAttribution
@@ -282,7 +282,7 @@ export const Inspirations = (props: InspirationsProps) => {
           <article class="structural-border p-8 space-y-6">
             <header class="text-center space-y-2">
               <h3 class="text-2xl font-heading tracking-tight">{profile.title}</h3>
-              <p class="text-sm text-stone-600 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed">
+              <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
                 {profile.description}
               </p>
               <Show when={profile.links?.length}>

@@ -53,8 +53,9 @@ const choices = [
     <SiteHeader items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
     <main class="w-full flex-1 mt-8 mb-12">
       <div class="chrome-width">
-        <div class="structural-border border-t-0 p-8 md:p-12 space-y-12">
-        <header class="space-y-4 max-w-3xl">
+        <div class="structural-border border-t-0 p-8 md:p-12">
+        <div class="mx-auto w-full max-w-3xl space-y-12">
+        <header class="space-y-4">
           <h1 class="text-5xl font-heading tracking-tighter">Blog</h1>
           <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
             Essays · notes · ideas
@@ -82,7 +83,7 @@ const choices = [
                       {choice.title}
                     </a>
                   </h2>
-                  <p class="text-sm text-stone-700 dark:text-stone-400 leading-relaxed max-w-2xl">
+                  <p class="text-sm text-stone-700 dark:text-stone-400 leading-relaxed">
                     {choice.description}
                   </p>
                 </div>
@@ -102,6 +103,7 @@ const choices = [
               </div>
             ))
           }
+        </div>
         </div>
         </div>
       </div>

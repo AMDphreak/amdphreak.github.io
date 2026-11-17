@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Reading column**: pages that capped separate blocks with `max-w-3xl` or `max-w-2xl` now put that measure on one centered column (`mx-auto w-full max-w-3xl`) inside the chrome border. Text in that column stays left-aligned. The page border is `width: 100%` and `max-width: 100%` of `chrome-width`, which is already `width: 100%` and `max-width: 80rem`, so the border shrinks with the viewport until it meets the column.
 - **Chrome**: every public page uses one header (breadcrumb and theme switch) and the same `chrome-width` column (`--chrome-max: 80rem`) for the header, the content box, and the footer. The header rule is the only underline (`showHeaderRule`).
 - **Home**: LinkedIn, X, and Chess.com sit under the username. GitHub, GitLab, Codeberg, and CodersRank stay in Software.
 - **Photography**: the bigrpic shot keeps the page's aspect ratio (`width: 100%`, `height: auto`). At the normal desktop layout the column is `13.5rem`, so the frame meets the buttons; zoom and reflow no longer clip the sides. The preview is a Lanczos resize of a full-page capture. Hover zoom is gone.
