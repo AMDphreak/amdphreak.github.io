@@ -195,13 +195,11 @@
    * itself is positioned, and overflow does not clip it, so each wash was a
    * second full-page tile. That stacked the hero as well as the washes.
    * The tile scrolls with the page. Origin: the top center of the body.
-   * A 1px blur takes the hard edge off the specks.
    */
   :root {
     --grain-image: url("/textures/grain-tile-light.png");
     --grain-size: 512px 512px;
     --grain-opacity: 0.44;
-    --grain-blur: 1px;
   }
 
   html.dark {
@@ -226,7 +224,6 @@
     background-size: var(--grain-size);
     background-position: top center;
     background-attachment: scroll;
-    filter: blur(var(--grain-blur));
   }
 
   /* Body copy under the mono subheading. Same small lightness step in both themes. */
