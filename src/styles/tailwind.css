@@ -56,6 +56,8 @@
     --destructive-foreground: 60 9.1% 97.8%;
     --border: 20 5.9% 90%;
     --input: 20 5.9% 90%;
+    /* Header underline only. Same light intensity as the footer stone-200 rule. */
+    --header-rule: oklch(92.3% 0.003 48.717);
     --ring: 20 14.3% 4.1%;
   }
 
@@ -140,6 +142,14 @@
 
   .blueprint-dot {
     @apply w-1.5 h-1.5 bg-stone-400 dark:bg-stone-600 rounded-full;
+  }
+
+  /*
+   * Light header underline. Dark mode keeps dark:border-stone-800/80.
+   * --header-rule matches the footer stone-200 line and is not that token.
+   */
+  html:not(.dark) .header-rule {
+    border-bottom-color: var(--header-rule);
   }
 
   /*

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Chrome**: in light mode the theme switch icon and border are darker, so the control reads as a button. The header rule uses its own light color at the same intensity as the footer divider.
 - **Home**: the hero, Software, and Photography sit in the chrome column, left-aligned, at the same width as the header. The centered reading measure stays on blog, inspirations, and the other reading pages.
 - **Catalog**: project expanders other than Personal Projects are ordered by the newest repository `pushedAt`. Projects with no push date follow the dated ones.
 - **Catalog**: collapsed-row Demos controls use the Software section's secondary button. The on-site Personal Projects link has no arrow; external Demos links use the same link-out mark. Search and filter labels line up with the text inside each field, and a half-rem gap sits between each label and its box. Repositories in each project are ordered by latest push, with the date on the existing row line. The project disclosure arrow sits on the left, before the number, and points at the name.
