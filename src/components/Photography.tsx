@@ -5,26 +5,35 @@ const btnBase =
 const btnPrimary = `${btnBase} structural-border bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200`;
 const btnSecondary = `${btnBase} structural-border bg-background text-foreground hover:bg-stone-100 dark:hover:bg-stone-900`;
 
-const IconCamera = (p: { size?: number; class?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 14} height={p.size || 14} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
-    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-    <circle cx="12" cy="13" r="3" />
-  </svg>
+const iconSquare = "inline-flex h-[18px] w-[18px] shrink-0 items-center justify-center";
+
+const IconBigrpic = () => (
+  <span class={iconSquare} aria-hidden="true">
+    <img
+      src="/photography/bigrpic-icon.svg"
+      alt=""
+      width={18}
+      height={18}
+      class="h-full w-full object-contain object-center dark:invert"
+    />
+  </span>
 );
 
-const IconInstagram = (p: { size?: number; class?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={p.size || 14} height={p.size || 14} viewBox="0 0 24 24" fill="none" stroke="url(#instagram-brand-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class={p.class}>
-    <defs>
-      <linearGradient id="instagram-brand-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#833AB4" />
-        <stop offset="50%" stop-color="#FD1D1D" />
-        <stop offset="100%" stop-color="#F77737" />
-      </linearGradient>
-    </defs>
-    <rect width="16" height="16" x="4" y="4" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-  </svg>
+const IconInstagram = () => (
+  <span class={iconSquare} aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="3.25 3.25 17.5 17.5" fill="none" stroke="url(#instagram-brand-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="xMidYMid meet" class="h-full w-full">
+      <defs>
+        <linearGradient id="instagram-brand-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#833AB4" />
+          <stop offset="50%" stop-color="#FD1D1D" />
+          <stop offset="100%" stop-color="#F77737" />
+        </linearGradient>
+      </defs>
+      <rect width="16" height="16" x="4" y="4" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  </span>
 );
 
 export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolean }) => {
@@ -46,26 +55,17 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
         </div>
 
         <div class="flex-1 min-w-0 space-y-6">
-          <p class="text-xl md:text-2xl font-heading leading-tight text-foreground/90">
-            When I&apos;m not writing code, I&apos;m usually out with a camera.
+          <p class="max-w-2xl text-stone-600 dark:text-stone-400 leading-relaxed">
+            When I&apos;m not writing code, I&apos;m usually out with a camera. The fuller picture: vibe coding and brainstorming ways to improve the software
+            ecosystem fill a lot of hours. When I&apos;m not in that headspace, it&apos;s the
+            camera—or League of Legends. Through{" "}
+            <span class="font-heading text-foreground">
+              bigr picture
+            </span>
+            , I explore a huge range of photographic styles. Most of what I shoot is events,
+            performances, weddings, and portraits of friends and family. Sometimes I do TFP
+            shoots helping models with their portfolios.
           </p>
-
-          <div class="max-w-2xl space-y-4">
-            <p class="text-stone-600 dark:text-stone-400 leading-relaxed">
-              The fuller picture: vibe coding and brainstorming ways to improve the software
-              ecosystem fill a lot of hours. When I&apos;m not in that headspace, it&apos;s the
-              camera—or League of Legends.
-            </p>
-            <p class="text-stone-600 dark:text-stone-400 leading-relaxed">
-              Through{" "}
-              <span class="font-heading text-foreground">
-                bigr picture
-              </span>
-              , I explore a huge range of photographic styles. Most of what I shoot is events,
-              performances, weddings, and portraits of friends and family. Sometimes I do TFP
-              shoots helping models with their portfolios.
-            </p>
-          </div>
 
           <div class="flex flex-wrap gap-4 pt-2">
             <a
@@ -74,7 +74,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
               rel="noopener noreferrer"
               class={btnPrimary}
             >
-              <IconCamera /> bigrpic.com
+              <IconBigrpic /> bigrpic
             </a>
             <a
               href="https://instagram.com/bigrpicture"

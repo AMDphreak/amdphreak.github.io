@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Home**: Software and Photography leads sit in the body paragraph. Photography icons share an 18px square; the bigrpic button uses that site's mark and the label bigrpic.
 - **Home**: Software and Photography subheadings are nouns of the work in each topic (Architecture, Systems, UX; Events, Performances, Weddings, Portraits).
 - **Home**: Software and Photography use the same subheading style and the same lead-and-body paragraph sizes. Each section plate is one base color, with light and dark calculated from it. The hero username lines up with the name. The footer says the redesign was conducted with AI.
 - **Home**: the name sits as far above the Software wash as the Software heading sits below it. Software and Photography meet. GitHub, GitLab, and Codeberg labels are the service names.
