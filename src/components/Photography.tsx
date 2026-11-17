@@ -40,8 +40,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
           <div class="w-full structural-border bg-stone-100 dark:bg-stone-900">
             <img
               src="/photography/bigrpic-home-214.webp"
-              srcset="/photography/bigrpic-home-214.webp 214w, /photography/bigrpic-home-428.webp 428w"
-              sizes="(min-width: 640px) calc(13.5rem - 2px), calc(min(100vw, 80rem) - 3rem)"
+              srcset="/photography/bigrpic-home-214.webp 1x, /photography/bigrpic-home-428.webp 2x, /photography/bigrpic-home.webp 6.729x"
               alt="Screenshot of bigrpic.com — BIGRPICTURE photography site"
               class="block h-auto w-full"
               width={214}
@@ -55,15 +54,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
 
         <div class="flex-1 min-w-0 space-y-6">
           <p class="home-copy leading-relaxed">
-            When I&apos;m not writing code, I&apos;m usually out with a camera. The fuller picture: vibe coding and brainstorming ways to improve the software
-            ecosystem fill a lot of hours. When I&apos;m not in that headspace, it&apos;s the
-            camera—or League of Legends. Through{" "}
-            <span class="font-heading text-foreground">
-              bigr picture
-            </span>
-            , I explore a huge range of photographic styles. Most of what I shoot is events,
-            performances, weddings, and portraits of friends and family. Sometimes I do TFP
-            shoots helping models with their portfolios.
+            Outside of coding, I spend time on photography and video games. I have practiced photography professionally and as an enthusiast since 2009. Through my photography studio, <span class="font-heading text-foreground">bigr picture</span>, I offer a wide range of photographic styles. I shoot events, performances, weddings, and portraits. I provide TFP shoots on occasion to help models with their portfolios.
           </p>
 
           <div class="flex flex-wrap gap-4 pt-2">
