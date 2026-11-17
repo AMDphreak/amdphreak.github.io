@@ -145,6 +145,7 @@ function normalizeGh(repo, owner) {
     owner,
     isPrivate: repo.isPrivate,
     isFork: repo.isFork,
+    pushedAt: repo.pushedAt || undefined,
   };
 }
 
@@ -163,14 +164,22 @@ function normalizeGl(project) {
     owner: gitlabOwner(project),
     isPrivate: project.visibility === "private",
     isFork: Boolean(project.forked_from_project),
+    pushedAt: project.last_activity_at || undefined,
   };
 }
 
+function pushedTime(repo) {
+  const time = repo.pushedAt ? Date.parse(repo.pushedAt) : Number.NaN;
+  return Number.isNaN(time) ? null : time;
+}
+
 function sortRepos(a, b) {
-  const meta = (n) => (n.startsWith(".") ? 1 : 0);
-  const ma = meta(a.name);
-  const mb = meta(b.name);
-  if (ma !== mb) return ma - mb;
+  const ta = pushedTime(a);
+  const tb = pushedTime(b);
+  if (ta === null && tb === null) return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
+  if (ta === null) return 1;
+  if (tb === null) return -1;
+  if (tb !== ta) return tb - ta;
   return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
 }
 
@@ -191,7 +200,7 @@ for (const org of GITHUB_ORGS) {
   let repos = [];
   try {
     repos = ghJson(
-      `repo list ${org} --limit 300 --json name,description,url,isPrivate,isFork`,
+      `repo list ${org} --limit 300 --json name,description,url,isPrivate,isFork,pushedAt`,
     );
   } catch {
     console.warn(`skip github ${org}`);
@@ -233,6 +242,8 @@ export type CatalogRepository = {
   owner: string;
   isPrivate: boolean;
   isFork: boolean;
+  /** Last push (GitHub pushedAt) or GitLab list last_activity_at. Omitted when the host did not send one. */
+  pushedAt?: string;
 };
 
 export type CatalogProjectGroup = {

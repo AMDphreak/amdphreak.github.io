@@ -10,6 +10,8 @@ export type CatalogRepository = {
   owner: string;
   isPrivate: boolean;
   isFork: boolean;
+  /** Last push (GitHub pushedAt) or GitLab list last_activity_at. Omitted when the host did not send one. */
+  pushedAt?: string;
 };
 
 export type CatalogProjectGroup = {
@@ -23,153 +25,11 @@ export type CatalogProjectGroup = {
 
 export const repositoryCatalog: CatalogProjectGroup[] = [
   {
-    "id": "dev-centr",
     "identity": "dev-centr",
+    "id": "dev-centr",
     "title": "Dev-Centr",
     "tagline": "Developer environment configuration, tooling, and documentation.",
     "repositories": [
-      {
-        "name": "agent-rules",
-        "description": "Forkable, harness-neutral agent rules library — user.md, harness.md, machine.md layers; 1-step assembly for local AI coding assistants.",
-        "url": "https://github.com/dev-centr/agent-rules",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "agentic-email-integration",
-        "description": "Own-your-inbox Gmail integration: Himalaya poller + Cursor agents for drafts and CI",
-        "url": "https://github.com/dev-centr/agentic-email-integration",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antigravity-auto-accept-commands",
-        "description": "Cursor extension: status bar toggle to auto-accept Antigravity agent action requests",
-        "url": "https://github.com/dev-centr/antigravity-auto-accept-commands",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora",
-        "url": "https://github.com/dev-centr/antora",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "binary-tailor",
-        "description": "Strip non-target headers from polyglot packs; one download, host-shaped binary",
-        "url": "https://github.com/dev-centr/binary-tailor",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "brand-guardian-license",
-        "description": "Brand Guardian License: source-available family with readable names (branding + prohibited store clones; optional no-compete / no-incorporation). Stewarded by Dev-Centr; not OSI.",
-        "url": "https://github.com/dev-centr/brand-guardian-license",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "business-bootstrap",
-        "description": "Business bootstrap docs: email matrix, DMARC, org infra pattern",
-        "url": "https://github.com/dev-centr/business-bootstrap",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "centrmark",
-        "description": "CentrMark is a new markup language designed to fix the problems with Markdown, MDX, and Asciidoc",
-        "url": "https://github.com/dev-centr/centrmark",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "code-lens",
-        "description": "One code snippet, multiple pedagogical lenses — portable JSON5 spec and <code-lens> web component with framework adapters.",
-        "url": "https://github.com/dev-centr/code-lens",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "configui-binders",
-        "url": "https://github.com/dev-centr/configui-binders",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "content-tags",
-        "description": "Hierarchical content tagging: taxonomy registry, Astro/Solid/React/Next adapters",
-        "url": "https://github.com/dev-centr/content-tags",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "d-emoji",
-        "description": "Named UTF-8 emoji constants for D UI and docs tooling",
-        "url": "https://github.com/dev-centr/d-emoji",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dev-centr.github.io",
-        "description": "Host-root GitHub Pages publisher (robots.txt + index)",
-        "url": "https://github.com/dev-centr/dev-centr.github.io",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "devcentr",
-        "description": "A developer center app for configuring dev machines and managing software projects",
-        "url": "https://github.com/dev-centr/devcentr",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "devcentr-agent-rules",
-        "description": "Rules for Dev-Centr product automation acting on behalf of the user, featuring 1-step assembly.",
-        "url": "https://github.com/dev-centr/devcentr-agent-rules",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "devcentr.app",
-        "description": "Application homepage and marketing site for Dev-Centr",
-        "url": "https://github.com/dev-centr/devcentr.app",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
       {
         "name": "devcentr.org",
         "description": "Organization landing page for Dev-Centr",
@@ -177,311 +37,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "docs",
-        "description": "Dev-Centr documentation hub. Antora site aggregating dev-centr projects.",
-        "url": "https://github.com/dev-centr/docs",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dprint",
-        "description": "Pluggable and configurable code formatting platform written in Rust that unifies all your formatters in one tool.",
-        "url": "https://github.com/dev-centr/dprint",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "dprint-vscode",
-        "description": "Visual Studio Code extension for formatting code with dprint.",
-        "url": "https://github.com/dev-centr/dprint-vscode",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "equivalence-engine",
-        "description": "DAG-based equivalence engine: shortest-path resolution across implementations, tool calls, and custom mappings via SDL rulesets.",
-        "url": "https://github.com/dev-centr/equivalence-engine",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "equivalence-engine-action",
-        "description": "Modular GitHub Action to automate codebase adaptation using the Evolution Engine and custom rulesets.",
-        "url": "https://github.com/dev-centr/equivalence-engine-action",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "equivalence-rules-cli",
-        "description": "Cross-platform CLI tool install profiles for DevCentr (Equivalence Engine cli domain)",
-        "url": "https://github.com/dev-centr/equivalence-rules-cli",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "equivalence-rules-code",
-        "description": "Standard SDL rulesets for adapting Qt 5.x codebases to Qt 6.x with Evolution Engine",
-        "url": "https://github.com/dev-centr/equivalence-rules-code",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "equivalence-rules-filesystem",
-        "description": "Cross-OS filesystem path equivalency rules (Linux, Windows, macOS, BSD) for the Evolution Engine.",
-        "url": "https://github.com/dev-centr/equivalence-rules-filesystem",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "fixnow-dev",
-        "url": "https://github.com/dev-centr/fixnow-dev",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "forge-auth",
-        "description": "OAuth, PAT, and self-hosted forge credentials for D apps",
-        "url": "https://github.com/dev-centr/forge-auth",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "general-knowledge",
-        "description": "General developer knowledge: Diátaxis-organized reference, how-tos, and explanations",
-        "url": "https://github.com/dev-centr/general-knowledge",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "github-actions-editor",
-        "description": "An editor for GitHub Actions",
-        "url": "https://github.com/dev-centr/github-actions-editor",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "harness",
-        "description": "Lightweight D agent harness with persisted actor graphs, Mixr routing, and a local desk UI",
-        "url": "https://github.com/dev-centr/harness",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "hive-watch",
-        "description": "Daily git remote fetch for CODE_ROOT hive; writes machine.md stamp and status JSON for agents",
-        "url": "https://github.com/dev-centr/hive-watch",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "homebrew-tap",
-        "description": "Homebrew tap and Scoop bucket for DevCentr CLIs (Ibex, …)",
-        "url": "https://github.com/dev-centr/homebrew-tap",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "ibex-install-builder",
-        "description": "Cross-platform installer project host with plugins and in-place PATH",
-        "url": "https://github.com/dev-centr/ibex-install-builder",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "infra-template",
-        "description": "Reusable Pulumi + Antora skeleton for org infra repos",
-        "url": "https://github.com/dev-centr/infra-template",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "install-coordinator",
-        "url": "https://github.com/dev-centr/install-coordinator",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "issues-browser",
-        "description": "Forge metadata backup: issues, PRs, discussions into central SQLite. CLI, GUI, daemon, tray.",
-        "url": "https://github.com/dev-centr/issues-browser",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "libequivalence",
-        "description": "D library: rule engine for the Equivalence Engine",
-        "url": "https://github.com/dev-centr/libequivalence",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "macho-memload",
-        "description": "In-memory Mach-O / dyld loader (D BetterC) for polyglot and APE payloads",
-        "url": "https://github.com/dev-centr/macho-memload",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "mermaid-svg-css-vars",
-        "description": "Post-process Mermaid SVG: theme colors to CSS vars with fallbacks + webCompatibility normalization",
-        "url": "https://github.com/dev-centr/mermaid-svg-css-vars",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "msi-generator",
-        "description": "A cross-platform MSI/MSIX generator in D-lang",
-        "url": "https://github.com/dev-centr/msi-generator",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "node",
-        "description": "Node.js JavaScript runtime ✨🐢🚀✨",
-        "url": "https://github.com/dev-centr/node",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "nvm",
-        "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions",
-        "url": "https://github.com/dev-centr/nvm",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "nvm-passthru",
-        "description": "Intelligent drop-in nvm-windows passthrough; per-process Node version routing on Windows",
-        "url": "https://github.com/dev-centr/nvm-passthru",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "nvm-windows",
-        "description": "A node.js version management utility for Windows. Ironically written in Go.",
-        "url": "https://github.com/dev-centr/nvm-windows",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "open-folder-with-cursor",
-        "description": "Install \"Open-with Cursor\" item in right-click menu in File Explorer in Windows",
-        "url": "https://github.com/dev-centr/open-folder-with-cursor",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "opr-directory",
-        "description": "Tentative online Open Provider Registry directory (not in scope) — providers.devcentr.org skeleton; apps poll registered endpoints",
-        "url": "https://github.com/dev-centr/opr-directory",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "org-convo",
-        "description": "GitHub org conversations storage repo",
-        "url": "https://github.com/dev-centr/org-convo",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "packagehub",
-        "description": "Publish packages across registries from one dashboard (npm, PyPI, Crates.io)",
-        "url": "https://github.com/dev-centr/packagehub",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "plan-stack",
-        "description": "Speculative agentic wait queue — ETA-sized plan stacks; consumes wait-hub",
-        "url": "https://github.com/dev-centr/plan-stack",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "plantuml-svg-css-vars",
-        "description": "Post-process PlantUML/Kroki SVG into Themed SVG (adaptive + host) with webCompatibility normalization",
-        "url": "https://github.com/dev-centr/plantuml-svg-css-vars",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "polyglot-debug",
-        "description": "LLDB/GDB chord-scoring patches so APE is not claimed by the first MZ plugin",
-        "url": "https://github.com/dev-centr/polyglot-debug",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-16T22:05:30Z"
       },
       {
         "name": "project-plans",
@@ -490,43 +47,277 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-16T22:05:30Z"
       },
       {
-        "name": "readme-template",
-        "description": "Blank GitHub README layouts (Best-README adapted): linked badges, centered header, role-grouped Built With",
-        "url": "https://github.com/dev-centr/readme-template",
+        "name": "agentic-email-integration",
+        "description": "Own-your-inbox Gmail integration: Himalaya poller + Cursor agents for drafts and CI",
+        "url": "https://github.com/dev-centr/agentic-email-integration",
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:46Z"
       },
       {
-        "name": "repo-drive",
-        "description": "Standalone forge virtual drive: GUI, tray, sparse FUSE/WinFsp mount for GitHub/GitLab repos",
-        "url": "https://github.com/dev-centr/repo-drive",
+        "name": "antigravity-auto-accept-commands",
+        "description": "Cursor extension: status bar toggle to auto-accept Antigravity agent action requests",
+        "url": "https://github.com/dev-centr/antigravity-auto-accept-commands",
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:45Z"
       },
       {
-        "name": "resting-lanczos",
-        "description": "Crisp responsive images: offline Lanczos tiers + srcset + transform scale (no live Lanczos). WebGL mipmaps experimental only.",
-        "url": "https://github.com/dev-centr/resting-lanczos",
+        "name": "github-actions-editor",
+        "description": "An editor for GitHub Actions",
+        "url": "https://github.com/dev-centr/github-actions-editor",
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:45Z"
       },
       {
-        "name": "rules-manager",
-        "description": "Compose and watch agent-rules: D rulesd daemon + Electron tray UI",
-        "url": "https://github.com/dev-centr/rules-manager",
+        "name": "equivalence-engine-action",
+        "description": "Modular GitHub Action to automate codebase adaptation using the Evolution Engine and custom rulesets.",
+        "url": "https://github.com/dev-centr/equivalence-engine-action",
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:44Z"
+      },
+      {
+        "name": "equivalence-rules-cli",
+        "description": "Cross-platform CLI tool install profiles for DevCentr (Equivalence Engine cli domain)",
+        "url": "https://github.com/dev-centr/equivalence-rules-cli",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:44Z"
+      },
+      {
+        "name": "equivalence-rules-code",
+        "description": "Standard SDL rulesets for adapting Qt 5.x codebases to Qt 6.x with Evolution Engine",
+        "url": "https://github.com/dev-centr/equivalence-rules-code",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:43Z"
+      },
+      {
+        "name": "equivalence-rules-filesystem",
+        "description": "Cross-OS filesystem path equivalency rules (Linux, Windows, macOS, BSD) for the Evolution Engine.",
+        "url": "https://github.com/dev-centr/equivalence-rules-filesystem",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:43Z"
+      },
+      {
+        "name": "fixnow-dev",
+        "url": "https://github.com/dev-centr/fixnow-dev",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:43Z"
+      },
+      {
+        "name": "ibex-install-builder",
+        "description": "Cross-platform installer project host with plugins and in-place PATH",
+        "url": "https://github.com/dev-centr/ibex-install-builder",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:43Z"
+      },
+      {
+        "name": "binary-tailor",
+        "description": "Strip non-target headers from polyglot packs; one download, host-shaped binary",
+        "url": "https://github.com/dev-centr/binary-tailor",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:41Z"
+      },
+      {
+        "name": "business-bootstrap",
+        "description": "Business bootstrap docs: email matrix, DMARC, org infra pattern",
+        "url": "https://github.com/dev-centr/business-bootstrap",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:41Z"
+      },
+      {
+        "name": "general-knowledge",
+        "description": "General developer knowledge: Diátaxis-organized reference, how-tos, and explanations",
+        "url": "https://github.com/dev-centr/general-knowledge",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:41Z"
+      },
+      {
+        "name": "infra-template",
+        "description": "Reusable Pulumi + Antora skeleton for org infra repos",
+        "url": "https://github.com/dev-centr/infra-template",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:41Z"
+      },
+      {
+        "name": "issues-browser",
+        "description": "Forge metadata backup: issues, PRs, discussions into central SQLite. CLI, GUI, daemon, tray.",
+        "url": "https://github.com/dev-centr/issues-browser",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:41Z"
+      },
+      {
+        "name": "centrmark",
+        "description": "CentrMark is a new markup language designed to fix the problems with Markdown, MDX, and Asciidoc",
+        "url": "https://github.com/dev-centr/centrmark",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:40Z"
+      },
+      {
+        "name": "agent-bus",
+        "description": "Release-keyed doors for a missing harness feature",
+        "url": "https://github.com/dev-centr/agent-bus",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:39Z"
+      },
+      {
+        "name": "libequivalence",
+        "description": "D library: rule engine for the Equivalence Engine",
+        "url": "https://github.com/dev-centr/libequivalence",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:39Z"
+      },
+      {
+        "name": "macho-memload",
+        "description": "In-memory Mach-O / dyld loader (D BetterC) for polyglot and APE payloads",
+        "url": "https://github.com/dev-centr/macho-memload",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:39Z"
+      },
+      {
+        "name": "mermaid-svg-css-vars",
+        "description": "Post-process Mermaid SVG: theme colors to CSS vars with fallbacks + webCompatibility normalization",
+        "url": "https://github.com/dev-centr/mermaid-svg-css-vars",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:39Z"
+      },
+      {
+        "name": "msi-generator",
+        "description": "A cross-platform MSI/MSIX generator in D-lang",
+        "url": "https://github.com/dev-centr/msi-generator",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:38Z"
+      },
+      {
+        "name": "nvm-passthru",
+        "description": "Intelligent drop-in nvm-windows passthrough; per-process Node version routing on Windows",
+        "url": "https://github.com/dev-centr/nvm-passthru",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:38Z"
+      },
+      {
+        "name": "open-folder-with-cursor",
+        "description": "Install \"Open-with Cursor\" item in right-click menu in File Explorer in Windows",
+        "url": "https://github.com/dev-centr/open-folder-with-cursor",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:37Z"
+      },
+      {
+        "name": "opr-directory",
+        "description": "Tentative online Open Provider Registry directory (not in scope) — providers.devcentr.org skeleton; apps poll registered endpoints",
+        "url": "https://github.com/dev-centr/opr-directory",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:37Z"
+      },
+      {
+        "name": "packagehub",
+        "description": "Publish packages across registries from one dashboard (npm, PyPI, Crates.io)",
+        "url": "https://github.com/dev-centr/packagehub",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:37Z"
+      },
+      {
+        "name": "plantuml-svg-css-vars",
+        "description": "Post-process PlantUML/Kroki SVG into Themed SVG (adaptive + host) with webCompatibility normalization",
+        "url": "https://github.com/dev-centr/plantuml-svg-css-vars",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:36Z"
+      },
+      {
+        "name": "polyglot-debug",
+        "description": "LLDB/GDB chord-scoring patches so APE is not claimed by the first MZ plugin",
+        "url": "https://github.com/dev-centr/polyglot-debug",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:35Z"
+      },
+      {
+        "name": "devcentr",
+        "description": "A developer center app for configuring dev machines and managing software projects",
+        "url": "https://github.com/dev-centr/devcentr",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:34Z"
       },
       {
         "name": "scriptbook",
@@ -535,15 +326,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "stack-advisor",
-        "url": "https://github.com/dev-centr/stack-advisor",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:34Z"
       },
       {
         "name": "switchyard",
@@ -552,16 +336,28 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:34Z"
       },
       {
-        "name": "team-docs",
-        "description": "Member-only Antora site — team SOPs and internal runbooks (sister to docs.devcentr.org)",
-        "url": "https://github.com/dev-centr/team-docs",
+        "name": "devcentr.app",
+        "description": "Application homepage and marketing site for Dev-Centr",
+        "url": "https://github.com/dev-centr/devcentr.app",
         "provider": "github",
         "owner": "dev-centr",
-        "isPrivate": true,
-        "isFork": false
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:33Z"
+      },
+      {
+        "name": "docs",
+        "description": "Dev-Centr documentation hub. Antora site aggregating dev-centr projects.",
+        "url": "https://github.com/dev-centr/docs",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:32Z"
       },
       {
         "name": "templates",
@@ -570,7 +366,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:32Z"
       },
       {
         "name": "themed-svg",
@@ -579,7 +376,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:32Z"
       },
       {
         "name": "themed-svg-studio",
@@ -588,7 +386,27 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:32Z"
+      },
+      {
+        "name": "stack-advisor",
+        "url": "https://github.com/dev-centr/stack-advisor",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:31Z"
+      },
+      {
+        "name": "equivalence-engine",
+        "description": "DAG-based equivalence engine: shortest-path resolution across implementations, tool calls, and custom mappings via SDL rulesets.",
+        "url": "https://github.com/dev-centr/equivalence-engine",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:30Z"
       },
       {
         "name": "toolchain-framework",
@@ -597,16 +415,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "typecascade",
-        "description": "Pick page elements, see typography cascade with strikethrough overrides, edit winners, inject Google/Bunny fonts.",
-        "url": "https://github.com/dev-centr/typecascade",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:30Z"
       },
       {
         "name": "uniconfig",
@@ -615,16 +425,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "uniconfig-core",
-        "description": "Schema-aware config tree for UniConfig Config Panel (codecs, JSON Schema overlay, SDLang profiles).",
-        "url": "https://github.com/dev-centr/uniconfig-core",
-        "provider": "github",
-        "owner": "dev-centr",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:30Z"
       },
       {
         "name": "uniprovider",
@@ -633,16 +435,98 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:30Z"
       },
       {
-        "name": "ver",
-        "description": "Universal version-control interface — library, CLI, and Qt GUI",
-        "url": "https://github.com/dev-centr/ver",
+        "name": "uniconfig-core",
+        "description": "Schema-aware config tree for UniConfig Config Panel (codecs, JSON Schema overlay, SDLang profiles).",
+        "url": "https://github.com/dev-centr/uniconfig-core",
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:29Z"
+      },
+      {
+        "name": "view-check",
+        "description": "Check a view snapshot against a KDL profile ledger",
+        "url": "https://github.com/dev-centr/view-check",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:28Z"
+      },
+      {
+        "name": "readme-template",
+        "description": "Blank GitHub README layouts (Best-README adapted): linked badges, centered header, role-grouped Built With",
+        "url": "https://github.com/dev-centr/readme-template",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T18:48:37Z"
+      },
+      {
+        "name": "agent-rules",
+        "description": "Forkable, harness-neutral agent rules library — user.md, harness.md, machine.md layers; 1-step assembly for local AI coding assistants.",
+        "url": "https://github.com/dev-centr/agent-rules",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T18:48:34Z"
+      },
+      {
+        "name": "coordination",
+        "description": "Shared store for the agentic coordination suite",
+        "url": "https://github.com/dev-centr/coordination",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-13T09:06:51Z"
+      },
+      {
+        "name": "plan-stack",
+        "description": "Speculative agentic wait queue — ETA-sized plan stacks; consumes wait-hub",
+        "url": "https://github.com/dev-centr/plan-stack",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-13T06:03:39Z"
+      },
+      {
+        "name": "routine-timer",
+        "description": "Daemon for a routine ledger. Waits for a harness process, then submits the job through agent-bus.",
+        "url": "https://github.com/dev-centr/routine-timer",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-12T21:18:38Z"
+      },
+      {
+        "name": "context7-submit",
+        "description": "Submit a documentation source to the Context7 index.",
+        "url": "https://github.com/dev-centr/context7-submit",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-12T18:06:41Z"
+      },
+      {
+        "name": "dropin",
+        "description": "Resident engine, CLI, and MCP for driving an app from outside its window",
+        "url": "https://github.com/dev-centr/dropin",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-10T23:24:08Z"
       },
       {
         "name": "wait-hub",
@@ -651,15 +535,87 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-10T22:42:53Z"
       },
       {
-        "name": "workflow-templates-site",
-        "url": "https://github.com/dev-centr/workflow-templates-site",
+        "name": "team-docs",
+        "description": "Member-only Antora site — team SOPs and internal runbooks (sister to docs.devcentr.org)",
+        "url": "https://github.com/dev-centr/team-docs",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-11-08T08:56:20Z"
+      },
+      {
+        "name": "git-ai-provenance",
+        "description": "Read-only parser and public-safe redaction for Git AI attribution notes (refs/notes/ai), in D.",
+        "url": "https://github.com/dev-centr/git-ai-provenance",
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-08T07:26:33Z"
+      },
+      {
+        "name": "harness",
+        "description": "Lightweight D agent harness with persisted actor graphs, Mixr routing, and a local desk UI",
+        "url": "https://github.com/dev-centr/harness",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-08T07:08:33Z"
+      },
+      {
+        "name": "install-coordinator",
+        "url": "https://github.com/dev-centr/install-coordinator",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-07T23:25:57Z"
+      },
+      {
+        "name": "code-lens",
+        "description": "One code snippet, multiple pedagogical lenses — portable JSON5 spec and <code-lens> web component with framework adapters.",
+        "url": "https://github.com/dev-centr/code-lens",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-04T02:47:17Z"
+      },
+      {
+        "name": "envsafe",
+        "description": "Edit .env files safely from scripts and AI agents: values come from pipes, never argv or output.",
+        "url": "https://github.com/dev-centr/envsafe",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-03T08:41:51Z"
+      },
+      {
+        "name": "homebrew-tap",
+        "description": "Homebrew tap and Scoop bucket for DevCentr CLIs (Ibex, …)",
+        "url": "https://github.com/dev-centr/homebrew-tap",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-03T01:58:27Z"
+      },
+      {
+        "name": "visual-app-editor",
+        "description": "Offline desktop visual UI builder for Flutter apps: edits real Dart source, loads any widget toolkit.",
+        "url": "https://github.com/dev-centr/visual-app-editor",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-01T18:40:01Z"
       },
       {
         "name": ".github",
@@ -667,7 +623,48 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-17T08:18:40Z"
+      },
+      {
+        "name": "rules-manager",
+        "description": "Compose and watch agent-rules: D rulesd daemon + Electron tray UI",
+        "url": "https://github.com/dev-centr/rules-manager",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-17T07:59:53Z"
+      },
+      {
+        "name": "repo-drive",
+        "description": "Standalone forge virtual drive: GUI, tray, sparse FUSE/WinFsp mount for GitHub/GitLab repos",
+        "url": "https://github.com/dev-centr/repo-drive",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-17T07:59:50Z"
+      },
+      {
+        "name": "ver",
+        "description": "Universal version-control interface — library, CLI, and Qt GUI",
+        "url": "https://github.com/dev-centr/ver",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-17T07:56:22Z"
+      },
+      {
+        "name": "hive-watch",
+        "description": "Daily git remote fetch for CODE_ROOT hive; writes machine.md stamp and status JSON for agents",
+        "url": "https://github.com/dev-centr/hive-watch",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-07T05:35:00Z"
       },
       {
         "name": ".github-private",
@@ -675,97 +672,184 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dev-centr",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:45Z"
+      },
+      {
+        "name": "antora",
+        "url": "https://github.com/dev-centr/antora",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:40Z"
+      },
+      {
+        "name": "brand-guardian-license",
+        "description": "Brand Guardian License: source-available family with readable names (branding + prohibited store clones; optional no-compete / no-incorporation). Stewarded by Dev-Centr; not OSI.",
+        "url": "https://github.com/dev-centr/brand-guardian-license",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:39Z"
+      },
+      {
+        "name": "content-tags",
+        "description": "Hierarchical content tagging: taxonomy registry, Astro/Solid/React/Next adapters",
+        "url": "https://github.com/dev-centr/content-tags",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:34Z"
+      },
+      {
+        "name": "configui-binders",
+        "url": "https://github.com/dev-centr/configui-binders",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:33Z"
+      },
+      {
+        "name": "d-emoji",
+        "description": "Named UTF-8 emoji constants for D UI and docs tooling",
+        "url": "https://github.com/dev-centr/d-emoji",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:32Z"
+      },
+      {
+        "name": "dev-centr.github.io",
+        "description": "Host-root GitHub Pages publisher (robots.txt + index)",
+        "url": "https://github.com/dev-centr/dev-centr.github.io",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:31Z"
+      },
+      {
+        "name": "devcentr-agent-rules",
+        "description": "Rules for Dev-Centr product automation acting on behalf of the user, featuring 1-step assembly.",
+        "url": "https://github.com/dev-centr/devcentr-agent-rules",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:25Z"
+      },
+      {
+        "name": "forge-auth",
+        "description": "OAuth, PAT, and self-hosted forge credentials for D apps",
+        "url": "https://github.com/dev-centr/forge-auth",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:17Z"
+      },
+      {
+        "name": "org-convo",
+        "description": "GitHub org conversations storage repo",
+        "url": "https://github.com/dev-centr/org-convo",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:47:56Z"
+      },
+      {
+        "name": "resting-lanczos",
+        "description": "Crisp responsive images: offline Lanczos tiers + srcset + transform scale (no live Lanczos). WebGL mipmaps experimental only.",
+        "url": "https://github.com/dev-centr/resting-lanczos",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:47:47Z"
+      },
+      {
+        "name": "typecascade",
+        "description": "Pick page elements, see typography cascade with strikethrough overrides, edit winners, inject Google/Bunny fonts.",
+        "url": "https://github.com/dev-centr/typecascade",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:47:35Z"
+      },
+      {
+        "name": "workflow-templates-site",
+        "url": "https://github.com/dev-centr/workflow-templates-site",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:47:27Z"
+      },
+      {
+        "name": "dprint-vscode",
+        "description": "Visual Studio Code extension for formatting code with dprint.",
+        "url": "https://github.com/dev-centr/dprint-vscode",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-06T00:37:25Z"
+      },
+      {
+        "name": "nvm-windows",
+        "description": "A node.js version management utility for Windows. Ironically written in Go.",
+        "url": "https://github.com/dev-centr/nvm-windows",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-04T02:40:08Z"
+      },
+      {
+        "name": "node",
+        "description": "Node.js JavaScript runtime ✨🐢🚀✨",
+        "url": "https://github.com/dev-centr/node",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-03T23:14:27Z"
+      },
+      {
+        "name": "dprint",
+        "description": "Pluggable and configurable code formatting platform written in Rust that unifies all your formatters in one tool.",
+        "url": "https://github.com/dev-centr/dprint",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-03T20:53:24Z"
+      },
+      {
+        "name": "nvm",
+        "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions",
+        "url": "https://github.com/dev-centr/nvm",
+        "provider": "github",
+        "owner": "dev-centr",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-20T05:44:06Z"
       }
     ]
   },
   {
-    "id": "FoodTruckNerdz",
     "identity": "FoodTruckNerdz",
+    "id": "FoodTruckNerdz",
     "title": "Food Truck Nerdz",
     "tagline": "Food truck discovery platform — web, mobile, and API.",
     "repositories": [
-      {
-        "name": "agent-rules",
-        "description": "Org wrapper for shared agent-rules template",
-        "url": "https://github.com/FoodTruckNerdz/agent-rules",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "developer-portal",
-        "description": "3rd party Developer portal",
-        "url": "https://github.com/FoodTruckNerdz/developer-portal",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "docs",
-        "description": "FTN team's internal documentation",
-        "url": "https://github.com/FoodTruckNerdz/docs",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "food-truck-api",
-        "description": "Food Truck Zuplo API Gateway",
-        "url": "https://github.com/FoodTruckNerdz/food-truck-api",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "ftn-app",
-        "description": "Food Truck Nerdz Flutter mobile client",
-        "url": "https://github.com/FoodTruckNerdz/ftn-app",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "ftn-site",
-        "description": "Food Truck Nerdz Next.js Web App",
-        "url": "https://github.com/FoodTruckNerdz/ftn-site",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": true,
-        "isFork": true
-      },
-      {
-        "name": "ftn-site-old",
-        "description": "(old site) HackaThon 03/07/2025",
-        "url": "https://github.com/FoodTruckNerdz/ftn-site-old",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "gitignore-templates",
-        "description": "A collection of useful .gitignore templates",
-        "url": "https://github.com/FoodTruckNerdz/gitignore-templates",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "help",
-        "description": "The Help site and help docs for users",
-        "url": "https://github.com/FoodTruckNerdz/help",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
       {
         "name": "infra",
         "description": "Org-level Pulumi infrastructure (Cloudflare DNS, email deliverability)",
@@ -773,16 +857,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "FoodTruckNerdz",
         "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "onboarding",
-        "description": "Onboarding documentation and Setup GUI to bootstrap dev environment",
-        "url": "https://github.com/FoodTruckNerdz/onboarding",
-        "provider": "github",
-        "owner": "FoodTruckNerdz",
-        "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:49Z"
       },
       {
         "name": "project-plans",
@@ -791,16 +867,28 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "FoodTruckNerdz",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:49Z"
       },
       {
-        "name": "roadmap",
-        "description": "Roadmap site for the public",
-        "url": "https://github.com/FoodTruckNerdz/roadmap",
+        "name": "agent-rules",
+        "description": "Org wrapper for shared agent-rules template",
+        "url": "https://github.com/FoodTruckNerdz/agent-rules",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-27T00:00:50Z"
+      },
+      {
+        "name": "ftn-site",
+        "description": "Food Truck Nerdz Next.js Web App",
+        "url": "https://github.com/FoodTruckNerdz/ftn-site",
         "provider": "github",
         "owner": "FoodTruckNerdz",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-25T01:33:32Z"
       },
       {
         "name": "team-docs",
@@ -809,25 +897,78 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "FoodTruckNerdz",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-25T01:28:56Z"
       },
       {
-        "name": "template",
-        "description": "Copy this repository when creating a new repo in FTN",
-        "url": "https://github.com/FoodTruckNerdz/template",
+        "name": "onboarding",
+        "description": "Onboarding documentation and Setup GUI to bootstrap dev environment",
+        "url": "https://github.com/FoodTruckNerdz/onboarding",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-24T02:46:00Z"
+      },
+      {
+        "name": "roadmap",
+        "description": "Roadmap site for the public",
+        "url": "https://github.com/FoodTruckNerdz/roadmap",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-24T02:45:51Z"
+      },
+      {
+        "name": "food-truck-api",
+        "description": "Food Truck Zuplo API Gateway",
+        "url": "https://github.com/FoodTruckNerdz/food-truck-api",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-24T01:44:59Z"
+      },
+      {
+        "name": "docs",
+        "description": "FTN team's internal documentation",
+        "url": "https://github.com/FoodTruckNerdz/docs",
         "provider": "github",
         "owner": "FoodTruckNerdz",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-24T00:57:18Z"
       },
       {
-        "name": ".github",
-        "description": "Public github profile for FTN",
-        "url": "https://github.com/FoodTruckNerdz/.github",
+        "name": "developer-portal",
+        "description": "3rd party Developer portal",
+        "url": "https://github.com/FoodTruckNerdz/developer-portal",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-23T23:26:39Z"
+      },
+      {
+        "name": "help",
+        "description": "The Help site and help docs for users",
+        "url": "https://github.com/FoodTruckNerdz/help",
         "provider": "github",
         "owner": "FoodTruckNerdz",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-23T23:26:24Z"
+      },
+      {
+        "name": "ftn-app",
+        "description": "Food Truck Nerdz Flutter mobile client",
+        "url": "https://github.com/FoodTruckNerdz/ftn-app",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-23T22:54:54Z"
       },
       {
         "name": ".github-private",
@@ -836,43 +977,57 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "FoodTruckNerdz",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-23T22:31:12Z"
+      },
+      {
+        "name": ".github",
+        "description": "Public github profile for FTN",
+        "url": "https://github.com/FoodTruckNerdz/.github",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-23T22:31:09Z"
+      },
+      {
+        "name": "template",
+        "description": "Copy this repository when creating a new repo in FTN",
+        "url": "https://github.com/FoodTruckNerdz/template",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-23T22:31:05Z"
+      },
+      {
+        "name": "ftn-site-old",
+        "description": "(old site) HackaThon 03/07/2025",
+        "url": "https://github.com/FoodTruckNerdz/ftn-site-old",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-23T22:30:55Z"
+      },
+      {
+        "name": "gitignore-templates",
+        "description": "A collection of useful .gitignore templates",
+        "url": "https://github.com/FoodTruckNerdz/gitignore-templates",
+        "provider": "github",
+        "owner": "FoodTruckNerdz",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-09-10T18:42:03Z"
       }
     ]
   },
   {
-    "id": "HCI-Nerdz",
     "identity": "HCI-Nerdz",
+    "id": "HCI-Nerdz",
     "title": "HCI Nerdz",
     "tagline": "HCI and UI/UX innovation — honest surfaces, lower cognitive tax.",
     "repositories": [
-      {
-        "name": "agent-rules",
-        "description": "Org wrapper for shared agent-rules template",
-        "url": "https://github.com/HCI-Nerdz/agent-rules",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "audio-lexicon",
-        "description": "Pro-audio filter & processing literacy UI — shared catalog with multi-toolkit adapters",
-        "url": "https://github.com/HCI-Nerdz/audio-lexicon",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "context-edge",
-        "description": "Context Edge — edge-summoned ecosystem navigation demos (Astro islands: Solid, React, Svelte, vanilla)",
-        "url": "https://github.com/HCI-Nerdz/context-edge",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
       {
         "name": "docs",
         "description": "HCI Nerdz documentation hub (Antora + Valentus)",
@@ -880,79 +1035,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "HCI-Nerdz",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "electron-custom-dialog",
-        "description": "Custom dialog windows for Electron apps — HTML/CSS dialog surfaces instead of native OS prompts.",
-        "url": "https://github.com/HCI-Nerdz/electron-custom-dialog",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "HCI-Nerdz.github.io",
-        "description": "HCI Nerdz GitHub Pages site (Astro)",
-        "url": "https://github.com/HCI-Nerdz/HCI-Nerdz.github.io",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "pass-through-extensions",
-        "description": "Windows helper: peel .example/.template meta-suffixes and open as the inner file type",
-        "url": "https://github.com/HCI-Nerdz/pass-through-extensions",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "pipeline-composer",
-        "description": "Typed pipeline composer / processing-map UI for sequence-first control planes",
-        "url": "https://github.com/HCI-Nerdz/pipeline-composer",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "plan-stack",
-        "description": "HCI demo: speculative agentic wait queue (plan-stack)",
-        "url": "https://github.com/HCI-Nerdz/plan-stack",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "project-plans",
-        "description": "Private Cursor/business plan seeds",
-        "url": "https://github.com/HCI-Nerdz/project-plans",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "shell-context-demo",
-        "description": "Web mockup of shell context chrome (tokens, left-arrow focus, paste preview, themes).",
-        "url": "https://github.com/HCI-Nerdz/shell-context-demo",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "virtual-pages",
-        "description": "Decision-backbone UX: virtual page layers + soft/hard route blend for deep subtrees",
-        "url": "https://github.com/HCI-Nerdz/virtual-pages",
-        "provider": "github",
-        "owner": "HCI-Nerdz",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:51Z"
       },
       {
         "name": ".github",
@@ -961,70 +1045,137 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "HCI-Nerdz",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:48Z"
+      },
+      {
+        "name": "context-edge",
+        "description": "Context Edge — edge-summoned ecosystem navigation demos (Astro islands: Solid, React, Svelte, vanilla)",
+        "url": "https://github.com/HCI-Nerdz/context-edge",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:48Z"
+      },
+      {
+        "name": "audio-lexicon",
+        "description": "Pro-audio filter & processing literacy UI — shared catalog with multi-toolkit adapters",
+        "url": "https://github.com/HCI-Nerdz/audio-lexicon",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:47Z"
+      },
+      {
+        "name": "conversation-canvas",
+        "description": "Spatial canvas for agent conversations: preview cards, inbox statuses, archive bin, and file-to-chat links.",
+        "url": "https://github.com/HCI-Nerdz/conversation-canvas",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:47Z"
+      },
+      {
+        "name": "pass-through-extensions",
+        "description": "Windows helper: peel .example/.template meta-suffixes and open as the inner file type",
+        "url": "https://github.com/HCI-Nerdz/pass-through-extensions",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:44Z"
+      },
+      {
+        "name": "pipeline-composer",
+        "description": "Typed pipeline composer / processing-map UI for sequence-first control planes",
+        "url": "https://github.com/HCI-Nerdz/pipeline-composer",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:42Z"
+      },
+      {
+        "name": "HCI-Nerdz.github.io",
+        "description": "HCI Nerdz GitHub Pages site (Astro)",
+        "url": "https://github.com/HCI-Nerdz/HCI-Nerdz.github.io",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-27T23:54:42Z"
+      },
+      {
+        "name": "agent-rules",
+        "description": "Org wrapper for shared agent-rules template",
+        "url": "https://github.com/HCI-Nerdz/agent-rules",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:52:42Z"
+      },
+      {
+        "name": "electron-custom-dialog",
+        "description": "Custom dialog windows for Electron apps — HTML/CSS dialog surfaces instead of native OS prompts.",
+        "url": "https://github.com/HCI-Nerdz/electron-custom-dialog",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:52:36Z"
+      },
+      {
+        "name": "plan-stack",
+        "description": "HCI demo: speculative agentic wait queue (plan-stack)",
+        "url": "https://github.com/HCI-Nerdz/plan-stack",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:13Z"
+      },
+      {
+        "name": "project-plans",
+        "description": "Private Cursor/business plan seeds",
+        "url": "https://github.com/HCI-Nerdz/project-plans",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:12Z"
+      },
+      {
+        "name": "virtual-pages",
+        "description": "Decision-backbone UX: virtual page layers + soft/hard route blend for deep subtrees",
+        "url": "https://github.com/HCI-Nerdz/virtual-pages",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:10Z"
+      },
+      {
+        "name": "shell-context-demo",
+        "description": "Web mockup of shell context chrome (tokens, left-arrow focus, paste preview, themes).",
+        "url": "https://github.com/HCI-Nerdz/shell-context-demo",
+        "provider": "github",
+        "owner": "HCI-Nerdz",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:09Z"
       }
     ]
   },
   {
-    "id": "antora-supplemental",
     "identity": "antora-supplemental",
+    "id": "antora-supplemental",
     "title": "Antora Supplemental",
     "tagline": "Themes, workflows, and extensions for Antora documentation sites.",
     "repositories": [
-      {
-        "name": "agent-rules",
-        "description": "Org wrapper for shared agent-rules template",
-        "url": "https://github.com/antora-supplemental/agent-rules",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-ai-help-extension",
-        "description": "Antora extension + supplemental UI: in-page AI help, vector search, and cached Q&A for docs gaps",
-        "url": "https://github.com/antora-supplemental/antora-ai-help-extension",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-build-action",
-        "description": "GitHub Action to build Antora documentation sites with support for private repos, multi-repo aggregation, and extensions; pair with upload-pages-artifact and deploy-pages for GitHub Pages.",
-        "url": "https://github.com/antora-supplemental/antora-build-action",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-dark-mode",
-        "description": "Dark mode supplemental UI for Antora Default UI — toggle, FOUC prevention, and CSS overrides.",
-        "url": "https://github.com/antora-supplemental/antora-dark-mode",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-demo",
-        "description": "Barebones Antora site demonstrating AsciiDoc features. Samples and templates.",
-        "url": "https://github.com/antora-supplemental/antora-demo",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-diagram-engines",
-        "description": "Monorepo: selectable Antora/Asciidoctor diagram extensions (Mermaid CDN client, diagram-zoom, bundle)",
-        "url": "https://github.com/antora-supplemental/antora-diagram-engines",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
       {
         "name": "antora-extensions-registry",
         "description": "Antora ecosystem registry — extensions, themes, UI modules (registry.antora-supplemental.org)",
@@ -1032,25 +1183,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-github-deploy-template",
-        "description": "Template: Antora docs build + GitHub Pages deploy workflow (playbook, docs.yml, private-repo PAT support)",
-        "url": "https://github.com/antora-supplemental/antora-github-deploy-template",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-incremental",
-        "description": "Antora dependency manifest, dirty-set CLI, and optional partial reconvert for faster incremental rebuilds",
-        "url": "https://github.com/antora-supplemental/antora-incremental",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-16T22:05:31Z"
       },
       {
         "name": "antora-live",
@@ -1059,25 +1193,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-search-chat",
-        "description": "Antora extension: lunr-first Search/Ask omnibox (wraps @antora/lunr-extension; optional Ask backends)",
-        "url": "https://github.com/antora-supplemental/antora-search-chat",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-serve",
-        "description": "Local Antora generate+serve+watch with live reload (standalone; not a core fork)",
-        "url": "https://github.com/antora-supplemental/antora-serve",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:29Z"
       },
       {
         "name": "antora-supplemental.github.io",
@@ -1086,61 +1203,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-themes-site",
-        "description": "ARCHIVED — theme gallery moved to antora-extensions-registry (/themes)",
-        "url": "https://github.com/antora-supplemental/antora-themes-site",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-ui-chassis",
-        "description": "Unthemed Antora UI region contracts (chassis): content-viewport, color-scheme hooks. Consumed by Valentus / Default UI peers.",
-        "url": "https://github.com/antora-supplemental/antora-ui-chassis",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-unversioned-component-urls",
-        "description": "Antora extension: bare /component/ URL as version selector (default) or alias to latest (urls.unversioned stopgap)",
-        "url": "https://github.com/antora-supplemental/antora-unversioned-component-urls",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-workflow-templates",
-        "description": "Starter workflow templates for building Antora documentation with GitHub Actions - DIY and reusable action versions with cross-linked explanations",
-        "url": "https://github.com/antora-supplemental/antora-workflow-templates",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "architexture-theme",
-        "description": "Bespoke architectural theme for Antora documentation",
-        "url": "https://github.com/antora-supplemental/architexture-theme",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "asciidoc-interactive",
-        "description": "Asciidoctor/Antora extension: interactive instruction flows (JSON5)",
-        "url": "https://github.com/antora-supplemental/asciidoc-interactive",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:28Z"
       },
       {
         "name": "asciidoc-link-validator",
@@ -1149,124 +1213,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "asciidocdead",
-        "description": "Free WYSIWYG AsciiDoc editor",
-        "url": "https://github.com/antora-supplemental/asciidocdead",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "asciidoctor",
-        "description": ":gem: A fast, open source text processor and publishing toolchain, written in Ruby, for converting AsciiDoc content to HTML 5, DocBook 5, and other formats.",
-        "url": "https://github.com/antora-supplemental/asciidoctor",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "asciidoctor-kroki",
-        "description": "Asciidoctor.js extension to convert diagrams to images using Kroki!",
-        "url": "https://github.com/antora-supplemental/asciidoctor-kroki",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "asciidoctor-opal-node-runtime",
-        "description": "⚡️ Opal Runtime specifically designed for Asciidoctor",
-        "url": "https://github.com/antora-supplemental/asciidoctor-opal-node-runtime",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "asciidoctor-vscode",
-        "description": "AsciiDoc support for Visual Studio Code using Asciidoctor",
-        "url": "https://github.com/antora-supplemental/asciidoctor-vscode",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "asciidoctor.js",
-        "description": ":scroll: A JavaScript port of Asciidoctor, a modern implementation of AsciiDoc",
-        "url": "https://github.com/antora-supplemental/asciidoctor.js",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "build-stack",
-        "description": "Antora extension: publish playbook extension stacks to site.keys for footer attribution",
-        "url": "https://github.com/antora-supplemental/build-stack",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "deep-link-contracts",
-        "description": "CLI + config schema: marketing URL to docs path co-variance tests (NOT general link crawl)",
-        "url": "https://github.com/antora-supplemental/deep-link-contracts",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "docs",
-        "description": "Documentation hub for antora-supplemental projects. Antora site with antora-dark-theme.",
-        "url": "https://github.com/antora-supplemental/docs",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dprint-plugin-asciidoc",
-        "description": "dprint plugin for AsciiDoc. Format .adoc files with dprint (WASM, npm).",
-        "url": "https://github.com/antora-supplemental/dprint-plugin-asciidoc",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "extension-lister",
-        "description": "Antora extension: list installed supplemental extensions by purpose / chassis layer",
-        "url": "https://github.com/antora-supplemental/extension-lister",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "facto-stack",
-        "description": "Facto Antora compose pack: Valentus + recommended essentials (Kroki, Lunr, stem); Valentus stays lean",
-        "url": "https://github.com/antora-supplemental/facto-stack",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "jsqu4re_antora_build_fork",
-        "description": "A github action to build a antora site",
-        "url": "https://github.com/antora-supplemental/jsqu4re_antora_build_fork",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:28Z"
       },
       {
         "name": "link-validator",
@@ -1275,113 +1223,38 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:27Z"
       },
       {
-        "name": "linkinator",
-        "description": "Link-inator: click-time outbound link validity hints + archive.org/Wayback button (Antora UI bolt-on)",
-        "url": "https://github.com/antora-supplemental/linkinator",
+        "name": "private-docs-login",
+        "description": "OpenID Connect issuer for private documentation. One GitHub App and a GitLab group opt-in.",
+        "url": "https://github.com/antora-supplemental/private-docs-login",
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T18:48:38Z"
       },
       {
-        "name": "nav-drift",
-        "description": "CLI: compare nav.adoc / site-nav against published pages; report orphans and missing-from-nav",
-        "url": "https://github.com/antora-supplemental/nav-drift",
+        "name": "docs",
+        "description": "Documentation hub for antora-supplemental projects. Antora site with antora-dark-theme.",
+        "url": "https://github.com/antora-supplemental/docs",
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-14T03:59:43Z"
       },
       {
-        "name": "nav-typology",
-        "url": "https://github.com/antora-supplemental/nav-typology",
+        "name": "extension-lister",
+        "description": "Antora extension: list installed supplemental extensions by purpose / chassis layer",
+        "url": "https://github.com/antora-supplemental/extension-lister",
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "nav-typology-diataxis",
-        "url": "https://github.com/antora-supplemental/nav-typology-diataxis",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "orphan-finder",
-        "description": "CLI (+ optional Antora extension): find unresolved include:: and attribute refs + unused; JSON + triage HTML",
-        "url": "https://github.com/antora-supplemental/orphan-finder",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "page-context",
-        "description": "Asciidoctor/Antora extension: render page audience, usage context, and author credits from page-* attributes",
-        "url": "https://github.com/antora-supplemental/page-context",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "page-edit",
-        "description": "Antora extension: bake Edit + VCS provider mark into page-context lead",
-        "url": "https://github.com/antora-supplemental/page-edit",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "playbook-pin-auditor",
-        "description": "CLI: audit package.json + playbook extension pins for floating #main / missing refs; prefer #vX.Y.Z",
-        "url": "https://github.com/antora-supplemental/playbook-pin-auditor",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "project-plans",
-        "description": "Private Cursor/business plan seeds",
-        "url": "https://github.com/antora-supplemental/project-plans",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "site-nav-tree",
-        "description": "Antora extension: fold all components into the sidebar nav tree without replacing default nav-tree behavior",
-        "url": "https://github.com/antora-supplemental/site-nav-tree",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "stale-page",
-        "description": "CLI: pages past page-last-edited / git age threshold; optional --fail",
-        "url": "https://github.com/antora-supplemental/stale-page",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "triage-ux-kit",
-        "description": "Shared triage UX kit: groupings, mailto+Copy, CI trigger+poll, sticky-issue helpers",
-        "url": "https://github.com/antora-supplemental/triage-ux-kit",
-        "provider": "github",
-        "owner": "antora-supplemental",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-13T23:17:48Z"
       },
       {
         "name": "valentus-theme",
@@ -1390,16 +1263,382 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-13T23:17:48Z"
       },
       {
-        "name": "zed-asciidoc",
-        "description": "Zed support for AsciiDoc syntax",
-        "url": "https://github.com/antora-supplemental/zed-asciidoc",
+        "name": "facto-stack",
+        "description": "Facto Antora compose pack: the Valentus theme plus Lunr search with an Ask omnibox, Kroki and Mermaid diagrams with a lightbox, STEM math, page-context keywords, and diagnostics (link validation, orphan, stale-page and nav-drift checks) (and 20 more features)",
+        "url": "https://github.com/antora-supplemental/facto-stack",
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-08T08:27:45Z"
+      },
+      {
+        "name": "antora-ui-chassis",
+        "description": "Unthemed Antora UI region contracts (chassis): content-viewport, color-scheme hooks. Consumed by Valentus / Default UI peers.",
+        "url": "https://github.com/antora-supplemental/antora-ui-chassis",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-08T08:21:31Z"
+      },
+      {
+        "name": "page-context",
+        "description": "Asciidoctor/Antora extension: render page audience, usage context, and author credits from page-* attributes",
+        "url": "https://github.com/antora-supplemental/page-context",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-08T07:26:27Z"
+      },
+      {
+        "name": "asciidoc-interactive",
+        "description": "Asciidoctor/Antora extension: interactive instruction flows (JSON5)",
+        "url": "https://github.com/antora-supplemental/asciidoc-interactive",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-28T05:59:56Z"
+      },
+      {
+        "name": "antora-search-chat",
+        "description": "Antora extension: lunr-first Search/Ask omnibox (wraps @antora/lunr-extension; optional Ask backends)",
+        "url": "https://github.com/antora-supplemental/antora-search-chat",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-27T21:53:53Z"
+      },
+      {
+        "name": "antora-diagram-engines",
+        "description": "Monorepo: selectable Antora/Asciidoctor diagram extensions (Mermaid CDN client, diagram-zoom, bundle)",
+        "url": "https://github.com/antora-supplemental/antora-diagram-engines",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-27T00:17:12Z"
+      },
+      {
+        "name": "antorareg",
+        "description": "Standalone CLI for the Antora Extensions Registry: install, update, list, verify and eject Antora 3 extensions and UI bundles by editing the playbook in place",
+        "url": "https://github.com/antora-supplemental/antorareg",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-27T00:04:20Z"
+      },
+      {
+        "name": "skittles-theme",
+        "description": "Antora theme with light and dark schemes for each Skittles color plus a Grape Soda scheme",
+        "url": "https://github.com/antora-supplemental/skittles-theme",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-26T19:39:06Z"
+      },
+      {
+        "name": "antora-ui-default",
+        "description": "Antora Default UI with a light/dark mode toggle (fork of antora/antora-ui-default)",
+        "url": "https://gitlab.com/AMDphreak/antora-ui-default",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-26T06:03:35.347Z"
+      },
+      {
+        "name": "antora-dark-mode",
+        "description": "Dark mode supplemental UI for Antora Default UI — toggle, FOUC prevention, and CSS overrides.",
+        "url": "https://github.com/antora-supplemental/antora-dark-mode",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-26T05:21:27Z"
+      },
+      {
+        "name": "antora-solidstart",
+        "description": "SolidStart reader shell for Pattern C manifest-driven docs",
+        "url": "https://github.com/antora-supplemental/antora-solidstart",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-26T00:53:22Z"
+      },
+      {
+        "name": "related-docs",
+        "description": "Antora extension: link every page to an org's other docs sites via a generated registry page; explicit sites: none opt-out",
+        "url": "https://github.com/antora-supplemental/related-docs",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-25T09:35:33Z"
+      },
+      {
+        "name": "architexture-theme",
+        "description": "Bespoke architectural theme for Antora documentation",
+        "url": "https://github.com/antora-supplemental/architexture-theme",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-25T00:00:10Z"
+      },
+      {
+        "name": "antora-glossary",
+        "description": "Build-time Antora glossary: term pages, letter index, whole-word highlights, and cross-site term sharing",
+        "url": "https://github.com/antora-supplemental/antora-glossary",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-24T08:49:10Z"
+      },
+      {
+        "name": "link-registry",
+        "description": "Named link registry for AsciiDoc/Antora: register each external URL once as a {url-...} attribute; CI rejects literal copies.",
+        "url": "https://github.com/antora-supplemental/link-registry",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-24T00:43:42Z"
+      },
+      {
+        "name": "soft-nav-page-toc",
+        "url": "https://github.com/antora-supplemental/soft-nav-page-toc",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T06:54:10Z"
+      },
+      {
+        "name": "article-zones",
+        "url": "https://github.com/antora-supplemental/article-zones",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T06:54:07Z"
+      },
+      {
+        "name": "page-edit",
+        "description": "Antora extension: bake Edit + VCS provider mark into page-context lead",
+        "url": "https://github.com/antora-supplemental/page-edit",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T06:36:46Z"
+      },
+      {
+        "name": "site-nav-tree",
+        "description": "Antora extension: fold all components into the sidebar nav tree without replacing default nav-tree behavior",
+        "url": "https://github.com/antora-supplemental/site-nav-tree",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T06:22:23Z"
+      },
+      {
+        "name": "linkinator",
+        "description": "Link-inator: click-time outbound link validity hints + archive.org/Wayback button (Antora UI bolt-on)",
+        "url": "https://github.com/antora-supplemental/linkinator",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T06:14:47Z"
+      },
+      {
+        "name": "nav-typology",
+        "url": "https://github.com/antora-supplemental/nav-typology",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T05:23:15Z"
+      },
+      {
+        "name": "agent-rules",
+        "description": "Org wrapper for shared agent-rules template",
+        "url": "https://github.com/antora-supplemental/agent-rules",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T04:30:21Z"
+      },
+      {
+        "name": "antora-workflow-templates",
+        "description": "Starter workflow templates for building Antora documentation with GitHub Actions - DIY and reusable action versions with cross-linked explanations",
+        "url": "https://github.com/antora-supplemental/antora-workflow-templates",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:37:16Z"
+      },
+      {
+        "name": "stale-page",
+        "description": "CLI: pages past page-last-edited / git age threshold; optional --fail",
+        "url": "https://github.com/antora-supplemental/stale-page",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:37:13Z"
+      },
+      {
+        "name": "playbook-pin-auditor",
+        "description": "CLI: audit package.json + playbook extension pins for floating #main / missing refs; prefer #vX.Y.Z",
+        "url": "https://github.com/antora-supplemental/playbook-pin-auditor",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:37:10Z"
+      },
+      {
+        "name": "nav-drift",
+        "description": "CLI: compare nav.adoc / site-nav against published pages; report orphans and missing-from-nav",
+        "url": "https://github.com/antora-supplemental/nav-drift",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:37:07Z"
+      },
+      {
+        "name": "deep-link-contracts",
+        "description": "CLI + config schema: marketing URL to docs path co-variance tests (NOT general link crawl)",
+        "url": "https://github.com/antora-supplemental/deep-link-contracts",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:37:04Z"
+      },
+      {
+        "name": "triage-ux-kit",
+        "description": "Shared triage UX kit: groupings, mailto+Copy, CI trigger+poll, sticky-issue helpers",
+        "url": "https://github.com/antora-supplemental/triage-ux-kit",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:36:57Z"
+      },
+      {
+        "name": "orphan-finder",
+        "description": "CLI (+ optional Antora extension): find unresolved include:: and attribute refs + unused; JSON + triage HTML",
+        "url": "https://github.com/antora-supplemental/orphan-finder",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:36:40Z"
+      },
+      {
+        "name": "nav-typology-diataxis",
+        "url": "https://github.com/antora-supplemental/nav-typology-diataxis",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:36:37Z"
+      },
+      {
+        "name": "build-stack",
+        "description": "Antora extension: publish playbook extension stacks to site.keys for footer attribution",
+        "url": "https://github.com/antora-supplemental/build-stack",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:36:17Z"
+      },
+      {
+        "name": "asciidoctor-emoji-literals",
+        "url": "https://github.com/antora-supplemental/asciidoctor-emoji-literals",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:36:14Z"
+      },
+      {
+        "name": "antora-unversioned-component-urls",
+        "description": "Antora extension: bare /component/ URL as version selector (default) or alias to latest (urls.unversioned stopgap)",
+        "url": "https://github.com/antora-supplemental/antora-unversioned-component-urls",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:36:04Z"
+      },
+      {
+        "name": "antora-incremental",
+        "description": "Antora dependency manifest, dirty-set CLI, and optional partial reconvert for faster incremental rebuilds",
+        "url": "https://github.com/antora-supplemental/antora-incremental",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:35:52Z"
+      },
+      {
+        "name": "antora-ai-help-extension",
+        "description": "Antora extension + supplemental UI: in-page AI help, vector search, and cached Q&A for docs gaps",
+        "url": "https://github.com/antora-supplemental/antora-ai-help-extension",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-21T01:35:41Z"
+      },
+      {
+        "name": "antora-local-content-sources",
+        "url": "https://github.com/antora-supplemental/antora-local-content-sources",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-20T06:24:36Z"
+      },
+      {
+        "name": "dprint-plugin-asciidoc",
+        "description": "dprint plugin for AsciiDoc. Format .adoc files with dprint (WASM, npm).",
+        "url": "https://github.com/antora-supplemental/dprint-plugin-asciidoc",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-20T03:39:15Z"
+      },
+      {
+        "name": "antora-source-resolver",
+        "description": "D CLI: find Antora content clones by marker files",
+        "url": "https://github.com/antora-supplemental/antora-source-resolver",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-20T03:22:32Z"
       },
       {
         "name": ".github",
@@ -1408,7 +1647,27 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-17T08:18:35Z"
+      },
+      {
+        "name": "demo-data",
+        "url": "https://github.com/antora-supplemental/demo-data",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-17T07:10:51Z"
+      },
+      {
+        "name": "antora-serve",
+        "description": "Local Antora generate+serve+watch with live reload (standalone; not a core fork)",
+        "url": "https://github.com/antora-supplemental/antora-serve",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:54:08Z"
       },
       {
         "name": ".github-private",
@@ -1417,43 +1676,157 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "antora-supplemental",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:50:24Z"
+      },
+      {
+        "name": "antora-demo",
+        "description": "Barebones Antora site demonstrating AsciiDoc features. Samples and templates.",
+        "url": "https://github.com/antora-supplemental/antora-demo",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:50:20Z"
+      },
+      {
+        "name": "antora-github-deploy-template",
+        "description": "Template: Antora docs build + GitHub Pages deploy workflow (playbook, docs.yml, private-repo PAT support)",
+        "url": "https://github.com/antora-supplemental/antora-github-deploy-template",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:50:13Z"
+      },
+      {
+        "name": "project-plans",
+        "description": "Private Cursor/business plan seeds",
+        "url": "https://github.com/antora-supplemental/project-plans",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:35Z"
+      },
+      {
+        "name": "antora-build-action",
+        "description": "GitHub Action to build Antora documentation sites with support for private repos, multi-repo aggregation, and extensions; pair with upload-pages-artifact and deploy-pages for GitHub Pages.",
+        "url": "https://github.com/antora-supplemental/antora-build-action",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:36:59Z"
+      },
+      {
+        "name": "asciidoctor-vscode",
+        "description": "AsciiDoc support for Visual Studio Code using Asciidoctor",
+        "url": "https://github.com/antora-supplemental/asciidoctor-vscode",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-06T19:31:45Z"
+      },
+      {
+        "name": "asciidoctor-opal-node-runtime",
+        "description": "⚡️ Opal Runtime specifically designed for Asciidoctor",
+        "url": "https://github.com/antora-supplemental/asciidoctor-opal-node-runtime",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-06T05:14:06Z"
+      },
+      {
+        "name": "antora-themes-site",
+        "description": "ARCHIVED — theme gallery moved to antora-extensions-registry (/themes)",
+        "url": "https://github.com/antora-supplemental/antora-themes-site",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-09-08T10:27:44Z"
+      },
+      {
+        "name": "antora",
+        "description": "A modular documentation site generator that helps you organize and publish content written in AsciiDoc to the web. Ideally suited for users of Asciidoctor.\n\nThis repository hosts the core software components and documentation for Antora.\n\nhttps://antora.org",
+        "url": "https://gitlab.com/AMDphreak/antora",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-02T03:59:21.057Z"
+      },
+      {
+        "name": "zed-asciidoc",
+        "description": "Zed support for AsciiDoc syntax",
+        "url": "https://github.com/antora-supplemental/zed-asciidoc",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-07-09T10:26:24Z"
+      },
+      {
+        "name": "jsqu4re_antora_build_fork",
+        "description": "A github action to build a antora site",
+        "url": "https://github.com/antora-supplemental/jsqu4re_antora_build_fork",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-04-12T04:33:04Z"
+      },
+      {
+        "name": "asciidoctor-kroki",
+        "description": "Asciidoctor.js extension to convert diagrams to images using Kroki!",
+        "url": "https://github.com/antora-supplemental/asciidoctor-kroki",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-27T09:14:34Z"
+      },
+      {
+        "name": "asciidoctor.js",
+        "description": ":scroll: A JavaScript port of Asciidoctor, a modern implementation of AsciiDoc",
+        "url": "https://github.com/antora-supplemental/asciidoctor.js",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-06T02:58:16Z"
+      },
+      {
+        "name": "asciidoctor",
+        "description": ":gem: A fast, open source text processor and publishing toolchain, written in Ruby, for converting AsciiDoc content to HTML 5, DocBook 5, and other formats.",
+        "url": "https://github.com/antora-supplemental/asciidoctor",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-13T16:13:41Z"
+      },
+      {
+        "name": "asciidocdead",
+        "description": "Free WYSIWYG AsciiDoc editor",
+        "url": "https://github.com/antora-supplemental/asciidocdead",
+        "provider": "github",
+        "owner": "antora-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-10-22T03:22:43Z"
       }
     ]
   },
   {
-    "id": "dlang-supplemental",
     "identity": "dlang-supplemental",
+    "id": "dlang-supplemental",
     "title": "Dlang Supplemental",
     "tagline": "D language libraries, GUI tooling, and documentation.",
     "repositories": [
-      {
-        "name": "agent-rules",
-        "description": "Org wrapper for shared agent-rules template",
-        "url": "https://github.com/dlang-supplemental/agent-rules",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "antora-editor",
-        "description": "Offline Antora site editor in D + dui/dew (greenfield)",
-        "url": "https://github.com/dlang-supplemental/antora-editor",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "arsd",
-        "description": "This is a collection of modules that I've released over the years. Most of them stand alone, or have just one or two dependencies in here, so you don't have to download this whole repo.",
-        "url": "https://github.com/dlang-supplemental/arsd",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
       {
         "name": "asciidoctor-d",
         "description": "Native D implementation of Asciidoctor. Fast AsciiDoc processor.",
@@ -1461,16 +1834,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "asdf",
-        "description": "JSON library",
-        "url": "https://github.com/dlang-supplemental/asdf",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:27Z"
       },
       {
         "name": "avalonia-d",
@@ -1479,60 +1844,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "awesome-d",
-        "description": "A curated list of awesome D documents, frameworks, libraries and software. Inspired by awesome-python.",
-        "url": "https://github.com/dlang-supplemental/awesome-d",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "code-d",
-        "description": "Fully featured D language extension for Visual Studio Code using Serve-D",
-        "url": "https://github.com/dlang-supplemental/code-d",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "densor",
-        "description": "Pure D tensor library and GGUF inference engine. Used by vibe-search-core.",
-        "url": "https://github.com/dlang-supplemental/densor",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dew",
-        "description": "Modern retained-mode GUI for D — Dew it! (formerly rmgui; use package dew)",
-        "url": "https://github.com/dlang-supplemental/dew",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dlang-custom-dialog",
-        "url": "https://github.com/dlang-supplemental/dlang-custom-dialog",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dlang-gui-samples",
-        "description": "GUI toolkit samples multiple GUI libraries in D",
-        "url": "https://github.com/dlang-supplemental/dlang-gui-samples",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:27Z"
       },
       {
         "name": "dlang-supplemental.github.io",
@@ -1541,34 +1854,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dlang.org",
-        "description": "Pages for the dlang.org website, home of the D Programming Language",
-        "url": "https://github.com/dlang-supplemental/dlang.org",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "dlangui",
-        "description": "Cross Platform GUI for D programming language",
-        "url": "https://github.com/dlang-supplemental/dlangui",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "dmd",
-        "description": "dmd D Programming Language compiler",
-        "url": "https://github.com/dlang-supplemental/dmd",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:26Z"
       },
       {
         "name": "docs",
@@ -1577,16 +1864,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dqt",
-        "description": "D bindings for the Qt Toolkit",
-        "url": "https://github.com/dlang-supplemental/dqt",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:24Z"
       },
       {
         "name": "dub-publish",
@@ -1595,7 +1874,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:24Z"
       },
       {
         "name": "dubx",
@@ -1604,16 +1884,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dui",
-        "description": "App-kit on top of dew — state helpers and UI sugar for D (Dew it!)",
-        "url": "https://github.com/dlang-supplemental/dui",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:23Z"
       },
       {
         "name": "fluidsync-daemon",
@@ -1622,25 +1894,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "ggwebview",
-        "description": "A D lib for create desktop apps with webview",
-        "url": "https://github.com/dlang-supplemental/ggwebview",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "glfw-d",
-        "description": "D translation of GLFW, a multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input",
-        "url": "https://github.com/dlang-supplemental/glfw-d",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:21Z"
       },
       {
         "name": "graphrag-indexer",
@@ -1648,16 +1903,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "guino",
-        "description": "Unleash guino magic for effortless GUI development in D!",
-        "url": "https://github.com/dlang-supplemental/guino",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:20Z"
       },
       {
         "name": "json5-dlang",
@@ -1666,25 +1913,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "jxl-d",
-        "description": "JPEG XL for D: jxl-rs decode + libjxl encode",
-        "url": "https://github.com/dlang-supplemental/jxl-d",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "jxl-rs-d",
-        "description": "D bindings for the jxl-rs JPEG XL decoder (Rust) — browser-class decode for dub",
-        "url": "https://github.com/dlang-supplemental/jxl-rs-d",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:19Z"
       },
       {
         "name": "kdl-d",
@@ -1693,7 +1923,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:18Z"
       },
       {
         "name": "opentui-d",
@@ -1702,7 +1933,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:18Z"
       },
       {
         "name": "project-plans",
@@ -1711,7 +1943,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:17Z"
       },
       {
         "name": "pty-d",
@@ -1720,7 +1953,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:16Z"
       },
       {
         "name": "repo-get",
@@ -1729,61 +1963,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "serve-d",
-        "description": "D LSP server (dlang language server protocol server)",
-        "url": "https://github.com/dlang-supplemental/serve-d",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "tgc",
-        "description": "Opt-in thread-local garbage collector for D (tgc)",
-        "url": "https://github.com/dlang-supplemental/tgc",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "unit-threaded",
-        "description": "Advanced unit test framework for D",
-        "url": "https://github.com/dlang-supplemental/unit-threaded",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "vector-store-dlang",
-        "description": "D-Vector Search. Vector store and embedding utilities in D.",
-        "url": "https://github.com/dlang-supplemental/vector-store-dlang",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "vello-d",
-        "description": "High-performance, GPU-accelerated 2D vector graphics for Dlang, powered by Vello (Rust)",
-        "url": "https://github.com/dlang-supplemental/vello-d",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "vibe-search-core",
-        "description": "Vibe Search core. CLIP and search backend in D.",
-        "url": "https://github.com/dlang-supplemental/vibe-search-core",
-        "provider": "github",
-        "owner": "dlang-supplemental",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:15Z"
       },
       {
         "name": "vibe-search-desktop",
@@ -1792,7 +1973,18 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:13Z"
+      },
+      {
+        "name": "vector-store-dlang",
+        "description": "D-Vector Search. Vector store and embedding utilities in D.",
+        "url": "https://github.com/dlang-supplemental/vector-store-dlang",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:12Z"
       },
       {
         "name": "vt-d",
@@ -1801,7 +1993,225 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:12Z"
+      },
+      {
+        "name": "yaml-edit-d",
+        "description": "Comment- and format-preserving (round-trip) YAML editing for D, with a drop-in D-YAML compatibility layer",
+        "url": "https://github.com/dlang-supplemental/yaml-edit-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:12Z"
+      },
+      {
+        "name": "tgc",
+        "description": "Opt-in thread-local garbage collector for D (tgc)",
+        "url": "https://github.com/dlang-supplemental/tgc",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-10T21:15:34Z"
+      },
+      {
+        "name": "dui",
+        "description": "App-kit on top of dew — state helpers and UI sugar for D (Dew it!)",
+        "url": "https://github.com/dlang-supplemental/dui",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-10T21:15:28Z"
+      },
+      {
+        "name": "dew",
+        "description": "Modern retained-mode GUI for D — Dew it! (formerly rmgui; use package dew)",
+        "url": "https://github.com/dlang-supplemental/dew",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-10T21:15:11Z"
+      },
+      {
+        "name": ".github",
+        "url": "https://github.com/dlang-supplemental/.github",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-17T08:18:27Z"
+      },
+      {
+        "name": "hybrid-search-core",
+        "description": "Hybrid keyword+semantic static search engine (D, WASM-ready)",
+        "url": "https://github.com/dlang-supplemental/hybrid-search-core",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-17T00:17:54Z"
+      },
+      {
+        "name": "dmd",
+        "description": "dmd D Programming Language compiler",
+        "url": "https://github.com/dlang-supplemental/dmd",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-08T18:08:57Z"
+      },
+      {
+        "name": "vibe-search-core",
+        "description": "Vibe Search core. CLIP and search backend in D.",
+        "url": "https://github.com/dlang-supplemental/vibe-search-core",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T21:35:46Z"
+      },
+      {
+        "name": ".github-private",
+        "url": "https://github.com/dlang-supplemental/.github-private",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:03Z"
+      },
+      {
+        "name": "agent-rules",
+        "description": "Org wrapper for shared agent-rules template",
+        "url": "https://github.com/dlang-supplemental/agent-rules",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:00Z"
+      },
+      {
+        "name": "densor",
+        "description": "Pure D tensor library and GGUF inference engine. Used by vibe-search-core.",
+        "url": "https://github.com/dlang-supplemental/densor",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:50:59Z"
+      },
+      {
+        "name": "antora-editor",
+        "description": "Offline Antora site editor in D + dui/dew (greenfield)",
+        "url": "https://github.com/dlang-supplemental/antora-editor",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:50:55Z"
+      },
+      {
+        "name": "dlang-gui-samples",
+        "description": "GUI toolkit samples multiple GUI libraries in D",
+        "url": "https://github.com/dlang-supplemental/dlang-gui-samples",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:50:54Z"
+      },
+      {
+        "name": "jxl-d",
+        "description": "JPEG XL for D: jxl-rs decode + libjxl encode",
+        "url": "https://github.com/dlang-supplemental/jxl-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:50:40Z"
+      },
+      {
+        "name": "jxl-rs-d",
+        "description": "D bindings for the jxl-rs JPEG XL decoder (Rust) — browser-class decode for dub",
+        "url": "https://github.com/dlang-supplemental/jxl-rs-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:50:40Z"
+      },
+      {
+        "name": "vello-d",
+        "description": "High-performance, GPU-accelerated 2D vector graphics for Dlang, powered by Vello (Rust)",
+        "url": "https://github.com/dlang-supplemental/vello-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:50:31Z"
+      },
+      {
+        "name": "glfw-d",
+        "description": "D translation of GLFW, a multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input",
+        "url": "https://github.com/dlang-supplemental/glfw-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-09-01T15:10:28Z"
+      },
+      {
+        "name": "dlangui",
+        "description": "Cross Platform GUI for D programming language",
+        "url": "https://github.com/dlang-supplemental/dlangui",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-18T08:53:58Z"
+      },
+      {
+        "name": "dqt",
+        "description": "D bindings for the Qt Toolkit",
+        "url": "https://github.com/dlang-supplemental/dqt",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-08T03:01:26Z"
+      },
+      {
+        "name": "arsd",
+        "description": "This is a collection of modules that I've released over the years. Most of them stand alone, or have just one or two dependencies in here, so you don't have to download this whole repo.",
+        "url": "https://github.com/dlang-supplemental/arsd",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-04-05T08:47:53Z"
+      },
+      {
+        "name": "webviewd",
+        "url": "https://github.com/dlang-supplemental/webviewd",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-22T05:36:02Z"
+      },
+      {
+        "name": "guino",
+        "description": "Unleash guino magic for effortless GUI development in D!",
+        "url": "https://github.com/dlang-supplemental/guino",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-22T05:35:06Z"
       },
       {
         "name": "webview-d",
@@ -1810,66 +2220,96 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": true
+        "isFork": true,
+        "pushedAt": "2026-03-22T05:34:35Z"
       },
       {
-        "name": "webviewd",
-        "url": "https://github.com/dlang-supplemental/webviewd",
+        "name": "ggwebview",
+        "description": "A D lib for create desktop apps with webview",
+        "url": "https://github.com/dlang-supplemental/ggwebview",
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": true
+        "isFork": true,
+        "pushedAt": "2026-03-22T05:27:25Z"
       },
       {
-        "name": ".github",
-        "url": "https://github.com/dlang-supplemental/.github",
+        "name": "dlang.org",
+        "description": "Pages for the dlang.org website, home of the D Programming Language",
+        "url": "https://github.com/dlang-supplemental/dlang.org",
         "provider": "github",
         "owner": "dlang-supplemental",
         "isPrivate": false,
-        "isFork": false
+        "isFork": true,
+        "pushedAt": "2026-03-20T03:09:06Z"
       },
       {
-        "name": ".github-private",
-        "url": "https://github.com/dlang-supplemental/.github-private",
+        "name": "unit-threaded",
+        "description": "Advanced unit test framework for D",
+        "url": "https://github.com/dlang-supplemental/unit-threaded",
         "provider": "github",
         "owner": "dlang-supplemental",
-        "isPrivate": true,
-        "isFork": false
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-19T05:36:40Z"
+      },
+      {
+        "name": "dlang-custom-dialog",
+        "url": "https://github.com/dlang-supplemental/dlang-custom-dialog",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-03-03T23:24:29Z"
+      },
+      {
+        "name": "asdf",
+        "description": "JSON library",
+        "url": "https://github.com/dlang-supplemental/asdf",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-12T00:04:33Z"
+      },
+      {
+        "name": "awesome-d",
+        "description": "A curated list of awesome D documents, frameworks, libraries and software. Inspired by awesome-python.",
+        "url": "https://github.com/dlang-supplemental/awesome-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-04T03:48:36Z"
+      },
+      {
+        "name": "code-d",
+        "description": "Fully featured D language extension for Visual Studio Code using Serve-D",
+        "url": "https://github.com/dlang-supplemental/code-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-12-27T17:49:52Z"
+      },
+      {
+        "name": "serve-d",
+        "description": "D LSP server (dlang language server protocol server)",
+        "url": "https://github.com/dlang-supplemental/serve-d",
+        "provider": "github",
+        "owner": "dlang-supplemental",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-08-21T16:16:17Z"
       }
     ]
   },
   {
-    "id": "AMDphreak",
     "identity": "personal",
+    "id": "AMDphreak",
     "title": "Personal Projects",
     "tagline": "Personal repositories on any git host.",
     "repositories": [
-      {
-        "name": "agent-rules",
-        "description": "Modular agent rules with a 1-step assembly preamble for local AI harnesses (Cursor, Antigravity, VSCode).",
-        "url": "https://github.com/AMDphreak/agent-rules",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "amazon-giveaway-bot",
-        "description": "Bot that automatically enters you in to hundreds of instant amazon giveaways",
-        "url": "https://github.com/AMDphreak/amazon-giveaway-bot",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "AMDphreak",
-        "url": "https://github.com/AMDphreak/AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
       {
         "name": "amdphreak.github.io",
         "description": "Developer Profile for AMDphreak",
@@ -1877,505 +2317,26 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-17T07:46:52Z"
       },
       {
-        "name": "amdphreak.pages.dev",
-        "url": "https://github.com/AMDphreak/amdphreak.pages.dev",
+        "name": "AMDphreak",
+        "url": "https://github.com/AMDphreak/AMDphreak",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-16T18:36:03Z"
       },
       {
-        "name": "antigravity-panel",
-        "description": "A extension to monitor Google Antigravity IDE quotas & cache usage. Performance dashboard for cloud development.",
-        "url": "https://github.com/AMDphreak/antigravity-panel",
+        "name": "zone-out",
+        "url": "https://github.com/AMDphreak/zone-out",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "AsciidocFX",
-        "description": "Asciidoc Editor and Toolchain written with JavaFX 21 (Build PDF, Epub, Mobi and HTML books, documents and slides)",
-        "url": "https://github.com/AMDphreak/AsciidocFX",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "BetterClearTypeTuner",
-        "description": "A better way to configure ClearType font smoothing on Windows 10.",
-        "url": "https://github.com/AMDphreak/BetterClearTypeTuner",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "bigrpic.com",
-        "description": "Photography studio website for bigrPicture",
-        "url": "https://github.com/AMDphreak/bigrpic.com",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "biome-vscode",
-        "description": "Biome extension for VS Code",
-        "url": "https://github.com/AMDphreak/biome-vscode",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "biomejs-website",
-        "description": "Biome's website",
-        "url": "https://github.com/AMDphreak/biomejs-website",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "bitwarden-clients",
-        "description": "Bitwarden client apps (web, browser extension, desktop, and cli).",
-        "url": "https://github.com/AMDphreak/bitwarden-clients",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "BlackJackGame",
-        "description": "BlackJack Game with simulated dealer",
-        "url": "https://github.com/AMDphreak/BlackJackGame",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "bookmark-cleaner-ai",
-        "url": "https://github.com/AMDphreak/bookmark-cleaner-ai",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "chrome-extensions-for-firefox",
-        "description": "A Firefox extension that allows you to install and run Chrome extensions by automatically converting their manifests and API calls to Firefox-compatible formats.",
-        "url": "https://github.com/AMDphreak/chrome-extensions-for-firefox",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "context7",
-        "description": "Context7 Platform -- Up-to-date code documentation for LLMs and AI code editors",
-        "url": "https://github.com/AMDphreak/context7",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "convex-agent-plugins",
-        "description": "An plugin for cursor to empower it to build the best apps ever.",
-        "url": "https://github.com/AMDphreak/convex-agent-plugins",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "corepack",
-        "description": "Package manager version manager for Node.js projects",
-        "url": "https://github.com/AMDphreak/corepack",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "create-tauri-app",
-        "description": "Rapidly scaffold out a new tauri app project.",
-        "url": "https://github.com/AMDphreak/create-tauri-app",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "CrystalDiskMark",
-        "description": "CrystalDiskMark",
-        "url": "https://github.com/AMDphreak/CrystalDiskMark",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "crystaldiskmark-dlang",
-        "description": "CrystalDiskMark rewrite in Dlang",
-        "url": "https://github.com/AMDphreak/crystaldiskmark-dlang",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "cursor-sms-bridge",
-        "url": "https://github.com/AMDphreak/cursor-sms-bridge",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "cyberpanel-uninstaller",
-        "description": "unofficial uninstaller/s for CyberPanel since the company is too lazy to make one themselves",
-        "url": "https://github.com/AMDphreak/cyberpanel-uninstaller",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "d-warden",
-        "url": "https://github.com/AMDphreak/d-warden",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dart-playbox",
-        "description": "Dart language testing",
-        "url": "https://github.com/AMDphreak/dart-playbox",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dart-sdk",
-        "description": "The Dart SDK, including the VM, dart2js, core libraries, and more.",
-        "url": "https://github.com/AMDphreak/dart-sdk",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "docs",
-        "description": "Documentation for handlebars.js and the handlebars-language",
-        "url": "https://github.com/AMDphreak/docs",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "dotfile-template",
-        "description": "template for dotfiles for all programming. Such as .env files that contain secrets on local machine",
-        "url": "https://github.com/AMDphreak/dotfile-template",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "dsam-christmas-2025-preview",
-        "description": "dsam 2025 christmas party capture one preview",
-        "url": "https://github.com/AMDphreak/dsam-christmas-2025-preview",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "DSAM-OCR-Research",
-        "description": "Research into Optical Character Recognition for DSAM",
-        "url": "https://github.com/AMDphreak/DSAM-OCR-Research",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "dsam-resources",
-        "description": "DSAM's resources directory for families with special needs",
-        "url": "https://github.com/AMDphreak/dsam-resources",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "dub",
-        "description": "Package and build management system for D",
-        "url": "https://github.com/AMDphreak/dub",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "dub-registry",
-        "description": "Online registry for dub packages",
-        "url": "https://github.com/AMDphreak/dub-registry",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "FastTrackD",
-        "description": "Cook Systems FastTrack'D Java developer training program in Memphis, TN. These are my assignments from that bootcamp.",
-        "url": "https://github.com/AMDphreak/FastTrackD",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "flutter-jxl-coder",
-        "description": "JpegXL encoding and decoding for Flutter",
-        "url": "https://github.com/AMDphreak/flutter-jxl-coder",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "ftn-site",
-        "description": "Food Truck Nerdz Next.js Web App",
-        "url": "https://github.com/AMDphreak/ftn-site",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": true,
-        "isFork": true
-      },
-      {
-        "name": "git-gud.info",
-        "url": "https://github.com/AMDphreak/git-gud.info",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "git-scm.com",
-        "description": "The git-scm.com website. Note that this repository is only for the website; issues with git itself should go to https://git-scm.com/community.",
-        "url": "https://github.com/AMDphreak/git-scm.com",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "git-un",
-        "description": "git-unfuckified - A more intuitive Git CLI with improved syntax and user experience",
-        "url": "https://github.com/AMDphreak/git-un",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "github-docs",
-        "description": "The open-source repo for docs.github.com",
-        "url": "https://github.com/AMDphreak/github-docs",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "Gittyup",
-        "description": "Understand your Git history!",
-        "url": "https://github.com/AMDphreak/Gittyup",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "gmail-sync",
-        "description": "Private local Gmail metadata sync for GraphRAG (historyId deltas)",
-        "url": "https://github.com/AMDphreak/gmail-sync",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "google-docs-asciidoc-markdown-converter",
-        "url": "https://github.com/AMDphreak/google-docs-asciidoc-markdown-converter",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "gso-site",
-        "description": "Website for Germantown Symphony Orchestra built with Astro, SolidJS, and Netlify",
-        "url": "https://github.com/AMDphreak/gso-site",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "guidance-definitions",
-        "description": "Private curated step definition packs and authenticated patch channel",
-        "url": "https://github.com/AMDphreak/guidance-definitions",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "guidance-host",
-        "description": "Private Guidance Host: guided steps, CDP assist, report-broken, Live Fix client",
-        "url": "https://github.com/AMDphreak/guidance-host",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": "homebrew-tap",
-        "description": "Homebrew tap for AMDphreak projects",
-        "url": "https://github.com/AMDphreak/homebrew-tap",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "hydrus",
-        "description": "A personal booru-style media tagger that can import files and tags from your hard drive and popular websites. Content can be shared with other users via user-run servers.",
-        "url": "https://github.com/AMDphreak/hydrus",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "iup",
-        "description": "iup wrapper for Nim. Used to be part of the stdlib, now a Nimble package.",
-        "url": "https://github.com/AMDphreak/iup",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "java-assignment-collections-AMDphreak",
-        "url": "https://github.com/AMDphreak/java-assignment-collections-AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "java-assignment-fibonacci-fizzbuzz-AMDphreak",
-        "url": "https://github.com/AMDphreak/java-assignment-fibonacci-fizzbuzz-AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "java-assignment-rationals-AMDphreak",
-        "url": "https://github.com/AMDphreak/java-assignment-rationals-AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "java-assignment-schema-design-AMDphreak",
-        "url": "https://github.com/AMDphreak/java-assignment-schema-design-AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "javascript-beginner-demo",
-        "description": "Beginner Javascript demo. The most basic demonstration of Javascript's ability to log output behind the scenes and update the HTML DOM",
-        "url": "https://github.com/AMDphreak/javascript-beginner-demo",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "Job-Search-Analyzer",
-        "description": "An Email analyzer to produce reports about my job applications and rejections",
-        "url": "https://github.com/AMDphreak/Job-Search-Analyzer",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "js-assessment-dev-duel-AMDphreak",
-        "url": "https://github.com/AMDphreak/js-assessment-dev-duel-AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "js-assignment-copy-page-AMDphreak",
-        "url": "https://github.com/AMDphreak/js-assignment-copy-page-AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "js-assignment-declarative-AMDphreak",
-        "url": "https://github.com/AMDphreak/js-assignment-declarative-AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "js-assignment-primer-AMDphreak",
-        "url": "https://github.com/AMDphreak/js-assignment-primer-AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "js-assignment-quizler-AMDphreak",
-        "url": "https://github.com/AMDphreak/js-assignment-quizler-AMDphreak",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "jsonviewer",
-        "description": "JSON Viewer is a jolly good JSON Viewer",
-        "url": "https://github.com/AMDphreak/jsonviewer",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:52Z"
       },
       {
         "name": "jxl_ffi",
@@ -2383,60 +2344,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "kdenlive",
-        "description": "Free and open source video editor, based on MLT Framework and KDE Frameworks",
-        "url": "https://github.com/AMDphreak/kdenlive",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "krita",
-        "description": "Krita is a free and open source cross-platform application that offers an end-to-end solution for creating digital art files from scratch built on the KDE and Qt frameworks.",
-        "url": "https://github.com/AMDphreak/krita",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "krita-ai-diffusion",
-        "description": "Streamlined interface for generating images with AI in Krita. Inpaint and outpaint with optional text prompt, no tweaking required.",
-        "url": "https://github.com/AMDphreak/krita-ai-diffusion",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "kroki",
-        "description": "Creates diagrams from textual descriptions!",
-        "url": "https://github.com/AMDphreak/kroki",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "LearnMeAHaskell",
-        "description": "Lessons from the Learn You a Haskell tutorial",
-        "url": "https://github.com/AMDphreak/LearnMeAHaskell",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "lemonadestand",
-        "url": "https://github.com/AMDphreak/lemonadestand",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:51Z"
       },
       {
         "name": "live-fix-agent",
@@ -2445,69 +2354,27 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:51Z"
       },
       {
-        "name": "llama.cpp",
-        "description": "LLM inference in C/C++",
-        "url": "https://github.com/AMDphreak/llama.cpp",
+        "name": "bookmark-cleaner-ai",
+        "url": "https://github.com/AMDphreak/bookmark-cleaner-ai",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:50Z"
       },
       {
-        "name": "lol-riot-d",
-        "description": "D: Riot Web API + LCU (lol-riot-d)",
-        "url": "https://github.com/AMDphreak/lol-riot-d",
+        "name": "crystaldiskmark-dlang",
+        "description": "CrystalDiskMark rewrite in Dlang",
+        "url": "https://github.com/AMDphreak/crystaldiskmark-dlang",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "MDN-content",
-        "description": "The content behind MDN Web Docs",
-        "url": "https://github.com/AMDphreak/MDN-content",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "mermaid",
-        "description": "Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown",
-        "url": "https://github.com/AMDphreak/mermaid",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "mkeditor",
-        "description": "MKEditor - Markdown with style.",
-        "url": "https://github.com/AMDphreak/mkeditor",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "multimux",
-        "description": "Multichannel audio mixdown tool for video files powered by ffmpeg",
-        "url": "https://github.com/AMDphreak/multimux",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "nextjs-sampleproject",
-        "url": "https://github.com/AMDphreak/nextjs-sampleproject",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:50Z"
       },
       {
         "name": "notorious",
@@ -2516,34 +2383,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "obs-backgroundremoval",
-        "description": "An OBS plugin for removing background in portrait images (video), making it easy to replace the background when screen recording.",
-        "url": "https://github.com/AMDphreak/obs-backgroundremoval",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "obs-studio",
-        "description": "OBS - Free and open source software for live streaming and screen recording",
-        "url": "https://github.com/AMDphreak/obs-studio",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "OpenSSH-GUI",
-        "description": "A simple GUI front-end for OpenSSH for Windows, Linux and Mac!",
-        "url": "https://github.com/AMDphreak/OpenSSH-GUI",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:49Z"
       },
       {
         "name": "orbris",
@@ -2551,175 +2392,48 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:47Z"
       },
       {
-        "name": "personal-records-vault",
-        "description": "Personal Records Vault: desktop app, browser extension, TypeScript SDK, and static web vault shell.",
-        "url": "https://github.com/AMDphreak/personal-records-vault",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "pnpm",
-        "description": "Fast, disk space efficient package manager",
-        "url": "https://github.com/AMDphreak/pnpm",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "PowerShell",
-        "description": "PowerShell for every system!",
-        "url": "https://github.com/AMDphreak/PowerShell",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "PowerToys",
-        "description": "Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows",
-        "url": "https://github.com/AMDphreak/PowerToys",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "project-plans",
-        "description": "Private Cursor/business plan seeds",
-        "url": "https://github.com/AMDphreak/project-plans",
+        "name": "guidance-host",
+        "description": "Private Guidance Host: guided steps, CDP assist, report-broken, Live Fix client",
+        "url": "https://github.com/AMDphreak/guidance-host",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:25Z"
       },
       {
-        "name": "pwa-starter",
-        "url": "https://github.com/AMDphreak/pwa-starter",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "racket",
-        "description": "The Racket repository",
-        "url": "https://github.com/AMDphreak/racket",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "redub",
-        "description": "Alternative implementation of dub, speed and consistency oriented",
-        "url": "https://github.com/AMDphreak/redub",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "Roo-Code",
-        "description": "Roo Code (prev. Roo Cline) gives you a whole dev team of AI agents in your code editor.",
-        "url": "https://github.com/AMDphreak/Roo-Code",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "Rust-lang-book",
-        "description": "The Rust Programming Language",
-        "url": "https://github.com/AMDphreak/Rust-lang-book",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "Schedulinator",
-        "description": "Classroom Scheduler / Asset Scheduler",
-        "url": "https://github.com/AMDphreak/Schedulinator",
+        "name": "guidance-definitions",
+        "description": "Private curated step definition packs and authenticated patch channel",
+        "url": "https://github.com/AMDphreak/guidance-definitions",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:22Z"
       },
       {
-        "name": "scribe",
-        "description": "Edit Markdown/AsciiDoc in GitHub static site repos — for non-technical users",
-        "url": "https://github.com/AMDphreak/scribe",
+        "name": "gmail-sync",
+        "description": "Private local Gmail metadata sync for GraphRAG (historyId deltas)",
+        "url": "https://github.com/AMDphreak/gmail-sync",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:18Z"
+      },
+      {
+        "name": "gso-site",
+        "description": "Website for Germantown Symphony Orchestra built with Astro, SolidJS, and Netlify",
+        "url": "https://github.com/AMDphreak/gso-site",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "site-downloader",
-        "description": "Comprehensive toolset for downloading and archiving websites to static, offline copies.",
-        "url": "https://github.com/AMDphreak/site-downloader",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "solid-ui",
-        "description": "Beautifully designed components. Built with Kobalte & corvu. Styled with Tailwind CSS.",
-        "url": "https://github.com/AMDphreak/solid-ui",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "spacedrive",
-        "description": "Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.",
-        "url": "https://github.com/AMDphreak/spacedrive",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "spring-assessment-social-media-teamblue",
-        "url": "https://github.com/AMDphreak/spring-assessment-social-media-teamblue",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "svg-explorer-extension",
-        "description": "Extension module for Windows Explorer to render SVG thumbnails, so that you can have an overview of your SVG files",
-        "url": "https://github.com/AMDphreak/svg-explorer-extension",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "SyncthingWindowsSetup",
-        "description": "Syncthing Windows Setup",
-        "url": "https://github.com/AMDphreak/SyncthingWindowsSetup",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "t3code",
-        "url": "https://github.com/AMDphreak/t3code",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-14T01:46:33Z"
       },
       {
         "name": "transcoder-suite",
@@ -2728,213 +2442,47 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-13T23:08:54Z"
       },
       {
-        "name": "turso-cli",
-        "description": "Command line interface to the Turso Cloud.",
-        "url": "https://github.com/AMDphreak/turso-cli",
+        "name": "git-gud.info",
+        "url": "https://github.com/AMDphreak/git-gud.info",
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-13T22:39:44Z"
       },
       {
-        "name": "turso-install",
-        "description": "Turso CLI installer",
-        "url": "https://github.com/AMDphreak/turso-install",
+        "name": "bigrpic.com",
+        "description": "Photography studio website for bigrPicture",
+        "url": "https://github.com/AMDphreak/bigrpic.com",
         "provider": "github",
         "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-11-13T22:35:02Z"
       },
       {
-        "name": "typst",
-        "description": "A markup-based typesetting system that is powerful and easy to learn.",
-        "url": "https://github.com/AMDphreak/typst",
+        "name": "voter-intel",
+        "description": "SolidStart voter research for Memphis Nov 2026 — candidates, ballot issues, comparisons; Turso + static export.",
+        "url": "https://github.com/AMDphreak/voter-intel",
         "provider": "github",
         "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-11-13T04:43:56Z"
       },
       {
-        "name": "UniGetUI",
-        "description": "UniGetUI: The Graphical Interface for your package managers. Could be terribly described as a package manager manager to manage your package managers",
-        "url": "https://github.com/AMDphreak/UniGetUI",
+        "name": "jobtangent",
+        "description": "Career journey: timeline, role-family profiles, resume builder",
+        "url": "https://github.com/AMDphreak/jobtangent",
         "provider": "github",
         "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "usersettings",
-        "description": "Portable Local Settings Storage for Python",
-        "url": "https://github.com/AMDphreak/usersettings",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "vello",
-        "description": "A GPU compute-centric 2D renderer.",
-        "url": "https://github.com/AMDphreak/vello",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "vercel-mcp-overview",
-        "description": "Public overview of Vercel's MCP server for the github.com/mcp directory. Full documentation at https://vercel.com/docs/mcp/vercel-mcp",
-        "url": "https://github.com/AMDphreak/vercel-mcp-overview",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "vinxi",
-        "description": "The Full Stack JavaScript SDK",
-        "url": "https://github.com/AMDphreak/vinxi",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "Virtualization-Documentation",
-        "description": "Place to store our documentation, code samples, etc for public consumption.",
-        "url": "https://github.com/AMDphreak/Virtualization-Documentation",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "vscode",
-        "description": "Visual Studio Code",
-        "url": "https://github.com/AMDphreak/vscode",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "vscode-markdown",
-        "description": "Markdown All in One",
-        "url": "https://github.com/AMDphreak/vscode-markdown",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "vscode-uncrustify",
-        "description": "Uncrustify code formatter extension for Visual Studio Code",
-        "url": "https://github.com/AMDphreak/vscode-uncrustify",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "whisper.cpp",
-        "description": "Port of OpenAI's Whisper model in C/C++",
-        "url": "https://github.com/AMDphreak/whisper.cpp",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "wiki-docs",
-        "description": "Docs for Wiki.js 2.x",
-        "url": "https://github.com/AMDphreak/wiki-docs",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "win-svg-thumbs-rust",
-        "description": "A native Windows SVG thumbnail handler for File Explorer that uses only the Windows API, written in Rust.",
-        "url": "https://github.com/AMDphreak/win-svg-thumbs-rust",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "windows-dev-docs",
-        "description": "Conceptual and overview content for developing Windows apps",
-        "url": "https://github.com/AMDphreak/windows-dev-docs",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "winget-cli",
-        "description": "WinGet is the Windows Package Manager. This project includes a CLI (Command Line Interface), PowerShell modules, and a COM (Component Object Model) API (Application Programming Interface).",
-        "url": "https://github.com/AMDphreak/winget-cli",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "winget-github-autopackage-instructions",
-        "description": "Winget GitHub Autopackage Pipeline Setup Instructions",
-        "url": "https://github.com/AMDphreak/winget-github-autopackage-instructions",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "winget-pkgs",
-        "description": "The Microsoft community Windows Package Manager manifest repository",
-        "url": "https://github.com/AMDphreak/winget-pkgs",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "xi-editor",
-        "description": "A modern editor with a backend written in Rust.",
-        "url": "https://github.com/AMDphreak/xi-editor",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "zed",
-        "description": "Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.",
-        "url": "https://github.com/AMDphreak/zed",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "zed-extensions",
-        "description": "Extensions for the Zed editor",
-        "url": "https://github.com/AMDphreak/zed-extensions",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": true
-      },
-      {
-        "name": "zone-out",
-        "url": "https://github.com/AMDphreak/zone-out",
-        "provider": "github",
-        "owner": "AMDphreak",
-        "isPrivate": false,
-        "isFork": false
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-11-13T04:29:28Z"
       },
       {
         "name": ".issues",
@@ -2943,34 +2491,1185 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
-      }
-    ]
-  },
-  {
-    "id": "formatte",
-    "identity": "formatte",
-    "title": "formatte",
-    "tagline": "Formatting tooling organization.",
-    "repositories": [
+        "isFork": false,
+        "pushedAt": "2026-11-12T02:05:14Z"
+      },
+      {
+        "name": "context7",
+        "description": "Context7 Platform -- Up-to-date code documentation for LLMs and AI code editors",
+        "url": "https://github.com/AMDphreak/context7",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-11-12T02:04:39Z"
+      },
+      {
+        "name": "dub-registry",
+        "description": "Online registry for dub packages",
+        "url": "https://github.com/AMDphreak/dub-registry",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-11-11T00:39:32Z"
+      },
       {
         "name": "agent-rules",
-        "description": "Org wrapper for shared agent-rules template",
-        "url": "https://github.com/formatte/agent-rules",
+        "description": "Modular agent rules with a 1-step assembly preamble for local AI harnesses (Cursor, Antigravity, VSCode).",
+        "url": "https://github.com/AMDphreak/agent-rules",
         "provider": "github",
-        "owner": "formatte",
+        "owner": "AMDphreak",
         "isPrivate": false,
-        "isFork": false
+        "isFork": true,
+        "pushedAt": "2026-11-08T15:02:55Z"
+      },
+      {
+        "name": "dub",
+        "description": "Package and build management system for D",
+        "url": "https://github.com/AMDphreak/dub",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-11-06T20:31:55Z"
+      },
+      {
+        "name": "nixpkgs",
+        "description": "Nix Packages collection & NixOS",
+        "url": "https://github.com/AMDphreak/nixpkgs",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-11-03T08:45:55Z"
+      },
+      {
+        "name": "scribe",
+        "description": "Edit Markdown/AsciiDoc in GitHub static site repos — for non-technical users",
+        "url": "https://github.com/AMDphreak/scribe",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-02T21:04:04Z"
+      },
+      {
+        "name": "google-docs-asciidoc-markdown-converter",
+        "url": "https://github.com/AMDphreak/google-docs-asciidoc-markdown-converter",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-31T14:41:57Z"
+      },
+      {
+        "name": "cursor-sms-bridge",
+        "url": "https://github.com/AMDphreak/cursor-sms-bridge",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-31T12:16:08Z"
+      },
+      {
+        "name": "redub",
+        "description": "Alternative implementation of dub, speed and consistency oriented",
+        "url": "https://github.com/AMDphreak/redub",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-27T00:40:02Z"
+      },
+      {
+        "name": "bitwarden-clients",
+        "description": "Bitwarden client apps (web, browser extension, desktop, and cli).",
+        "url": "https://github.com/AMDphreak/bitwarden-clients",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-23T04:34:07Z"
+      },
+      {
+        "name": "solid-ui",
+        "description": "Beautifully designed components. Built with Kobalte & corvu. Styled with Tailwind CSS.",
+        "url": "https://github.com/AMDphreak/solid-ui",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-21T08:13:25Z"
+      },
+      {
+        "name": "antora-lunr-extension-fork",
+        "description": "An Antora extension that adds a self-hosted search powered by Lunr to an Antora site. The extension indexes the content during the build and includes the index in the published site, which is then used to provide an in-browser search.",
+        "url": "https://gitlab.com/AMDphreak/antora-lunr-extension-fork",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-21T03:25:43.85Z"
+      },
+      {
+        "name": "antora-lunr-extension",
+        "url": "https://gitlab.com/AMDphreak/antora-lunr-extension",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-21T03:08:44.056Z"
+      },
+      {
+        "name": "site-downloader",
+        "description": "Comprehensive toolset for downloading and archiving websites to static, offline copies.",
+        "url": "https://github.com/AMDphreak/site-downloader",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-17T12:50:08Z"
+      },
+      {
+        "name": "asciidoctor-emoji",
+        "description": "Asciidoctor.js extension to add emoji in your document!",
+        "url": "https://github.com/AMDphreak/asciidoctor-emoji",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-09T09:44:03Z"
+      },
+      {
+        "name": "t3code",
+        "url": "https://github.com/AMDphreak/t3code",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-10-09T05:41:05Z"
+      },
+      {
+        "name": "pwa-starter",
+        "url": "https://github.com/AMDphreak/pwa-starter",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T21:25:25Z"
+      },
+      {
+        "name": "d-warden",
+        "url": "https://github.com/AMDphreak/d-warden",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T21:19:56Z"
+      },
+      {
+        "name": "nextjs-sampleproject",
+        "url": "https://github.com/AMDphreak/nextjs-sampleproject",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:56:12Z"
+      },
+      {
+        "name": "amazon-giveaway-bot",
+        "description": "Bot that automatically enters you in to hundreds of instant amazon giveaways",
+        "url": "https://github.com/AMDphreak/amazon-giveaway-bot",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:52Z"
+      },
+      {
+        "name": "amdphreak.pages.dev",
+        "url": "https://github.com/AMDphreak/amdphreak.pages.dev",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:49Z"
+      },
+      {
+        "name": "BlackJackGame",
+        "description": "BlackJack Game with simulated dealer",
+        "url": "https://github.com/AMDphreak/BlackJackGame",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:48Z"
+      },
+      {
+        "name": "cyberpanel-uninstaller",
+        "description": "unofficial uninstaller/s for CyberPanel since the company is too lazy to make one themselves",
+        "url": "https://github.com/AMDphreak/cyberpanel-uninstaller",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:44Z"
+      },
+      {
+        "name": "dart-playbox",
+        "description": "Dart language testing",
+        "url": "https://github.com/AMDphreak/dart-playbox",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:42Z"
+      },
+      {
+        "name": "dotfile-template",
+        "description": "template for dotfiles for all programming. Such as .env files that contain secrets on local machine",
+        "url": "https://github.com/AMDphreak/dotfile-template",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:39Z"
+      },
+      {
+        "name": "dsam-christmas-2025-preview",
+        "description": "dsam 2025 christmas party capture one preview",
+        "url": "https://github.com/AMDphreak/dsam-christmas-2025-preview",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:39Z"
+      },
+      {
+        "name": "DSAM-OCR-Research",
+        "description": "Research into Optical Character Recognition for DSAM",
+        "url": "https://github.com/AMDphreak/DSAM-OCR-Research",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:37Z"
+      },
+      {
+        "name": "dsam-resources",
+        "description": "DSAM's resources directory for families with special needs",
+        "url": "https://github.com/AMDphreak/dsam-resources",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:37Z"
+      },
+      {
+        "name": "FastTrackD",
+        "description": "Cook Systems FastTrack'D Java developer training program in Memphis, TN. These are my assignments from that bootcamp.",
+        "url": "https://github.com/AMDphreak/FastTrackD",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:35Z"
+      },
+      {
+        "name": "homebrew-tap",
+        "description": "Homebrew tap for AMDphreak projects",
+        "url": "https://github.com/AMDphreak/homebrew-tap",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:29Z"
+      },
+      {
+        "name": "java-assignment-collections-AMDphreak",
+        "url": "https://github.com/AMDphreak/java-assignment-collections-AMDphreak",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:27Z"
+      },
+      {
+        "name": "java-assignment-fibonacci-fizzbuzz-AMDphreak",
+        "url": "https://github.com/AMDphreak/java-assignment-fibonacci-fizzbuzz-AMDphreak",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:25Z"
+      },
+      {
+        "name": "java-assignment-rationals-AMDphreak",
+        "url": "https://github.com/AMDphreak/java-assignment-rationals-AMDphreak",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:24Z"
+      },
+      {
+        "name": "js-assessment-dev-duel-AMDphreak",
+        "url": "https://github.com/AMDphreak/js-assessment-dev-duel-AMDphreak",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:24Z"
+      },
+      {
+        "name": "javascript-beginner-demo",
+        "description": "Beginner Javascript demo. The most basic demonstration of Javascript's ability to log output behind the scenes and update the HTML DOM",
+        "url": "https://github.com/AMDphreak/javascript-beginner-demo",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:22Z"
+      },
+      {
+        "name": "js-assignment-copy-page-AMDphreak",
+        "url": "https://github.com/AMDphreak/js-assignment-copy-page-AMDphreak",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:21Z"
+      },
+      {
+        "name": "Job-Search-Analyzer",
+        "description": "An Email analyzer to produce reports about my job applications and rejections",
+        "url": "https://github.com/AMDphreak/Job-Search-Analyzer",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:19Z"
+      },
+      {
+        "name": "js-assignment-declarative-AMDphreak",
+        "url": "https://github.com/AMDphreak/js-assignment-declarative-AMDphreak",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:18Z"
+      },
+      {
+        "name": "java-assignment-schema-design-AMDphreak",
+        "url": "https://github.com/AMDphreak/java-assignment-schema-design-AMDphreak",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:17Z"
+      },
+      {
+        "name": "js-assignment-primer-AMDphreak",
+        "url": "https://github.com/AMDphreak/js-assignment-primer-AMDphreak",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:16Z"
+      },
+      {
+        "name": "js-assignment-quizler-AMDphreak",
+        "url": "https://github.com/AMDphreak/js-assignment-quizler-AMDphreak",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:15Z"
+      },
+      {
+        "name": "LearnMeAHaskell",
+        "description": "Lessons from the Learn You a Haskell tutorial",
+        "url": "https://github.com/AMDphreak/LearnMeAHaskell",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:14Z"
+      },
+      {
+        "name": "lemonadestand",
+        "url": "https://github.com/AMDphreak/lemonadestand",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:12Z"
+      },
+      {
+        "name": "lol-riot-d",
+        "description": "D: Riot Web API + LCU (lol-riot-d)",
+        "url": "https://github.com/AMDphreak/lol-riot-d",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:09Z"
+      },
+      {
+        "name": "multimux",
+        "description": "Multichannel audio mixdown tool for video files powered by ffmpeg",
+        "url": "https://github.com/AMDphreak/multimux",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:07Z"
       },
       {
         "name": "project-plans",
         "description": "Private Cursor/business plan seeds",
-        "url": "https://github.com/formatte/project-plans",
+        "url": "https://github.com/AMDphreak/project-plans",
         "provider": "github",
-        "owner": "formatte",
+        "owner": "AMDphreak",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:42:00Z"
       },
+      {
+        "name": "Schedulinator",
+        "description": "Classroom Scheduler / Asset Scheduler",
+        "url": "https://github.com/AMDphreak/Schedulinator",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:41:57Z"
+      },
+      {
+        "name": "spring-assessment-social-media-teamblue",
+        "url": "https://github.com/AMDphreak/spring-assessment-social-media-teamblue",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:41:56Z"
+      },
+      {
+        "name": "winget-github-autopackage-instructions",
+        "description": "Winget GitHub Autopackage Pipeline Setup Instructions",
+        "url": "https://github.com/AMDphreak/winget-github-autopackage-instructions",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:41:51Z"
+      },
+      {
+        "name": "vinxi",
+        "description": "The Full Stack JavaScript SDK",
+        "url": "https://github.com/AMDphreak/vinxi",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-09-19T02:41:51Z"
+      },
+      {
+        "name": "kdenlive",
+        "description": "Free and open source video editor, based on MLT Framework and KDE Frameworks",
+        "url": "https://github.com/AMDphreak/kdenlive",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-09-16T05:07:42Z"
+      },
+      {
+        "name": "mermaid",
+        "description": "Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown",
+        "url": "https://github.com/AMDphreak/mermaid",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-09-15T06:39:29Z"
+      },
+      {
+        "name": "kroki",
+        "description": "Creates diagrams from textual descriptions!",
+        "url": "https://github.com/AMDphreak/kroki",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-09-15T06:31:24Z"
+      },
+      {
+        "name": "vscode",
+        "description": "Visual Studio Code",
+        "url": "https://github.com/AMDphreak/vscode",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-28T07:57:47Z"
+      },
+      {
+        "name": "windows-dev-docs",
+        "description": "Conceptual and overview content for developing Windows apps",
+        "url": "https://github.com/AMDphreak/windows-dev-docs",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-28T07:55:30Z"
+      },
+      {
+        "name": "Virtualization-Documentation",
+        "description": "Place to store our documentation, code samples, etc for public consumption.",
+        "url": "https://github.com/AMDphreak/Virtualization-Documentation",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-28T07:55:18Z"
+      },
+      {
+        "name": "turso-install",
+        "description": "Turso CLI installer",
+        "url": "https://github.com/AMDphreak/turso-install",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-25T10:06:25Z"
+      },
+      {
+        "name": "winget-pkgs",
+        "description": "The Microsoft community Windows Package Manager manifest repository",
+        "url": "https://github.com/AMDphreak/winget-pkgs",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-25T10:04:24Z"
+      },
+      {
+        "name": "Gittyup",
+        "description": "Understand your Git history!",
+        "url": "https://github.com/AMDphreak/Gittyup",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-25T09:59:46Z"
+      },
+      {
+        "name": "convex-agent-plugins",
+        "description": "An plugin for cursor to empower it to build the best apps ever.",
+        "url": "https://github.com/AMDphreak/convex-agent-plugins",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-19T07:07:19Z"
+      },
+      {
+        "name": "biome-vscode",
+        "description": "Biome extension for VS Code",
+        "url": "https://github.com/AMDphreak/biome-vscode",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-19T05:54:48Z"
+      },
+      {
+        "name": "AsciidocFX",
+        "description": "Asciidoc Editor and Toolchain written with JavaFX 21 (Build PDF, Epub, Mobi and HTML books, documents and slides)",
+        "url": "https://github.com/AMDphreak/AsciidocFX",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-18T02:22:05Z"
+      },
+      {
+        "name": "BetterClearTypeTuner",
+        "description": "A better way to configure ClearType font smoothing on Windows 10.",
+        "url": "https://github.com/AMDphreak/BetterClearTypeTuner",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-08-09T22:15:35Z"
+      },
+      {
+        "name": "win-svg-thumbs-rust",
+        "description": "A native Windows SVG thumbnail handler for File Explorer that uses only the Windows API, written in Rust.",
+        "url": "https://github.com/AMDphreak/win-svg-thumbs-rust",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-07-27T03:47:41Z"
+      },
+      {
+        "name": "PowerToys",
+        "description": "Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows",
+        "url": "https://github.com/AMDphreak/PowerToys",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-07-27T02:15:29Z"
+      },
+      {
+        "name": "turso-cli",
+        "description": "Command line interface to the Turso Cloud.",
+        "url": "https://github.com/AMDphreak/turso-cli",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-07-24T04:02:07Z"
+      },
+      {
+        "name": "flutter-jxl-coder",
+        "description": "JpegXL encoding and decoding for Flutter",
+        "url": "https://github.com/AMDphreak/flutter-jxl-coder",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-07-17T20:34:52Z"
+      },
+      {
+        "name": "zed",
+        "description": "Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.",
+        "url": "https://github.com/AMDphreak/zed",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-07-09T09:55:47Z"
+      },
+      {
+        "name": "docs",
+        "description": "Documentation for handlebars.js and the handlebars-language",
+        "url": "https://github.com/AMDphreak/docs",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-06-08T17:43:32Z"
+      },
+      {
+        "name": "vello",
+        "description": "A GPU compute-centric 2D renderer.",
+        "url": "https://github.com/AMDphreak/vello",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-05-16T16:46:05Z"
+      },
+      {
+        "name": "vercel-mcp-overview",
+        "description": "Public overview of Vercel's MCP server for the github.com/mcp directory. Full documentation at https://vercel.com/docs/mcp/vercel-mcp",
+        "url": "https://github.com/AMDphreak/vercel-mcp-overview",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-05-15T07:58:45Z"
+      },
+      {
+        "name": "llama.cpp",
+        "description": "LLM inference in C/C++",
+        "url": "https://github.com/AMDphreak/llama.cpp",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-04-23T02:55:57Z"
+      },
+      {
+        "name": "github-docs",
+        "description": "The open-source repo for docs.github.com",
+        "url": "https://github.com/AMDphreak/github-docs",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-04-10T23:36:41Z"
+      },
+      {
+        "name": "typst",
+        "description": "A markup-based typesetting system that is powerful and easy to learn.",
+        "url": "https://github.com/AMDphreak/typst",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-04-09T17:09:44Z"
+      },
+      {
+        "name": "pnpm",
+        "description": "Fast, disk space efficient package manager",
+        "url": "https://github.com/AMDphreak/pnpm",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-29T07:20:28Z"
+      },
+      {
+        "name": "winget-cli",
+        "description": "WinGet is the Windows Package Manager. This project includes a CLI (Command Line Interface), PowerShell modules, and a COM (Component Object Model) API (Application Programming Interface).",
+        "url": "https://github.com/AMDphreak/winget-cli",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-27T20:32:48Z"
+      },
+      {
+        "name": "antigravity-panel",
+        "description": "A extension to monitor Google Antigravity IDE quotas & cache usage. Performance dashboard for cloud development.",
+        "url": "https://github.com/AMDphreak/antigravity-panel",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-26T10:41:26Z"
+      },
+      {
+        "name": "krita-ai-diffusion",
+        "description": "Streamlined interface for generating images with AI in Krita. Inpaint and outpaint with optional text prompt, no tweaking required.",
+        "url": "https://github.com/AMDphreak/krita-ai-diffusion",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-20T23:29:56Z"
+      },
+      {
+        "name": "corepack",
+        "description": "Package manager version manager for Node.js projects",
+        "url": "https://github.com/AMDphreak/corepack",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-03-03T20:07:53Z"
+      },
+      {
+        "name": "UniGetUI",
+        "description": "UniGetUI: The Graphical Interface for your package managers. Could be terribly described as a package manager manager to manage your package managers",
+        "url": "https://github.com/AMDphreak/UniGetUI",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-21T08:27:53Z"
+      },
+      {
+        "name": "spacedrive",
+        "description": "Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.",
+        "url": "https://github.com/AMDphreak/spacedrive",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-21T03:38:05Z"
+      },
+      {
+        "name": "CrystalDiskMark",
+        "description": "CrystalDiskMark",
+        "url": "https://github.com/AMDphreak/CrystalDiskMark",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-18T12:24:32Z"
+      },
+      {
+        "name": "hydrus",
+        "description": "A personal booru-style media tagger that can import files and tags from your hard drive and popular websites. Content can be shared with other users via user-run servers.",
+        "url": "https://github.com/AMDphreak/hydrus",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-18T01:10:33Z"
+      },
+      {
+        "name": "git-un",
+        "description": "git-unfuckified - A more intuitive Git CLI with improved syntax and user experience",
+        "url": "https://github.com/AMDphreak/git-un",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-14T00:44:28Z"
+      },
+      {
+        "name": "vscode-markdown",
+        "description": "Markdown All in One",
+        "url": "https://github.com/AMDphreak/vscode-markdown",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-13T07:40:51Z"
+      },
+      {
+        "name": "OpenSSH-GUI",
+        "description": "A simple GUI front-end for OpenSSH for Windows, Linux and Mac!",
+        "url": "https://github.com/AMDphreak/OpenSSH-GUI",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-12T08:48:38Z"
+      },
+      {
+        "name": "obs-studio",
+        "description": "OBS - Free and open source software for live streaming and screen recording",
+        "url": "https://github.com/AMDphreak/obs-studio",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-02-04T08:16:51Z"
+      },
+      {
+        "name": "dsam-christmas-2025-preview-broken",
+        "url": "https://gitlab.com/AMDphreak/dsam-christmas-2025-preview-broken",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-01-09T06:45:21.254Z"
+      },
+      {
+        "name": "dsam-christmas-2025-preview",
+        "url": "https://gitlab.com/AMDphreak/dsam-christmas-2025-preview",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-01-09T03:55:24.693Z"
+      },
+      {
+        "name": "biomejs-website",
+        "description": "Biome's website",
+        "url": "https://github.com/AMDphreak/biomejs-website",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-11-22T06:20:43Z"
+      },
+      {
+        "name": "create-tauri-app",
+        "description": "Rapidly scaffold out a new tauri app project.",
+        "url": "https://github.com/AMDphreak/create-tauri-app",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-11-11T23:53:20Z"
+      },
+      {
+        "name": "chrome-extensions-for-firefox",
+        "description": "A Firefox extension that allows you to install and run Chrome extensions by automatically converting their manifests and API calls to Firefox-compatible formats.",
+        "url": "https://github.com/AMDphreak/chrome-extensions-for-firefox",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2025-11-10T19:09:25Z"
+      },
+      {
+        "name": "krita",
+        "description": "Krita is a free and open source cross-platform application that offers an end-to-end solution for creating digital art files from scratch built on the KDE and Qt frameworks.",
+        "url": "https://github.com/AMDphreak/krita",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-11-10T10:34:10Z"
+      },
+      {
+        "name": "git-scm.com",
+        "description": "The git-scm.com website. Note that this repository is only for the website; issues with git itself should go to https://git-scm.com/community.",
+        "url": "https://github.com/AMDphreak/git-scm.com",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-11-06T04:39:26Z"
+      },
+      {
+        "name": "zed-extensions",
+        "description": "Extensions for the Zed editor",
+        "url": "https://github.com/AMDphreak/zed-extensions",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-10-31T21:24:56Z"
+      },
+      {
+        "name": "mkeditor",
+        "description": "MKEditor - Markdown with style.",
+        "url": "https://github.com/AMDphreak/mkeditor",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-10-14T12:09:12Z"
+      },
+      {
+        "name": "packet-x-ing",
+        "description": "A packet sniffer and attacking tool written in Racket-Lisp",
+        "url": "https://gitlab.com/AMDphreak/packet-x-ing",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-09-17T06:00:42.545Z"
+      },
+      {
+        "name": "SyncthingWindowsSetup",
+        "description": "Syncthing Windows Setup",
+        "url": "https://github.com/AMDphreak/SyncthingWindowsSetup",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-08-18T20:34:08Z"
+      },
+      {
+        "name": "vscode-uncrustify",
+        "description": "Uncrustify code formatter extension for Visual Studio Code",
+        "url": "https://github.com/AMDphreak/vscode-uncrustify",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-07-27T15:17:09Z"
+      },
+      {
+        "name": "Roo-Code",
+        "description": "Roo Code (prev. Roo Cline) gives you a whole dev team of AI agents in your code editor.",
+        "url": "https://github.com/AMDphreak/Roo-Code",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-06-30T07:58:42Z"
+      },
+      {
+        "name": "whisper.cpp",
+        "description": "Port of OpenAI's Whisper model in C/C++",
+        "url": "https://github.com/AMDphreak/whisper.cpp",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-03-07T07:09:14Z"
+      },
+      {
+        "name": "iup",
+        "description": "iup wrapper for Nim. Used to be part of the stdlib, now a Nimble package.",
+        "url": "https://github.com/AMDphreak/iup",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-03-05T05:08:19Z"
+      },
+      {
+        "name": "obs-backgroundremoval",
+        "description": "An OBS plugin for removing background in portrait images (video), making it easy to replace the background when screen recording.",
+        "url": "https://github.com/AMDphreak/obs-backgroundremoval",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-02-28T04:37:17Z"
+      },
+      {
+        "name": "svg-explorer-extension",
+        "description": "Extension module for Windows Explorer to render SVG thumbnails, so that you can have an overview of your SVG files",
+        "url": "https://github.com/AMDphreak/svg-explorer-extension",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2025-02-24T07:11:30Z"
+      },
+      {
+        "name": "wiki-docs",
+        "description": "Docs for Wiki.js 2.x",
+        "url": "https://github.com/AMDphreak/wiki-docs",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2024-12-10T23:45:28Z"
+      },
+      {
+        "name": "PowerShell",
+        "description": "PowerShell for every system!",
+        "url": "https://github.com/AMDphreak/PowerShell",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2024-12-03T23:00:01Z"
+      },
+      {
+        "name": "usersettings",
+        "description": "Portable Local Settings Storage for Python",
+        "url": "https://github.com/AMDphreak/usersettings",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2024-11-26T01:00:37Z"
+      },
+      {
+        "name": "xi-editor",
+        "description": "A modern editor with a backend written in Rust.",
+        "url": "https://github.com/AMDphreak/xi-editor",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2024-03-19T00:11:37Z"
+      },
+      {
+        "name": "dart-sdk",
+        "description": "The Dart SDK, including the VM, dart2js, core libraries, and more.",
+        "url": "https://github.com/AMDphreak/dart-sdk",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2023-06-05T04:36:39Z"
+      },
+      {
+        "name": "racket",
+        "description": "The Racket repository",
+        "url": "https://github.com/AMDphreak/racket",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2023-04-24T02:08:02Z"
+      },
+      {
+        "name": "Rust-lang-book",
+        "description": "The Rust Programming Language",
+        "url": "https://github.com/AMDphreak/Rust-lang-book",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2023-04-24T02:07:21Z"
+      },
+      {
+        "name": "MDN-content",
+        "description": "The content behind MDN Web Docs",
+        "url": "https://github.com/AMDphreak/MDN-content",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2023-04-24T01:26:19Z"
+      },
+      {
+        "name": "jsonviewer",
+        "description": "JSON Viewer is a jolly good JSON Viewer",
+        "url": "https://github.com/AMDphreak/jsonviewer",
+        "provider": "github",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2020-12-01T18:47:02Z"
+      },
+      {
+        "name": "tcp-server",
+        "description": "Creates a server that waits for TCP packets.",
+        "url": "https://gitlab.com/AMDphreak/tcp-server",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2019-11-21T04:46:29.123Z"
+      },
+      {
+        "name": "hello-haskell",
+        "description": "Hello World Haskell",
+        "url": "https://gitlab.com/AMDphreak/hello-haskell",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2019-06-12T05:13:19.072Z"
+      },
+      {
+        "name": "learn-racket",
+        "url": "https://gitlab.com/AMDphreak/learn-racket",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2019-03-16T04:04:09.448Z"
+      },
+      {
+        "name": "Haskell-Programming-from-Beginner-to-Expert",
+        "description": "A book for beginners in computer programming around age 10. Readers advance from beginner to expert. The book teaches a college level understanding of the topics.",
+        "url": "https://gitlab.com/AMDphreak/Haskell-Programming-from-Beginner-to-Expert",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2019-01-19T19:30:15.844Z"
+      },
+      {
+        "name": "conveyorbelt",
+        "description": "Sort DVDs and other media discs into bins/chutes along a conveyor belt\r\nRequired components:\r\n-Raspberry Pi 3\r\n-Rotary Encoder\r\n-Zebra Scanner\r\n-Python 3.7",
+        "url": "https://gitlab.com/AMDphreak/conveyorbelt",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2019-01-06T09:33:02.48Z"
+      },
+      {
+        "name": "storganizer",
+        "description": "Store Inventory Tracker",
+        "url": "https://gitlab.com/AMDphreak/storganizer",
+        "provider": "gitlab",
+        "owner": "AMDphreak",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2019-01-06T09:03:16.955Z"
+      }
+    ]
+  },
+  {
+    "identity": "formatte",
+    "id": "formatte",
+    "title": "formatte",
+    "tagline": "Formatting tooling organization.",
+    "repositories": [
       {
         "name": ".github",
         "description": "Organization profile and community health files",
@@ -2978,7 +3677,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "formatte",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:08Z"
       },
       {
         "name": ".github-private",
@@ -2987,16 +3687,47 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "formatte",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:08Z"
+      },
+      {
+        "name": "agent-rules",
+        "description": "Org wrapper for shared agent-rules template",
+        "url": "https://github.com/formatte/agent-rules",
+        "provider": "github",
+        "owner": "formatte",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:05Z"
+      },
+      {
+        "name": "project-plans",
+        "description": "Private Cursor/business plan seeds",
+        "url": "https://github.com/formatte/project-plans",
+        "provider": "github",
+        "owner": "formatte",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:51:04Z"
       }
     ]
   },
   {
-    "id": "openshellorg",
     "identity": "openshellorg",
+    "id": "openshellorg",
     "title": "Open Shell Org",
     "tagline": "Open Shell community.",
     "repositories": [
+      {
+        "name": "prohelp",
+        "description": "Progressive & Professional Help CLI Interceptor and Library",
+        "url": "https://github.com/openshellorg/prohelp",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:35Z"
+      },
       {
         "name": "about",
         "description": "Orient yourself: OS/distro, shell, and how to look around — Cosmopolitan APE universal binary",
@@ -3004,16 +3735,18 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:26Z"
       },
       {
-        "name": "agent-rules",
-        "description": "Org wrapper for shared agent-rules template",
-        "url": "https://github.com/openshellorg/agent-rules",
+        "name": "command-namespace",
+        "description": "Hierarchical command namespace spec, JSON Schemas and D registry library (replaces PATH lookup)",
+        "url": "https://github.com/openshellorg/command-namespace",
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:26Z"
       },
       {
         "name": "config-lifecycle",
@@ -3022,16 +3755,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "docs",
-        "description": "OpenShellOrg documentation hub. Antora site aggregating openshellorg projects (SOS + companion tooling docs).",
-        "url": "https://github.com/openshellorg/docs",
-        "provider": "github",
-        "owner": "openshellorg",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:25Z"
       },
       {
         "name": "info",
@@ -3040,7 +3765,28 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:24Z"
+      },
+      {
+        "name": "install",
+        "description": "Resolver-style install front door across package managers (winget, scoop, npm, ...)",
+        "url": "https://github.com/openshellorg/install",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:23Z"
+      },
+      {
+        "name": "isolate",
+        "description": "Front door for isolation levels: overlay, fence, partition, guest",
+        "url": "https://github.com/openshellorg/isolate",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:22Z"
       },
       {
         "name": "nu-emit",
@@ -3049,7 +3795,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:22Z"
       },
       {
         "name": "nu-require",
@@ -3058,16 +3805,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "open-shell",
-        "description": "Open Shell — Dlang structured shell runtime. Default oso syntax mode; nu and bash compatibility modes.",
-        "url": "https://github.com/openshellorg/open-shell",
-        "provider": "github",
-        "owner": "openshellorg",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:20Z"
       },
       {
         "name": "open-terminal",
@@ -3076,7 +3815,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:20Z"
       },
       {
         "name": "opensh.org",
@@ -3085,25 +3825,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "openshellorg.github.io",
-        "description": "Host-root GitHub Pages publisher (robots.txt + index)",
-        "url": "https://github.com/openshellorg/openshellorg.github.io",
-        "provider": "github",
-        "owner": "openshellorg",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "prohelp",
-        "description": "Progressive & Professional Help CLI Interceptor and Library",
-        "url": "https://github.com/openshellorg/prohelp",
-        "provider": "github",
-        "owner": "openshellorg",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:20Z"
       },
       {
         "name": "prohelp-cli",
@@ -3112,7 +3835,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:18Z"
       },
       {
         "name": "project-map",
@@ -3121,7 +3845,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:16Z"
       },
       {
         "name": "project-plans",
@@ -3130,7 +3855,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:16Z"
       },
       {
         "name": "shell-architecture",
@@ -3139,34 +3865,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "shell-context",
-        "description": "SDL schema and polyglot libraries for CLI/shell persistent context negotiation.",
-        "url": "https://github.com/openshellorg/shell-context",
-        "provider": "github",
-        "owner": "openshellorg",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "shell-framework",
-        "description": "OpenShellOrg shell framework: modular extension host (Prohelp and surfaces plug in; canon lives in shell-architecture)",
-        "url": "https://github.com/openshellorg/shell-framework",
-        "provider": "github",
-        "owner": "openshellorg",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "terminal",
-        "description": "The new Windows Terminal and the original Windows console host, all in the same place!",
-        "url": "https://github.com/openshellorg/terminal",
-        "provider": "github",
-        "owner": "openshellorg",
-        "isPrivate": false,
-        "isFork": true
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:14Z"
       },
       {
         "name": "terminal-gui-prompts",
@@ -3175,7 +3875,48 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:12Z"
+      },
+      {
+        "name": "versions",
+        "description": "Universal version manager over the command namespace",
+        "url": "https://github.com/openshellorg/versions",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:12Z"
+      },
+      {
+        "name": "docs",
+        "description": "OpenShellOrg documentation hub. Antora site aggregating openshellorg projects (SOS + companion tooling docs).",
+        "url": "https://github.com/openshellorg/docs",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-11-13T06:03:39Z"
+      },
+      {
+        "name": "shell-framework",
+        "description": "OpenShellOrg shell framework: modular extension host (Prohelp and surfaces plug in; canon lives in shell-architecture)",
+        "url": "https://github.com/openshellorg/shell-framework",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-27T02:46:27Z"
+      },
+      {
+        "name": "name",
+        "description": "Read-only inspection and audit of the command namespace: which, conflicts, packages",
+        "url": "https://github.com/openshellorg/name",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-26T23:47:29Z"
       },
       {
         "name": ".github",
@@ -3183,25 +3924,67 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "openshellorg",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:15Z"
+      },
+      {
+        "name": "agent-rules",
+        "description": "Org wrapper for shared agent-rules template",
+        "url": "https://github.com/openshellorg/agent-rules",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:11Z"
+      },
+      {
+        "name": "open-shell",
+        "description": "Open Shell — Dlang structured shell runtime. Default oso syntax mode; nu and bash compatibility modes.",
+        "url": "https://github.com/openshellorg/open-shell",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:05Z"
+      },
+      {
+        "name": "openshellorg.github.io",
+        "description": "Host-root GitHub Pages publisher (robots.txt + index)",
+        "url": "https://github.com/openshellorg/openshellorg.github.io",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:00Z"
+      },
+      {
+        "name": "shell-context",
+        "description": "SDL schema and polyglot libraries for CLI/shell persistent context negotiation.",
+        "url": "https://github.com/openshellorg/shell-context",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:48:53Z"
+      },
+      {
+        "name": "terminal",
+        "description": "The new Windows Terminal and the original Windows console host, all in the same place!",
+        "url": "https://github.com/openshellorg/terminal",
+        "provider": "github",
+        "owner": "openshellorg",
+        "isPrivate": false,
+        "isFork": true,
+        "pushedAt": "2026-07-26T09:03:06Z"
       }
     ]
   },
   {
-    "id": "LinxPhotos",
     "identity": "LinxPhotos",
+    "id": "LinxPhotos",
     "title": "LinxPhotos",
     "tagline": "Photo service and documentation.",
     "repositories": [
-      {
-        "name": "agent-rules",
-        "description": "Org wrapper for shared agent-rules template",
-        "url": "https://github.com/LinxPhotos/agent-rules",
-        "provider": "github",
-        "owner": "LinxPhotos",
-        "isPrivate": false,
-        "isFork": false
-      },
       {
         "name": "discussion",
         "description": "Public Discussion repository for tech-savvy fans",
@@ -3209,33 +3992,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "LinxPhotos",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "docs",
-        "url": "https://github.com/LinxPhotos/docs",
-        "provider": "github",
-        "owner": "LinxPhotos",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "instalay",
-        "description": "InstaLay — batch canvas, no-crop framing, and tapestry layouts for Instagram (by Linx) https://instalay.linx.photos",
-        "url": "https://github.com/LinxPhotos/instalay",
-        "provider": "github",
-        "owner": "LinxPhotos",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "instalay-site",
-        "description": "InstaLay marketing site",
-        "url": "https://github.com/LinxPhotos/instalay-site",
-        "provider": "github",
-        "owner": "LinxPhotos",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:37Z"
       },
       {
         "name": "LinxPhotos.github.io",
@@ -3244,7 +4002,65 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "LinxPhotos",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-11-15T19:23:31Z"
+      },
+      {
+        "name": "photo-service",
+        "url": "https://github.com/LinxPhotos/photo-service",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2026-11-15T12:41:53Z"
+      },
+      {
+        "name": "instalay",
+        "description": "InstaLay — batch canvas, no-crop framing, and tapestry layouts for Instagram (by Linx) https://instalay.linx.photos",
+        "url": "https://github.com/LinxPhotos/instalay",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-09T11:05:11Z"
+      },
+      {
+        "name": ".github",
+        "url": "https://github.com/LinxPhotos/.github",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:30Z"
+      },
+      {
+        "name": "agent-rules",
+        "description": "Org wrapper for shared agent-rules template",
+        "url": "https://github.com/LinxPhotos/agent-rules",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:25Z"
+      },
+      {
+        "name": "docs",
+        "url": "https://github.com/LinxPhotos/docs",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:25Z"
+      },
+      {
+        "name": "instalay-site",
+        "description": "InstaLay marketing site",
+        "url": "https://github.com/LinxPhotos/instalay-site",
+        "provider": "github",
+        "owner": "LinxPhotos",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:21Z"
       },
       {
         "name": "photo-finder",
@@ -3253,15 +4069,8 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "LinxPhotos",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "photo-service",
-        "url": "https://github.com/LinxPhotos/photo-service",
-        "provider": "github",
-        "owner": "LinxPhotos",
-        "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:18Z"
       },
       {
         "name": "project-plans",
@@ -3270,72 +4079,25 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "LinxPhotos",
         "isPrivate": true,
-        "isFork": false
-      },
-      {
-        "name": ".github",
-        "url": "https://github.com/LinxPhotos/.github",
-        "provider": "github",
-        "owner": "LinxPhotos",
-        "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2026-10-06T20:49:15Z"
       }
     ]
   },
   {
-    "id": "memphis-cs-projects",
     "identity": "memphis-cs-projects",
+    "id": "memphis-cs-projects",
     "title": "Memphis CS Projects",
     "tagline": "University coursework and team projects.",
     "repositories": [
-      {
-        "name": "Bharat",
-        "description": "iHunt (Idea Hunt)",
-        "url": "https://github.com/memphis-cs-projects/Bharat",
-        "provider": "github",
-        "owner": "memphis-cs-projects",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "Foodee",
-        "url": "https://github.com/memphis-cs-projects/Foodee",
-        "provider": "github",
-        "owner": "memphis-cs-projects",
-        "isPrivate": false,
-        "isFork": false
-      },
       {
         "name": "indigo-s24",
         "url": "https://github.com/memphis-cs-projects/indigo-s24",
         "provider": "github",
         "owner": "memphis-cs-projects",
         "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "mjac-f23",
-        "url": "https://github.com/memphis-cs-projects/mjac-f23",
-        "provider": "github",
-        "owner": "memphis-cs-projects",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "purple-f23",
-        "url": "https://github.com/memphis-cs-projects/purple-f23",
-        "provider": "github",
-        "owner": "memphis-cs-projects",
-        "isPrivate": false,
-        "isFork": false
-      },
-      {
-        "name": "Team-PSYC100",
-        "url": "https://github.com/memphis-cs-projects/Team-PSYC100",
-        "provider": "github",
-        "owner": "memphis-cs-projects",
-        "isPrivate": true,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2024-05-02T06:49:58Z"
       },
       {
         "name": "tomato-s24",
@@ -3343,13 +4105,60 @@ export const repositoryCatalog: CatalogProjectGroup[] = [
         "provider": "github",
         "owner": "memphis-cs-projects",
         "isPrivate": false,
-        "isFork": false
+        "isFork": false,
+        "pushedAt": "2024-05-02T05:38:11Z"
+      },
+      {
+        "name": "purple-f23",
+        "url": "https://github.com/memphis-cs-projects/purple-f23",
+        "provider": "github",
+        "owner": "memphis-cs-projects",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2023-12-13T05:53:30Z"
+      },
+      {
+        "name": "mjac-f23",
+        "url": "https://github.com/memphis-cs-projects/mjac-f23",
+        "provider": "github",
+        "owner": "memphis-cs-projects",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2023-12-10T04:45:10Z"
+      },
+      {
+        "name": "Bharat",
+        "description": "iHunt (Idea Hunt)",
+        "url": "https://github.com/memphis-cs-projects/Bharat",
+        "provider": "github",
+        "owner": "memphis-cs-projects",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2016-05-05T15:17:11Z"
+      },
+      {
+        "name": "Foodee",
+        "url": "https://github.com/memphis-cs-projects/Foodee",
+        "provider": "github",
+        "owner": "memphis-cs-projects",
+        "isPrivate": false,
+        "isFork": false,
+        "pushedAt": "2016-05-05T00:22:10Z"
+      },
+      {
+        "name": "Team-PSYC100",
+        "url": "https://github.com/memphis-cs-projects/Team-PSYC100",
+        "provider": "github",
+        "owner": "memphis-cs-projects",
+        "isPrivate": true,
+        "isFork": false,
+        "pushedAt": "2015-05-06T17:33:35Z"
       }
     ]
   }
 ];
 
-export const catalogGeneratedAt = "2026-10-07";
+export const catalogGeneratedAt = "2026-11-17";
 
 export function catalogRepoCount(): number {
   return repositoryCatalog.reduce((n, g) => n + g.repositories.length, 0);

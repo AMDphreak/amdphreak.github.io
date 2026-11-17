@@ -21,6 +21,25 @@ function hostLabel(provider: string) {
   return hostNames[provider] ?? provider;
 }
 
+function pushedTime(repo: CatalogRepository) {
+  const time = repo.pushedAt ? Date.parse(repo.pushedAt) : Number.NaN;
+  return Number.isNaN(time) ? null : time;
+}
+
+function byLatestPush(a: CatalogRepository, b: CatalogRepository) {
+  const ta = pushedTime(a);
+  const tb = pushedTime(b);
+  if (ta === null && tb === null) return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
+  if (ta === null) return 1;
+  if (tb === null) return -1;
+  if (tb !== ta) return tb - ta;
+  return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
+}
+
+/** Same secondary control as the Software section on the home page. */
+const secondaryBtn =
+  "inline-flex items-center justify-center gap-1.5 h-12 px-5 font-heading text-sm font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background structural-border bg-background text-foreground hover:bg-stone-100 dark:hover:bg-stone-900";
+
 type CatalogEntry = {
   anchor: string;
   title: string;
@@ -61,7 +80,7 @@ const entries: CatalogEntry[] = orderedGroups.map((group) => {
     title: group.title,
     tagline: group.tagline ?? face?.tagline,
     identity: group.identity,
-    repositories: group.repositories,
+    repositories: group.repositories.slice().sort(byLatestPush),
     face,
     avatarLogin: face?.githubLogin ?? githubOwner,
     ...withProjectChrome(face),
@@ -112,7 +131,7 @@ for (const face of projects) {
 
         <div class="space-y-4">
           <label class="block space-y-2" for="catalog-search">
-            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
+            <span class="block pl-4 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
               Search
             </span>
             <input
@@ -133,6 +152,12 @@ for (const face of projects) {
                 <details id={entry.anchor} class="structural-border group/section">
                   <summary class="cursor-pointer list-none p-6 hover:bg-stone-50/50 dark:hover:bg-stone-900/30 transition-colors [&::-webkit-details-marker]:hidden">
                     <div class="flex items-center gap-4">
+                      <span
+                        class="inline-flex h-8 w-8 shrink-0 items-center justify-center self-center font-mono text-stone-300 transition-transform group-open/section:rotate-90"
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
                       <span class="grid min-w-0 flex-1 grid-cols-[4ch_minmax(0,1fr)] items-baseline gap-x-[2ch]">
                         <span class="text-right font-mono text-sm tabular-nums text-stone-600 dark:text-stone-400">
                           {index + 1}.
@@ -166,9 +191,16 @@ for (const face of projects) {
                             data-row-demos
                             target={entry.demosHref.startsWith("/") ? undefined : "_blank"}
                             rel={entry.demosHref.startsWith("/") ? undefined : "noopener noreferrer"}
-                            class="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+                            class:list={["shrink-0", secondaryBtn]}
                           >
-                            Demos {entry.demosHref.startsWith("/") ? "→" : "↗"}
+                            Demos
+                            {
+                              !entry.demosHref.startsWith("/") && (
+                                <span class="font-mono text-[10px] opacity-70" aria-hidden="true">
+                                  ↗
+                                </span>
+                              )
+                            }
                           </a>
                         )
                       }
@@ -206,9 +238,6 @@ for (const face of projects) {
                           />
                         )
                       }
-                      <span class="font-mono text-stone-300 group-open/section:rotate-90 transition-transform" aria-hidden="true">
-                        →
-                      </span>
                     </div>
                   </summary>
                   <div class="space-y-6 border-t border-stone-200 px-6 py-6 dark:border-stone-800">
@@ -222,7 +251,7 @@ for (const face of projects) {
                           </summary>
                           <div class="space-y-3 border-t border-stone-200 px-4 py-4 dark:border-stone-800">
                             <label class="block space-y-2">
-                              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-600 dark:text-stone-400">
+                              <span class="block pl-3 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-600 dark:text-stone-400">
                                 Filter this project
                               </span>
                               <input
@@ -270,6 +299,7 @@ for (const face of projects) {
                                         <span>{repo.owner}</span>
                                         {repo.isPrivate && <span>private</span>}
                                         {repo.isFork && <span>fork</span>}
+                                        {repo.pushedAt && <time datetime={repo.pushedAt}>{repo.pushedAt.slice(0, 10)}</time>}
                                       </p>
                                     </div>
                                     <span class="hidden shrink-0 font-mono text-stone-300 sm:inline" aria-hidden="true">
