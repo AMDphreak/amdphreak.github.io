@@ -30,3 +30,7 @@ vendor/
 # Local full-res product masters (WebP tiers are committed)
 public/products/*.png
 
+# Affinity mark: source and exports stay tracked (this ignore file is a deny-list)
+!public/brand/
+!public/brand/**
+

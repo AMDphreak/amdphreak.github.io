@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Icon**: the live mark is the Affinity stone. The tab icon is that WebP export, with the square PNG kept so Firefox still has an icon. The same stone sits faded behind Johnson.
 - **Theme**: a blocking script in the page head sets the `dark` class, the color scheme, and the page background from the saved theme before the font CSS. A stored dark theme no longer flashes white while the stylesheet loads.
 - **Navigation**: a deeper or sideways visit covers the current page from the right. A visit up to an ancestor path, including Home, slides the current page off to the right. Reduced motion skips that motion. The theme switch still uses its circle reveal.
 - **Chrome**: the theme switch icon and border share `--theme-toggle-mark`. Dark mode is stone-500 on the dark page, contrast 4.13. Light mode uses `#817c78` on white so the ratio matches. The header rule uses its own light color at the same intensity as the footer divider.
@@ -32,7 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Icon**: a smooth river stone with a carved R replaces the previous favicon. Light and dark files follow the saved theme. On the home page, a faded stone sits behind Johnson.
 - **Home**: Johnson darkens toward the middle of that stone in the light theme and lightens toward it in the dark theme. The shift fades back to the normal text color.
 
 ## [Unreleased] - 2026-11-16
