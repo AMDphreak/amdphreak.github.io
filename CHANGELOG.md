@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Chrome**: the theme switch icon and border share `--theme-toggle-mark`. Light mode is stone-400 for both. Dark mode is stone-500 for both. The header rule uses its own light color at the same intensity as the footer divider.
-- **Grain**: one tile, one opacity, on every page, including the home washes. A 1px blur softens the specks. The home washes no longer paint a second copy.
+- **Grain**: the page grain is a single body layer. The home washes were each painting another full-page tile, because those layers were anchored to the body and overflow did not clip them, so the hero was stacked too. A 1px blur softens the specks.
+- **Philosophy**: the specification-design phrase keeps its space, and the sorting sentence uses "but" in place of the semicolon.
 - **Photography**: the bigrpic screenshot selects a sharper file as browser zoom raises the pixel density, up to the full capture. The paragraph is the studio biography.
 - **Home**: the hero, Software, and Photography sit in the chrome column, left-aligned, at the same width as the header. The centered reading measure stays on blog, inspirations, and the other reading pages.
 - **Catalog**: project expanders other than Personal Projects are ordered by the newest repository `pushedAt`. Projects with no push date follow the dated ones.

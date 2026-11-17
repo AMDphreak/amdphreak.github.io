@@ -175,44 +175,27 @@
     padding-inline: 1.5rem;
   }
 
-  /*
-   * Same lightness pair for every section plate. Hue and chroma come from the base.
-   * The page color under the wash hides the body grain so the section can draw that
-   * same tile once, above the color and under the type.
-   */
+  /* Same lightness pair for every section plate. Hue and chroma come from the base. */
   .home-software {
-    background-color: var(--color-background);
-    background-image: linear-gradient(
-      oklch(from var(--software-base) 0.93 c h / var(--section-plate-alpha)),
-      oklch(from var(--software-base) 0.93 c h / var(--section-plate-alpha))
-    );
+    background-color: oklch(from var(--software-base) 0.93 c h / var(--section-plate-alpha));
   }
   .dark .home-software {
-    background-image: linear-gradient(
-      oklch(from var(--software-base) 0.417 c h / var(--section-plate-alpha)),
-      oklch(from var(--software-base) 0.417 c h / var(--section-plate-alpha))
-    );
+    background-color: oklch(from var(--software-base) 0.417 c h / var(--section-plate-alpha));
   }
   .home-photography {
-    background-color: var(--color-background);
-    background-image: linear-gradient(
-      oklch(from var(--photography-base) 0.93 c h / var(--section-plate-alpha)),
-      oklch(from var(--photography-base) 0.93 c h / var(--section-plate-alpha))
-    );
+    background-color: oklch(from var(--photography-base) 0.93 c h / var(--section-plate-alpha));
   }
   .dark .home-photography {
-    background-image: linear-gradient(
-      oklch(from var(--photography-base) 0.417 c h / var(--section-plate-alpha)),
-      oklch(from var(--photography-base) 0.417 c h / var(--section-plate-alpha))
-    );
+    background-color: oklch(from var(--photography-base) 0.417 c h / var(--section-plate-alpha));
   }
 
   /*
-   * One grain for every page, under the type. Same tile, opacity, and blur.
-   * Home washes clip a page-sized layer so they do not stack a second pattern
-   * and do not start a new tile at their own corner.
-   * A 1px blur takes the hard edge off the specks.
+   * One grain layer, on the body only. Home washes must not add their own:
+   * a ::before with inset 0 is positioned against the body unless the wash
+   * itself is positioned, and overflow does not clip it, so each wash was a
+   * second full-page tile. That stacked the hero as well as the washes.
    * The tile scrolls with the page. Origin: the top center of the body.
+   * A 1px blur takes the hard edge off the specks.
    */
   :root {
     --grain-image: url("/textures/grain-tile-light.png");
@@ -231,15 +214,7 @@
     isolation: isolate;
   }
 
-  .home-software,
-  .home-photography {
-    isolation: isolate;
-    overflow: hidden;
-  }
-
-  body::before,
-  .home-software::before,
-  .home-photography::before {
+  body::before {
     content: "";
     position: absolute;
     z-index: -1;

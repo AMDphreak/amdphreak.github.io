@@ -34,11 +34,11 @@ export const Philosophy = () => {
           </p>
           <p>
             That bias toward clarity and restraint draws on industrial design — especially the work of{" "}
-            <strong class="font-medium text-stone-800 dark:text-stone-200">Dieter Rams</strong> (of Braun fame, whose design philosophy inspired continued successes for products such as the original iPod): minimalism, honest materials, and forms that explain themselves. In engineering I pair that with
+            <strong class="font-medium text-stone-800 dark:text-stone-200">Dieter Rams</strong> (of Braun fame, whose design philosophy inspired continued successes for products such as the original iPod): minimalism, honest materials, and forms that explain themselves. In engineering I pair that with{" "}
             <strong class="font-medium text-stone-800 dark:text-stone-200">rigorous specification design</strong>, composability, and functional orthogonality so parts combine without surprise.
           </p>
           <p>
-            Organizationally I favor <strong class="font-medium text-stone-800 dark:text-stone-200">functional (thematic) design</strong> over purely taxonomic buckets: group things by what they do together in a real workflow (needle with thread), not only by abstract category (needle with nail because both are metal). Taxonomic sorting has its place in libraries and schemas; thematic sorting is often what a wise interface optimizes for.
+            Organizationally I favor <strong class="font-medium text-stone-800 dark:text-stone-200">functional (thematic) design</strong> over purely taxonomic buckets: group things by what they do together in a real workflow (needle with thread), not only by abstract category (needle with nail because both are metal). Taxonomic sorting has its place in libraries and schemas, but thematic sorting is often what a wise interface optimizes for.
           </p>
         </div>
       </section>
