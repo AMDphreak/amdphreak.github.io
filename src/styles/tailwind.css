@@ -88,6 +88,14 @@
 }
 
 @layer base {
+  html {
+    background-color: #ffffff;
+    color-scheme: light;
+  }
+  html.dark {
+    background-color: hsl(20 14.3% 4.1%);
+    color-scheme: dark;
+  }
   * {
     @apply border-border;
   }

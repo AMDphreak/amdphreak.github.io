@@ -25,6 +25,21 @@ const fontCss = [
 ].join("");
 ---
 
+<script is:inline>
+  (function () {
+    var theme = "light";
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved) theme = saved;
+      else if (matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+    } catch (e) {}
+    var root = document.documentElement;
+    if (theme === "dark") root.classList.add("dark");
+    else root.classList.remove("dark");
+    root.style.colorScheme = theme;
+    root.style.backgroundColor = theme === "dark" ? "#0c0a09" : "#ffffff";
+  })();
+</script>
 <link rel="preload" as="font" type="font/woff2" href={instrumentSansLatin} crossorigin />
 <link rel="preload" as="font" type="font/woff2" href={spaceGroteskLatin} crossorigin />
 <link rel="preload" as="font" type="font/woff2" href={spaceMonoLatin} crossorigin />
@@ -36,6 +51,7 @@ const fontCss = [
       else document.documentElement.classList.remove("dark");
 
       document.documentElement.style.colorScheme = theme;
+      document.documentElement.style.backgroundColor = theme === "dark" ? "#0c0a09" : "#ffffff";
 
       if (save && typeof localStorage !== "undefined") {
         localStorage.setItem("theme", theme);
