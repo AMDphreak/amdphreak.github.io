@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Demos**: Personal Projects demos live at [/demos](/demos). [/gui-demos](/gui-demos) redirects there. The interface essay is a section on [Philosophy](/philosophy#experience-before-ornament). The Software row no longer has a UI/UX button. Catalog rows that have a verified demos page show a Demos link on the collapsed row: Personal Projects, Dev-Centr ([Apps](https://devcentr.org/apps)), HCI Nerdz, and Desktop Tooling.
+- **Catalog**: the title, search, and project list share the full structural-border width and stay left-aligned. bigr picture uses its site mark in the logo slot.
 - **Reading column**: pages that capped separate blocks with `max-w-3xl` or `max-w-2xl` now put that measure on one centered column (`mx-auto w-full max-w-3xl`) inside the chrome border. Text in that column stays left-aligned. The page border is `width: 100%` and `max-width: 100%` of `chrome-width`, which is already `width: 100%` and `max-width: 80rem`, so the border shrinks with the viewport until it meets the column.
 - **Chrome**: every public page uses one header (breadcrumb and theme switch) and the same `chrome-width` column (`--chrome-max: 80rem`) for the header, the content box, and the footer. The header rule is the only underline (`showHeaderRule`).
 - **Home**: LinkedIn, X, and Chess.com sit under the username. GitHub, GitLab, Codeberg, and CodersRank stay in Software.

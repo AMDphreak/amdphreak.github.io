@@ -6,5 +6,5 @@ export type PhilosophyArticle = {
   status: "draft" | "published";
 };
 
-/** Registry for UI/UX philosophy essays; add entries as articles are published. */
+/** Longer philosophy articles. The overview lives on the philosophy page. */
 export const philosophyArticles: PhilosophyArticle[] = [];

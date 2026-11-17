@@ -29,7 +29,19 @@ type CatalogEntry = {
   repositories: CatalogRepository[];
   face?: HubDestination;
   avatarLogin?: string;
+  demosHref?: string;
+  markLight?: string;
+  markDark?: string;
 };
+
+function withProjectChrome(face?: HubDestination) {
+  const bigrpic = face?.id === "bigrpic";
+  return {
+    demosHref: face?.demosHref,
+    markLight: bigrpic ? "/catalog/bigrpic-mark-light.svg" : undefined,
+    markDark: bigrpic ? "/catalog/bigrpic-mark-dark.svg" : undefined,
+  };
+}
 
 const faceByGroup = new Map(
   projects.filter((project) => project.catalogId).map((project) => [project.catalogId as string, project]),
@@ -52,6 +64,7 @@ const entries: CatalogEntry[] = orderedGroups.map((group) => {
     repositories: group.repositories,
     face,
     avatarLogin: face?.githubLogin ?? githubOwner,
+    ...withProjectChrome(face),
   };
 });
 
@@ -65,6 +78,7 @@ for (const face of projects) {
     repositories: [],
     face,
     avatarLogin: face.githubLogin,
+    ...withProjectChrome(face),
   });
 }
 ---
@@ -85,7 +99,7 @@ for (const face of projects) {
     <main class="w-full flex-1 mt-8 mb-12">
       <div class="chrome-width">
       <div class="structural-border border-t-0 p-8 md:p-12 space-y-12">
-        <header class="mx-auto w-full max-w-3xl space-y-4">
+        <header class="w-full space-y-4 text-left">
           <h1 class="text-5xl font-heading tracking-tighter">Catalog</h1>
           <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
             Projects · organizations · repositories
@@ -146,7 +160,41 @@ for (const face of projects) {
                         </span>
                       </span>
                       {
-                        entry.avatarLogin && (
+                        entry.demosHref && (
+                          <a
+                            href={entry.demosHref}
+                            data-row-demos
+                            target={entry.demosHref.startsWith("/") ? undefined : "_blank"}
+                            rel={entry.demosHref.startsWith("/") ? undefined : "noopener noreferrer"}
+                            class="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+                          >
+                            Demos {entry.demosHref.startsWith("/") ? "→" : "↗"}
+                          </a>
+                        )
+                      }
+                      {
+                        entry.markLight && entry.markDark ? (
+                          <>
+                            <img
+                              src={entry.markLight}
+                              alt={entry.title}
+                              width="32"
+                              height="32"
+                              loading="lazy"
+                              decoding="async"
+                              class="h-8 w-8 shrink-0 object-contain dark:hidden"
+                            />
+                            <img
+                              src={entry.markDark}
+                              alt=""
+                              width="32"
+                              height="32"
+                              loading="lazy"
+                              decoding="async"
+                              class="hidden h-8 w-8 shrink-0 object-contain dark:block"
+                            />
+                          </>
+                        ) : entry.avatarLogin && (
                           <img
                             src={`https://github.com/${entry.avatarLogin}.png?size=80`}
                             alt={entry.title}
@@ -359,6 +407,11 @@ for (const face of projects) {
 
       for (const avatar of document.querySelectorAll<HTMLImageElement>('img[src*="github.com/"]')) {
         avatar.addEventListener("error", () => avatar.remove());
+      }
+      for (const link of document.querySelectorAll<HTMLAnchorElement>("[data-row-demos]")) {
+        link.addEventListener("click", (event) => {
+          event.stopPropagation();
+        });
       }
       globalInput?.addEventListener("input", apply);
       for (const project of projects) {

@@ -35,6 +35,8 @@ export type HubDestination = {
   catalogId?: string;
   /** GitHub org or user login for the org link and avatar. */
   githubLogin?: string;
+  /** Verified demos or apps index for this project. Omitted when none exists. */
+  demosHref?: string;
 };
 
 type OrgProfile = {
@@ -56,6 +58,7 @@ type CardSeed = {
   pattern?: HubPattern;
   extraHref?: string;
   extraLabel?: string;
+  demosHref?: string;
   catalogId?: string;
   /** Avatar and org link when `org` is not the login used for the website lookup. */
   githubLogin?: string;
@@ -81,6 +84,7 @@ function resolveCard(seed: CardSeed): HubDestination {
     pattern: seed.screenshot ? undefined : seed.pattern,
     extraHref: seed.extraHref,
     extraLabel: seed.extraLabel,
+    demosHref: seed.demosHref,
   };
 
   const login = seed.githubLogin ?? seed.org;
@@ -125,6 +129,7 @@ const seeds: CardSeed[] = [
     catalogId: "dev-centr",
     extraHref: "https://devcentr.org/apps",
     extraLabel: "Apps",
+    demosHref: "https://devcentr.org/apps",
     screenshot: "/products/dev-centr-800.webp",
   },
   {
@@ -156,6 +161,7 @@ const seeds: CardSeed[] = [
     tagline: "HCI and UI/UX innovation.",
     org: "HCI-Nerdz",
     catalogId: "HCI-Nerdz",
+    demosHref: "https://hci-nerdz.github.io/demos",
     pattern: "dots",
   },
   {
@@ -163,6 +169,7 @@ const seeds: CardSeed[] = [
     name: "Desktop Tooling",
     tagline: "OS-level desktop utilities: Explorer, theming, launchers.",
     org: "Desktop-Tooling",
+    demosHref: "https://desktop-tooling.github.io/demos",
     pattern: "diag",
   },
   {
@@ -203,6 +210,7 @@ const seeds: CardSeed[] = [
     tagline: "Repositories under AMDphreak. This site is the directory for every project.",
     catalogId: "AMDphreak",
     githubLogin: "AMDphreak",
+    demosHref: "/demos",
     pattern: "waves",
   },
 ];

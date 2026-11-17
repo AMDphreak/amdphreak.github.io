@@ -65,6 +65,27 @@ export const Philosophy = () => {
           </div>
         </div>
       </div>
+
+      <section id="experience-before-ornament" class="space-y-6 border-t border-stone-200 pt-8 dark:border-stone-800">
+        <h2 class="text-xl font-heading font-medium tracking-tight">Experience before ornament</h2>
+        <div class="space-y-4 text-base md:text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+          <p>
+            Experience comes before ornament. I treat UX as the primary contract and UI as the
+            disciplined surface that makes that contract legible — not the other way around.
+          </p>
+          <p>
+            Interfaces should carry <strong class="font-medium text-stone-800 dark:text-stone-200">rich models of data</strong> instead of endless prose and flat lists that ought to live in a graph, hierarchy, or other structure matched to the problem. When the representation fits the domain, users reason in context instead of scanning noise.
+          </p>
+          <p>
+            That bias toward clarity and restraint draws on industrial design — especially the work of
+            <strong class="font-medium text-stone-800 dark:text-stone-200">Dieter Rams</strong> (Braun, and a touchstone for products like the original iPod): minimalism, honest materials, and forms that explain themselves. In engineering I pair that with
+            <strong class="font-medium text-stone-800 dark:text-stone-200">rigorous specification design</strong>, composability, and functional orthogonality so parts combine without surprise.
+          </p>
+          <p>
+            Organizationally I favor <strong class="font-medium text-stone-800 dark:text-stone-200">functional (thematic) design</strong> over purely taxonomic buckets: group things by what they do together in a real workflow (needle with thread), not only by abstract category (needle with nail because both are metal). Taxonomic sorting has its place in libraries and schemas; thematic sorting is often what a wise interface optimizes for.
+          </p>
+        </div>
+      </section>
     </div>
   );
 };

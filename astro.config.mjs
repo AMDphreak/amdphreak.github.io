@@ -75,6 +75,8 @@ export default defineConfig({
   site: "https://ryanjohnson.dev",
   redirects: {
     "/for-fun/chatgpt-roast": "/blog/posts/the-roast-of-ryan-johnson",
+    "/gui-demos": "/demos",
+    "/gui-demos/philosophy": "/philosophy#experience-before-ornament",
   },
   integrations: [
     solid(),
