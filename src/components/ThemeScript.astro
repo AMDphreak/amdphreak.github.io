@@ -167,5 +167,51 @@ const fontCss = [
     } else {
       initToggle();
     }
+
+    const navPath = (url) => {
+      if (!url) return "";
+      try {
+        let path = new URL(url, location.href).pathname;
+        if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
+        return path || "/";
+      } catch {
+        return "";
+      }
+    };
+
+    // Up the tree when the destination path is a strict ancestor. "/" is an ancestor of every other path.
+    const navType = (fromUrl, toUrl) => {
+      const from = navPath(fromUrl);
+      const to = navPath(toUrl);
+      if (!from || !to || from === to) return "cover";
+      if (to === "/" || from.startsWith(to + "/")) return "reveal";
+      return "cover";
+    };
+
+    const tagNavigation = (viewTransition, fromUrl, toUrl) => {
+      if (!viewTransition || !viewTransition.types) return;
+      viewTransition.types.add(navType(fromUrl, toUrl));
+    };
+
+    window.addEventListener("pageswap", (event) => {
+      const activation = event.activation;
+      if (!activation) return;
+      tagNavigation(
+        event.viewTransition,
+        activation.from && activation.from.url,
+        activation.entry && activation.entry.url,
+      );
+    });
+
+    window.addEventListener("pagereveal", (event) => {
+      const activation =
+        event.activation || (window.navigation && window.navigation.activation);
+      if (!activation) return;
+      tagNavigation(
+        event.viewTransition,
+        activation.from && activation.from.url,
+        activation.entry && activation.entry.url,
+      );
+    });
   })();
 </script>

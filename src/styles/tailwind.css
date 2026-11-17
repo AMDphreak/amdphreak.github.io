@@ -131,6 +131,68 @@
   .dark.theme-transitioning::view-transition-new(root) {
     z-index: 2;
   }
+
+  /*
+   * Cross-document page motion. :not(.theme-transitioning) keeps these off the
+   * theme circle wipe, whose own rules set animation: none.
+   * cover: new page slides in from the right over a still current page.
+   * reveal: current page slides off to the right; the destination is already underneath.
+   */
+  :root:not(.theme-transitioning):active-view-transition-type(cover)::view-transition-old(root) {
+    animation: none;
+    mix-blend-mode: normal;
+    z-index: 1;
+  }
+  :root:not(.theme-transitioning):active-view-transition-type(cover)::view-transition-new(root) {
+    animation: vt-page-cover 450ms ease-in-out both;
+    mix-blend-mode: normal;
+    z-index: 2;
+  }
+  :root:not(.theme-transitioning):active-view-transition-type(reveal)::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+    z-index: 1;
+  }
+  :root:not(.theme-transitioning):active-view-transition-type(reveal)::view-transition-old(root) {
+    animation: vt-page-reveal 450ms ease-in-out both;
+    mix-blend-mode: normal;
+    z-index: 2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root:not(.theme-transitioning):active-view-transition-type(cover)::view-transition-new(root),
+    :root:not(.theme-transitioning):active-view-transition-type(reveal)::view-transition-old(root) {
+      animation: none;
+    }
+  }
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+@keyframes vt-page-cover {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes vt-page-reveal {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
 }
 
 /* Custom architectural utilities */

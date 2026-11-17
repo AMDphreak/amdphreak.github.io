@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Theme**: a blocking script in the page head sets the `dark` class, the color scheme, and the page background from the saved theme before the font CSS. A stored dark theme no longer flashes white while the stylesheet loads.
+- **Navigation**: a deeper or sideways visit covers the current page from the right. A visit up to an ancestor path, including Home, slides the current page off to the right. Reduced motion skips that motion. The theme switch still uses its circle reveal.
 - **Chrome**: the theme switch icon and border share `--theme-toggle-mark`. Light mode is stone-400 for both. Dark mode is stone-500 for both. The header rule uses its own light color at the same intensity as the footer divider.
 - **Grain**: light opacity is 0.66. Dark opacity is 1, because the dark tile's alpha is about half the light tile's. The home washes draw that same tile above their color, on the wash box only, so the plate no longer covers the texture.
 - **Philosophy**: the specification-design phrase keeps its space, and the sorting sentence uses "but" in place of the semicolon.
