@@ -47,7 +47,7 @@ const QuoteAttribution = (props: {
 }) => (
   <cite
     class={cn(
-      "block mt-3 font-mono text-[10px] uppercase tracking-widest not-italic",
+      "block mt-3 font-mono text-[11px] uppercase tracking-widest not-italic",
       props.light ? "text-stone-300" : "text-stone-400",
     )}
   >
@@ -168,7 +168,7 @@ export const Inspirations = (props: InspirationsProps) => {
       {showTitle() && (
         <div class="flex flex-wrap items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
           <h2 class="text-3xl font-heading tracking-tighter">Inspirations</h2>
-          <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+          <span class="font-mono text-[11px] uppercase tracking-widest text-stone-500 mb-1">
             Quotes &amp; Posture
           </span>
         </div>
@@ -211,7 +211,7 @@ export const Inspirations = (props: InspirationsProps) => {
       <article class="structural-border p-8 space-y-6">
         <header class="text-center space-y-2">
           <h3 class="text-2xl font-heading tracking-tight">{joeArmstrongSection.title}</h3>
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+          <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-500">
             {joeArmstrongSection.quotesHeading}
           </p>
         </header>
@@ -237,7 +237,7 @@ export const Inspirations = (props: InspirationsProps) => {
               <p class="text-sm text-stone-600 dark:text-stone-400 text-center">
                 {talk().event}, {talk().eventDate} · ~46 min
               </p>
-              <p class="flex flex-wrap justify-center gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-widest">
+              <p class="flex flex-wrap justify-center gap-x-4 gap-y-2 font-mono text-[11px] uppercase tracking-widest">
                 <a
                   href={talk().youtubeUrl}
                   target="_blank"
@@ -293,7 +293,7 @@ export const Inspirations = (props: InspirationsProps) => {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="font-mono text-[10px] uppercase tracking-widest text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                        class="font-mono text-[11px] uppercase tracking-widest text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                       >
                         {link.label} ↗
                       </a>
@@ -351,7 +351,7 @@ export const Inspirations = (props: InspirationsProps) => {
                       href={section.relatedUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="font-mono text-[10px] uppercase tracking-widest text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                      class="font-mono text-[11px] uppercase tracking-widest text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                     >
                       {section.relatedLabel ?? section.relatedUrl} ↗
                     </a>

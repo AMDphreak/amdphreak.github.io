@@ -72,7 +72,7 @@ export const Profile = () => {
         <div class="flex items-start gap-3">
           <div class="mt-1"><IconLightbulb class="text-stone-400" /></div>
           <div>
-            <p class="font-mono text-[10px] uppercase tracking-widest text-stone-700 dark:text-stone-500 mb-1">Status</p>
+            <p class="font-mono text-[11px] uppercase tracking-widest text-stone-700 dark:text-stone-500 mb-1">Status</p>
             <div class="flex flex-wrap gap-2 mt-2">
               <StatusBadge icon={<IconSettings />} label="Engineer" />
               <StatusBadge icon={<IconTrending />} label="Architect" />
@@ -88,7 +88,7 @@ const ProfileDetail = (props: { icon: any; title: string; value: string }) => (
   <div class="flex items-start gap-3">
     <div class="mt-1">{props.icon}</div>
     <div>
-      <p class="font-mono text-[10px] uppercase tracking-widest text-stone-700 dark:text-stone-400 mb-1">{props.title}</p>
+      <p class="font-mono text-[11px] uppercase tracking-widest text-stone-700 dark:text-stone-400 mb-1">{props.title}</p>
       <p class="text-sm font-sans text-foreground">{props.value}</p>
     </div>
   </div>
@@ -97,7 +97,7 @@ const ProfileDetail = (props: { icon: any; title: string; value: string }) => (
 const StatusBadge = (props: { icon: any; label: string }) => (
   <Badge
     variant="outline"
-    class="inline-flex items-center gap-1.5 rounded-none px-2 py-0.5 structural-border text-[10px] font-mono font-normal uppercase tracking-wider text-stone-600 dark:text-stone-400"
+    class="inline-flex items-center gap-1.5 rounded-none px-2 py-0.5 structural-border text-[11px] font-mono font-normal uppercase tracking-wider text-stone-600 dark:text-stone-400"
   >
     {props.icon}
     {props.label}

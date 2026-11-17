@@ -55,7 +55,7 @@ export const CollapsibleSection = (props: CollapsibleSectionProps) => {
           <div class="flex flex-wrap items-end gap-4 min-w-0 flex-1">
             <h2 class={titleClass}>{props.title}</h2>
             <Show when={props.tagline}>
-              <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+              <span class="font-mono text-[11px] uppercase tracking-widest text-stone-500 mb-1">
                 {props.tagline}
               </span>
             </Show>

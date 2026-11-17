@@ -17,7 +17,7 @@ function renderTree(nodes: ResolvedTag[]): string {
       const children = renderTree(node.children);
       return `<li class="py-1">
         <a class="font-heading text-lg tracking-tight hover:underline decoration-stone-300 underline-offset-4" href="${tagIdToHref(node.id)}">${node.label}</a>
-        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-400 ml-2">(${count})</span>
+        <span class="font-mono text-[11px] uppercase tracking-widest text-stone-400 ml-2">(${count})</span>
         ${children}
       </li>`;
     })
@@ -44,7 +44,7 @@ function renderTree(nodes: ResolvedTag[]): string {
         <div class="mx-auto w-full max-w-3xl space-y-12">
         <header class="space-y-4">
           <h1 class="text-5xl font-heading tracking-tighter">Tags</h1>
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
+          <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
             Topics · labels
           </p>
           <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">

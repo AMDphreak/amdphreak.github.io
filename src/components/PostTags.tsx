@@ -11,7 +11,7 @@ export function PostTags(props: PostTagsProps) {
     <TagList
       tags={props.tags}
       class="flex flex-wrap gap-3 list-none m-0 p-0"
-      linkClass="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 hover:text-stone-900 dark:text-stone-500 dark:hover:text-stone-100 transition-colors"
+      linkClass="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-700 hover:text-stone-900 dark:text-stone-500 dark:hover:text-stone-100 transition-colors"
     />
   );
 }

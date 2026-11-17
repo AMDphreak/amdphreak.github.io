@@ -106,7 +106,7 @@ function screenshotSrcset(id: string) {
                 {dest.name}
               </h3>
               {dest.external && (
-                <span class="font-mono text-[10px] text-stone-600 opacity-70 dark:text-stone-400" aria-hidden="true">
+                <span class="font-mono text-[11px] text-stone-600 opacity-70 dark:text-stone-400" aria-hidden="true">
                   ↗
                 </span>
               )}
@@ -117,7 +117,7 @@ function screenshotSrcset(id: string) {
                 href={dest.href}
                 target={dest.external ? "_blank" : undefined}
                 rel={dest.external ? "noopener noreferrer" : undefined}
-                class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+                class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
               >
                 {dest.actionLabel} →
               </a>
@@ -126,7 +126,7 @@ function screenshotSrcset(id: string) {
                   href={dest.secondaryHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-600 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+                  class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-600 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
                 >
                   {dest.secondaryLabel ?? "GitHub"} ↗
                 </a>
@@ -136,7 +136,7 @@ function screenshotSrcset(id: string) {
                   href={dest.extraHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-600 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+                  class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-600 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
                 >
                   {dest.extraLabel ?? "More"} ↗
                 </a>

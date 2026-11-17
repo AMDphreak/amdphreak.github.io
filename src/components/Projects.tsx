@@ -197,7 +197,7 @@ const ProjectCard = (props: { project: ProjectProps }) => {
             </Show>
           </div>
           <Show when={props.project.technologies}>
-            <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400">
+            <p class="font-mono text-[11px] uppercase tracking-widest text-stone-400">
               {props.project.technologies.join(" / ")}
             </p>
           </Show>
@@ -216,7 +216,7 @@ const ProjectCard = (props: { project: ProjectProps }) => {
             target="_blank"
             rel="noopener noreferrer"
             variant="link"
-            class="h-auto p-0 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
+            class="h-auto p-0 flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
             <IconGlobe /> Visit
           </Button>
@@ -228,7 +228,7 @@ const ProjectCard = (props: { project: ProjectProps }) => {
             target="_blank"
             rel="noopener noreferrer"
             variant="link"
-            class="h-auto p-0 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
+            class="h-auto p-0 flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
             <IconBook /> Docs
           </Button>
@@ -240,7 +240,7 @@ const ProjectCard = (props: { project: ProjectProps }) => {
             target="_blank"
             rel="noopener noreferrer"
             variant="link"
-            class="h-auto p-0 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
+            class="h-auto p-0 flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 hover:opacity-100 opacity-60 transition-opacity"
           >
             <Show when={props.project.platform === 'gitlab' || (props.project.url && props.project.url.includes('gitlab'))} fallback={<IconGithub />}>
                <IconGitlab />
@@ -251,7 +251,7 @@ const ProjectCard = (props: { project: ProjectProps }) => {
       </div>
       
       {/* Decorative Index */}
-      <div class="absolute top-2 right-2 opacity-10 font-mono text-[10px] group-hover:opacity-30 transition-opacity select-none hidden md:block">
+      <div class="absolute top-2 right-2 opacity-10 font-mono text-[11px] group-hover:opacity-30 transition-opacity select-none hidden md:block">
         STR-{Math.random().toString(36).substring(7).toUpperCase()}
       </div>
     </Card>
@@ -283,7 +283,7 @@ const CompactProjectRow = (props: { project: ProjectProps }) => (
         </Show>
       </div>
       <Show when={props.project.technologies}>
-        <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400 mt-0.5">
+        <p class="font-mono text-[11px] uppercase tracking-widest text-stone-400 mt-0.5">
           {props.project.technologies.join(" / ")}
         </p>
       </Show>
@@ -293,7 +293,7 @@ const CompactProjectRow = (props: { project: ProjectProps }) => (
         href={props.project.url || props.project.repoUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors shrink-0"
+        class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors shrink-0"
       >
         View →
       </a>
@@ -314,7 +314,7 @@ export const Projects = (props: { variant?: "full" | "compact" }) => {
       <section id="projects-section" class="scroll-mt-20 space-y-8">
         <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
           <h2 class="text-3xl font-heading tracking-tighter">Selected Projects</h2>
-          <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+          <span class="font-mono text-[11px] uppercase tracking-widest text-stone-500 mb-1">
             Highlights
           </span>
         </div>
@@ -342,7 +342,7 @@ export const Projects = (props: { variant?: "full" | "compact" }) => {
     <section class="space-y-8">
       <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
         <h2 class="text-3xl font-heading tracking-tighter">Projects</h2>
-        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+        <span class="font-mono text-[11px] uppercase tracking-widest text-stone-500 mb-1">
           Software Portfolio / v04
         </span>
       </div>
@@ -377,7 +377,7 @@ export const Projects = (props: { variant?: "full" | "compact" }) => {
             <h3 class="text-xl font-heading font-medium tracking-tight text-foreground group-hover:underline decoration-stone-300 underline-offset-4">
               Full repository catalog
             </h3>
-            <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400">
+            <p class="font-mono text-[11px] uppercase tracking-widest text-stone-400">
               All projects · GitHub & GitLab
             </p>
             <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-[90%]">
@@ -385,7 +385,7 @@ export const Projects = (props: { variant?: "full" | "compact" }) => {
               not just the highlights above.
             </p>
           </div>
-          <p class="mt-8 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">
+          <p class="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-stone-500 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">
             Browse catalog →
           </p>
         </a>

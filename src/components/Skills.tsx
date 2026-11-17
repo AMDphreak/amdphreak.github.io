@@ -57,7 +57,7 @@ export const Skills = () => {
     <section class="space-y-8">
       <div class="flex items-end gap-3 border-b border-stone-200 dark:border-stone-800 pb-4">
         <h2 class="text-xl font-heading font-medium tracking-tight">Toolkit</h2>
-        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-0.5">
+        <span class="font-mono text-[11px] uppercase tracking-widest text-stone-500 mb-0.5">
           Comp. 09
         </span>
       </div>
@@ -67,7 +67,7 @@ export const Skills = () => {
           <div class="space-y-3">
             <div class="flex items-center gap-2">
               <span class="text-stone-400">{cat.icon}</span>
-              <h3 class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 font-bold">
+              <h3 class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-500 font-bold">
                 {cat.title}
               </h3>
             </div>

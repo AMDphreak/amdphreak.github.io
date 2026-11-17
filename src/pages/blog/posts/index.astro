@@ -39,7 +39,7 @@ const allPosts = [...mdPosts, ...cmkPosts]
         <div class="mx-auto w-full max-w-3xl space-y-12">
         <header class="space-y-4">
           <h1 class="text-5xl font-heading tracking-tighter">Posts</h1>
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
+          <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-700 dark:text-stone-400">
             Essays · notes · writing
           </p>
           <p class="text-lg text-stone-700 dark:text-stone-400 leading-relaxed font-sans">
@@ -74,7 +74,7 @@ const allPosts = [...mdPosts, ...cmkPosts]
                   >
                     {post.data.title}
                   </a>
-                  <p class="font-mono text-[10px] uppercase tracking-widest text-stone-600 dark:text-stone-400 mt-2">
+                  <p class="font-mono text-[11px] uppercase tracking-widest text-stone-600 dark:text-stone-400 mt-2">
                     {post.data.pubDate.toISOString().slice(0, 10)}
                   </p>
                   {post.data.description && (
@@ -90,7 +90,7 @@ const allPosts = [...mdPosts, ...cmkPosts]
                           <li>
                             <a
                               href={tagIdToHref(tagId)}
-                              class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700 hover:text-stone-900 dark:text-stone-500 dark:hover:text-stone-100 transition-colors"
+                              class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-700 hover:text-stone-900 dark:text-stone-500 dark:hover:text-stone-100 transition-colors"
                             >
                               {label}
                             </a>

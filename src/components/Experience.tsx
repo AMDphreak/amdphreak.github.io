@@ -57,7 +57,7 @@ export const Experience = () => {
     <section id="experience-section" class="scroll-mt-20 space-y-8">
       <div class="flex items-end gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
         <h2 class="text-3xl font-heading tracking-tighter">Experience</h2>
-        <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500 mb-1">
+        <span class="font-mono text-[11px] uppercase tracking-widest text-stone-500 mb-1">
           Professional Log / Ref. 8023
         </span>
       </div>
@@ -73,11 +73,11 @@ export const Experience = () => {
                     <h3 class="text-xl font-heading font-medium tracking-tight text-foreground">
                       {exp.title}
                     </h3>
-                    <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 mt-1">
+                    <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-500 mt-1">
                       {exp.company}
                     </p>
                   </div>
-                  <div class="flex items-center gap-2 font-mono text-[10px] text-stone-400 uppercase tracking-widest whitespace-nowrap">
+                  <div class="flex items-center gap-2 font-mono text-[11px] text-stone-400 uppercase tracking-widest whitespace-nowrap">
                     <IconCalendar />
                     {exp.date}
                   </div>

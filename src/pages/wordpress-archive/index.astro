@@ -33,7 +33,7 @@ const posts = [...manifest.posts].sort((a, b) => (a.date < b.date ? 1 : -1));
         <div class="mx-auto w-full max-w-3xl space-y-12">
         <header class="space-y-4">
           <h1 class="text-5xl font-heading tracking-tighter">WordPress archive</h1>
-          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500">
+          <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-500">
             Verbatim captures · ryanjohnson.website · synced {manifest.generatedAt}
           </p>
           <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
@@ -82,7 +82,7 @@ const posts = [...manifest.posts].sort((a, b) => (a.date < b.date ? 1 : -1));
                     >
                       {post.title}
                     </a>
-                    <p class="font-mono text-[10px] uppercase tracking-widest text-stone-400 mt-1">
+                    <p class="font-mono text-[11px] uppercase tracking-widest text-stone-400 mt-1">
                       {post.date}
                       {post.excerpt ? ` · ${post.excerpt.slice(0, 120)}${post.excerpt.length > 120 ? "…" : ""}` : ""}
                     </p>

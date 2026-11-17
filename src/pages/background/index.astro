@@ -1,0 +1,80 @@
+---
+import { Footer } from "../../components/Footer";
+import SiteHeader from "../../components/SiteHeader.astro";
+import ThemeScript from "../../components/ThemeScript.astro";
+import "../../styles/tailwind.css";
+
+const link =
+  "text-stone-800 dark:text-stone-200 underline decoration-stone-300 underline-offset-4 hover:text-stone-900 dark:hover:text-stone-100";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background - Ryan Johnson</title>
+    <ThemeScript />
+  </head>
+  <body
+    class="bg-background text-foreground selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100 min-h-screen flex flex-col"
+  >
+    <SiteHeader items={[{ label: "Home", href: "/" }, { label: "Background" }]} />
+    <main class="w-full flex-1 mt-8 mb-12">
+      <div class="chrome-width">
+        <div class="structural-border border-t-0 p-8 md:p-12">
+          <div class="mx-auto w-full max-w-3xl space-y-12 text-left">
+            <header class="space-y-4">
+              <h1 class="text-5xl font-heading tracking-tighter">Background</h1>
+              <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-500">
+                Context / Origins
+              </p>
+            </header>
+
+            <section class="space-y-4">
+              <h2 class="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-400 font-normal">
+                Core Disciplines
+              </h2>
+              <ul class="m-0 list-none space-y-2 p-0 text-[11px] font-mono uppercase tracking-widest text-stone-500">
+                <li>• Computer Science</li>
+                <li>• UI/UX</li>
+                <li>• Human-Computer Interaction (HCI)</li>
+                <li>• Mathematics</li>
+                <li>• Physics</li>
+              </ul>
+            </section>
+
+            <div class="space-y-4">
+              <p class="text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+                I started coding in early high school on a TI-83+ Silver Edition graphing calculator,
+                picking apart programs with black-box reverse-engineering before I had reliable
+                internet access. I practiced several hours a day for years on an 8×16 character
+                display with no lexical scoping — variables were global to every program, so I wrote
+                code bottom-up so the editor would land near a fault faster, and I memorized entire
+                listings because the screen could not hold them.
+              </p>
+              <p class="text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+                From fractal generators and a black-and-white image compression scheme to automated
+                math suites (to avoid doing the actual school work) and text-based Pong and Snake, my
+                early work was obsessive, improvised, and deeply intimate with the machine.
+              </p>
+              <p class="text-stone-600 dark:text-stone-400 leading-relaxed font-sans italic">
+                I am an &ldquo;unprofessional&rdquo;: I do not respect the traditions of the profession. I break
+                expectations and question the existing order of things.
+              </p>
+              <p class="text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+                The quotes and figures that shaped that posture are on the{" "}
+                <a href="/inspirations" class={link}>Inspirations page</a>. The posture is on the{" "}
+                <a href="/philosophy" class={link}>Philosophy page</a>. My self-written WordPress about
+                page is archived verbatim at{" "}
+                <a href="/wordpress-archive/about" class={link}>About (WordPress archive)</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

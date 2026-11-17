@@ -22,7 +22,7 @@ export const ProfileLinks = (props: { links?: SocialLinkItem[]; label?: string }
                 class="inline-flex items-center gap-2 text-stone-800 transition-colors hover:text-stone-950 dark:text-stone-300 dark:hover:text-stone-100"
               >
                 <Icon size={18} />
-                <span class="font-mono text-[10px] uppercase tracking-[0.2em]">{item.label}</span>
+                <span class="font-mono text-[11px] uppercase tracking-[0.2em]">{item.label}</span>
               </a>
             </li>
           );

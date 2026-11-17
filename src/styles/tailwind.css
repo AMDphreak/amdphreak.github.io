@@ -172,11 +172,12 @@
   }
 
   /*
-   * Grain is a repeating background on the element, not a filtered overlay.
-   * A page-sized ::before with filter and background-blend-mode was repainting
-   * on scroll. Light uses an inverted copy of the same tile. Dark uses the
-   * original tile with alpha halved. Both scroll with the content. Text paints
-   * above the background, so the grain stays under the copy.
+   * Grain is a repeating background, not a filtered overlay.
+   * Light uses an inverted copy of the same tile. Dark uses the original tile
+   * with alpha halved. The tile scrolls with the page (attachment: scroll).
+   * One origin: the top center of the body (the page box). Section plates clip
+   * a page-sized layer so they do not start a new tile at their own corner.
+   * Text paints above that layer, so the grain stays under the copy.
    */
   :root {
     --grain-image: url("/textures/grain-tile-light.png");
@@ -187,12 +188,33 @@
     --grain-image: url("/textures/grain-tile-dark.png");
   }
 
-  body,
-  .home-software,
-  .home-photography {
+  body {
+    position: relative;
     background-image: var(--grain-image);
     background-repeat: repeat;
     background-size: var(--grain-size);
+    background-position: top center;
+    background-attachment: scroll;
+  }
+
+  .home-software,
+  .home-photography {
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .home-software::before,
+  .home-photography::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--grain-image);
+    background-repeat: repeat;
+    background-size: var(--grain-size);
+    background-position: top center;
+    background-attachment: scroll;
   }
 
   /* Body copy under the mono subheading. Same small lightness step in both themes. */

@@ -18,7 +18,7 @@ const articles = posts.filter((p) => !p.seriesHub || p.slug !== hub?.slug);
       class="rounded-md border border-stone-200 dark:border-stone-800 bg-stone-50/60 dark:bg-stone-900/30 px-5 py-4 space-y-3"
       aria-label="Series"
     >
-      <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-stone-500 m-0">
+      <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-stone-500 m-0">
         Series · {seriesLabel}
       </p>
       {hub && hub.slug !== currentSlug && (
