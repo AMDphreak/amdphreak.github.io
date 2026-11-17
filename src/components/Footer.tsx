@@ -6,7 +6,7 @@ export function Footer() {
       <div class="chrome-width">
         <div class="max-w-md space-y-4">
           <p class="text-[11px] uppercase tracking-widest leading-relaxed text-stone-600 dark:text-stone-400">
-            Built with{" "}
+            Hosted on{" "}
             <a
               href="https://github.com/AMDphreak/amdphreak.github.io"
               target="_blank"
