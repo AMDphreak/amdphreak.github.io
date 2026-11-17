@@ -175,36 +175,58 @@
     padding-inline: 1.5rem;
   }
 
-  /* Same lightness pair for every section plate. Hue and chroma come from the base. */
+  /*
+   * Same lightness pair for every section plate. Hue and chroma come from the base.
+   * An opaque page color sits under the wash so the body grain does not show
+   * through it. The wash then draws the same tile once, above the color.
+   */
+  .home-software,
+  .home-photography {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--color-background);
+  }
   .home-software {
-    background-color: oklch(from var(--software-base) 0.93 c h / var(--section-plate-alpha));
+    background-image: linear-gradient(
+      oklch(from var(--software-base) 0.93 c h / var(--section-plate-alpha)),
+      oklch(from var(--software-base) 0.93 c h / var(--section-plate-alpha))
+    );
   }
   .dark .home-software {
-    background-color: oklch(from var(--software-base) 0.417 c h / var(--section-plate-alpha));
+    background-image: linear-gradient(
+      oklch(from var(--software-base) 0.417 c h / var(--section-plate-alpha)),
+      oklch(from var(--software-base) 0.417 c h / var(--section-plate-alpha))
+    );
   }
   .home-photography {
-    background-color: oklch(from var(--photography-base) 0.93 c h / var(--section-plate-alpha));
+    background-image: linear-gradient(
+      oklch(from var(--photography-base) 0.93 c h / var(--section-plate-alpha)),
+      oklch(from var(--photography-base) 0.93 c h / var(--section-plate-alpha))
+    );
   }
   .dark .home-photography {
-    background-color: oklch(from var(--photography-base) 0.417 c h / var(--section-plate-alpha));
+    background-image: linear-gradient(
+      oklch(from var(--photography-base) 0.417 c h / var(--section-plate-alpha)),
+      oklch(from var(--photography-base) 0.417 c h / var(--section-plate-alpha))
+    );
   }
 
   /*
-   * One grain layer, on the body only. Home washes must not add their own:
-   * a ::before with inset 0 is positioned against the body unless the wash
-   * itself is positioned, and overflow does not clip it, so each wash was a
-   * second full-page tile. That stacked the hero as well as the washes.
-   * The tile scrolls with the page. Origin: the top center of the body.
+   * One grain strength for the page and for the home washes.
+   * The dark PNG's alpha is about half the light PNG's, so opacity 1 is its ceiling.
+   * Wash tiles are positioned on the wash itself. An unpositioned inset:0 tile
+   * anchors to the body and overflow does not clip it.
+   * The tile scrolls with the page. Origin: the top center of each box.
    */
   :root {
     --grain-image: url("/textures/grain-tile-light.png");
     --grain-size: 512px 512px;
-    --grain-opacity: 0.44;
+    --grain-opacity: 0.66;
   }
 
   html.dark {
     --grain-image: url("/textures/grain-tile-dark.png");
-    --grain-opacity: 0.88;
+    --grain-opacity: 1;
   }
 
   body {
@@ -212,7 +234,9 @@
     isolation: isolate;
   }
 
-  body::before {
+  body::before,
+  .home-software::before,
+  .home-photography::before {
     content: "";
     position: absolute;
     z-index: -1;
