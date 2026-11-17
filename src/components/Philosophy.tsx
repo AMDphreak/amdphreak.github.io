@@ -29,6 +29,7 @@ export const Philosophy = () => {
             wrong picture, the person reasons from that picture, and the functions underneath are
             harder to use well.
           </p>
+          <p>Software should respect its users' privacy and cognitive needs.</p>
           <p>
             Interfaces should carry <strong class="font-medium text-stone-800 dark:text-stone-200">rich models of data</strong> instead of endless prose and flat lists that ought to live in a graph, hierarchy, or other structure matched to the problem. When the representation fits the domain, users reason in context instead of scanning noise.
           </p>
