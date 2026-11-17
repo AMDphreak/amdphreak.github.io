@@ -24,6 +24,8 @@ The page name. One `h1`.
 
 Related terms for that title: genres, synonyms, the kind of thing the page holds.
 
+The line is nouns of what the person does in that topic, not role titles and not a sentence.
+
 Not a map of the sections rendered below. Not a negation of another page ("not the résumé"). Not a status of the site's migration.
 
 Examples: Blog uses "Essays · notes · ideas". For fun uses "Roasts · jokes · asides".

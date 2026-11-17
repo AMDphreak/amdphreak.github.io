@@ -94,7 +94,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
       <section id="photography-section" class="space-y-6 scroll-mt-24">
         <h2 class="font-heading text-3xl tracking-tighter text-foreground">Photography</h2>
         <p class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-300">
-          Photographer, Portraitist
+          Events, Performances, Weddings, Portraits
         </p>
         {content}
       </section>
@@ -105,7 +105,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
     <CollapsibleSection
       id="photography-section"
       title="Photography"
-      tagline="Photographer, Portraitist"
+      tagline="Events, Performances, Weddings, Portraits"
       defaultOpen={props.defaultOpen ?? false}
     >
       {content}
