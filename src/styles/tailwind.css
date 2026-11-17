@@ -88,9 +88,6 @@
   }
   body {
     @apply bg-background text-foreground font-sans selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100;
-    background-image: var(--grain-image);
-    background-size: var(--grain-size);
-    background-repeat: repeat;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -148,23 +145,49 @@
   }
 
   /*
-   * Grain is one repeating tile in the element's own background, painted
-   * over the plate color at the tile's alpha. No blend mode: soft-light of
-   * a faint tile disappears on these dark plates, and a blend on the
-   * scrolling background is discarded and rebuilt when scroll speed changes.
-   * Text, buttons, and images paint after the background, so they are not
-   * blended with the grain.
+   * One grain tile, in a layer under the copy. The tile size is CSS pixels
+   * and background-attachment is scroll, so the grain stays with the content
+   * when the page scrolls or the user zooms. It is not a viewport overlay.
+   * Text, buttons, and images paint after this layer, so they are not
+   * blended with the grain. No mix-blend-mode: that would blend with type
+   * if the layer covered it, and the old soft-light stack hitched on scroll.
    */
   :root {
     --grain-image: url("/textures/grain-tile.png");
     --grain-size: 512px 512px;
   }
 
+  body,
   .home-software,
   .home-photography {
+    position: relative;
+    isolation: isolate;
+  }
+
+  body::before,
+  .home-software::before,
+  .home-photography::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
     background-image: var(--grain-image);
-    background-size: var(--grain-size);
     background-repeat: repeat;
+    background-size: var(--grain-size);
+    background-attachment: scroll;
+    /* Light: invert this tile only, then blend it with the plate behind it. */
+    background-color: transparent;
+    background-blend-mode: normal;
+    filter: invert(1);
+  }
+
+  /* Dark plates already show the tile. Half the previous full-strength paint. */
+  .dark body::before,
+  .dark .home-software::before,
+  .dark .home-photography::before {
+    filter: none;
+    opacity: 0.5;
   }
 
   /* Body copy under the mono subheading. Same small lightness step in both themes. */
