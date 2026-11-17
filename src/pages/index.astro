@@ -3,6 +3,7 @@ import { Footer } from "../components/Footer";
 import { Photography } from "../components/Photography";
 import { ProfileLinks } from "../components/ProfileLinks";
 import SiteHeader from "../components/SiteHeader.astro";
+import SiteIcons from "../components/SiteIcons.astro";
 import ThemeScript from "../components/ThemeScript.astro";
 import { heroProfileLinks, softwareProfileLinks } from "../lib/social-links";
 import "../styles/tailwind.css";
@@ -20,7 +21,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SiteIcons />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="Astro" />
     <meta
@@ -48,7 +49,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
         <h1
           class="max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
         >
-          Ryan Johnson
+          Ryan <span class="hero-johnson"><span class="hero-johnson-text">Johnson</span><img class="hero-rune hero-rune-sharp hero-rune-light" src="/icons/rune-rock-glyph.svg" alt="" aria-hidden="true" /><img class="hero-rune hero-rune-blur hero-rune-light" src="/icons/rune-rock-glyph.svg" alt="" aria-hidden="true" /><img class="hero-rune hero-rune-sharp hero-rune-dark" src="/icons/rune-rock-glyph-dark.svg" alt="" aria-hidden="true" /><img class="hero-rune hero-rune-blur hero-rune-dark" src="/icons/rune-rock-glyph-dark.svg" alt="" aria-hidden="true" /></span>
         </h1>
         <div class="flex items-center gap-3">
           {showHeroMark && <div class="blueprint-dot"></div>}
@@ -118,3 +119,68 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     <Footer client:load />
   </body>
 </html>
+<style>
+  .hero-johnson {
+    position: relative;
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  .hero-johnson-text {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-rune {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 1.85em;
+    width: auto;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-rune-dark {
+    display: none;
+  }
+  :global(html.dark) .hero-rune-light {
+    display: none;
+  }
+  :global(html.dark) .hero-rune-dark {
+    display: block;
+  }
+  .hero-rune-sharp {
+    z-index: 0;
+    opacity: 0.5;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 14%,
+      transparent 40%,
+      transparent 60%,
+      #000 86%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 14%,
+      transparent 40%,
+      transparent 60%,
+      #000 86%,
+      #000 100%
+    );
+  }
+  .hero-rune-blur {
+    z-index: 0;
+    opacity: 0.32;
+    filter: blur(8px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 8%, #000 42%, #000 58%, transparent 92%);
+    mask-image: linear-gradient(to bottom, transparent 8%, #000 42%, #000 58%, transparent 92%);
+  }
+  :global(html.dark) .hero-rune-sharp {
+    opacity: 0.72;
+  }
+  :global(html.dark) .hero-rune-blur {
+    opacity: 0.42;
+  }
+</style>

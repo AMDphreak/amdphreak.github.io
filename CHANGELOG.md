@@ -30,6 +30,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Home plates**: Software and Photography use `--section-plate-alpha: 0.68` on the existing base colors. Grain is a scrolling background tile, without a filtered overlay.
 - **Fonts**: Instrument Sans, Space Grotesk, and Space Mono ship from Fontsource. First-paint files are preloaded and use `font-display: block`. The Google Fonts import is gone.
 
+### Added
+
+- **Icon**: a smooth river stone with a carved R replaces the previous favicon. Light and dark files follow the saved theme. On the home page, a faded stone sits behind Johnson.
+
 ## [Unreleased] - 2026-11-16
 
 ### Changed

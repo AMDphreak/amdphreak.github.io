@@ -1,0 +1,92 @@
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/favicon.svg"
+  data-site-icon="svg"
+  data-href-light="/favicon-light.svg"
+  data-href-dark="/favicon-dark.svg"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/favicon-32.png"
+  media="(prefers-color-scheme: light)"
+  data-site-icon="png32"
+  data-href-light="/favicon-32.png"
+  data-href-dark="/favicon-32-dark.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/favicon-32-dark.png"
+  media="(prefers-color-scheme: dark)"
+  data-site-icon-alt=""
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/favicon-16.png"
+  media="(prefers-color-scheme: light)"
+  data-site-icon="png16"
+  data-href-light="/favicon-16.png"
+  data-href-dark="/favicon-16-dark.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/favicon-16-dark.png"
+  media="(prefers-color-scheme: dark)"
+  data-site-icon-alt=""
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/apple-touch-icon.png"
+  media="(prefers-color-scheme: light)"
+  data-site-icon="apple"
+  data-href-light="/apple-touch-icon.png"
+  data-href-dark="/apple-touch-icon-dark.png"
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/apple-touch-icon-dark.png"
+  media="(prefers-color-scheme: dark)"
+  data-site-icon-alt=""
+/>
+<script is:inline>
+  (function () {
+    var root = document.documentElement;
+    function isDark() {
+      if (root.classList.contains("dark")) return true;
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark") return true;
+        if (saved === "light") return false;
+      } catch (e) {}
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    function apply() {
+      var dark = isDark();
+      var links = document.querySelectorAll("link[data-site-icon]");
+      for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        var href = dark ? link.getAttribute("data-href-dark") : link.getAttribute("data-href-light");
+        if (!href) continue;
+        link.removeAttribute("media");
+        if (link.getAttribute("href") !== href) link.setAttribute("href", href);
+      }
+      var alts = document.querySelectorAll("link[data-site-icon-alt]");
+      for (var j = 0; j < alts.length; j++) alts[j].parentNode.removeChild(alts[j]);
+    }
+    apply();
+    new MutationObserver(apply).observe(root, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  })();
+</script>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img">
+  <title>Carved R on a river stone</title>
+  <defs>
+    <linearGradient id="rune-rock-mark-stone-dark" x1="32" y1="28" x2="100" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6a645c"/>
+      <stop offset="0.5" stop-color="#46423d"/>
+      <stop offset="1" stop-color="#2c2926"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" fill="#161412"/>
+  <rect x="1.25" y="1.25" width="125.5" height="125.5" rx="26" fill="none" stroke="#3a3632" stroke-width="1.5"/>
+  <g transform="translate(17.9 17.9) scale(0.72)">
+    <path fill="url(#rune-rock-mark-stone-dark)" d="M63 16C92 13 114 34 116 60C118 88 100 112 72 116C42 120 16 100 14 72C12 42 34 18 63 16Z"/>
+    <path fill="#000000" fill-rule="evenodd" transform="translate(1.25 1.5)" d="M42 32L58 38L90 30L100 48L60 60L60 74L98 100L80 106L60 86L60 104L42 108ZM64 46L82 40L86 50L64 56Z"/>
+    <path fill="#d9d3c9" fill-rule="evenodd" transform="translate(-0.9 -1)" d="M42 32L58 38L90 30L100 48L60 60L60 74L98 100L80 106L60 86L60 104L42 108ZM64 46L82 40L86 50L64 56Z"/>
+    <path fill="#141210" fill-rule="evenodd" d="M42 32L58 38L90 30L100 48L60 60L60 74L98 100L80 106L60 86L60 104L42 108ZM64 46L82 40L86 50L64 56Z"/>
+  </g>
+</svg>

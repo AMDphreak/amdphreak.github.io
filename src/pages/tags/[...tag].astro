@@ -7,6 +7,7 @@ import {
 } from "@content-tags/astro";
 import { Footer } from "../../components/Footer";
 import SiteHeader from "../../components/SiteHeader.astro";
+import SiteIcons from "../../components/SiteIcons.astro";
 import ThemeScript from "../../components/ThemeScript.astro";
 import { buildSiteTagIndex } from "../../lib/content-tags";
 import "../../styles/tailwind.css";
@@ -33,7 +34,7 @@ if (paramCheck && paramCheck !== tagId) {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SiteIcons />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{tag.label} - Tags - Ryan Johnson</title>
     <ThemeScript />

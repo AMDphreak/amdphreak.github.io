@@ -7,6 +7,7 @@ import { Footer } from "../../../components/Footer";
 import PostTableOfContents from "../../../components/PostTableOfContents.astro";
 import PostTableOfContentsScript from "../../../components/PostTableOfContentsScript.astro";
 import { PostTags } from "../../../components/PostTags";
+import SiteIcons from "../../../components/SiteIcons.astro";
 import ThemeScript from "../../../components/ThemeScript.astro";
 import { collectSeriesPosts } from "../../../lib/blog-series";
 import { parseCmkBlogFrontmatter } from "../../../lib/centrmark-blog-loader";
@@ -69,7 +70,7 @@ const seriesLabel =
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SiteIcons />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{post.data.title} - Ryan Johnson</title>
     <ThemeScript />

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { tagIdToHref } from "@content-tags/core";
 import { Footer } from "../../../components/Footer";
 import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteIcons from "../../../components/SiteIcons.astro";
 import ThemeScript from "../../../components/ThemeScript.astro";
 import { buildSiteTagIndex } from "../../../lib/content-tags";
 import "../../../styles/tailwind.css";
@@ -18,7 +19,7 @@ const allPosts = [...mdPosts, ...cmkPosts]
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SiteIcons />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Posts - Ryan Johnson</title>
     <ThemeScript />
