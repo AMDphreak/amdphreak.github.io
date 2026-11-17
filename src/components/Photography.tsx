@@ -54,7 +54,7 @@ export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolea
         </div>
 
         <div class="flex-1 min-w-0 space-y-6">
-          <p class="home-copy max-w-2xl leading-relaxed">
+          <p class="home-copy leading-relaxed">
             When I&apos;m not writing code, I&apos;m usually out with a camera. The fuller picture: vibe coding and brainstorming ways to improve the software
             ecosystem fill a lot of hours. When I&apos;m not in that headspace, it&apos;s the
             camera—or League of Legends. Through{" "}
