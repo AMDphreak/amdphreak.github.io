@@ -35,15 +35,17 @@ const IconInstagram = () => (
 
 export const Photography = (props: { defaultOpen?: boolean; collapsible?: boolean }) => {
   const content = (
-      <div class="flex flex-col gap-8 sm:flex-row sm:items-stretch">
-        <div class="relative w-full shrink-0 sm:w-[28rem] group">
-          <div class="aspect-video w-full overflow-hidden structural-border bg-stone-100 dark:bg-stone-900 sm:absolute sm:inset-0 sm:aspect-auto sm:h-auto">
+      <div class="flex flex-col gap-8 sm:flex-row sm:items-start">
+        <div class="relative w-full shrink-0 sm:w-[13.5rem]">
+          <div class="w-full structural-border bg-stone-100 dark:bg-stone-900">
             <img
-              src="/photography/bigrpic-home.webp"
+              src="/photography/bigrpic-home-214.webp"
+              srcset="/photography/bigrpic-home-214.webp 214w, /photography/bigrpic-home-428.webp 428w"
+              sizes="(min-width: 640px) calc(13.5rem - 2px), calc(min(100vw, 80rem) - 3rem)"
               alt="Screenshot of bigrpic.com — BIGRPICTURE photography site"
-              class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
-              width={1440}
-              height={900}
+              class="block h-auto w-full"
+              width={214}
+              height={235}
               loading="lazy"
             />
           </div>

@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Chrome**: every public page uses one header (breadcrumb and theme switch) and the same `chrome-width` column (`--chrome-max: 80rem`) for the header, the content box, and the footer. The header rule is the only underline (`showHeaderRule`).
 - **Home**: LinkedIn, X, and Chess.com sit under the username. GitHub, GitLab, Codeberg, and CodersRank stay in Software.
-- **Photography**: the screenshot frame stretches to the text-and-buttons column so their bottom edges meet.
+- **Photography**: the bigrpic shot keeps the page's aspect ratio (`width: 100%`, `height: auto`). At the normal desktop layout the column is `13.5rem`, so the frame meets the buttons; zoom and reflow no longer clip the sides. The preview is a Lanczos resize of a full-page capture. Hover zoom is gone.
 - **Catalog**: project preview frames are square and not rounded.
 - **Home plates**: Software and Photography use `--section-plate-alpha: 0.68` on the existing base colors. Grain is a scrolling background tile, without a filtered overlay.
 - **Fonts**: Instrument Sans, Space Grotesk, and Space Mono ship from Fontsource. First-paint files are preloaded and use `font-display: block`. The Google Fonts import is gone.
