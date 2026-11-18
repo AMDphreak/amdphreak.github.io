@@ -176,8 +176,10 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     pointer-events: none;
     user-select: none;
   }
+  /* Same layer as .hero-letters. The link itself stays auto so the wash can sit behind it. */
   :global(.hero-ink) {
     position: relative;
+    z-index: 1;
     color: inherit;
   }
   /* Soft separation under the two strings the stone underlaps. The blur is on this shape, not the letters. */
@@ -234,6 +236,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     height: 22rem;
     overflow: visible;
     pointer-events: none;
-    z-index: -1;
+    /* Same relationship as .hero-under under .hero-letters: wash at 0, ink at 1. */
+    z-index: 0;
   }
 </style>

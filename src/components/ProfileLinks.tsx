@@ -19,9 +19,14 @@ export const ProfileLinks = (props: { links?: SocialLinkItem[]; label?: string; 
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                class={`inline-flex items-center gap-2 text-stone-800 transition-colors hover:text-stone-950 dark:text-stone-300 dark:hover:text-stone-100${props.falloff ? " relative isolate" : ""}`}
+                class={`inline-flex items-center gap-2 text-stone-800 transition-colors hover:text-stone-950 dark:text-stone-300 dark:hover:text-stone-100${props.falloff ? " relative" : ""}`}
               >
-                <Icon size={18} />
+                {props.falloff && (
+                  <svg class="hero-field" aria-hidden="true" focusable="false">
+                    <rect width="100%" height="100%" fill="url(#hero-falloff)" filter="url(#hero-falloff-blur)" />
+                  </svg>
+                )}
+                <Icon size={18} class={props.falloff ? "hero-ink" : undefined} />
                 <span
                   class={
                     props.falloff
@@ -30,11 +35,6 @@ export const ProfileLinks = (props: { links?: SocialLinkItem[]; label?: string; 
                   }
                 >
                   {item.label}
-                  {props.falloff && (
-                    <svg class="hero-field" aria-hidden="true" focusable="false">
-                      <rect width="100%" height="100%" fill="url(#hero-falloff)" filter="url(#hero-falloff-blur)" />
-                    </svg>
-                  )}
                 </span>
               </a>
             </li>
