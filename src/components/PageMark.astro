@@ -63,17 +63,42 @@
   }
 
   /*
-   * Center on 70% of the column. The top sits 4% of the stone's height
-   * above the viewport, so the cap is clipped and the rest hangs down.
+   * Center on 70% of the column. Without a home hero, the top sits 4% of
+   * the stone's height above the viewport.
+   *
+   * On the home hero, the frame is as tall as that section and fixed to the
+   * top of the viewport, so 50% of the frame is the hero's vertical center
+   * and does not follow the hero as it scrolls. The stone's own center
+   * (50% from its top edge) is placed on that line, then shifted up by 8%
+   * of the stone. The drift moves the stone down by that same 8%, so the
+   * travel ends on the hero center. The size stays in cqw; the anchor is
+   * the hero's height, not a px top.
    */
+  :global([data-home-hero]) {
+    anchor-name: --home-hero;
+  }
+
   .page-mark__slot {
     --page-mark-size: 47.5cqw;
+    --page-mark-shift: -8%;
     position: absolute;
     top: calc(var(--page-mark-size) * -0.04);
     left: 70%;
     width: var(--page-mark-size);
     height: var(--page-mark-size);
     transform: translateX(-50%);
+  }
+
+  @supports (height: anchor-size(--home-hero height)) {
+    :global(body:has([data-home-hero])) .page-mark {
+      position-anchor: --home-hero;
+      height: anchor-size(--home-hero height);
+    }
+
+    :global(body:has([data-home-hero])) .page-mark__slot {
+      top: 50%;
+      transform: translate(-50%, calc(-50% + var(--page-mark-shift)));
+    }
   }
 
   .page-mark__rise,
