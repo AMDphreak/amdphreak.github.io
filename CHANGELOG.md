@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Grain**: one scrolling tile on the body, above the Software and Photography colors and under the type and pictures. Those sections are flat color. They do not paint their own tile. Light strength is in the light tile's alpha, so the layer is drawn at full opacity in both themes.
+
 ## [0.6.0] - 2026-11-18
 
 ### Changed

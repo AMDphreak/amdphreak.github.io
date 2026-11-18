@@ -248,57 +248,76 @@
   }
 
   /*
-   * Same lightness pair for every section plate. Hue and chroma come from the base.
-   * An opaque page color sits under the wash so the body grain does not show
-   * through it. The wash then draws the same tile once, above the color.
+   * Flat plate under the one body grain. Hue and chroma come from the base.
+   * The wash is z-index 0, the grain is z-index 1, and the copy is z-index 2.
+   * Home main is not a stacking context, so those three meet in the body's stack.
+   * No second tile, and no translucent plate over the grain.
    */
   .home-software,
   .home-photography {
     position: relative;
-    isolation: isolate;
-    background-color: var(--color-background);
+    z-index: auto;
+    background-color: transparent;
+    isolation: auto;
   }
-  .home-software {
-    background-image: linear-gradient(
-      oklch(from var(--software-base) 0.93 c h / var(--section-plate-alpha)),
-      oklch(from var(--software-base) 0.93 c h / var(--section-plate-alpha))
+  .home-software::before,
+  .home-photography::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    background-image: none;
+    mix-blend-mode: normal;
+  }
+  .home-software > *,
+  .home-photography > * {
+    position: relative;
+    z-index: 2;
+  }
+  .home-software::before {
+    background-color: color-mix(
+      in srgb,
+      oklch(from var(--software-base) 0.93 c h) calc(var(--section-plate-alpha) * 100%),
+      var(--color-background)
     );
   }
-  .dark .home-software {
-    background-image: linear-gradient(
-      oklch(from var(--software-base) 0.417 c h / var(--section-plate-alpha)),
-      oklch(from var(--software-base) 0.417 c h / var(--section-plate-alpha))
+  .dark .home-software::before {
+    background-color: color-mix(
+      in srgb,
+      oklch(from var(--software-base) 0.417 c h) calc(var(--section-plate-alpha) * 100%),
+      var(--color-background)
     );
   }
-  .home-photography {
-    background-image: linear-gradient(
-      oklch(from var(--photography-base) 0.93 c h / var(--section-plate-alpha)),
-      oklch(from var(--photography-base) 0.93 c h / var(--section-plate-alpha))
+  .home-photography::before {
+    background-color: color-mix(
+      in srgb,
+      oklch(from var(--photography-base) 0.93 c h) calc(var(--section-plate-alpha) * 100%),
+      var(--color-background)
     );
   }
-  .dark .home-photography {
-    background-image: linear-gradient(
-      oklch(from var(--photography-base) 0.417 c h / var(--section-plate-alpha)),
-      oklch(from var(--photography-base) 0.417 c h / var(--section-plate-alpha))
+  .dark .home-photography::before {
+    background-color: color-mix(
+      in srgb,
+      oklch(from var(--photography-base) 0.417 c h) calc(var(--section-plate-alpha) * 100%),
+      var(--color-background)
     );
   }
 
   /*
-   * One grain strength for the page and for the home washes.
-   * The dark tile's alpha is about half the light tile's, so opacity 1 is its ceiling.
-   * Wash tiles are positioned on the wash itself. An unpositioned inset:0 tile
-   * anchors to the body and overflow does not clip it.
-   * The tile scrolls with the page. Origin: the top center of each box.
+   * One grain tile for the page. Strength is in the tile alpha (light is the
+   * old 0.66 pass, dark is the old full-strength tile), so this layer stays at
+   * opacity 1. It paints above the stone and the home washes, and under the
+   * type. The tile scrolls with the page. Origin: the top center of the body.
    */
   :root {
     --grain-image: url("/textures/grain-tile-light.webp");
     --grain-size: 512px 512px;
-    --grain-opacity: 0.66;
+    --grain-opacity: 1;
   }
 
   html.dark {
     --grain-image: url("/textures/grain-tile-dark.webp");
-    --grain-opacity: 1;
   }
 
   body {
@@ -306,12 +325,10 @@
     isolation: isolate;
   }
 
-  body::before,
-  .home-software::before,
-  .home-photography::before {
+  body::before {
     content: "";
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     inset: 0;
     pointer-events: none;
     opacity: var(--grain-opacity);
@@ -359,11 +376,32 @@
   html.load-enter main > *:nth-child(2) {
     animation-delay: 150ms;
   }
+  /*
+   * The section box itself must not be a stacking context, or the grain
+   * cannot sit between its wash and its copy. The rise moves to the wash
+   * and the inner column, on the same delays.
+   */
+  html.load-enter main > .home-software,
+  html.load-enter main > .home-photography {
+    animation: none;
+  }
+  html.load-enter .home-software > *,
+  html.load-enter .home-software::before {
+    animation: load-rise 450ms ease-out 80ms both;
+  }
+  html.load-enter .home-photography > *,
+  html.load-enter .home-photography::before {
+    animation: load-rise 450ms ease-out 150ms both;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     html.load-enter .hero-load > :not(script):not(style),
     html.load-enter .hero-load > astro-island > *,
-    html.load-enter main > * {
+    html.load-enter main > *,
+    html.load-enter .home-software > *,
+    html.load-enter .home-photography > *,
+    html.load-enter .home-software::before,
+    html.load-enter .home-photography::before {
       animation: none;
     }
   }

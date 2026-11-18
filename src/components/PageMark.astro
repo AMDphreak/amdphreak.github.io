@@ -40,7 +40,9 @@
   /*
    * z-index 0 sits above the body background. A negative z-index paints
    * behind that background, so the stone disappears. The rule below lifts
-   * the page columns above the stone. The fixed frame keeps its own layer.
+   * the page columns above the stone. Home's main is not in that lift:
+   * its wash and its copy join the body's stack so the one grain layer
+   * can sit between them. The fixed frame keeps its own layer.
    */
   .page-mark {
     position: fixed;
@@ -55,7 +57,7 @@
     container-type: inline-size;
   }
 
-  :global(body > :not([data-page-mark]):not(.fixed)) {
+  :global(body > :not([data-page-mark]):not(.fixed):not(:has(.home-software))) {
     position: relative;
     z-index: 1;
   }
