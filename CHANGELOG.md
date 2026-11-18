@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Home**: the shadow under "yan Johnson" is one ellipse centered a quarter of the way across that shape, fading to the right. A second copy of the stone is blurred only inside that ellipse. The falloff plate that darkened the rune is gone.
-- **Home**: the in-page rune is one light monochrome stone on both themes. The color SVG is unchanged. The wash under AMDphreak is stronger across A and M, where the stone overlaps the word. Those letters stay sharp, and the wash stays behind the hero socials.
+- **Home**: "yan Johnson" and "AMDphreak" no longer share a wash. The name keeps its own soft shadow, white on the light theme and black on the dark theme. AMDphreak has a separate centered black ellipse at half opacity, and the stone is blurred only inside that ellipse. The letters and the hero socials stay sharp.
+- **Home**: the in-page rune is one light monochrome stone on both themes. The color SVG is unchanged. The letters stay sharp, and the wash stays behind the hero socials.
 - **Icon**: the live tab icon is a monochrome copy. Chromium uses the transparent SVG. Firefox and apple-touch use the transparent square PNG. The color SVG, PNG, and WebP stay in place.
 - **Home**: the hero wash sits behind the name and the hero socials. Those links share the name's stacking level, so the blur no longer covers them, and the social ink stays sharp.
 - **Home**: the hero wash is white on the light theme and dark on the dark theme. The name shadow stays a sharp-letter blur near 10px; the username shadow is stronger and more blurred. "yan Johnson" sits 10px further right, and the rune sits 15px lower. Hero socials keep dark text on the light theme and light text on the dark theme.

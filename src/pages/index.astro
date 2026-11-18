@@ -50,14 +50,14 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
         <h1
           class="relative max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
         >
-          <span class="sr-only">Ryan Johnson</span><span class="hero-name" aria-hidden="true"><span class="hero-rune-slot"><img class="hero-rune" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" fetchpriority="high" draggable="false" /><img class="hero-rune-blur" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" draggable="false" /></span><span class="hero-cast"><span class="hero-under" aria-hidden="true"></span><span class="hero-letters">yan Johnson</span></span></span>
+          <span class="sr-only">Ryan Johnson</span><span class="hero-name" aria-hidden="true"><span class="hero-rune-slot"><img class="hero-rune" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" fetchpriority="high" draggable="false" /></span><span class="hero-cast"><span class="hero-under" aria-hidden="true"></span><span class="hero-letters">yan Johnson</span></span></span>
         </h1>
         <div class="hero-username flex items-center gap-3">
           {showHeroMark && <div class="blueprint-dot"></div>}
           <p
             class="hero-cast font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
           >
-            <span class="hero-under" aria-hidden="true"></span><span class="hero-letters">AMDphreak</span>
+            <span class="hero-handle-wash" aria-hidden="true"><span class="hero-handle-blur"><img class="hero-rune-blur" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" draggable="false" /></span></span><span class="hero-letters">AMDphreak</span>
           </p>
         </div>
         <ProfileLinks client:load links={heroProfileLinks} label="Other profiles" falloff />
@@ -121,22 +121,35 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
   </body>
 </html>
 <style>
+  @property --hero-em {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+  }
+  @property --handle-em {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+  }
   :global(html) {
     --hero-near: white;
   }
   :global(html.dark) {
     --hero-near: black;
   }
+  /* Same steps as the heading: text-5xl, sm:text-7xl, md:text-8xl. */
   .hero-load {
-    /* One wash. The color node and the rune mask both read this, so they cannot drift. */
-    --hero-wash: radial-gradient(
-      ellipse farthest-side at 25% 50%,
-      var(--hero-near) 0%,
-      var(--hero-near) 18%,
-      transparent 78%
-    );
-    --hero-wash-w: 9.25rem;
-    --hero-wash-h: 1.08em;
+    --hero-em: 3rem;
+  }
+  @media (min-width: 40rem) {
+    .hero-load {
+      --hero-em: 4.5rem;
+    }
+  }
+  @media (min-width: 48rem) {
+    .hero-load {
+      --hero-em: 6rem;
+    }
   }
   .hero-load > h1,
   .hero-load > div {
@@ -163,9 +176,9 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     height: 0.71em;
     vertical-align: baseline;
   }
-  .hero-rune,
-  .hero-rune-blur {
+  .hero-rune {
     position: absolute;
+    z-index: -1;
     height: 2.15em;
     width: auto;
     max-width: none;
@@ -173,27 +186,8 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     bottom: calc(-0.58em - 15px);
     pointer-events: none;
     user-select: none;
-  }
-  .hero-rune {
-    z-index: -1;
     /* One light monochrome on both themes. The SVG file stays full color. */
     filter: grayscale(1) contrast(1.12) brightness(2.05);
-  }
-  /* Same box as the sharp rune. The mask box is the name shadow, so 25% is the same point. */
-  .hero-rune-blur {
-    z-index: 1;
-    filter: grayscale(1) contrast(1.12) brightness(2.05) blur(22px);
-    mask-image: var(--hero-wash);
-    -webkit-mask-image: var(--hero-wash);
-    mask-mode: alpha;
-    -webkit-mask-mode: alpha;
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
-    mask-size: var(--hero-wash-w) var(--hero-wash-h);
-    -webkit-mask-size: var(--hero-wash-w) var(--hero-wash-h);
-    /* Slot 0.82em, cast margin 10px, shadow left -26px, rune left -0.35em - 20px. */
-    mask-position: calc(1.17em + 4px) calc(0.7263em - 15px);
-    -webkit-mask-position: calc(1.17em + 4px) calc(0.7263em - 15px);
   }
   /* Same layer as .hero-letters. The link itself stays auto so the wash can sit behind it. */
   :global(.hero-ink) {
@@ -201,7 +195,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     z-index: 1;
     color: inherit;
   }
-  /* Soft separation under the two strings the stone underlaps. The blur is on this shape, not the letters. */
+  /* Soft separation under the strings the stone underlaps. The blur is on the wash, not the letters. */
   .hero-cast {
     position: relative;
     display: inline-block;
@@ -213,25 +207,86 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     position: relative;
     z-index: 1;
   }
+  /* Name only. The simpler shadow from before the shared ellipse. */
   .hero-under {
     position: absolute;
     z-index: 0;
     pointer-events: none;
-    border-radius: 0;
-    background: var(--hero-wash);
-    filter: none;
+    border-radius: 50%;
+    background: radial-gradient(
+      closest-side,
+      var(--hero-near),
+      transparent 82%
+    );
+    filter: blur(10px);
   }
   .hero-name .hero-under {
     left: -26px;
     top: 0;
-    width: var(--hero-wash-w);
-    height: var(--hero-wash-h);
+    width: 9.25rem;
+    height: 108%;
   }
-  .hero-username .hero-under {
+  /* Username only. Centered on this box, not on the name shadow. */
+  .hero-handle-wash {
+    --handle-em: 1em;
+    --handle-ellipse: radial-gradient(
+      ellipse farthest-side at 50% 50%,
+      rgb(0 0 0 / 50%) 0%,
+      transparent 100%
+    );
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
     left: -28px;
-    top: 50%;
-    translate: 0 -50%;
+    top: calc(50% - 2.1em);
     width: calc(100% + 56px);
     height: 4.2em;
+  }
+  /* The stone copy is masked to that same ellipse. The color wash paints above it. */
+  .hero-handle-blur {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    mask-image: radial-gradient(
+      ellipse farthest-side at 50% 50%,
+      black 0%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse farthest-side at 50% 50%,
+      black 0%,
+      transparent 100%
+    );
+    mask-mode: alpha;
+    -webkit-mask-mode: alpha;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+    mask-position: center;
+    -webkit-mask-position: center;
+  }
+  .hero-handle-wash::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: var(--handle-ellipse);
+  }
+  /* Same box as the sharp rune. The mask on .hero-handle-blur keeps the blur in this ellipse.
+     Horizontal: rune left (-0.35em - 20px) minus the wash left (-28px).
+     Vertical: rune top against the heading baseline, minus the username gap (1.5rem - 0.45rem) and half the username line. */
+  .hero-rune-blur {
+    position: absolute;
+    left: calc(-0.35 * var(--hero-em) + 8px);
+    top: calc(-1.72625 * var(--hero-em) + 2.1 * var(--handle-em) + 15px - 1.675rem);
+    height: calc(2.15 * var(--hero-em));
+    width: auto;
+    max-width: none;
+    pointer-events: none;
+    user-select: none;
+    filter: grayscale(1) contrast(1.12) brightness(2.05) blur(22px);
   }
 </style>
