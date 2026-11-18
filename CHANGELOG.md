@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **Home**: the in-page stone letter is gone. The name is type again. The hero socials use the same load entrance as the name.
+- **Header**: a small monochrome stone sits to the right of Home.
+
 ## [0.5.0] - 2026-11-17
 
 ### Changed

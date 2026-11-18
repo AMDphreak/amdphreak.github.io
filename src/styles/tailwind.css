@@ -341,14 +341,16 @@
     }
   }
 
-  html.load-enter .hero-load > *,
+  html.load-enter .hero-load > :not(script):not(style),
+  html.load-enter .hero-load > astro-island > *,
   html.load-enter main > * {
     animation: load-rise 450ms ease-out both;
   }
-  html.load-enter .hero-load > :nth-child(2) {
+  html.load-enter .hero-load > :nth-child(2 of :not(script):not(style)) {
     animation-delay: 55ms;
   }
-  html.load-enter .hero-load > :nth-child(3) {
+  html.load-enter .hero-load > :nth-child(3 of :not(script):not(style)),
+  html.load-enter .hero-load > :nth-child(3 of :not(script):not(style)) > * {
     animation-delay: 110ms;
   }
   html.load-enter main > *:nth-child(1) {
@@ -359,7 +361,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html.load-enter .hero-load > *,
+    html.load-enter .hero-load > :not(script):not(style),
+    html.load-enter .hero-load > astro-island > *,
     html.load-enter main > * {
       animation: none;
     }

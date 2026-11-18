@@ -22,7 +22,6 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
   <head>
     <meta charset="utf-8" />
     <SiteIcons />
-    <link rel="preload" as="image" href="/brand/ryan-runescape-logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="Astro" />
     <meta
@@ -42,25 +41,25 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
 
     <!-- Name and username. A little taller than the copy, not a full screen. -->
     <section
-      class="relative z-10 flex w-full min-h-[24rem] flex-col overflow-hidden md:min-h-[28rem]"
+      class="relative z-10 flex w-full min-h-[24rem] flex-col md:min-h-[28rem]"
       aria-label="Introduction"
     >
       <SiteHeader items={[{ label: "Home", href: "/" }]} />
       <div class="chrome-width hero-load flex flex-1 flex-col justify-end space-y-6 pt-8 lg:pt-10">
         <h1
-          class="relative max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
+          class="max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
         >
-          <span class="sr-only">Ryan Johnson</span><span class="hero-name" aria-hidden="true"><span class="hero-ryan"><span class="hero-rune-slot"><img class="hero-rune" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" fetchpriority="high" draggable="false" /></span><span class="hero-cast"><span class="hero-letters">yan</span></span></span> <span class="hero-letters">Johnson</span></span>
+          Ryan Johnson
         </h1>
-        <div class="hero-username flex items-center gap-3">
+        <div class="flex items-center gap-3">
           {showHeroMark && <div class="blueprint-dot"></div>}
           <p
-            class="hero-cast font-mono text-sm uppercase tracking-[0.3em] text-stone-800 dark:text-stone-200"
+            class="font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-300"
           >
-            <span class="hero-letters">AMDphreak</span>
+            AMDphreak
           </p>
         </div>
-        <ProfileLinks client:load links={heroProfileLinks} label="Other profiles" falloff />
+        <ProfileLinks client:load links={heroProfileLinks} label="Other profiles" />
       </div>
     </section>
 
@@ -120,88 +119,3 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     <Footer client:load />
   </body>
 </html>
-<style>
-  .hero-load > h1,
-  .hero-load > div {
-    position: relative;
-  }
-  /* Socials paint above the name, so the rune stays behind those links. */
-  .hero-load :global(ul[aria-label="Other profiles"]) {
-    position: relative;
-    z-index: 2;
-  }
-  /* The username sits on the lower curve of the stone. */
-  .hero-username {
-    margin-top: -0.45rem;
-  }
-  .hero-name {
-    position: relative;
-    z-index: 1;
-  }
-  /* The rune and "yan" stay one line when the heading is allowed to wrap. */
-  .hero-ryan {
-    white-space: nowrap;
-  }
-  .hero-rune-slot {
-    position: relative;
-    display: inline-block;
-    width: 0.82em;
-    height: 0.71em;
-    vertical-align: baseline;
-  }
-  .hero-rune {
-    position: absolute;
-    z-index: -1;
-    height: 2.15em;
-    width: auto;
-    max-width: none;
-    /* 20px and 15px at the desktop heading (text-8xl = 6rem), so the nudge scales with the type. */
-    left: calc(-0.35em - 20px / 6rem * 1em);
-    bottom: calc(-0.58em - 15px / 6rem * 1em);
-    pointer-events: none;
-    user-select: none;
-    /* One light monochrome on both themes. The SVG file stays full color. */
-    filter: grayscale(1) contrast(1.12) brightness(2.05);
-  }
-  /* Same layer as .hero-letters. The link stays above the rune. */
-  :global(.hero-ink) {
-    position: relative;
-    z-index: 1;
-    color: inherit;
-  }
-  .hero-cast {
-    position: relative;
-    display: inline-block;
-  }
-  .hero-name .hero-cast {
-    /* 10px at the desktop heading (6rem). */
-    margin-left: calc(10px / 6rem * 1em);
-  }
-  /* Halo only. The glyph fill stays the current ink. */
-  .hero-letters {
-    position: relative;
-    z-index: 1;
-    text-shadow:
-      0 0 1px #fff,
-      0 0 1px #fff,
-      0 0 2px #fff,
-      0 0 2px #fff,
-      0 0 4px #fff,
-      0 0 4px #fff,
-      0 0 8px #fff,
-      0 0 14px #fff,
-      0 0 22px rgb(255 255 255 / 0.92);
-  }
-  :global(html.dark) .hero-letters {
-    text-shadow:
-      0 0 1px #000,
-      0 0 1px #000,
-      0 0 2px #000,
-      0 0 2px #000,
-      0 0 4px #000,
-      0 0 4px #000,
-      0 0 8px #000,
-      0 0 14px #000,
-      0 0 22px rgb(0 0 0 / 0.92);
-  }
-</style>

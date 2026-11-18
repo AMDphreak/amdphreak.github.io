@@ -34,21 +34,52 @@ const soleHomeLink =
           {i < last && item.href ? (
             <a
               href={item.href}
-              class="text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+              class="inline-flex items-center gap-[0.45em] text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
             >
               {item.label}
+              {item.label === "Home" && (
+                <img
+                  src="/brand/ryan-runescape-logo-mono.svg"
+                  alt=""
+                  width="1647"
+                  height="1648"
+                  class="home-mark"
+                  decoding="async"
+                  draggable="false"
+                />
+              )}
             </a>
           ) : soleHomeLink && item.href ? (
             <a
               href={item.href}
-              class="text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+              class="inline-flex items-center gap-[0.45em] text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
               aria-current="page"
             >
               {item.label}
+              <img
+                src="/brand/ryan-runescape-logo-mono.svg"
+                alt=""
+                width="1647"
+                height="1648"
+                class="home-mark"
+                decoding="async"
+                draggable="false"
+              />
             </a>
           ) : (
-            <span class="text-stone-700 dark:text-stone-500" aria-current="page">
+            <span class="inline-flex items-center gap-[0.45em] text-stone-700 dark:text-stone-500" aria-current="page">
               {item.label}
+              {item.label === "Home" && (
+                <img
+                  src="/brand/ryan-runescape-logo-mono.svg"
+                  alt=""
+                  width="1647"
+                  height="1648"
+                  class="home-mark"
+                  decoding="async"
+                  draggable="false"
+                />
+              )}
             </span>
           )}
         </li>
@@ -56,3 +87,13 @@ const soleHomeLink =
     }
   </ol>
 </nav>
+
+<style>
+  /* Cap height of the 11px label, or a little taller. The em is that label's size. */
+  .home-mark {
+    height: 1.15em;
+    width: auto;
+    display: block;
+    flex: none;
+  }
+</style>
