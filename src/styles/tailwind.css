@@ -285,19 +285,19 @@
 
   /*
    * One grain strength for the page and for the home washes.
-   * The dark PNG's alpha is about half the light PNG's, so opacity 1 is its ceiling.
+   * The dark tile's alpha is about half the light tile's, so opacity 1 is its ceiling.
    * Wash tiles are positioned on the wash itself. An unpositioned inset:0 tile
    * anchors to the body and overflow does not clip it.
    * The tile scrolls with the page. Origin: the top center of each box.
    */
   :root {
-    --grain-image: url("/textures/grain-tile-light.png");
+    --grain-image: url("/textures/grain-tile-light.webp");
     --grain-size: 512px 512px;
     --grain-opacity: 0.66;
   }
 
   html.dark {
-    --grain-image: url("/textures/grain-tile-dark.png");
+    --grain-image: url("/textures/grain-tile-dark.webp");
     --grain-opacity: 1;
   }
 

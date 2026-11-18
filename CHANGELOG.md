@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Grain**: the page and the home washes load the same 512px tiles as WebP. Light is `grain-tile-light.webp`; dark is `grain-tile-dark.webp`.
 - **Pages**: the background stone fades from 20% opacity to nothing over the first 40rem of scroll. A longer page does not stretch that fade. The left-and-down drift still covers the whole scroll. Reduced motion keeps the stone still at 20% opacity.
 - **Home**: the in-page stone letter is gone. The name is type again. The hero socials use the same load entrance as the name.
 - **Pages**: the background stone stays flat. It is larger, sits high on the right of the content column with its top just off the page, and uses the same load fade as the hero. Scrolling drifts it a little left and down. Reduced motion leaves it still. Home in the header is text only.
