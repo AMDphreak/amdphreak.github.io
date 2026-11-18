@@ -47,28 +47,17 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     >
       <SiteHeader items={[{ label: "Home", href: "/" }]} />
       <div class="chrome-width hero-load flex flex-1 flex-col justify-end space-y-6 pt-8 lg:pt-10">
-        <svg class="hero-falloff-defs" aria-hidden="true" focusable="false" width="0" height="0">
-          <defs>
-            <filter id="hero-falloff-blur" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
-              <feGaussianBlur stdDeviation="10" />
-            </filter>
-            <radialGradient id="hero-falloff" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" style="stop-color: var(--hero-near)" />
-              <stop offset="100%" style="stop-color: var(--hero-near); stop-opacity: 0" />
-            </radialGradient>
-          </defs>
-        </svg>
         <h1
           class="relative max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
         >
-          <span class="sr-only">Ryan Johnson</span><span class="hero-name" aria-hidden="true"><span class="hero-rune-slot"><img class="hero-rune" src="/brand/ryan-runescape-logo.svg" alt="" width="220" height="266" decoding="async" fetchpriority="high" draggable="false" /></span><span class="hero-cast"><span class="hero-under" aria-hidden="true"></span><span class="hero-letters">yan Johnson</span></span></span>
+          <span class="sr-only">Ryan Johnson</span><span class="hero-name" aria-hidden="true"><span class="hero-rune-slot"><img class="hero-rune" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" fetchpriority="high" draggable="false" /><img class="hero-rune-blur" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" draggable="false" /></span><span class="hero-cast"><span class="hero-under" aria-hidden="true"></span><span class="hero-letters">yan Johnson</span></span></span>
         </h1>
         <div class="hero-username flex items-center gap-3">
           {showHeroMark && <div class="blueprint-dot"></div>}
           <p
             class="hero-cast font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
           >
-            <span class="hero-under-blur" aria-hidden="true"></span><span class="hero-under" aria-hidden="true"></span><span class="hero-letters">AMDphreak</span>
+            <span class="hero-under" aria-hidden="true"></span><span class="hero-letters">AMDphreak</span>
           </p>
         </div>
         <ProfileLinks client:load links={heroProfileLinks} label="Other profiles" falloff />
@@ -138,11 +127,16 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
   :global(html.dark) {
     --hero-near: black;
   }
-  .hero-falloff-defs {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
+  .hero-load {
+    /* One wash. The color node and the rune mask both read this, so they cannot drift. */
+    --hero-wash: radial-gradient(
+      ellipse farthest-side at 25% 50%,
+      var(--hero-near) 0%,
+      var(--hero-near) 18%,
+      transparent 78%
+    );
+    --hero-wash-w: 9.25rem;
+    --hero-wash-h: 1.08em;
   }
   .hero-load > h1,
   .hero-load > div {
@@ -157,12 +151,6 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
   /* The username sits on the lower curve of the stone. */
   .hero-username {
     margin-top: -0.45rem;
-    --hero-wash: radial-gradient(
-      ellipse farthest-side at 0% 50%,
-      var(--hero-near) 0%,
-      var(--hero-near) 18%,
-      transparent 78%
-    );
   }
   .hero-name {
     position: relative;
@@ -175,10 +163,9 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     height: 0.71em;
     vertical-align: baseline;
   }
-  .hero-rune {
-    anchor-name: --hero-rune;
+  .hero-rune,
+  .hero-rune-blur {
     position: absolute;
-    z-index: -1;
     height: 2.15em;
     width: auto;
     max-width: none;
@@ -186,8 +173,27 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     bottom: calc(-0.58em - 15px);
     pointer-events: none;
     user-select: none;
+  }
+  .hero-rune {
+    z-index: -1;
     /* One light monochrome on both themes. The SVG file stays full color. */
     filter: grayscale(1) contrast(1.12) brightness(2.05);
+  }
+  /* Same box as the sharp rune. The mask box is the name shadow, so 25% is the same point. */
+  .hero-rune-blur {
+    z-index: 1;
+    filter: grayscale(1) contrast(1.12) brightness(2.05) blur(22px);
+    mask-image: var(--hero-wash);
+    -webkit-mask-image: var(--hero-wash);
+    mask-mode: alpha;
+    -webkit-mask-mode: alpha;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-size: var(--hero-wash-w) var(--hero-wash-h);
+    -webkit-mask-size: var(--hero-wash-w) var(--hero-wash-h);
+    /* Slot 0.82em, cast margin 10px, shadow left -26px, rune left -0.35em - 20px. */
+    mask-position: calc(1.17em + 4px) calc(0.7263em - 15px);
+    -webkit-mask-position: calc(1.17em + 4px) calc(0.7263em - 15px);
   }
   /* Same layer as .hero-letters. The link itself stays auto so the wash can sit behind it. */
   :global(.hero-ink) {
@@ -211,57 +217,21 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     position: absolute;
     z-index: 0;
     pointer-events: none;
-    border-radius: 50%;
-    background: radial-gradient(
-      closest-side,
-      var(--hero-near),
-      transparent 82%
-    );
-    filter: blur(10px);
+    border-radius: 0;
+    background: var(--hero-wash);
+    filter: none;
   }
   .hero-name .hero-under {
     left: -26px;
     top: 0;
-    width: 9.25rem;
-    height: 108%;
+    width: var(--hero-wash-w);
+    height: var(--hero-wash-h);
   }
-  .hero-username .hero-under,
-  .hero-username .hero-under-blur {
+  .hero-username .hero-under {
     left: -28px;
     top: 50%;
     translate: 0 -50%;
     width: calc(100% + 56px);
     height: 4.2em;
-    border-radius: 0;
-  }
-  .hero-username .hero-under {
-    background: var(--hero-wash);
-    filter: none;
-  }
-  /* Same ellipse, center, and stops as the wash. Masked so only the rune behind blurs. */
-  .hero-username .hero-under-blur {
-    position: absolute;
-    z-index: 0;
-    pointer-events: none;
-    background: none;
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-    mask-image: var(--hero-wash);
-    -webkit-mask-image: var(--hero-wash);
-    mask-mode: alpha;
-    mask-repeat: no-repeat;
-  }
-  :global(.hero-field) {
-    position: absolute;
-    position-anchor: --hero-rune;
-    left: anchor(center);
-    top: anchor(center);
-    translate: -50% -50%;
-    width: 34rem;
-    height: 22rem;
-    overflow: visible;
-    pointer-events: none;
-    /* Same relationship as .hero-under under .hero-letters: wash at 0, ink at 1. */
-    z-index: 0;
   }
 </style>

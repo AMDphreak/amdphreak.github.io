@@ -10,7 +10,8 @@
   <style>
     html.load-hold .hero-load > *,
     html.load-hold main > *,
-    img.hero-rune {
+    img.hero-rune,
+    img.hero-rune-blur {
       opacity: 1 !important;
     }
   </style>
@@ -20,10 +21,12 @@
   html.load-hold main > * {
     opacity: 0;
   }
-  img.hero-rune {
+  img.hero-rune,
+  img.hero-rune-blur {
     opacity: 0;
   }
-  html.rune-ready img.hero-rune {
+  html.rune-ready img.hero-rune,
+  html.rune-ready img.hero-rune-blur {
     opacity: 1;
   }
   @media (prefers-reduced-motion: reduce) {
