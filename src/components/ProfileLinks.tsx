@@ -19,7 +19,7 @@ export const ProfileLinks = (props: { links?: SocialLinkItem[]; label?: string; 
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-stone-800 transition-colors hover:text-stone-950 dark:text-stone-300 dark:hover:text-stone-100"
+                class={`inline-flex items-center gap-2 text-stone-800 transition-colors hover:text-stone-950 dark:text-stone-300 dark:hover:text-stone-100${props.falloff ? " relative isolate" : ""}`}
               >
                 <Icon size={18} />
                 <span

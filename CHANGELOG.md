@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Home**: the hero wash is white on the light theme and dark on the dark theme. The name shadow stays a sharp-letter blur near 10px; the username shadow is stronger and more blurred. "yan Johnson" sits 10px further right, and the rune sits 15px lower. Hero socials keep dark text on the light theme and light text on the dark theme.
 - **Home**: the empty green plate under Photography is gone, so that section meets the footer again. The rune sits 20px further left. A soft blurred shadow under "yan Johnson" and "AMDphreak" separates those strings from the stone.
 - **Icon**: the live mark is the Affinity stone. The tab icon is the transparent SVG. Firefox and apple-touch use a transparent PNG rasterized from that SVG.
 - **Home**: the Affinity rune is the R in Ryan, on the same left edge as the lines under the name. One stone stays unpainted until it has decoded, so the stacked copies no longer flash on load. The stone behind Johnson is gone.

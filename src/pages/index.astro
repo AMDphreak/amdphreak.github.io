@@ -133,10 +133,10 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
 </html>
 <style>
   :global(html) {
-    --hero-near: black;
+    --hero-near: white;
   }
   :global(html.dark) {
-    --hero-near: white;
+    --hero-near: black;
   }
   .hero-falloff-defs {
     position: absolute;
@@ -172,22 +172,21 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     width: auto;
     max-width: none;
     left: calc(-0.35em - 20px);
-    bottom: -0.58em;
+    bottom: calc(-0.58em - 15px);
     pointer-events: none;
     user-select: none;
   }
   :global(.hero-ink) {
     position: relative;
     color: inherit;
-    -webkit-mask-image: linear-gradient(#000, #000);
-    mask-image: linear-gradient(#000, #000);
-    -webkit-mask-clip: text;
-    mask-clip: text;
   }
   /* Soft separation under the two strings the stone underlaps. The blur is on this shape, not the letters. */
   .hero-cast {
     position: relative;
     display: inline-block;
+  }
+  .hero-name .hero-cast {
+    margin-left: 10px;
   }
   .hero-letters {
     position: relative;
@@ -200,23 +199,30 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     border-radius: 50%;
     background: radial-gradient(
       closest-side,
-      color-mix(in srgb, var(--hero-near) 70%, transparent),
-      transparent 72%
+      var(--hero-near),
+      transparent 82%
     );
     filter: blur(10px);
   }
   .hero-name .hero-under {
-    left: -18px;
-    top: 12%;
-    width: 7.25rem;
-    height: 78%;
+    left: -26px;
+    top: 0;
+    width: 9.25rem;
+    height: 108%;
   }
   .hero-username .hero-under {
-    left: -10px;
+    left: -28px;
     top: 50%;
     translate: 0 -50%;
-    width: calc(100% + 18px);
-    height: 1.85em;
+    width: calc(100% + 56px);
+    height: 4.2em;
+    background: radial-gradient(
+      closest-side,
+      var(--hero-near) 0%,
+      var(--hero-near) 46%,
+      transparent 100%
+    );
+    filter: blur(22px);
   }
   :global(.hero-field) {
     position: absolute;
@@ -228,6 +234,6 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     height: 22rem;
     overflow: visible;
     pointer-events: none;
-    z-index: 1;
+    z-index: -1;
   }
 </style>
