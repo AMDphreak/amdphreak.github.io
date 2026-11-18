@@ -1,0 +1,114 @@
+---
+/**
+ * One monochrome stone behind the page. It is fixed to the viewport and
+ * aligned to the chrome column. A script moves it onto body so a z-index
+ * on the header or hero cannot paint it over the text.
+ */
+---
+
+<div class="page-mark" data-page-mark aria-hidden="true">
+  <div class="page-mark__rotor">
+    <img
+      class="page-mark__stone"
+      src="/brand/ryan-runescape-logo-mono.svg"
+      alt=""
+      width="1647"
+      height="1648"
+      decoding="async"
+      draggable="false"
+    />
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    var mark = document.currentScript && document.currentScript.previousElementSibling;
+    if (!mark || !mark.hasAttribute("data-page-mark")) return;
+    if (mark.parentNode !== document.body) document.body.insertBefore(mark, document.body.firstChild);
+  })();
+</script>
+
+<style>
+  /*
+   * Fixed to the viewport and aligned to the chrome column.
+   * The rotor's origin is a vertical line 30% from that column's left edge.
+   * The stone's center is at 70%, so the turn swings around that line.
+   */
+  /*
+   * z-index 0 sits above the body background. A negative z-index paints
+   * behind that background, so the stone disappears. The rule below lifts
+   * the page columns above the stone. The fixed frame keeps its own layer.
+   */
+  .page-mark {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    max-width: var(--chrome-max);
+    margin-inline: auto;
+    pointer-events: none;
+    perspective: 140vh;
+    perspective-origin: 30% 50%;
+  }
+
+  :global(body > :not([data-page-mark]):not(.fixed)) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-mark__rotor {
+    position: absolute;
+    inset: 0;
+    transform-origin: 30% 50%;
+    transform-style: preserve-3d;
+    animation-name: page-mark-turn;
+    animation-duration: auto;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root);
+  }
+
+  .page-mark__stone {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    height: 45vh;
+    width: auto;
+    max-width: none;
+    opacity: 0.2;
+    transform: translate(-50%, -50%);
+    user-select: none;
+  }
+
+  /* The name fills a narrow column. Keep the mark on the right of the type. */
+  @media (max-width: 1279px) {
+    .page-mark__stone {
+      height: min(36vh, 30vw);
+    }
+  }
+
+  @keyframes page-mark-turn {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(60deg);
+    }
+  }
+
+  @media (max-width: 639px) {
+    .page-mark__stone {
+      height: 30vh;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-mark__rotor {
+      animation: none;
+      transform: none;
+    }
+  }
+</style>
