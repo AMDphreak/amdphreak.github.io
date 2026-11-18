@@ -249,9 +249,9 @@
 
   /*
    * Flat plate under the one body grain. Hue and chroma come from the base.
-   * The wash is z-index 0, the grain is z-index 1, and the copy is z-index 2.
-   * Home main is not a stacking context, so those three meet in the body's stack.
-   * No second tile, and no translucent plate over the grain.
+   * The wash is z-index -1 so the stone (z-index 0) paints above it. The grain
+   * is z-index 1 and the copy is z-index 2. Home main is not a stacking context,
+   * so those layers meet in the body's stack. No second tile.
    */
   .home-software,
   .home-photography {
@@ -264,7 +264,7 @@
   .home-photography::before {
     content: "";
     position: absolute;
-    z-index: 0;
+    z-index: -1;
     inset: 0;
     pointer-events: none;
     background-image: none;
@@ -358,6 +358,16 @@
     }
   }
 
+  /* Opacity only. A transform on the wash paints that color above the stone. */
+  @keyframes load-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   html.load-enter .hero-load > :not(script):not(style),
   html.load-enter .hero-load > astro-island > *,
   html.load-enter main > * {
@@ -385,13 +395,17 @@
   html.load-enter main > .home-photography {
     animation: none;
   }
-  html.load-enter .home-software > *,
-  html.load-enter .home-software::before {
+  html.load-enter .home-software > * {
     animation: load-rise 450ms ease-out 80ms both;
   }
-  html.load-enter .home-photography > *,
-  html.load-enter .home-photography::before {
+  html.load-enter .home-software::before {
+    animation: load-fade 450ms ease-out 80ms both;
+  }
+  html.load-enter .home-photography > * {
     animation: load-rise 450ms ease-out 150ms both;
+  }
+  html.load-enter .home-photography::before {
+    animation: load-fade 450ms ease-out 150ms both;
   }
 
   @media (prefers-reduced-motion: reduce) {

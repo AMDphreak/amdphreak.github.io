@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Grain**: one scrolling tile on the body, above the Software and Photography colors and under the type and pictures. Those sections are flat color. They do not paint their own tile. Light strength is in the light tile's alpha, so the layer is drawn at full opacity in both themes.
+- **Pages**: the background stone sits above the Software and Photography colors and under the grain, so the rune shows through those sections. It fades from 20% opacity to nothing over the first 90rem of scroll, which is after Photography. Reduced motion keeps the stone still at 20% opacity.
 
 ## [0.6.0] - 2026-11-18
 
