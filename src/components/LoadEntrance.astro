@@ -1,0 +1,104 @@
+---
+/**
+ * First-load fade for main content. Cross-document view transitions skip it
+ * so the page cover is the only motion. The hero rune stays unpainted until
+ * it has decoded, then shares that one entrance.
+ */
+---
+
+<noscript>
+  <style>
+    html.load-hold .hero-load > *,
+    html.load-hold main > *,
+    img.hero-rune {
+      opacity: 1 !important;
+    }
+  </style>
+</noscript>
+<style is:inline>
+  html.load-hold .hero-load > *,
+  html.load-hold main > * {
+    opacity: 0;
+  }
+  img.hero-rune {
+    opacity: 0;
+  }
+  html.rune-ready img.hero-rune {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html.load-hold .hero-load > *,
+    html.load-hold main > * {
+      opacity: 1;
+    }
+  }
+</style>
+<script is:inline>
+  (function () {
+    var root = document.documentElement;
+    var started = false;
+    var sawReveal = false;
+    root.classList.add("load-hold");
+
+    function reduced() {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+
+    function markRune(done) {
+      var img = document.querySelector("img.hero-rune");
+      if (!img) {
+        done();
+        return;
+      }
+      var finish = function () {
+        root.classList.add("rune-ready");
+        done();
+      };
+      if (img.complete && img.naturalWidth > 0) {
+        finish();
+        return;
+      }
+      if (img.decode) img.decode().then(finish, finish);
+      else img.addEventListener("load", finish, { once: true });
+      img.addEventListener("error", finish, { once: true });
+    }
+
+    function showStill() {
+      if (started) return;
+      started = true;
+      root.classList.remove("load-hold");
+      markRune(function () {});
+    }
+
+    function showEntrance() {
+      if (started) return;
+      started = true;
+      markRune(function () {
+        if (reduced()) {
+          root.classList.remove("load-hold");
+          return;
+        }
+        root.classList.add("load-enter");
+        root.classList.remove("load-hold");
+      });
+    }
+
+    window.addEventListener("pagereveal", function (event) {
+      sawReveal = true;
+      if (event.viewTransition) showStill();
+      else showEntrance();
+    });
+
+    window.addEventListener("DOMContentLoaded", function () {
+      var img = document.querySelector("img.hero-rune");
+      if (img && img.decode) img.decode().catch(function () {});
+      window.setTimeout(function () {
+        if (!sawReveal) showEntrance();
+      }, 400);
+    });
+
+    window.setTimeout(function () {
+      if (!started) showEntrance();
+    }, 1600);
+  })();
+</script>

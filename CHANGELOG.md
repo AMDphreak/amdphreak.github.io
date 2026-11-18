@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Icon**: the live mark is the Affinity stone. The tab icon is that WebP export, with the square PNG kept so Firefox still has an icon. The same stone sits faded behind Johnson.
+- **Icon**: the live mark is the Affinity stone. The tab icon is the transparent SVG. Firefox and apple-touch use a transparent PNG rasterized from that SVG.
+- **Home**: the Affinity rune is the R in Ryan, on the same left edge as the lines under the name. One stone stays unpainted until it has decoded, so the stacked copies no longer flash on load. Hero text from "yan" through the lines under the name darkens toward that stone in the light theme and lightens toward it in the dark theme, then fades with distance. The stone behind Johnson is gone.
+- **Home**: the gap under Photography is an empty deep-green plate. The dark theme keeps that hue and shifts lightness the way the other plates do.
+- **Pages**: main content fades and rises once when a page loads. A view-transition visit keeps the page cover and skips that rise. Reduced motion shows the content in place.
 - **Theme**: a blocking script in the page head sets the `dark` class, the color scheme, and the page background from the saved theme before the font CSS. A stored dark theme no longer flashes white while the stylesheet loads.
 - **Navigation**: a deeper or sideways visit covers the current page from the right. A visit up to an ancestor path, including Home, slides the current page off to the right. Reduced motion skips that motion. The theme switch still uses its circle reveal.
 - **Chrome**: the theme switch icon and border share `--theme-toggle-mark`. Dark mode is stone-500 on the dark page, contrast 4.13. Light mode uses `#817c78` on white so the ratio matches. The header rule uses its own light color at the same intensity as the footer divider.
@@ -30,10 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Catalog**: project preview frames are square and not rounded.
 - **Home plates**: Software and Photography use `--section-plate-alpha: 0.68` on the existing base colors. Grain is a scrolling background tile, without a filtered overlay.
 - **Fonts**: Instrument Sans, Space Grotesk, and Space Mono ship from Fontsource. First-paint files are preloaded and use `font-display: block`. The Google Fonts import is gone.
-
-### Added
-
-- **Home**: Johnson darkens toward the middle of that stone in the light theme and lightens toward it in the dark theme. The shift fades back to the normal text color.
 
 ## [Unreleased] - 2026-11-16
 

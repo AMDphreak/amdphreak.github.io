@@ -2,7 +2,7 @@ import { For } from "solid-js";
 import { socialIconById } from "~/components/social-icons";
 import { profileLinks, type SocialLinkItem } from "~/lib/social-links";
 
-export const ProfileLinks = (props: { links?: SocialLinkItem[]; label?: string }) => {
+export const ProfileLinks = (props: { links?: SocialLinkItem[]; label?: string; falloff?: boolean }) => {
   const items = () => props.links ?? profileLinks;
   return (
     <ul
@@ -22,7 +22,20 @@ export const ProfileLinks = (props: { links?: SocialLinkItem[]; label?: string }
                 class="inline-flex items-center gap-2 text-stone-800 transition-colors hover:text-stone-950 dark:text-stone-300 dark:hover:text-stone-100"
               >
                 <Icon size={18} />
-                <span class="font-mono text-[11px] uppercase tracking-[0.2em]">{item.label}</span>
+                <span
+                  class={
+                    props.falloff
+                      ? "hero-ink font-mono text-[11px] uppercase tracking-[0.2em]"
+                      : "font-mono text-[11px] uppercase tracking-[0.2em]"
+                  }
+                >
+                  {item.label}
+                  {props.falloff && (
+                    <svg class="hero-field" aria-hidden="true" focusable="false">
+                      <rect width="100%" height="100%" fill="url(#hero-falloff)" filter="url(#hero-falloff-blur)" />
+                    </svg>
+                  )}
+                </span>
               </a>
             </li>
           );

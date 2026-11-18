@@ -1,7 +1,8 @@
 <!--
-  PNG is declared first and WebP last. Among icons a browser can decode, the
-  last one wins. Chromium and current Safari take the WebP. Firefox cannot
-  use a WebP favicon, so it keeps the PNG. One artwork for both themes.
+  PNG is declared first and SVG last. Among icons a browser can decode, the
+  last one wins. Chromium takes the SVG and keeps its transparency. Firefox
+  does not use an SVG favicon, so it keeps the PNG. Both rasters are this
+  SVG with an alpha channel. One artwork for both themes.
 -->
 <link
   rel="icon"
@@ -13,11 +14,11 @@
 />
 <link
   rel="icon"
-  type="image/webp"
-  href="/brand/ryan-runescape-logo.webp"
-  data-site-icon="webp"
-  data-href-light="/brand/ryan-runescape-logo.webp"
-  data-href-dark="/brand/ryan-runescape-logo.webp"
+  type="image/svg+xml"
+  href="/brand/ryan-runescape-logo.svg"
+  data-site-icon="svg"
+  data-href-light="/brand/ryan-runescape-logo.svg"
+  data-href-dark="/brand/ryan-runescape-logo.svg"
 />
 <link
   rel="apple-touch-icon"
