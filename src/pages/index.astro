@@ -50,12 +50,12 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
         <h1
           class="relative max-w-full whitespace-nowrap font-heading text-5xl font-light tracking-tight text-foreground max-[379px]:whitespace-normal sm:text-7xl md:text-8xl"
         >
-          <span class="sr-only">Ryan Johnson</span><span class="hero-name" aria-hidden="true"><span class="hero-rune-slot"><img class="hero-rune" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" fetchpriority="high" draggable="false" /></span><span class="hero-cast"><span class="hero-under" aria-hidden="true"></span><span class="hero-letters">yan Johnson</span></span></span>
+          <span class="sr-only">Ryan Johnson</span><span class="hero-name" aria-hidden="true"><span class="hero-ryan"><span class="hero-rune-slot"><img class="hero-rune" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" fetchpriority="high" draggable="false" /></span><span class="hero-cast"><span class="hero-under" aria-hidden="true"></span><span class="hero-letters">yan</span></span></span> <span class="hero-letters">Johnson</span></span>
         </h1>
         <div class="hero-username flex items-center gap-3">
           {showHeroMark && <div class="blueprint-dot"></div>}
           <p
-            class="hero-cast font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
+            class="hero-cast font-mono text-sm uppercase tracking-[0.3em] text-stone-800 dark:text-stone-200"
           >
             <span class="hero-handle-wash" aria-hidden="true"><span class="hero-handle-blur"><img class="hero-rune-blur" src="/brand/ryan-runescape-logo.svg" alt="" width="1647" height="1648" decoding="async" draggable="false" /></span></span><span class="hero-letters">AMDphreak</span>
           </p>
@@ -154,9 +154,8 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
   .hero-load > h1,
   .hero-load > div {
     position: relative;
-    z-index: 1;
   }
-  /* Socials paint above the username wash, so the blur does not cover them. */
+  /* Socials paint above both washes. The name and the username share one z-axis. */
   .hero-load :global(ul[aria-label="Other profiles"]) {
     position: relative;
     z-index: 2;
@@ -168,6 +167,10 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
   .hero-name {
     position: relative;
     z-index: 1;
+  }
+  /* The rune and "yan" stay one line when the heading is allowed to wrap. */
+  .hero-ryan {
+    white-space: nowrap;
   }
   .hero-rune-slot {
     position: relative;
@@ -182,8 +185,9 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     height: 2.15em;
     width: auto;
     max-width: none;
-    left: calc(-0.35em - 20px);
-    bottom: calc(-0.58em - 15px);
+    /* 20px and 15px at the desktop heading (text-8xl = 6rem), so the nudge scales with the type. */
+    left: calc(-0.35em - 20px / 6rem * 1em);
+    bottom: calc(-0.58em - 15px / 6rem * 1em);
     pointer-events: none;
     user-select: none;
     /* One light monochrome on both themes. The SVG file stays full color. */
@@ -201,7 +205,12 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     display: inline-block;
   }
   .hero-name .hero-cast {
-    margin-left: 10px;
+    /* 10px at the desktop heading (6rem). */
+    margin-left: calc(10px / 6rem * 1em);
+  }
+  /* The username wash and its blur stay inside this word. */
+  .hero-username .hero-cast {
+    overflow: hidden;
   }
   .hero-letters {
     position: relative;
@@ -226,40 +235,39 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     width: 9.25rem;
     height: 108%;
   }
-  /* Username only. Centered on this box, not on the name shadow. */
+  /* Username only. Fades on every edge, and stays inside this word. */
   .hero-handle-wash {
     --handle-em: 1em;
-    --handle-ellipse: radial-gradient(
-      ellipse farthest-side at 50% 50%,
-      rgb(0 0 0 / 50%) 0%,
+    --handle-mask-x: linear-gradient(
+      90deg,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+    --handle-mask-y: linear-gradient(
+      180deg,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+    --handle-wash: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(255 255 255 / 50%) 18%,
+      rgb(255 255 255 / 50%) 82%,
       transparent 100%
     );
     position: absolute;
     z-index: 0;
     pointer-events: none;
-    left: -28px;
-    top: calc(50% - 2.1em);
-    width: calc(100% + 56px);
-    height: 4.2em;
-  }
-  /* The stone copy is masked to that same ellipse. The color wash paints above it. */
-  .hero-handle-blur {
-    position: absolute;
     inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    mask-image: radial-gradient(
-      ellipse farthest-side at 50% 50%,
-      black 0%,
-      transparent 100%
-    );
-    -webkit-mask-image: radial-gradient(
-      ellipse farthest-side at 50% 50%,
-      black 0%,
-      transparent 100%
-    );
-    mask-mode: alpha;
-    -webkit-mask-mode: alpha;
+    overflow: hidden;
+    mask-image: var(--handle-mask-x), var(--handle-mask-y);
+    -webkit-mask-image: var(--handle-mask-x), var(--handle-mask-y);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
     mask-size: 100% 100%;
@@ -267,21 +275,37 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     mask-position: center;
     -webkit-mask-position: center;
   }
+  :global(html.dark) .hero-handle-wash {
+    --handle-wash: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(0 0 0 / 50%) 18%,
+      rgb(0 0 0 / 50%) 82%,
+      transparent 100%
+    );
+  }
+  /* The stone copy uses the wash mask above. The color wash paints above the blur. */
+  .hero-handle-blur {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
   .hero-handle-wash::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: var(--handle-ellipse);
+    background: var(--handle-wash);
   }
-  /* Same box as the sharp rune. The mask on .hero-handle-blur keeps the blur in this ellipse.
-     Horizontal: rune left (-0.35em - 20px) minus the wash left (-28px).
-     Vertical: rune top against the heading baseline, minus the username gap (1.5rem - 0.45rem) and half the username line. */
+  /* Same pixels as the sharp rune. Overflow on the wash keeps this copy inside AMDphreak.
+     Horizontal: rune left (-0.35em minus 20px at 6rem), from this word's left edge.
+     Vertical: rune top against the heading baseline, minus the username gap (1.5rem - 0.45rem) and half this line. */
   .hero-rune-blur {
     position: absolute;
-    left: calc(-0.35 * var(--hero-em) + 8px);
-    top: calc(-1.72625 * var(--hero-em) + 2.1 * var(--handle-em) + 15px - 1.675rem);
+    left: calc(-0.35 * var(--hero-em) - 20px / 6rem * var(--hero-em));
+    top: calc(-1.72625 * var(--hero-em) + 15px / 6rem * var(--hero-em) - 1.675rem + 50%);
     height: calc(2.15 * var(--hero-em));
     width: auto;
     max-width: none;
