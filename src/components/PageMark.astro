@@ -3,20 +3,29 @@
  * One monochrome stone behind the page. It is fixed to the viewport and
  * aligned to the chrome column. A script moves it onto body so a z-index
  * on the header or hero cannot paint it over the text.
+ *
+ * Size and place are a fraction of that column (cqw), so window size and
+ * browser zoom keep the same relationship to the column. 47.5cqw is the
+ * desktop scale of the old 45vh mark at 1.5× (67.5vh) when the column is
+ * 80rem and the viewport is 900px tall.
  */
 ---
 
 <div class="page-mark" data-page-mark aria-hidden="true">
-  <div class="page-mark__rotor">
-    <img
-      class="page-mark__stone"
-      src="/brand/ryan-runescape-logo-mono.svg"
-      alt=""
-      width="1647"
-      height="1648"
-      decoding="async"
-      draggable="false"
-    />
+  <div class="page-mark__slot">
+    <div class="page-mark__rise">
+      <div class="page-mark__drift">
+        <img
+          class="page-mark__stone"
+          src="/brand/ryan-runescape-logo-mono.svg"
+          alt=""
+          width="1647"
+          height="1648"
+          decoding="async"
+          draggable="false"
+        />
+      </div>
+    </div>
   </div>
 </div>
 <script is:inline>
@@ -29,11 +38,6 @@
 
 <style>
   /*
-   * Fixed to the viewport and aligned to the chrome column.
-   * The rotor's origin is a vertical line 30% from that column's left edge.
-   * The stone's center is at 70%, so the turn swings around that line.
-   */
-  /*
    * z-index 0 sits above the body background. A negative z-index paints
    * behind that background, so the stone disappears. The rule below lifts
    * the page columns above the stone. The fixed frame keeps its own layer.
@@ -44,14 +48,11 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 100vh;
-    height: 100dvh;
     width: 100%;
     max-width: var(--chrome-max);
     margin-inline: auto;
     pointer-events: none;
-    perspective: 140vh;
-    perspective-origin: 30% 50%;
+    container-type: inline-size;
   }
 
   :global(body > :not([data-page-mark]):not(.fixed)) {
@@ -59,12 +60,43 @@
     z-index: 1;
   }
 
-  .page-mark__rotor {
+  /*
+   * Center on 70% of the column. The top sits 4% of the stone's height
+   * above the viewport, so the cap is clipped and the rest hangs down.
+   */
+  .page-mark__slot {
+    --page-mark-size: 47.5cqw;
     position: absolute;
-    inset: 0;
-    transform-origin: 30% 50%;
-    transform-style: preserve-3d;
-    animation-name: page-mark-turn;
+    top: calc(var(--page-mark-size) * -0.04);
+    left: 70%;
+    width: var(--page-mark-size);
+    height: var(--page-mark-size);
+    transform: translateX(-50%);
+  }
+
+  .page-mark__rise,
+  .page-mark__drift,
+  .page-mark__stone {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Same fade and rise as the hero name: 450ms ease-out, no extra delay. */
+  :global(html.load-hold) .page-mark__rise {
+    opacity: 0;
+  }
+
+  :global(html.load-enter) .page-mark__rise {
+    animation: page-mark-rise 450ms ease-out both;
+  }
+
+  /*
+   * A short drift, not a slide. Over the whole scroll the stone moves
+   * 10% of its width left and 8% of its height down (about 5% and 4%
+   * of the column). The shape does not change.
+   */
+  .page-mark__drift {
+    animation-name: page-mark-drift;
     animation-duration: auto;
     animation-timing-function: linear;
     animation-fill-mode: both;
@@ -72,42 +104,43 @@
   }
 
   .page-mark__stone {
-    position: absolute;
-    top: 50%;
-    left: 70%;
-    height: 45vh;
-    width: auto;
+    display: block;
     max-width: none;
     opacity: 0.2;
-    transform: translate(-50%, -50%);
+    object-fit: contain;
     user-select: none;
+    pointer-events: none;
   }
 
-  /* The name fills a narrow column. Keep the mark on the right of the type. */
-  @media (max-width: 1279px) {
-    .page-mark__stone {
-      height: min(36vh, 30vw);
-    }
-  }
-
-  @keyframes page-mark-turn {
+  @keyframes page-mark-rise {
     from {
-      transform: rotateY(0deg);
+      opacity: 0;
+      transform: translateY(0.4rem);
     }
     to {
-      transform: rotateY(60deg);
+      opacity: 1;
+      transform: none;
     }
   }
 
-  @media (max-width: 639px) {
-    .page-mark__stone {
-      height: 30vh;
+  @keyframes page-mark-drift {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(-10%, 8%);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .page-mark__rotor {
+    :global(html.load-hold) .page-mark__rise {
+      opacity: 1;
+    }
+    :global(html.load-enter) .page-mark__rise,
+    .page-mark__drift {
       animation: none;
+    }
+    .page-mark__drift {
       transform: none;
     }
   }

@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Home**: the in-page stone letter is gone. The name is type again. The hero socials use the same load entrance as the name.
-- **Pages**: a large monochrome stone sits behind the contents, fixed on the right at 20% opacity. Scrolling turns it into the page around a line left of center in the content column. Reduced motion leaves it still. Home in the header is text only.
+- **Pages**: the background stone stays flat. It is larger, sits high on the right of the content column with its top just off the page, and uses the same load fade as the hero. Scrolling drifts it a little left and down. Reduced motion leaves it still. Home in the header is text only.
 
 ## [0.5.0] - 2026-11-17
 
