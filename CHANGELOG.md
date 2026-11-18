@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2026-11-17
+## [0.5.0] - 2026-11-17
 
 ### Changed
 
@@ -42,7 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Home plates**: Software and Photography use `--section-plate-alpha: 0.68` on the existing base colors. Grain is a scrolling background tile, without a filtered overlay.
 - **Fonts**: Instrument Sans, Space Grotesk, and Space Mono ship from Fontsource. First-paint files are preloaded and use `font-display: block`. The Google Fonts import is gone.
 
-## [Unreleased] - 2026-11-16
+## [0.5.0] - 2026-11-16
 
 ### Changed
 
@@ -72,13 +72,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Post**: [The Roast of Ryan Johnson](/blog/posts/the-roast-of-ryan-johnson).
 
-## [Unreleased] - 2026-10-06
+## [0.5.0] - 2026-10-06
 
 ### Changed
 
 - Refreshed deprecated transitive dependencies within existing ranges: `@ungap/structured-clone` 1.4.0 and `tar` 7.5.22.
 
-## [Unreleased] - 2026-09-28
+## [0.5.0] - 2026-09-28
 
 ### Added
 
@@ -86,13 +86,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Blog layout**: docs-style right-rail table of contents on post pages (sticky `h2`/`h3` on desktop, collapsible on mobile); series navigation block when `series` frontmatter is set.
 - **Content pipeline**: `centrmarkBlogLoader` extends CentrMark frontmatter with `series`, `seriesOrder`, and `seriesHub` (same fields optional on Markdown posts).
 
-## [Unreleased] - 2026-09-10
+## [0.5.0] - 2026-09-10
 
 ### Added
 
 - **Crawlability**: `site` set to `https://ryanjohnson.dev`, `@astrojs/sitemap` (emits `sitemap-index.xml`), and [`public/robots.txt`](public/robots.txt) with a Sitemap line; unlisted `/u/` routes stay out of the sitemap.
 
-## [Unreleased] - 2026-09-09
+## [0.5.0] - 2026-09-09
 
 ### Changed
 
@@ -102,25 +102,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **For fun** at [/for-fun](/for-fun): hub for light asides, with [The Roast of Ryan Johnson](/for-fun/chatgpt-roast) (personality assessment, 7 Sep 2026) linked from the home hero CTA row.
 
-## [Unreleased] - 2026-09-01
+## [0.5.0] - 2026-09-01
 
 ### Added
 
 - **Inspirations**: Joe Armstrong — *The Mess We're In* (Strange Loop, September 2014): combined medals + billions-of-lines quote, YouTube / timestamp / Drive backup links, Dev-Centr catalog cross-link.
 
-## [Unreleased] - 2026-08-18
+## [0.5.0] - 2026-08-18
 
 ### Added
 
 - **Desktop Tooling**: GitHub org on the hub destinations and GitHub profile menu (`Desktop-Tooling` — OS-level desktop utilities, GitHub Pages site).
 
-## [Unreleased] - 2026-08-12
+## [0.5.0] - 2026-08-12
 
 ### Added
 
 - **Inspirations**: [cat-v.org](https://cat-v.org/) (Unix/Plan 9 archive + harmful essays) and **Randall Munroe / xkcd** (portrait + Compiling / Duty Calls) on [/inspirations](/inspirations).
 
-## [Unreleased] - 2026-08-10
+## [0.5.0] - 2026-08-10
 
 ### Added
 
@@ -130,7 +130,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **GitHub Pages deploy**: CentrMark packages resolve from `vendor/centrmark` (CI checkout) instead of a machine-local `../../dev-centr/centrmark` path; workflow builds `@centrmark/parse`, `cmk-renderer`, and `cmk-astro`. Taxonomy gains `writing` / `editorial` / `news` / `blog` tags so `blog-as-inner-thought` builds. CI skips `.cmk` posts until a Linux CentrMark CLI is available.
 
-## [Unreleased] - 2026-08-08
+## [0.5.0] - 2026-08-08
 
 ### Added
 
@@ -138,7 +138,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Post**: [Secrets as a matrix, not a scavenger hunt](/blog/posts/secrets-as-a-matrix-not-a-scavenger-hunt) — vendor create / vault store / CLI(+MCP) distribute / ESC hub; illustrated with redacted session art; links to Dev-Centr Diátaxis pages and `agent-rules` `suggestions/`.
 - **Post**: [When the inbox is the CI pager](/blog/posts/when-the-inbox-is-the-ci-pager) — Composio as an MCP connector plane for CI-mail triage in Cursor; links to Dev-Centr how-to, stack docs, [studio MCP install strategies](https://docs.devcentr.org/general-knowledge/explanation/infrastructure/studio-mcp-install-strategies.html), and the [AI studio tooling catalog](https://docs.devcentr.org/general-knowledge/reference/ai-studio-tooling-catalog.html).
 
-## [Unreleased] - 2026-08-06
+## [0.5.0] - 2026-08-06
 
 ### Added
 
@@ -146,7 +146,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Post**: [Installers as OS-native craft](/blog/posts/installers-as-os-native-craft) — PATH-in-place, Easy Installer plugins, and real MSI bytes (hero + extension images).
 - **Taxonomy**: `devtools`, `packaging`, `windows` tags.
 
-## [Unreleased] - 2026-08-04
+## [0.5.0] - 2026-08-04
 
 ### Fixed
 
@@ -160,7 +160,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Hierarchical tags** via `@content-tags/*` (Dev-Centr): `src/content/taxonomy.json5`, `/tags` index, `/tags/[...tag]` pages, tags on continuing-blog list and post pages.
 - **Post**: [Access Feedback from API and clearweb](/blog/posts/access-feedback-from-api-and-clearweb) — mirrors Feedback Hub filing `aka.ms/AA130yqs`.
 
-## [Unreleased] - 2026-08-01
+## [0.5.0] - 2026-08-01
 
 
 ### Added
