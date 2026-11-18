@@ -103,6 +103,11 @@
     animation-timeline: scroll(root);
   }
 
+  /*
+   * Fade from 0.2 to 0 over the first 40rem of scroll. A length range
+   * stays the same on a short page and a long page. The drift above
+   * still covers the whole scroll.
+   */
   .page-mark__stone {
     display: block;
     max-width: none;
@@ -110,6 +115,12 @@
     object-fit: contain;
     user-select: none;
     pointer-events: none;
+    animation-name: page-mark-fade;
+    animation-duration: auto;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root);
+    animation-range: 0 40rem;
   }
 
   @keyframes page-mark-rise {
@@ -132,16 +143,29 @@
     }
   }
 
+  @keyframes page-mark-fade {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     :global(html.load-hold) .page-mark__rise {
       opacity: 1;
     }
     :global(html.load-enter) .page-mark__rise,
-    .page-mark__drift {
+    .page-mark__drift,
+    .page-mark__stone {
       animation: none;
     }
     .page-mark__drift {
       transform: none;
+    }
+    .page-mark__stone {
+      opacity: 0.2;
     }
   }
 </style>
