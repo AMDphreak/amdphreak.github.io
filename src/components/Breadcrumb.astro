@@ -19,6 +19,52 @@ const { items, class: className } = Astro.props;
 const last = items.length - 1;
 const soleHomeLink =
   items.length === 1 && items[0]?.label === "Home" && Boolean(items[0]?.href);
+
+const homeSelfCss = `
+@keyframes home-self-reject {
+  0% { transform: translateX(0); }
+  18% { transform: translateX(-3px); }
+  36% { transform: translateX(3px); }
+  54% { transform: translateX(-2px); }
+  72% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+a.home-self-link.is-rejecting {
+  animation: home-self-reject 360ms ease-out 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  a.home-self-link.is-rejecting {
+    animation: none;
+  }
+}
+`.trim();
+
+const homeSelfJs = `
+(function () {
+  var link = document.querySelector("[data-home-self]");
+  if (!link) return;
+
+  function isHomePath(path) {
+    var bare = path.replace(new RegExp("/+$"), "") || "/";
+    return bare === "/" || bare === "/index.html" || bare === "/index";
+  }
+
+  link.addEventListener("click", function (event) {
+    if (!isHomePath(location.pathname)) return;
+    if (event.button !== 0) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    link.classList.remove("is-rejecting");
+    void link.offsetWidth;
+    link.classList.add("is-rejecting");
+  });
+
+  link.addEventListener("animationend", function () {
+    link.classList.remove("is-rejecting");
+  });
+})();
+`.trim();
 ---
 
 <nav aria-label="Breadcrumb" class:list={[className]}>
@@ -41,7 +87,8 @@ const soleHomeLink =
           ) : soleHomeLink && item.href ? (
             <a
               href={item.href}
-              class="text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+              class="home-self-link text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100"
+              data-home-self
               aria-current="page"
             >
               {item.label}
@@ -56,3 +103,11 @@ const soleHomeLink =
     }
   </ol>
 </nav>
+{
+  soleHomeLink && (
+    <>
+      <style is:inline set:html={homeSelfCss}></style>
+      <script is:inline set:html={homeSelfJs}></script>
+    </>
+  )
+}
