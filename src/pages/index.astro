@@ -68,7 +68,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
           <p
             class="hero-cast font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
           >
-            <span class="hero-under" aria-hidden="true"></span><span class="hero-letters">AMDphreak</span>
+            <span class="hero-under" aria-hidden="true"></span><span class="hero-under-start" aria-hidden="true"></span><span class="hero-letters">AMDphreak</span>
           </p>
         </div>
         <ProfileLinks client:load links={heroProfileLinks} label="Other profiles" falloff />
@@ -175,6 +175,8 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     bottom: calc(-0.58em - 15px);
     pointer-events: none;
     user-select: none;
+    /* One light monochrome on both themes. The SVG file stays full color. */
+    filter: grayscale(1) contrast(1.12) brightness(2.05);
   }
   /* Same layer as .hero-letters. The link itself stays auto so the wash can sit behind it. */
   :global(.hero-ink) {
@@ -225,6 +227,25 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
       transparent 100%
     );
     filter: blur(22px);
+  }
+  /* Denser than the word wash, and only as wide as the letters on the stone. */
+  .hero-username .hero-under-start {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    left: -28px;
+    top: 50%;
+    translate: 0 -50%;
+    width: 4.8em;
+    height: 3.1em;
+    background: radial-gradient(
+      closest-side,
+      var(--hero-near) 0%,
+      var(--hero-near) 78%,
+      transparent 100%
+    );
+    filter: blur(11px);
   }
   :global(.hero-field) {
     position: absolute;
