@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Home**: the wash under AMDphreak is a chain of five soft ellipses. Each ellipse is white at half opacity on the light theme and black at half opacity on the dark theme, fading out at its edge. The chain stays inside that word. The blurred stone uses the same ellipses.
 - **Home**: the wash under AMDphreak stays inside that word and fades on every edge, white at half opacity on the light theme and black at half opacity on the dark theme. It does not cover the name. The word uses the home section subheading face, darker in light mode and lighter in dark mode. The rune and "yan" stay on one line when the name wraps. The rune's nudges scale with the heading, so the stone sits on "yan" the same way on a phone as on a desktop.
 - **Home**: "yan Johnson" and "AMDphreak" no longer share a wash. The name keeps its own soft shadow, white on the light theme and black on the dark theme. AMDphreak has a separate centered black ellipse at half opacity, and the stone is blurred only inside that ellipse. The letters and the hero socials stay sharp.
 - **Home**: the in-page rune is one light monochrome stone on both themes. The color SVG is unchanged. The letters stay sharp, and the wash stays behind the hero socials.

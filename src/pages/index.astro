@@ -235,39 +235,25 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     width: 9.25rem;
     height: 108%;
   }
-  /* Username only. Fades on every edge, and stays inside this word. */
+  /* Username only. Five soft ellipses in a chain, clipped to this word. */
   .hero-handle-wash {
     --handle-em: 1em;
-    --handle-mask-x: linear-gradient(
-      90deg,
-      transparent 0%,
-      black 18%,
-      black 82%,
-      transparent 100%
-    );
-    --handle-mask-y: linear-gradient(
-      180deg,
-      transparent 0%,
-      black 18%,
-      black 82%,
-      transparent 100%
-    );
-    --handle-wash: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgb(255 255 255 / 50%) 18%,
-      rgb(255 255 255 / 50%) 82%,
-      transparent 100%
-    );
+    /* Five beads, evenly spaced. Each ellipse overlaps the next so the chain has no gaps. */
+    --handle-chain:
+      radial-gradient(ellipse 15% 46% at 14% 50%, black, transparent),
+      radial-gradient(ellipse 15% 46% at 32% 50%, black, transparent),
+      radial-gradient(ellipse 15% 46% at 50% 50%, black, transparent),
+      radial-gradient(ellipse 15% 46% at 68% 50%, black, transparent),
+      radial-gradient(ellipse 15% 46% at 86% 50%, black, transparent);
     position: absolute;
     z-index: 0;
     pointer-events: none;
     inset: 0;
     overflow: hidden;
-    mask-image: var(--handle-mask-x), var(--handle-mask-y);
-    -webkit-mask-image: var(--handle-mask-x), var(--handle-mask-y);
-    mask-composite: intersect;
-    -webkit-mask-composite: source-in;
+    mask-image: var(--handle-chain);
+    -webkit-mask-image: var(--handle-chain);
+    mask-composite: add, add, add, add;
+    -webkit-mask-composite: source-over, source-over, source-over, source-over;
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
     mask-size: 100% 100%;
@@ -275,16 +261,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     mask-position: center;
     -webkit-mask-position: center;
   }
-  :global(html.dark) .hero-handle-wash {
-    --handle-wash: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgb(0 0 0 / 50%) 18%,
-      rgb(0 0 0 / 50%) 82%,
-      transparent 100%
-    );
-  }
-  /* The stone copy uses the wash mask above. The color wash paints above the blur. */
+  /* The stone copy uses the same chain as its mask. The color wash paints above the blur. */
   .hero-handle-blur {
     position: absolute;
     inset: 0;
@@ -297,7 +274,10 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: var(--handle-wash);
+    background: rgb(255 255 255 / 50%);
+  }
+  :global(html.dark) .hero-handle-wash::after {
+    background: rgb(0 0 0 / 50%);
   }
   /* Same pixels as the sharp rune. Overflow on the wash keeps this copy inside AMDphreak.
      Horizontal: rune left (-0.35em minus 20px at 6rem), from this word's left edge.
