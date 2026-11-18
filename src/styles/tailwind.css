@@ -37,8 +37,6 @@
   :root {
     --software-base: #2c506b;
     --photography-base: #2c1205;
-    /* Deep green. Lightness still comes from the shared plate shift. */
-    --gap-base: oklch(0.40 0.10 148);
     --section-plate-alpha: 0.68;
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
@@ -255,8 +253,7 @@
    * through it. The wash then draws the same tile once, above the color.
    */
   .home-software,
-  .home-photography,
-  .home-gap {
+  .home-photography {
     position: relative;
     isolation: isolate;
     background-color: var(--color-background);
@@ -285,24 +282,6 @@
       oklch(from var(--photography-base) 0.417 c h / var(--section-plate-alpha))
     );
   }
-  .home-gap {
-    min-height: 9rem;
-    background-image: linear-gradient(
-      oklch(from var(--gap-base) 0.93 c h / var(--section-plate-alpha)),
-      oklch(from var(--gap-base) 0.93 c h / var(--section-plate-alpha))
-    );
-  }
-  .dark .home-gap {
-    background-image: linear-gradient(
-      oklch(from var(--gap-base) 0.417 c h / var(--section-plate-alpha)),
-      oklch(from var(--gap-base) 0.417 c h / var(--section-plate-alpha))
-    );
-  }
-  @media (min-width: 64rem) {
-    .home-gap {
-      min-height: 10rem;
-    }
-  }
 
   /*
    * One grain strength for the page and for the home washes.
@@ -329,8 +308,7 @@
 
   body::before,
   .home-software::before,
-  .home-photography::before,
-  .home-gap::before {
+  .home-photography::before {
     content: "";
     position: absolute;
     z-index: -1;
@@ -379,9 +357,6 @@
   html.load-enter main > *:nth-child(2) {
     animation-delay: 150ms;
   }
-  html.load-enter main > *:nth-child(3) {
-    animation-delay: 220ms;
-  }
 
   @media (prefers-reduced-motion: reduce) {
     html.load-enter .hero-load > :not(.hero-falloff-defs),
@@ -390,8 +365,4 @@
     }
   }
 
-}
-
-body:has(.home-gap) footer {
-  margin-top: 0;
 }

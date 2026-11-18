@@ -8,9 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Home**: the empty green plate under Photography is gone, so that section meets the footer again. The rune sits 20px further left. A soft blurred shadow under "yan Johnson" and "AMDphreak" separates those strings from the stone.
 - **Icon**: the live mark is the Affinity stone. The tab icon is the transparent SVG. Firefox and apple-touch use a transparent PNG rasterized from that SVG.
-- **Home**: the Affinity rune is the R in Ryan, on the same left edge as the lines under the name. One stone stays unpainted until it has decoded, so the stacked copies no longer flash on load. Hero text from "yan" through the lines under the name darkens toward that stone in the light theme and lightens toward it in the dark theme, then fades with distance. The stone behind Johnson is gone.
-- **Home**: the gap under Photography is an empty deep-green plate. The dark theme keeps that hue and shifts lightness the way the other plates do.
+- **Home**: the Affinity rune is the R in Ryan, on the same left edge as the lines under the name. One stone stays unpainted until it has decoded, so the stacked copies no longer flash on load. The stone behind Johnson is gone.
 - **Pages**: main content fades and rises once when a page loads. A view-transition visit keeps the page cover and skips that rise. Reduced motion shows the content in place.
 - **Theme**: a blocking script in the page head sets the `dark` class, the color scheme, and the page background from the saved theme before the font CSS. A stored dark theme no longer flashes white while the stylesheet loads.
 - **Navigation**: a deeper or sideways visit covers the current page from the right. A visit up to an ancestor path, including Home, slides the current page off to the right. Reduced motion skips that motion. The theme switch still uses its circle reveal.
