@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-11-18
+
 ### Changed
 
 - **Grain**: the page and the home washes load the same 512px tiles as WebP. Light is `grain-tile-light.webp`; dark is `grain-tile-dark.webp`.
