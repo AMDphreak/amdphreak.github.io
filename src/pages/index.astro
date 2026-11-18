@@ -68,7 +68,7 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
           <p
             class="hero-cast font-mono text-sm uppercase tracking-[0.3em] text-stone-600 dark:text-stone-400"
           >
-            <span class="hero-under" aria-hidden="true"></span><span class="hero-under-start" aria-hidden="true"></span><span class="hero-letters">AMDphreak</span>
+            <span class="hero-under-blur" aria-hidden="true"></span><span class="hero-under" aria-hidden="true"></span><span class="hero-letters">AMDphreak</span>
           </p>
         </div>
         <ProfileLinks client:load links={heroProfileLinks} label="Other profiles" falloff />
@@ -149,9 +149,20 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     position: relative;
     z-index: 1;
   }
+  /* Socials paint above the username wash, so the blur does not cover them. */
+  .hero-load :global(ul[aria-label="Other profiles"]) {
+    position: relative;
+    z-index: 2;
+  }
   /* The username sits on the lower curve of the stone. */
   .hero-username {
     margin-top: -0.45rem;
+    --hero-wash: radial-gradient(
+      ellipse farthest-side at 0% 50%,
+      var(--hero-near) 0%,
+      var(--hero-near) 18%,
+      transparent 78%
+    );
   }
   .hero-name {
     position: relative;
@@ -214,38 +225,31 @@ const navBtnSecondary = `${navBtnBase} structural-border bg-background text-fore
     width: 9.25rem;
     height: 108%;
   }
-  .hero-username .hero-under {
+  .hero-username .hero-under,
+  .hero-username .hero-under-blur {
     left: -28px;
     top: 50%;
     translate: 0 -50%;
     width: calc(100% + 56px);
     height: 4.2em;
-    background: radial-gradient(
-      closest-side,
-      var(--hero-near) 0%,
-      var(--hero-near) 46%,
-      transparent 100%
-    );
-    filter: blur(22px);
+    border-radius: 0;
   }
-  /* Denser than the word wash, and only as wide as the letters on the stone. */
-  .hero-username .hero-under-start {
+  .hero-username .hero-under {
+    background: var(--hero-wash);
+    filter: none;
+  }
+  /* Same ellipse, center, and stops as the wash. Masked so only the rune behind blurs. */
+  .hero-username .hero-under-blur {
     position: absolute;
     z-index: 0;
     pointer-events: none;
-    border-radius: 50%;
-    left: -28px;
-    top: 50%;
-    translate: 0 -50%;
-    width: 4.8em;
-    height: 3.1em;
-    background: radial-gradient(
-      closest-side,
-      var(--hero-near) 0%,
-      var(--hero-near) 78%,
-      transparent 100%
-    );
-    filter: blur(11px);
+    background: none;
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    mask-image: var(--hero-wash);
+    -webkit-mask-image: var(--hero-wash);
+    mask-mode: alpha;
+    mask-repeat: no-repeat;
   }
   :global(.hero-field) {
     position: absolute;
